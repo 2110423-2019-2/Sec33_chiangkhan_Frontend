@@ -3,10 +3,3 @@ app-root {
     width: 100%;
 }
 
-.btn-default {
-    background-color: pink;
-    color: slateblue;
-    font-size:16px;
-    font-weight: 600;
-    width : 130px;
-}
