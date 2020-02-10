@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule }   from '@angular/forms';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { CreateFormComponent } from './create-form/create-form.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: "", component: LoginFormComponent },
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginFormComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
