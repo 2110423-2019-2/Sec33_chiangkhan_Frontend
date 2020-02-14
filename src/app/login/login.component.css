@@ -1,0 +1,55 @@
+body{
+    position: fixed;
+}
+#form-input{
+    margin: 60px;
+}
+
+#login {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 480px;
+    height: 50px;
+    color: white;
+    font-weight: 600;
+    background-color: slateblue;
+    margin-bottom: 10px;
+}
+
+#register {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 480px;
+    height: 50px;
+    color: white;
+    font-weight: 600;
+    background-color: mediumseagreen;
+    
+}
+
+#login:hover {
+    background-color:rgba(24, 23, 23, 0.788);
+    transition: 0.5s ;
+  }
+#register:hover {
+    background-color:rgba(24, 23, 23, 0.788);
+    transition: 0.5s ;
+  }
+.input {
+    height: 60px;
+}
+
+#car-homepage {
+    padding-right: 0px;
+    opacity: 0.8;
+   
+}
+
+::placeholder{
+    padding: 10px;
+}
+ 
