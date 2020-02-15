@@ -1,7 +1,24 @@
 #register-homepage {
-    opacity: 0.5;
-    
+    opacity: 0.6;
+    position: relative;
 }
 #register-form{
-    padding: 20px;
+    padding: 60px;
+}
+
+#submit-form a{
+    margin: 25px;
+
+}
+
+button{
+    width: 20%
+}
+span{
+    position: absolute;
+    right: 157px;
+    top: 141px;
+    font-size: 3.0rem;
+    font-weight: bold;
+    color: black;
 }
