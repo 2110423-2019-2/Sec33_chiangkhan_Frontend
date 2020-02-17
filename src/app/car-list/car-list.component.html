@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="columns">
+      <div class="column is-3">
+        <div class="card-image">
+          <figure class="image">
+            <img
+              src="../../assets/images/car-homepage.jpg"
+              alt="Placeholder image"
+            />
+          </figure>
+        </div>
+      </div>
+      <div class="column" id="detail">
+        <span id="status">{{car.status}}</span>
+        <p>Status : {{car.type}}</p>
+        <p>Model : {{car.Model}}</p>
+        <p>License : {{car.licensePlate}}</p>
+        <p>Pickup Date : {{car.PickupDate}}</p>
+        <p>Pickup Location : {{car.PickupLocation}}</p>
+        <p>Pickup Date : {{car.PickupDate}}</p>
+        <p>Return Location : {{car.ReturnLocation}}</p>
+        <div class="buttons">
+          <button class="button is-danger"><a href="">Cancel</a></button>
+          <button class="button is-info"><a href="">Agreement</a></button>
+          <button class="button is-dark" (click)="popup()">Review</button>
+        </div>
+        <div class="modal" id="popup">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Review</p>
+              <button class="delete" aria-label="close" (click)="del_popup()"></button>
+            </header>
+            <section class="modal-card-body">
+              <!-- Content ... -->
+            </section>
+            <footer class="modal-card-foot">
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

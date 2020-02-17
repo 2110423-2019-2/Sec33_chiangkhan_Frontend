@@ -1,0 +1,6 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div *ngFor="let car of cars">
+        <app-car-list [car]= "car"></app-car-list>
+    </div>
+</div>
