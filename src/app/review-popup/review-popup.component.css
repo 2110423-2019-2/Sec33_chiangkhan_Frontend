@@ -1,0 +1,15 @@
+#cancel_popup .modal-card-body {
+    border-radius: 30px;
+    padding: 50px;
+}
+
+h1{
+    font-size: 170%;
+    font-weight: 700;
+    
+}
+#cancel_popup .field.is-grouped{
+    justify-content: center;
+    margin: 10px; 
+    padding: 10px;
+}
