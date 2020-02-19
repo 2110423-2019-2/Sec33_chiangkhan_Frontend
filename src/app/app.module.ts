@@ -8,15 +8,17 @@ import { RegisterComponent } from './register/register.component'
 import { RouterModule ,Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomepageComponent } from './homepage/homepage.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ReviewComponent } from './review/review.component';
 import { ReservationCarComponent } from './reservation-car/reservation-car.component';
 import { ReviewPopupComponent } from './review-popup/review-popup.component';
-
 import { ListofcarsComponent } from './listofcars/listofcars.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { CarComponent } from './car/car.component';
+import { BoxComponent } from './box/box.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -24,8 +26,10 @@ const appRoutes: Routes = [
   { path: "homepage", component:HomepageComponent } ,
   { path: "homepage/reservation", component:ReservationComponent } ,
   { path: "homepage/profile", component:ProfileComponent },
-  { path: "homepage/listofcars", component:ListofcarsComponent }
-];
+  { path: "homepage/listofcars", component:ListofcarsComponent },
+  { path: "homepage/mycar" , component:CarComponent }  
+];   
+
 
 @NgModule({
   declarations: [
@@ -33,14 +37,18 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomepageComponent,
-    NavbarComponent,
+    NavbarComponent, 
     ProfileComponent,
     ReservationComponent,
     ReservationCarComponent,
     ReviewComponent,
     ReviewPopupComponent,
     ListofcarsComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    CarComponent,
+    BoxComponent,
+    PopUpComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

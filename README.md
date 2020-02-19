@@ -1,16 +1,6 @@
-# Rentsee
+# Pickup
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
-
-# Member 
-6031016921 ทรงพล จงเกริกเกียรติ\
-6031026121 ธัชเชษฐ์ กิตติโชติกุล\
-6030539621 วุฒิพงศ์ ทาบสุวรรณ\
-6031004321 กษิดิศ พกุลานนท์\
-6030352521 ปพน ชัยศรีสุขอำพร\
-6031017521 ธนกร พิศนุภูมิ\
-6030031021 กษิดิศ รัตนวงศ์พิทักษ์\
-6030665021 รพีพงศ์ เศรษฐวิพัฒนชัย\
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
 
 ## Development server
 

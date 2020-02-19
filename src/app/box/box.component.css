@@ -1,0 +1,19 @@
+.button {
+    background-color: rgb(21, 65, 82);
+    color: white;
+    width: 120px;
+}
+
+.status {
+    color: rgb(53, 53, 121);
+    background-color: pink;
+}
+
+.list1 {
+    width: 1320px;
+    height: 330px;
+    margin: 30px auto;
+    border-color:gray;
+    border: width 1px;
+    border-style:solid;
+}
