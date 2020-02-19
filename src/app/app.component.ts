@@ -10,17 +10,17 @@ interface Friend {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
-})
+}) 
 export class AppComponent {
   public friends: Friend[];
  
   private apiClient: ApiClient;
-  title = 'Rentsee';
+  title = 'Rentsee'; 
 
   constructor( apiClient: ApiClient ) {
  
 		this.apiClient = apiClient;
-		this.friends = [];
+		this.friends = []; 
 		document.cookie = "XSRF-TOKEN=server-generated-token";
  
   }
