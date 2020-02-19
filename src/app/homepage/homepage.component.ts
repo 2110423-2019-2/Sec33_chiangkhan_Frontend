@@ -23,17 +23,16 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLogin()
+    // this.isLogin()
   }
   
   async isLogin(){
     try {
 			this.friends = await this.apiClient.get<Friend[]>({
-				url: "api/friends.json",
-				params: {
-					limit: 5
-				}
-			});
+				url: "http://localhost:3000/profile"
+				
+			}); 
+			console.log(this.friends)
 		} catch ( error ) {
 			console.error( error );
 		}

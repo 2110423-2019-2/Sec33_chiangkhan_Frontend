@@ -8,3 +8,17 @@ img #logo{
 .navbar-item img {
     max-height: 2.75rem;
 }
+
+#mouse:hover{
+    background-color:pink;
+    
+}
+
+span:hover{
+    color : hotpink
+}
+span{
+    text-decoration:brown;
+    font-weight: 600;
+    color:black;
+}

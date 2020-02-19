@@ -4,4 +4,20 @@
 
 .card{
     margin-bottom: 10px;
+    box-shadow: 3px -1px 15px 0px;
+}
+
+#about span{
+    font-weight: 600;
+}
+
+#payment_info span{
+    font-weight: 600;
+}
+#bug{
+    margin-top: 0px;
+}
+
+.field.is-grouped{
+    justify-content: flex-end;
 }

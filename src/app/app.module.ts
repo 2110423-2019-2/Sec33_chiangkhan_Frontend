@@ -15,12 +15,16 @@ import { ReviewComponent } from './review/review.component';
 import { ReservationCarComponent } from './reservation-car/reservation-car.component';
 import { ReviewPopupComponent } from './review-popup/review-popup.component';
 
+import { ListofcarsComponent } from './listofcars/listofcars.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
   { path: "register",  component: RegisterComponent },
   { path: "homepage", component:HomepageComponent } ,
   { path: "homepage/reservation", component:ReservationComponent } ,
-  { path: "homepage/profile", component:ProfileComponent }
+  { path: "homepage/profile", component:ProfileComponent },
+  { path: "homepage/listofcars", component:ListofcarsComponent }
 ];
 
 @NgModule({
@@ -34,7 +38,9 @@ const appRoutes: Routes = [
     ReservationComponent,
     ReservationCarComponent,
     ReviewComponent,
-    ReviewPopupComponent
+    ReviewPopupComponent,
+    ListofcarsComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,

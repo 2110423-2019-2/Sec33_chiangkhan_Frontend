@@ -4,7 +4,9 @@ body{
 #form-input{
     margin: 60px;
 }
-
+#form-input img{
+    margin-bottom: 30px;
+}
 #login {
     text-align: center;
     text-decoration: none;
