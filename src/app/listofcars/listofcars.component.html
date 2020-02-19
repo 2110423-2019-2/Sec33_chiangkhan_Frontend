@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<!-- <h2>List of cars</h2>
+<ul class="cars">
+  <li *ngFor="let car of cars">
+    <span class="badge">{{car.id}}</span> <img src={{[car.image]}} alt="car" height="300" width="300"> {{car.Availability}} {{car.Type}} 
+    {{car.Model}} {{car.LicensePlate}} {{car.Seats}} {{car.Doors}}
+  </li>
+</ul> -->
+
+<div class="carbox" *ngFor="let car of cars">
+    <div class="columns">
+        <div class="column">
+            <img src={{[car.image]}} alt="car" height="300" width="300">
+        </div>
+        <div class="column">
+            <span class="background-bisque">{{[car.Availability]}}</span>
+            <p>Type: {{[car.Type]}}</p>
+            <p>LicensePlate: {{[car.LicensePlate]}}</p>
+            <p>Start Date: {{[car.StartDate]}}</p>
+            <p>Pickup Location: {{[car.PickupLocation]}}</p>
+            <p>Return Location: {{[car.ReturnLocation]}}</p>
+            <br>
+            <p>{{[car.Seats]}} Seats | {{[car.Doors]}} Doors</p>
+        </div>
+        <div class="column">
+            <span id="model">Model: {{[car.Model]}}</span>
+            <br><br><br>
+            <p>End Date: {{[car.EndDate]}}</p>
+            <br><br>
+            <div class="columns">
+                <div class="column" id="reservation">
+                    <button class="column" id="remove" (click)='functionOne()'>Reservation</button>
+
+                </div>
+                <div class="column" id="remove">
+                    <button>Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal -->
+        <div class="modal" id="popup">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Modal title</p>
+                    <button class="delete" aria-label="close" (click)='closepopup()'></button>
+                </header>
+                <section class="modal-card-body reservation">
+                    <!-- reservation box -->
+                    <div class="reservationbox" *ngFor="let reservation of reservations">
+                        <div class="columns">
+                            <div class="column is-2">
+                                <img src={{reservation.image}} alt="bosskung">
+                            </div>
+                            <div class="column is-three-fifths">
+                                <span>{{reservation.name}}</span> 
+                                <br>
+                                <b>Type:</b> {{reservation.type}}
+                                <br>
+                                <b>Pickup Date:</b> {{reservation.pickup_date}}
+                                <br>
+                                <b>Return Date:</b> {{reservation.return_date}}
+                            </div>
+                            <div class="column is-5">
+                                <span>{{reservation.reserve_time}}</span>
+                                <br>
+                                <b>Model:</b> {{reservation.model}}
+                                <br>
+                                <b>Location:</b> {{reservation.pickup_location}}
+                                <br>
+                                <b>Return Location:</b> {{reservation.return_location}}
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <footer class="modal-card-foot">
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
