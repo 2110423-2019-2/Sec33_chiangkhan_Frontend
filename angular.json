@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Rentsee"
+    }
+  },
+  "defaultProject": "Rentsee",
+  "cli": {
+    "analytics": "cf16a185-49ba-4bcb-a733-235568b7fc45"
+  }
 }
