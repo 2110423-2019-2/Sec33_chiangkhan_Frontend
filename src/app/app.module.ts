@@ -11,7 +11,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { CarListComponent } from './car-list/car-list.component';
+import { ReviewComponent } from './review/review.component';
+import { ReservationCarComponent } from './reservation-car/reservation-car.component';
+import { ReviewPopupComponent } from './review-popup/review-popup.component';
+
 import { ListofcarsComponent } from './listofcars/listofcars.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 
@@ -33,7 +36,9 @@ const appRoutes: Routes = [
     NavbarComponent,
     ProfileComponent,
     ReservationComponent,
-    CarListComponent,
+    ReservationCarComponent,
+    ReviewComponent,
+    ReviewPopupComponent,
     ListofcarsComponent,
     ReservationsComponent
   ],
