@@ -14,7 +14,7 @@ interface Friend {
 export class AppComponent {
   public friends: Friend[];
  
-	private apiClient: ApiClient;
+  private apiClient: ApiClient;
   title = 'Rentsee';
 
   constructor( apiClient: ApiClient ) {
