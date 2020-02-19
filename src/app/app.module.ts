@@ -12,12 +12,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { CarListComponent } from './car-list/car-list.component';
+import { ListofcarsComponent } from './listofcars/listofcars.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
   { path: "register",  component: RegisterComponent },
   { path: "homepage", component:HomepageComponent } ,
   { path: "homepage/reservation", component:ReservationComponent } ,
-  { path: "homepage/profile", component:ProfileComponent }
+  { path: "homepage/profile", component:ProfileComponent },
+  { path: "homepage/listofcars", component:ListofcarsComponent }
 ];
 
 @NgModule({
@@ -29,7 +33,9 @@ const appRoutes: Routes = [
     NavbarComponent,
     ProfileComponent,
     ReservationComponent,
-    CarListComponent
+    CarListComponent,
+    ListofcarsComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,
