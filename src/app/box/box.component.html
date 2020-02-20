@@ -1,5 +1,8 @@
+<app-navbar></app-navbar>
 <div>
+  <button class="button" (click)="popup()">Add car</button>
   <div class="list1" *ngFor="let car of carArray">
     <app-car [image1]=car></app-car>
   </div>
+  <app-review-popup></app-review-popup>
 </div>

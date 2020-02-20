@@ -14,4 +14,8 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  review_popup(){
+    document.getElementById('review_popup').className = "modal is-active" ;
+  }
+
 }

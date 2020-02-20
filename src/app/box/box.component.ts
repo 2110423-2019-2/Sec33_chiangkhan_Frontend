@@ -16,7 +16,9 @@ export class BoxComponent implements OnInit {
     pic: 'https://img4.icarcdn.com/5580256/gallery_used-car-one2car-toyota-yaris-e-hatchback-thailand_5580256_XRh0lun10ZIkBfdXh5CsBX.JPG?smia=xTM',
     status: 'Available'
   }]
-
+  popup(){
+    document.getElementById('review_popup').className = "modal is-active" ;
+  }
   constructor() { }
 
   ngOnInit(): void {
