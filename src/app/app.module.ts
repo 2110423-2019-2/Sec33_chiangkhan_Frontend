@@ -19,6 +19,7 @@ import { CarComponent } from './car/car.component';
 import { BoxComponent } from './box/box.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddcarformComponent } from './addcarform/addcarform.component';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     BoxComponent,
     PopUpComponent,
     NavbarComponent,
+    AddcarformComponent,
   ],
   imports: [
     BrowserModule,

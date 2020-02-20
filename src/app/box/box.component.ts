@@ -24,4 +24,13 @@ export class BoxComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  popupadd() {
+    document.getElementById('popupadd').className = "modal is-active";
+  }
+  del_popupadd() {
+    document.getElementById('popupadd').className = "modal";
+    console.log("work")
+  }
+
+
 }
