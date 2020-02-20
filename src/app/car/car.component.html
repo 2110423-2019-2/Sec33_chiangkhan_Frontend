@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+
     <section class="section">
       <div class="container">
         <div class="columns">
@@ -20,7 +20,7 @@
               <div class="column">
               </div>
               <div class="column">
-                <button class="button is-rounded">Review</button>
+                <button class="button is-rounded" (click)="review_popup()">Review</button>
               </div>
               <div class="column">
                 <button class="button is-rounded">Remove</button>
@@ -31,4 +31,5 @@
           </div>
         </div>
       </div>
+      <app-review-popup></app-review-popup>
     </section>
