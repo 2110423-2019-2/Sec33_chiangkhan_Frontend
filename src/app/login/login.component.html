@@ -6,17 +6,20 @@
   />
   <div class="column" id="form-input">
     <img src="../../assets/images/Rentsee - logo.png" alt="logo">
-    <div class="field">
-      <div class="control">
-        <input class="input" type="text" placeholder="Username" />
+    <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <div class="control">
+          <input class="input" type="text" placeholder="Username" formControlName="username"/>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <input class="input" type="password" placeholder="Password" />
+      <div class="field">
+        <div class="control">
+          <input class="input" type="password" placeholder="Password" formControlName="password"/>
+        </div>
       </div>
-    </div>
-      <a href="/homepage"><button class="button" id="login">Login</button></a>
+      <a href="/homepage"><button class="button" type="submit"  id="login">Login</button></a>
+    </form>
+  
       <a href="/register"><button class="button" id="register">Register</button></a>
   </div>
 </div>
