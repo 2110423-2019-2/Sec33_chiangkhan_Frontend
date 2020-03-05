@@ -17,9 +17,9 @@
           <input class="input" type="password" placeholder="Password" formControlName="password"/>
         </div>
       </div>
-      <a href="/homepage"><button class="button" type="submit"  id="login">Login</button></a>
+      <a [routerLink]="'/homepage'" ><button class="button" type="submit"  id="login">Login</button></a>
     </form>
   
-      <a href="/register"><button class="button" id="register">Register</button></a>
+      <a [routerLink]="'/register'"><button class="button" id="register">Register</button></a>
   </div>
 </div>
