@@ -4,11 +4,11 @@ import { ReviewComponent } from '../review/review.component';
 
 
 @Component({
-  selector: 'app-reservation-car',
-  templateUrl: './reservation-car.component.html',
-  styleUrls: ['./reservation-car.component.css']
+  selector: 'app-myreservation-car',
+  templateUrl: './myreservation-car.component.html',
+  styleUrls: ['./myreservation-car.component.css']
 })
-export class ReservationCarComponent implements OnInit {
+export class MyReservationCarComponent implements OnInit {
   reviews = REVIEWS ;
   @Input() car ;
 
