@@ -43,8 +43,16 @@
             <!-- Content ... -->
             <p>Each remove car, you will not be</p>
             <p>able to recovery them.</p>
-            <button class="button is-rounded">Yes</button>
-            <button class="button is-rounded">No</button>
+            <div class="columns">
+              <div class="column">
+              </div>
+              <div class="column">
+                <button class="button is-rounded" (click)="review_popup()">Yes</button>
+              </div>
+              <div class="column">
+                <button class="button is-rounded" (click)="popupremove()">No</button>
+              </div>
+            </div>
             <!-- Content ... -->
           </section>
           <footer class="modal-card-foot">
