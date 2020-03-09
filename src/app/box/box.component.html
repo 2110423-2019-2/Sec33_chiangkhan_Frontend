@@ -4,7 +4,7 @@
   <div class="list1" *ngFor="let car of carArray">
     <app-car [image1]=car></app-car>
   </div>
-  <app-review-popup></app-review-popup>
+  <app-review-popup [reviews]="reviews"></app-review-popup>
   <div class="modal" id="popupadd">
     <div class="modal-background"></div>
     <div class="modal-card">
@@ -14,10 +14,9 @@
       </header>
       <section class="modal-card-body">
         <!-- Content ... -->
-        <p>review wow za !!!!</p>
         <app-addcarform></app-addcarform>
       </section>
       <footer class="modal-card-foot">
       </footer>
     </div>
-</div>
+  </div>

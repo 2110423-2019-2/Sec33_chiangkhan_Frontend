@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ReviewComponent } from '../review/review.component';
+import { REVIEWS } from '../review/mock-review';
 
 @Component({
   selector: 'app-box',
@@ -16,6 +18,12 @@ export class BoxComponent implements OnInit {
     pic: 'https://img4.icarcdn.com/5580256/gallery_used-car-one2car-toyota-yaris-e-hatchback-thailand_5580256_XRh0lun10ZIkBfdXh5CsBX.JPG?smia=xTM',
     status: 'Available'
   }]
+
+  reviews = REVIEWS ;
+
+  review_popup(){
+    document.getElementById('review_popup').className = "modal is-active" ;
+  }
   popup(){
     document.getElementById('review_popup').className = "modal is-active" ;
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { REVIEWS } from '../review/mock-review';
+
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
@@ -10,6 +12,8 @@ export class CarComponent implements OnInit {
   image1;
 
   constructor() { }
+
+  reviews = REVIEWS ;
 
   ngOnInit(): void {
   }
