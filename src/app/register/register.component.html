@@ -3,122 +3,183 @@
     <img src="../../assets/images/register-homepage.jpg" alt="" />
     <span>Register</span>
   </div>
-  <div class="column is-8" id="register-form">
-    <div class="columns">
-      <div class="column">
-        <div class="field">
-          <label class="label">First Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="First Name" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Username</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Username" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control">
-            <input class="input" type="email" placeholder="Email" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Phone number</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Phone number" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Credit card</label>
+  <form [formGroup]="registerForm" action="">
+    <div class="column is-8" id="register-form">
+      <div class="columns">
+        <div class="column">
           <div class="field">
+            <label class="label">First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Card number" />
+              <input
+                class="input"
+                type="text"
+                placeholder="First Name"
+                formControlName="firstName"
+              />
             </div>
           </div>
-          <div class="columns">
-            <div class="column">
-              <div class="control">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="expire date (mm/yy)"
-                />
-              </div>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Username"
+                formControlName="userName"
+              />
             </div>
-            <div class="column">
-              <div class="control">
-                <input class="input" type="text" placeholder="Security" />
-              </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input
+                class="input"
+                type="email"
+                placeholder="Email"
+                formControlName="email"
+              />
             </div>
+          </div>
+          <div class="field">
+            <label class="label">Phone number</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Phone number"
+                formControlName="phoneNumber"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <form action="" formGroupName="creditCardForm">
+              <label class="label">Credit card</label>
+              <div class="field">
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Card number"
+                    formControlName="creditCard"
+                  />
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="expire date (mm/yy)"
+                      formControlName="expDate"
+                    />
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Security"
+                      formControlName="securityNumber"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
 
-      <div class="column">
-        <div class="field">
-          <label class="label">Last Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Last Name" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Password</label>
-          <div class="control">
-            <input class="input" type="passsword" placeholder="Password" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Confirm password</label>
-          <div class="control">
-            <input
-              class="input"
-              type="password"
-              placeholder="Confirm password"
-            />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Bank account number</label>
-          <div class="columns">
-            <div class="column">
-              <div class="control">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="Bank account number"
-                />
-              </div>
-            </div>
-            <div class="column">
-              <div class="control">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="Bank account number"
-                />
-              </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Last Name"
+                formControlName="lastName"
+              />
             </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Driving license</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Driving license" />
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input
+                class="input"
+                type="passsword"
+                placeholder="Password"
+                formControlName="passWord"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Confirm password</label>
+            <div class="control">
+              <input
+                class="input"
+                type="password"
+                placeholder="Confirm password"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Bank account number</label>
+            <form action="" formGroupName="bankAccountForm">
+              <div class="columns">
+                <div class="column">
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Bank account number"
+                      formControlName="bankAccount"
+                    />
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Branch"
+                      formControlName="branch"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="field">
+            <label class="label">Driving license</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Driving license"
+                formControlName="drivingLicense"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Address</label>
-      <div class="control">
-        <textarea class="textarea" placeholder="Address"></textarea>
+      <div class="field">
+        <label class="label">Address</label>
+        <div class="control">
+          <textarea
+            class="textarea"
+            placeholder="Address"
+            formControlName="address"
+          ></textarea>
+        </div>
+      </div>
+      <div id="submit-form" class="has-text-centered">
+        <a href=""
+          ><button class="button" (click)="onSubmit()">Register</button></a
+        >
+       <button class="button" (click)="cancel()">Cancel</button>
       </div>
     </div>
-    <div id="submit-form" class="has-text-centered">
-      <a href=""><button class="button">Sign up</button></a>
-      <a href="/"><button class="button">Cancel</button></a>
-    </div>
-  </div>
+  </form>
 </div>

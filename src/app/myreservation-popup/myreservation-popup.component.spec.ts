@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReviewPopupComponent } from './review-popup.component';
+import { ReviewPopupComponent } from './myreservation-popup.component';
 
 describe('ReviewPopupComponent', () => {
   let component: ReviewPopupComponent;

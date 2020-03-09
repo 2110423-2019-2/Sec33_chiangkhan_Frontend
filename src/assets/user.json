@@ -1,0 +1,6 @@
+[
+    { "id":1 , "name" : "Boss" , "age" : 21} ,
+    { "id":2 , "name" : "Za" , "age" : 20} ,
+    { "id":3 , "name" : "Boom" , "age" : 17} ,
+    { "id":4 , "name" : "Win" , "age" : 34} 
+]

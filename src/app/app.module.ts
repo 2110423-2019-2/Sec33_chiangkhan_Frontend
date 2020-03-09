@@ -12,7 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MyReservationComponent } from './myreservation/myreservation.component';
 import { ReviewComponent } from './review/review.component';
 import { MyReservationCarComponent } from './myreservation-car/myreservation-car.component';
-import { ReviewPopupComponent } from './review-popup/review-popup.component';
+import { MyreservationPopupComponent } from './myreservation-popup/myreservation-popup.component';
 import { ListofcarsComponent } from './listofcars/listofcars.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { CarComponent } from './car/car.component';
@@ -20,6 +20,7 @@ import { BoxComponent } from './box/box.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -43,7 +44,7 @@ const appRoutes: Routes = [
     MyReservationComponent,
     MyReservationCarComponent,
     ReviewComponent,
-    ReviewPopupComponent,
+    MyreservationPopupComponent,
     ListofcarsComponent,
     ReservationsComponent,
     CarComponent,
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule ,
     ReactiveFormsModule ,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
