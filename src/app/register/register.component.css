@@ -14,11 +14,15 @@
 button{
     width: 20%
 }
-span{
+#register{
     position: absolute;
     right: 157px;
     top: 141px;
     font-size: 3.0rem;
     font-weight: bold;
     color: black;
+}
+
+.field span{
+    color: red;
 }

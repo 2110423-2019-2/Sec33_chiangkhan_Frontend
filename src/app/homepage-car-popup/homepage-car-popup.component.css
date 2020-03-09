@@ -1,0 +1,19 @@
+.modal-card-head p{
+    text-align: center;
+}
+#profile{
+    max-height: 2rem;
+}
+.modal-card {
+    width: 900px;
+}
+#detail .columns {
+    margin: 0px;
+    margin-bottom: 10px;
+}
+.card{
+    box-shadow: none;
+}
+#temp .column{
+    padding: 0px;
+}

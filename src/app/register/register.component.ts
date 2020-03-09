@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { AuthService } from '../auth.service';
 
@@ -37,10 +37,16 @@ export class RegisterComponent implements OnInit {
     }),
     address : new FormControl()
   })
-  constructor(private http:HttpClient , private authService : AuthService , private router : Router) { }
+  
+  constructor(private http:HttpClient , private authService : AuthService , private router : Router) {
+    
+   }
 
   ngOnInit() {
-
+    
+  }
+  ngOnChanges() {
+    
   }
 
   onSubmit(){
@@ -49,4 +55,5 @@ export class RegisterComponent implements OnInit {
   cancel(){
     this.router.navigate(['/'])
   }
+  
 }

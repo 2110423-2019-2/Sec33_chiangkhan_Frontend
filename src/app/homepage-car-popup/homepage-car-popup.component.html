@@ -1,0 +1,66 @@
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Detail</p>
+        <button class="delete" aria-label="close" (click)="closePopup()"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="card">
+            <div class="columns">
+              <div class="column is-4">
+                <div class="card-image">
+                  <figure class="image">
+                    <img
+                      src="../../assets/images/car-homepage.jpg"
+                      alt="Placeholder image"
+                    />
+                    <div class="column" id="rating">
+                      Rating :
+                      <span id="star1" class="fa fa-star"></span>
+                      <span id="star2" class="fa fa-star"></span>
+                      <span id="star3" class="fa fa-star"></span>
+                      <span id="star4" class="fa fa-star"></span>
+                      <span id="star5" class="fa fa-star"></span>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="column" id="detail">
+                <div class="columns">
+                  <img src="../../assets/images/profile-user.png" id="profile" alt="" />
+                  <p>Name</p>
+                </div>
+                <p>Type :</p>
+                <p>Model :</p>
+                <p>Location :</p>
+                <div class="columns" id="temp">
+                    <div class="column">
+                        <p>Start Date :</p>
+                    </div>
+                    <div class="column">
+                        <p>End Date :</p>
+                    </div>
+                </div>
+                <div class="columns" id="temp">
+                    <div class="column">
+                        <p>Pick up Province :</p>
+                        <p>Return Province :</p>
+                    </div>
+                    <div class="column">
+                        <p>Pick up District :</p>
+                        <p>Return District</p>
+                    </div>
+                </div>
+                <p>4 Seats | 4 Doors | 1 Baggage</p>
+              </div>
+            </div>
+            <p>Car description : </p>
+            <hr>
+            <div *ngFor="let review of reviews">
+                <app-review [review]="review"></app-review>
+              </div>
+          </div>
+      </section>
+    </div>
+  </div>
