@@ -13,6 +13,14 @@ export class CarComponent implements OnInit {
 
   constructor() { }
 
+  popupremove() {
+    document.getElementById('popupremove').className = "modal is-active";
+  }
+  del_popupremove() {
+    document.getElementById('popupremove').className = "modal";
+    console.log("work")
+  }
+
   reviews = REVIEWS ;
 
   ngOnInit(): void {

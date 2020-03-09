@@ -23,7 +23,7 @@
                 <button class="button is-rounded" (click)="review_popup()">Review</button>
               </div>
               <div class="column">
-                <button class="button is-rounded">Remove</button>
+                <button class="button is-rounded" (click)="popupremove()">Remove</button>
               </div>
             </div>
           </div>
@@ -32,4 +32,23 @@
         </div>
       </div>
       <app-review-popup [reviews]="reviews"></app-review-popup>
+      <div class="modal" id="popupremove">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Remove</p>
+            <button class="delete" aria-label="close" (click)="del_popupremove()"></button>
+          </header>
+          <section class="modal-card-body">
+            <!-- Content ... -->
+            <p>Each remove car, you will not be</p>
+            <p>able to recovery them.</p>
+            <button class="button is-rounded">Yes</button>
+            <button class="button is-rounded">No</button>
+            <!-- Content ... -->
+          </section>
+          <footer class="modal-card-foot">
+          </footer>
+        </div>
+      </div>
     </section>
