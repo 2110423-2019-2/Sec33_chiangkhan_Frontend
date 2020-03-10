@@ -1,5 +1,5 @@
 
-.button {
+button {
     background-color: rgb(21, 65, 82);
     color: white;
     width: 120px;
@@ -8,4 +8,15 @@
 .status {
     color: rgb(53, 53, 121);
     background-color: pink;
+}
+
+#pinkbutton {
+    background-color: pink;
+    color: black;
+    width: 120px;
+    left: 60px;
+}
+
+#b1 {
+    left: 100px;
 }

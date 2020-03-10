@@ -1,62 +1,58 @@
-
-    <section class="section">
-      <div class="container">
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <img src={{image1}} alt="car" height="300" width="300">
+      </div>
+      <div class="column">
+        <p><mark class="status">&emsp;Available&emsp;</mark></p>
+        <p>Type: Sport</p>
+        <p>Model: BMW Z3</p>
+        <p>License Plate: 12-3456</p>
+        <p>Car description: Air conditioning</p>
+        <p>Automatic Transmission</p>
+        <br>
+        <p> 4 Seats | 4 Doors | 1 Baggage</p><br>
         <div class="columns">
           <div class="column">
-            <img
-              src={{image1}}
-              alt="car" height="300" width="300">
           </div>
           <div class="column">
-            <p><mark class="status">&emsp;Available&emsp;</mark></p>
-            <p>Type: Sport</p>
-            <p>Model: BMW Z3</p>
-            <p>License Plate: 12-3456</p>
-            <p>Car description: Air conditioning</p>
-            <p>Automatic Transmission</p>
-            <br>
-            <p> 4 Seats | 4 Doors | 1 Baggage</p><br>
-            <div class="columns">
-              <div class="column">
-              </div>
-              <div class="column">
-                <button class="button is-rounded" (click)="review_popup()">Review</button>
-              </div>
-              <div class="column">
-                <button class="button is-rounded" (click)="popupremove()">Remove</button>
-              </div>
-            </div>
+            <button class="button is-rounded" (click)="review_popup()">Review</button>
           </div>
           <div class="column">
+            <button class="button is-rounded" (click)="popupremove()">Remove</button>
           </div>
         </div>
       </div>
-      <app-review-popup [reviews]="reviews"></app-review-popup>
-      <div class="modal" id="popupremove">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Remove</p>
-            <button class="delete" aria-label="close" (click)="del_popupremove()"></button>
-          </header>
-          <section class="modal-card-body">
-            <!-- Content ... -->
-            <p>Each remove car, you will not be</p>
-            <p>able to recovery them.</p>
-            <div class="columns">
-              <div class="column">
-              </div>
-              <div class="column">
-                <button class="button is-rounded" (click)="review_popup()">Yes</button>
-              </div>
-              <div class="column">
-                <button class="button is-rounded" (click)="popupremove()">No</button>
-              </div>
-            </div>
-            <!-- Content ... -->
-          </section>
-          <footer class="modal-card-foot">
-          </footer>
-        </div>
+      <div class="column">
       </div>
-    </section>
+    </div>
+  </div>
+  <app-review-popup [reviews]="reviews"></app-review-popup>
+  <div class="modal" id="popupremove">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Remove</p>
+        <button class="delete" aria-label="close" (click)="del_popupremove()"></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->
+        <p style="text-align:center">Each remove car, you will not be</p>
+        <p style="text-align:center">able to recovery them.</p>
+        <br>
+        <div class="columns">
+          <div class="column">
+            <button class="button is-rounded" id="b1">Yes</button>
+          </div>
+          <div class="column">
+            <button class="button is-rounded" id="pinkbutton" (click)="del_popupremove()">No</button>
+          </div>
+        </div>
+        <!-- Content ... -->
+      </section>
+      <footer class="modal-card-foot">
+      </footer>
+    </div>
+  </div>
+</section>
