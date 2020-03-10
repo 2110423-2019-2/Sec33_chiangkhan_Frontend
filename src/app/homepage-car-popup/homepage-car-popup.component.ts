@@ -13,6 +13,6 @@ export class HomepageCarPopupComponent implements OnInit {
   ngOnInit() {
   }
   closePopup(){
-    document.getElementsByClassName("modal is-active")[0].className = "modal"
+    document.getElementsByClassName("modal modal-fx-fadeInScale is-active")[0].className = "modal modal-fx-fadeInScale"
   }
 }

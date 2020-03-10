@@ -21,12 +21,12 @@ export class MyreservationPopupComponent implements OnInit {
     }
   }
   delete_review_popup(){
-    document.getElementById('review_popup').className = "modal" ;
+    document.getElementById('review_popup').className = "modal modal-fx-3dFlipVertical" ;
   }
   delete_cancel_popup(){
-    document.getElementById('cancel_popup').className = "modal" ;
+    document.getElementById('cancel_popup').className = "modal modal-fx-3dFlipVertical" ;
   }
   delete_agreement_popup(){
-    document.getElementById('agreement_popup').className = "modal" ;
+    document.getElementById('agreement_popup').className = "modal modal-fx-3dFlipVertical" ;
   }
 }

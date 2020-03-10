@@ -13,13 +13,13 @@ export class MyReservationCarComponent implements OnInit {
   @Input() car ;
 
   review_popup(){
-    document.getElementById('review_popup').className = "modal is-active" ;
+    document.getElementById('review_popup').className = "modal modal-fx-3dFlipVertical is-active" ;
   }
   cancel_popup(){
-    document.getElementById('cancel_popup').className = "modal is-active" ;
+    document.getElementById('cancel_popup').className = "modal modal-fx-3dFlipVertical is-active" ;
   }
   agreement_popup(){
-    document.getElementById('agreement_popup').className = "modal is-active" ;
+    document.getElementById('agreement_popup').className = "modal modal-fx-3dFlipVertical is-active" ;
   }
   constructor() {
     

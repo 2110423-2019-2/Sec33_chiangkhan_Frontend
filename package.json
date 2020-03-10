@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "axios": "^0.19.2",
+    "bulma": "^0.8.0",
+    "bulma-modal-fx": "^1.1.1",
     "rxjs": "^6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

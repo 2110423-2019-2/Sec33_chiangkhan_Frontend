@@ -13,14 +13,14 @@ export class HomepageCarComponent implements OnInit {
   ngOnInit() {
   }
   ngAfterViewInit(){
-    var arr = Array.from(document.getElementsByClassName('fa'))
+    var arr = Array.from(document.getElementsByClassName('fa-star'))
     for(let j = 0 ; j < this.reviews.length ; j++){
        for(let i = 0 ; i < this.reviews[j].rating ; i++){
-         arr[5*j+i+10].className = "fa fa-star checked"     
+         arr[5*j+i+5].className = "fa fa-star checked"     
       }
     }
   }
   openPopup(){
-    document.getElementsByClassName("modal")[0].className = "modal is-active"
+    document.getElementsByClassName("modal modal-fx-fadeInScale")[0].className = "modal modal-fx-fadeInScale is-active"
   }
 }
