@@ -14,6 +14,20 @@ h1{
     padding: 10px;
 }
 
+#review_popup .field.is-grouped{
+  justify-content: center;
+  margin: 10px; 
+  padding: 10px;
+}
+#groupstar{
+  text-align-last: center;
+}
+
+#groupstar .far {
+  margin: 2px;
+  color : orange
+  
+}
 .modal {
     display: -webkit-box;
     display: -webkit-flex;
