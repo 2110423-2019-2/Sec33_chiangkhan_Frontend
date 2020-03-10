@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">Phone number</label>
+            <label class="label">Phone number <span>(*)</span></label>
             <div class="control">
               <input
                 class="input"
@@ -106,10 +106,12 @@
             <label class="label">Password <span>(*)</span></label>
             <div class="control">
               <input 
+                [(ngModel)] = "passwording"
                 class="input"
                 type="password"
                 placeholder="Password"
                 formControlName="passWord"
+                (input) = "onChangePassword()"
               />
             </div>
           </div>
@@ -117,9 +119,13 @@
             <label class="label">Confirm password <span>(*)</span></label>
             <div class="control">
               <input 
+                [(ngModel)] = "confirmPassword"
+                [ngModelOptions]="{standalone: true}"
                 class="input"
                 type="password"
                 placeholder="Confirm password"
+                id = "confirm"
+                (input)="onChangeConfirm()"
               />
             </div>
           </div>

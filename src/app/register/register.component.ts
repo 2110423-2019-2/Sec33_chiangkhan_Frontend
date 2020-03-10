@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
@@ -37,7 +38,8 @@ export class RegisterComponent implements OnInit {
     }),
     address : new FormControl()
   })
-  
+  passwording:string = ""
+  confirmPassword:string = ""
   constructor(private http:HttpClient , private authService : AuthService , private router : Router) {
     
    }
@@ -48,7 +50,20 @@ export class RegisterComponent implements OnInit {
   ngOnChanges() {
     
   }
-
+  onChangePassword(){
+    this.passwording = this.passwording 
+    console.log(this.passwording)
+  }
+  onChangeConfirm(){
+    this.confirmPassword = this.confirmPassword
+    if(this.passwording === this.confirmPassword){
+      document.getElementById("confirm").className = "input is-success"
+      console.log("Yes")
+    }else{
+      document.getElementById("confirm").className = "input is-danger"
+    }
+    console.log(this.confirmPassword)
+  }
   onSubmit(){
     console.log(this.registerForm.value)
   }
