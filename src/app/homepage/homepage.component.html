@@ -1,10 +1,152 @@
 <app-navbar></app-navbar>
+
 <div class="columns">
-    <div class="column is-3">
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus praesentium magni sunt necessitatibus illo sapiente architecto facilis repellat velit dolores expedita ad, porro nulla obcaecati aliquid molestias voluptate repudiandae recusandae.</h1>
+  <!-- search bar -->
+  <div class="column is-3 searchbox">
+    <div class="input-group input-group-unstyled ">
+      <input type="text" placeholder="Search.." class="form-control" />
+      <span class="input-group-addon">
+        <i class="fa fa-search"></i>
+      </span>
     </div>
-    <div class="column" id="newest-deal">
-        <h1>Newest Deal</h1>
-       <app-homepage-car></app-homepage-car>
+    <br />
+    <div class="columns">
+      <div class="column is-2">
+        <label for="types">Type</label>
+        <br />
+        <label for="models">Model</label>
+        <br />
+        <label for="ratings">Rating</label>
+      </div>
+
+      <div class="column">
+        <!-- Type -->
+        <select class="dropdown" id="types">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+
+        <br />
+
+        <!-- Model -->
+        <select class="dropdown" id="models">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+
+        <!-- Rating -->
+        <select id="ratings">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+
+        <!-- Capacity -->
+        <label for="capacities">Capacity</label>
+
+        <select id="capacities">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+      </div>
     </div>
+
+    <hr />
+
+    <!-- Label for part 2 -->
+    <div class="columns">
+      <div class="column is-2">
+        <label for="types">Location</label>
+        <br />
+        <label for="models">District</label>
+        <br />
+        <label for="ratings">Province</label>
+      </div>
+
+      <div class="column">
+        <!-- Location -->
+        <select id="locations">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+
+        <br />
+
+        <!-- District -->
+        <select id="districts">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+
+        <br />
+
+        <!-- Province -->
+        <select id="provinces">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+      </div>
+    </div>
+    <hr />
+
+    Date
+
+    <div class="columns">
+      <div class="column is-3">
+        <label for="types">Start Date</label>
+        <br />
+        <label for="models">End date</label>
+      </div>
+
+      <br />
+
+      <div class="column">
+        <!-- Start Date -->
+        <select id="start_dates">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+
+        <br />
+
+        <!-- End Date -->
+        <select id="end_dates">
+          <option disabled selected value></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boss's Part -->
+  <div class="column" id="newest-deal">
+    <h1>Newest Deal</h1>
+    <app-homepage-car></app-homepage-car>
+  </div>
 </div>
