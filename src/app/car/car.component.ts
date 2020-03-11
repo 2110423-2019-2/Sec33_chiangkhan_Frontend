@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { REVIEWS } from '../review/mock-review';
+
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
@@ -10,6 +12,16 @@ export class CarComponent implements OnInit {
   image1;
 
   constructor() { }
+
+  popupremove() {
+    document.getElementById('popupremove').className = "modal is-active";
+  }
+  del_popupremove() {
+    document.getElementById('popupremove').className = "modal";
+    console.log("work")
+  }
+
+  reviews = REVIEWS ;
 
   ngOnInit(): void {
   }
