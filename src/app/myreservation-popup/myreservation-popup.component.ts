@@ -13,20 +13,15 @@ export class MyreservationPopupComponent implements OnInit {
     
   }
   ngAfterViewInit(){
-    var arr = Array.from(document.getElementsByClassName('fa'))
-    for(let j = 0 ; j < this.reviews.length ; j++){
-       for(let i = 0 ; i < this.reviews[j].rating ; i++){
-         arr[5*j+i].className = "fa fa-star checked"     
-      }
-    }
+    
   }
   delete_review_popup(){
-    document.getElementById('review_popup').className = "modal" ;
+    document.getElementById('review_popup').className = "modal modal-fx-3dFlipVertical" ;
   }
   delete_cancel_popup(){
-    document.getElementById('cancel_popup').className = "modal" ;
+    document.getElementById('cancel_popup').className = "modal modal-fx-3dFlipVertical" ;
   }
   delete_agreement_popup(){
-    document.getElementById('agreement_popup').className = "modal" ;
+    document.getElementById('agreement_popup').className = "modal modal-fx-3dFlipVertical" ;
   }
 }
