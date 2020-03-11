@@ -27,12 +27,16 @@ export class LoginComponent implements OnInit {
     //     this.router.navigate(["/"])
     //   }
     // });    
-  
   }
 
   onSubmit(){
-    console.log(this.loginForm.value)
-    this.router.navigate(["/homepage"])
+   var res =  this.authService.login(this.loginForm.value)
+    // this.router.navigate(["/homepage"])
+    if(false){
+      this.router.navigate(['/homepage'])
+    }else{
+      alert("Incorrect username or password")
+    }
   }
 
 
