@@ -19,9 +19,13 @@ export class ReviewComponent implements OnInit,OnChanges {
   }
 
   ngOnInit() {
-   
+  // console.log(this.review)
+  // for(let i = 0 ; i < this.review.rating ; i++){
+  //   console.log(document.getElementsByClassName("fa"))  
+  // }
+
   }
   
-  
+   
   
 }

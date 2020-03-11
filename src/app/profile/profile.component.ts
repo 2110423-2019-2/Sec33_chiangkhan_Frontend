@@ -6,11 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+  
   constructor() {}
 
   ngOnInit() {
     
   }
-
+  editProfile(){
+    document.getElementsByClassName("modal")[0].className = "modal is-active"
+  }
+  closePopup(){
+    document.getElementsByClassName("modal is-active")[0].className = "modal"
+  }
+  updateProfile(){
+    //do somethings
+  }
 }

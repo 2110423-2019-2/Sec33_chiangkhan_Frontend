@@ -46,14 +46,13 @@
             <div class="column" id="edit">
               <div class="field is-grouped">
                 <p class="control">
-                  <button class="button is-link">
+                  <button class="button is-link" (click)="editProfile()">
                     Edit
                   </button>
                 </p>
               </div>
             </div>
           </div>
-          
         </div>
       </div>
       <div class="card">
@@ -69,6 +68,57 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Edit Profile</p>
+        <button class="delete" aria-label="close" (click)="closePopup()"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">First Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="e.g Alex Smith" value="boomkp">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Last Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="e.g Alex Smith" value="Smith">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="e.g Alex Smith">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Phone number</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="e.g Alex Smith">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Driving license number</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="e.g Alex Smith">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Address</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Address"></textarea>
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" (click)="updateProfile()">Save changes</button>
+        <button class="button" (click)="closePopup()">Cancel</button>
+      </footer>
     </div>
   </div>
 </div>
