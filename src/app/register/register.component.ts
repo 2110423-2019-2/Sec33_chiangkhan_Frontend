@@ -1,6 +1,7 @@
+import { element } from 'protractor';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { AuthService } from '../auth.service';
 
@@ -37,16 +38,37 @@ export class RegisterComponent implements OnInit {
     }),
     address : new FormControl()
   })
-  constructor(private http:HttpClient , private authService : AuthService , private router : Router) { }
+  passwording:string = ""
+  confirmPassword:string = ""
+  constructor(private http:HttpClient , private authService : AuthService , private router : Router) {
+    
+   }
 
   ngOnInit() {
-
+    
   }
-
+  ngOnChanges() {
+    
+  }
+  onChangePassword(){
+    this.passwording = this.passwording 
+    console.log(this.passwording)
+  }
+  onChangeConfirm(){
+    this.confirmPassword = this.confirmPassword
+    if(this.passwording === this.confirmPassword){
+      document.getElementById("confirm").className = "input is-success"
+      console.log("Yes")
+    }else{
+      document.getElementById("confirm").className = "input is-danger"
+    }
+    console.log(this.confirmPassword)
+  }
   onSubmit(){
     console.log(this.registerForm.value)
   }
   cancel(){
     this.router.navigate(['/'])
   }
+  
 }

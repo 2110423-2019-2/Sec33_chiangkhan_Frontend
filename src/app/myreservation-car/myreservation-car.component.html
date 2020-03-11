@@ -12,6 +12,7 @@
       </div>
       <div class="column" id="detail">
         <span id="status">{{car.status}}</span>
+        <button id="pickupHidden" class="button is-dark">Pickup</button>
         <p>Status : {{car.type}}</p>
         <p>Model : {{car.Model}}</p>
         <p>License : {{car.licensePlate}}</p>
@@ -24,7 +25,7 @@
           <button class="button is-info" (click)="agreement_popup()">Agreement</button>
           <button class="button is-dark" (click)="review_popup()">Review</button>
         </div>
-        <app-myreservation-popup [reviews]="reviews"></app-myreservation-popup>
+        <app-myreservation-popup></app-myreservation-popup>
       </div>
     </div>
   </div>

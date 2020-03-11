@@ -21,6 +21,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomepageCarComponent } from './homepage-car/homepage-car.component';
+import { HomepageCarPopupComponent } from './homepage-car-popup/homepage-car-popup.component';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -51,6 +53,8 @@ const appRoutes: Routes = [
     BoxComponent,
     PopUpComponent,
     NavbarComponent,
+    HomepageCarComponent,
+    HomepageCarPopupComponent,
   ],
   imports: [
     BrowserModule,

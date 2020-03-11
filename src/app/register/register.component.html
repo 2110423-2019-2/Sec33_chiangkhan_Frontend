@@ -1,14 +1,14 @@
 <div class="columns">
   <div class="column is-4" id="register-homepage">
     <img src="../../assets/images/register-homepage.jpg" alt="" />
-    <span>Register</span>
+    <span id="register">Register</span>
   </div>
   <form [formGroup]="registerForm" action="">
     <div class="column is-8" id="register-form">
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">First Name</label>
+            <label class="label">First Name <span>(*)</span></label>
             <div class="control">
               <input
                 class="input"
@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">Username</label>
+            <label class="label">Username <span>(*)</span></label>
             <div class="control">
               <input
                 class="input"
@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">Email</label>
+            <label class="label">Email <span>(*)</span></label>
             <div class="control">
               <input
                 class="input"
@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">Phone number</label>
+            <label class="label">Phone number <span>(*)</span></label>
             <div class="control">
               <input
                 class="input"
@@ -53,7 +53,7 @@
           </div>
           <div class="field">
             <form action="" formGroupName="creditCardForm">
-              <label class="label">Credit card</label>
+              <label class="label">Credit card <span>(*)</span></label>
               <div class="field">
                 <div class="control">
                   <input
@@ -92,7 +92,7 @@
 
         <div class="column">
           <div class="field">
-            <label class="label">Last Name</label>
+            <label class="label">Last Name <span>(*)</span></label>
             <div class="control">
               <input
                 class="input"
@@ -103,29 +103,35 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">Password</label>
+            <label class="label">Password <span>(*)</span></label>
             <div class="control">
-              <input
+              <input 
+                [(ngModel)] = "passwording"
                 class="input"
-                type="passsword"
+                type="password"
                 placeholder="Password"
                 formControlName="passWord"
+                (input) = "onChangePassword()"
               />
             </div>
           </div>
           <div class="field">
-            <label class="label">Confirm password</label>
+            <label class="label">Confirm password <span>(*)</span></label>
             <div class="control">
-              <input
+              <input 
+                [(ngModel)] = "confirmPassword"
+                [ngModelOptions]="{standalone: true}"
                 class="input"
                 type="password"
                 placeholder="Confirm password"
+                id = "confirm"
+                (input)="onChangeConfirm()"
               />
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Bank account number</label>
+            <label class="label">Bank account number <span>(*)</span></label>
             <form action="" formGroupName="bankAccountForm">
               <div class="columns">
                 <div class="column">
@@ -152,7 +158,7 @@
             </form>
           </div>
           <div class="field">
-            <label class="label">Driving license</label>
+            <label class="label">Driving license <span>(*)</span></label>
             <div class="control">
               <input
                 class="input"
