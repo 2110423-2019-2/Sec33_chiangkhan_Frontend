@@ -2,7 +2,23 @@
 <div>
   <button class="button" (click)="popupadd()">Add car</button>
   <div class="list1" *ngFor="let car of carArray">
-    <app-car [image1]=car></app-car>
+    <app-car [image1]="car"></app-car>
   </div>
-  <app-myreservation-popup></app-myreservation-popup>
+  <div class="modal" id="popupadd">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Add car</p>
+        <button
+          class="delete"
+          aria-label="close"
+          (click)="del_popupadd()"
+        ></button>
+      </header>
+      <section class="modal-card-body">
+        <app-addcarform></app-addcarform>
+      </section>
+      <footer class="modal-card-foot"></footer>
+    </div>
+  </div>
 </div>
