@@ -22,21 +22,18 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.authService.getUser().subscribe((response) => console.log(response) , (error) => {
-    //   if(error instanceof HttpErrorResponse){
-    //     this.router.navigate(["/"])
-    //   }
-    // });    
+   
   }
 
   onSubmit(){
+   console.log(this.loginForm.value)
    var res =  this.authService.login(this.loginForm.value)
-    // this.router.navigate(["/homepage"])
-    if(false){
-      this.router.navigate(['/homepage'])
-    }else{
-      alert("Incorrect username or password")
-    }
+   
+    // if(res === "200"){
+    //   this.router.navigate(['/homepage'])
+    // }else if(res ==="401"){
+    //   alert("Incorrect username or password")
+    // }
   }
 
 

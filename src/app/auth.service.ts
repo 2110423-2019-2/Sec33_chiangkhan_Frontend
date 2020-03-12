@@ -7,26 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private REST_API_SERVER = "/auth/login";
+  private REST_API_SERVER = "https://127.0.0.0:3000/auth/login";
   private _url = '../assets/user.json'
   constructor (private httpClient: HttpClient) {
    }
   
-  public sendGetRequest(){
-    return this.httpClient.get(this.REST_API_SERVER);
-  }
 
-  
-  public getUser() : Observable<IUser[]>{
-    return this.httpClient.get<IUser[]>(this.REST_API_SERVER)
-  }
-
-  public login(formData:any){
-    return this.httpClient.post<any>(this.REST_API_SERVER,formData).subscribe(
+  public login(loginForm:any){
+    return this.httpClient.post<any>("http://localhost:8080/api/auth/login",loginForm).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     )
-   
   }
 }
 
