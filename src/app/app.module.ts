@@ -23,6 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageCarComponent } from './homepage-car/homepage-car.component';
 import { HomepageCarPopupComponent } from './homepage-car-popup/homepage-car-popup.component';
+import { HomepageCarReservationsComponent } from './homepage-car-reservations/homepage-car-reservations.component';
+import { HomepageCarReservationsPopupComponent } from './homepage-car-reservations-popup/homepage-car-reservations-popup.component';
+import { HomepageCarReservationsReserveconfirmPopupComponent } from './homepage-car-reservations-reserveconfirm-popup/homepage-car-reservations-reserveconfirm-popup.component';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
   { path: "homepage/reservation", component:MyReservationComponent } ,
   { path: "homepage/profile", component:ProfileComponent },
   { path: "homepage/listofcars", component:ListofcarsComponent },
-  { path: "homepage/mycar" , component:BoxComponent }  
+  { path: "homepage/mycar" , component:BoxComponent },
+  { path: "homepage/HomepageCarReservations", component:HomepageCarReservationsComponent}
 ];   
 
 
@@ -55,6 +59,9 @@ const appRoutes: Routes = [
     NavbarComponent,
     HomepageCarComponent,
     HomepageCarPopupComponent,
+    HomepageCarReservationsComponent,
+    HomepageCarReservationsPopupComponent,
+    HomepageCarReservationsReserveconfirmPopupComponent,
   ],
   imports: [
     BrowserModule,
