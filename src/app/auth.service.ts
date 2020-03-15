@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import axios from 'axios';
 import {IUser} from './user'
 import { Observable } from 'rxjs';
 @Injectable({
@@ -17,14 +16,6 @@ export class AuthService {
     return this.httpClient.get(this.REST_API_SERVER);
   }
 
-  async getRequestAxios() {
-    try {
-      const response = await axios.get(this.REST_API_SERVER);
-      return "Hello"
-    } catch (error) {
-      return "error"
-    }
-  }
   public getUser() : Observable<IUser[]>{
     return this.httpClient.get<IUser[]>(this.REST_API_SERVER)
   }
