@@ -1,97 +1,98 @@
 .carbox {
-    width: 1200px;
-    border: 12px ridge indianred;
-    box-shadow: 10px 10px 70px lightcoral;
-    padding: 50px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .background-bisque {
-    background-color: bisque;
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .column #model {
-    background-color: unset;
-    font-size: 20px;
-    font-weight: 500;
-  }
-
-  button {
-    background-color: brown;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 15px;
-    box-shadow: 0 5px #999;
-  }
-
-  button:hover {background-color: #3e8e41}
-
-  button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  width: 1200px;
+  border: 12px ridge indianred;
+  box-shadow: 10px 10px 70px lightcoral;
+  padding: 50px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-  #reservation button {
-      background-color: goldenrod;
+.background-bisque {
+  background-color: bisque;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.column #model {
+  background-color: unset;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+button {
+  background-color: brown;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
+
+  button:hover {
+    background-color: #3e8e41
   }
 
-  #remove button {
-      background-color: tomato;
+  button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
 
-  .modal-card {
-    /* max-height: calc(100vh - 225px); */
-    width: 700px;
-    height: 500px;
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+#reservation button {
+  background-color: goldenrod;
+}
 
-  /* .modal-background {
+#remove button {
+  background-color: tomato;
+}
+
+.modal-card {
+  /* max-height: calc(100vh - 225px); */
+  width: 700px;
+  height: 500px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* .modal-background {
       margin: 0px 0px 0px 0px;
   } */
 
-  .reservationbox {
-      border: groove firebrick;
-      border-width: 1px;
-      box-shadow: 10px 10px 10px gray;
-      padding: 20px;
-      margin-bottom: 10px; 
-  }
+.reservationbox {
+  border: groove firebrick;
+  border-width: 1px;
+  box-shadow: 10px 10px 10px gray;
+  padding: 20px;
+  margin-bottom: 10px;
+}
 
-  .is-2 > img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-  }
+.is-2 > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 
-  .is-three-fifths {
-    /* letter-spacing: 2px; */
-    line-height: 30px;
-    width: 260px;
-  }
+.is-three-fifths {
+  /* letter-spacing: 2px; */
+  line-height: 30px;
+  width: 260px;
+}
 
   .is-three-fifths span {
     font-size: 20px;
   }
 
-  .is-5 {
-    line-height: 30px;
-  }
+.is-5 {
+  line-height: 30px;
+}
 
   .is-5 span {
-      font-size: 14px;
-      color: gray;
+    font-size: 14px;
+    color: gray;
   }
-
