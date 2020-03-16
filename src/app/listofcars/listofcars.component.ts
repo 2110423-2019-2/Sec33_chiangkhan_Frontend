@@ -20,12 +20,12 @@ import { CARS } from './mock-cars';
     
     functionOne() {
 
-        document.getElementById("popup").className = "modal is-active"; 
+        document.getElementById("popup").className = "modal modal-fx-fadeInScale is-active"; 
         console.log("work uuu");
     }
     closepopup(){
     
-        document.getElementById("popup").className = "modal";
+        document.getElementById("popup").className = "modal modal-fx-fadeInScale";
     }
 
   }

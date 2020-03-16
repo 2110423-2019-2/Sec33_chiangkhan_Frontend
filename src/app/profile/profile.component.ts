@@ -13,10 +13,10 @@ export class ProfileComponent implements OnInit {
     
   }
   editProfile(){
-    document.getElementsByClassName("modal")[0].className = "modal is-active"
+    document.getElementsByClassName("modal modal-fx-fadeInScale")[0].className = "modal modal-fx-fadeInScale is-active"
   }
   closePopup(){
-    document.getElementsByClassName("modal is-active")[0].className = "modal"
+    document.getElementsByClassName("modal modal-fx-fadeInScale is-active")[0].className = "modal modal-fx-fadeInScale"
   }
   updateProfile(){
     //do somethings

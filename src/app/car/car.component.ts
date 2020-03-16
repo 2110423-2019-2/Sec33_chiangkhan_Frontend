@@ -14,10 +14,10 @@ export class CarComponent implements OnInit {
   constructor() { }
 
   popupremove() {
-    document.getElementById('popupremove').className = "modal is-active";
+    document.getElementById('popupremove').className = "modal modal-fx-fadeInScale is-active";
   }
   del_popupremove() {
-    document.getElementById('popupremove').className = "modal";
+    document.getElementById('popupremove').className = "modal modal-fx-fadeInScale";
     console.log("work")
   }
 
@@ -27,7 +27,7 @@ export class CarComponent implements OnInit {
   }
 
   review_popup(){
-    document.getElementById('review_popup').className = "modal is-active" ;
+    document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
   }
 
 }

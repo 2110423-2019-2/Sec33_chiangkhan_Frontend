@@ -12,6 +12,7 @@ export class HomepageCarComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   ngAfterViewInit(){
     var arr = Array.from(document.getElementsByClassName('fa-star'))
     for(let j = 0 ; j < this.reviews.length ; j++){
