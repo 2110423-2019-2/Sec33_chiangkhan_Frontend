@@ -22,10 +22,10 @@ export class BoxComponent implements OnInit {
   reviews = REVIEWS ;
 
   review_popup(){
-    document.getElementById('review_popup').className = "modal is-active" ;
+    document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
   }
   popup(){
-    document.getElementById('review_popup').className = "modal is-active" ;
+    document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
   }
   constructor() { }
 
@@ -33,10 +33,10 @@ export class BoxComponent implements OnInit {
   }
 
   popupadd() {
-    document.getElementById('popupadd').className = "modal is-active";
+    document.getElementById('popupadd').className = "modal modal-fx-fadeInScale is-active";
   }
   del_popupadd() {
-    document.getElementById('popupadd').className = "modal";
+    document.getElementById('popupadd').className = "modal modal-fx-fadeInScale";
     console.log("work")
   }
 

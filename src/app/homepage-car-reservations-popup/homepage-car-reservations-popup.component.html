@@ -1,0 +1,39 @@
+<div id="modal-id" class="modal modal-fx-fadeInScale">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Payment</p>
+      <button class="delete" aria-label="close" (click)="closePopup()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="card">
+        <div class="columns">
+          <div class="column" id="detail">
+            <p>Credit Card</p>
+            <div class="columns" id="temp">
+
+              <div class="column">
+                <p>Credit card number</p>
+              </div>
+              <div class="column">
+                <p>**** **** **** ****</p>
+              </div>
+            </div>
+            <p>Price</p>
+            <div class="columns" id="temp">
+              <div class="column">
+                <p>Total</p>
+                <button class="button" (click)="closePopup">Confirm</button>
+              </div>
+              <div class="column">
+                <p>2,000 Baht</p>
+                <button class="button" (click)="closePopup">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </section>
+  </div>
+</div>
