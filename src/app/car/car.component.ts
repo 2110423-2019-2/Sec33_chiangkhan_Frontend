@@ -1,3 +1,4 @@
+import { Car } from './../listofcars/car';
 import { Component, OnInit, Input } from '@angular/core';
 
 import { REVIEWS } from '../review/mock-review';
@@ -9,7 +10,7 @@ import { REVIEWS } from '../review/mock-review';
 })
 export class CarComponent implements OnInit {
   @Input() 
-  image1;
+  car;
 
   constructor() { }
 

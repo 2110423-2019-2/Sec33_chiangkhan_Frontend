@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReviewComponent } from '../review/review.component';
 import { REVIEWS } from '../review/mock-review';
-
+import axios from 'axios';
 @Component({
   selector: 'app-box',
   templateUrl: './box.component.html',
@@ -9,7 +9,7 @@ import { REVIEWS } from '../review/mock-review';
 })
 export class BoxComponent implements OnInit {
 
-
+  cars: any[] ;  
   reviews = REVIEWS ;
 
   review_popup(){
@@ -18,9 +18,22 @@ export class BoxComponent implements OnInit {
   popup(){
     document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
   }
-  constructor() { }
+  constructor() { 
+    
+  }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    axios.get('http://localhost:8080/api/car/')
+    .then((response) => {
+      console.log(response);
+      this.cars = response.data
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .then(() => {
+    // always executed
+    });
   }
 
   popupadd() {

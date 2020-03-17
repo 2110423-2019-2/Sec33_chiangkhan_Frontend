@@ -3,9 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import axios from 'axios';
 import { Router } from '@angular/router';
 import {AuthService} from '../auth.service'
-import { Observable } from 'rxjs';
-import { error } from 'protractor';
-import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
