@@ -1,11 +1,50 @@
-body{
+:host body{
     position: fixed;
+    background: greenyellow;
 }
 #form-input{
     margin: 60px;
+    border-color:gray;
+    border-style: groove;
+    border-radius: 5px;
+    padding: 60px;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 30px;
 }
-#form-input img{
-    margin-bottom: 30px;
+
+#error p {
+    text-align: center;
+}
+.active{
+    border-radius: 5px;
+    border-style: groove;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgb(214, 130, 130);
+    border:indianred;
+    display: flex;
+    visibility: visible;
+}
+.non-active{
+    border-radius: 5px;
+    border-style: groove;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgb(214, 130, 130);
+    border:indianred;
+    display: flex;
+    visibility: collapse;
+    
+}
+span {
+    margin-left: auto;
+    margin-top: 4px;
+    cursor: pointer;
 }
 #login {
     text-align: center;
@@ -43,6 +82,7 @@ body{
   }
 .input {
     height: 60px;
+    margin-top: 10px;
 }
 
 #car-homepage {
@@ -55,3 +95,10 @@ body{
     padding: 10px;
 }
  
+P {
+    font-weight: 700;
+}
+
+img {
+    margin-bottom: 20px;
+}
