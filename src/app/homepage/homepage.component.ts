@@ -14,7 +14,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.isLogin()
+    document.getElementsByClassName("unactive")[0].className = "active"
   }
   
 

@@ -15,10 +15,17 @@ img #logo{
 }
 
 span:hover{
-    color : hotpink
+    color :  palevioletred
 }
 span{
     text-decoration:brown;
     font-weight: 600;
     color:black;
+    
+}
+
+a .active {
+    text-decoration: underline;
+    color: palevioletred;
+    
 }
