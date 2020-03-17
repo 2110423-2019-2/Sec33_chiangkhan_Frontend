@@ -14,10 +14,8 @@ export class AuthService {
   
 
   public login(loginForm:any){
-    return this.httpClient.post<any>("http://localhost:8080/api/auth/login",loginForm).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    )
+    return this.httpClient.post<any>("http://localhost:8080/api/auth/login",loginForm).subscribe()
+    
   }
 }
 
