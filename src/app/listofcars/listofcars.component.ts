@@ -28,4 +28,15 @@ import { CARS } from './mock-cars';
         document.getElementById("popup").className = "modal modal-fx-fadeInScale";
     }
 
+    functionTwo() {
+
+      document.getElementById("form").className = "modal modal-fx-fadeInScale is-active"; 
+      console.log("work uuu");
+  }
+
+  closeform(){
+    
+    document.getElementById("form").className = "modal modal-fx-fadeInScale";
+}
+
   }

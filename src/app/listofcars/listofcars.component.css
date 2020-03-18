@@ -1,3 +1,7 @@
+#Add_deal_button {
+  position: relative;
+}
+
 .carbox {
   width: 1200px;
   border: 12px ridge indianred;
