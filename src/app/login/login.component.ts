@@ -3,9 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import axios from 'axios';
 import { Router } from '@angular/router';
 import {AuthService} from '../auth.service'
-import { Observable } from 'rxjs';
-import { error } from 'protractor';
-import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,12 +15,12 @@ export class LoginComponent implements OnInit {
     username : new FormControl(),
     password : new FormControl()
   })
-  constructor(private router : Router , private authService : AuthService) {
+  constructor(public router : Router , private authService : AuthService) {
     
   }
 
   ngOnInit() {
-   console.log(Array.prototype.slice.call(document.getElementsByTagName("html"))[0])
+   
   }
 
   onSubmit(){
@@ -40,10 +38,19 @@ export class LoginComponent implements OnInit {
       document.getElementsByClassName("input")[1].className = "input is-danger"
       document.getElementsByClassName("non-active")[0].className = "active"
     }else {
-      console.log("complete")
+      // hhussy0
+      // 1kvWSXcXcpka
       console.log(this.loginForm.value)
-      var res =  this.authService.login(this.loginForm.value)
-      this.router.navigate(['/homepage'])
+      axios.post('http://localhost:8080/api/auth/login',this.loginForm.value)
+      .then((response) => {
+        console.log(response);
+        window.location.assign("/homepage")
+      })
+      .catch((error) => {
+        console.log(error);
+        document.getElementsByClassName("non-active")[0].className = "active"
+      });
+     
     }
   }
 
