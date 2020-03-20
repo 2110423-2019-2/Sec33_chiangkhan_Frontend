@@ -24,8 +24,8 @@ export class CarComponent implements OnInit {
 
   reviews = REVIEWS ;
 
-  ngOnInit(): void {
-    document.getElementsByClassName("unactive")[3].className = "active"
+  ngOnInit(){
+    
   }
 
   review_popup(){

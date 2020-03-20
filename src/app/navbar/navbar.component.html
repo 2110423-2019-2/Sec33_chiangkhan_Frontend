@@ -1,31 +1,33 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/homepage">
-      <img id ="logo"
-        src="../../assets/images/Rentsee - logo.png"
-      />
+      <img id="logo" src="../../assets/images/Rentsee - logo.png" />
     </a>
   </div>
 
   <div class="navbar-menu">
-    <div class="navbar-end" >
-      <a class="navbar-item" href="/homepage" id="mouse"><span class="unactive">Home</span></a>
-      <a class="navbar-item" href="/homepage/reservation" id="mouse"><span class="unactive">My Reservation</span></a>
-      <a class="navbar-item" href="/homepage/listofcars" id="mouse"><span class="unactive">My Deal</span></a>
-      <a class="navbar-item" href="/homepage/mycar" id="mouse"><span class="unactive">My Car</span></a>
+    <div class="navbar-end">
+      <a class="navbar-item" href="/homepage" id="mouse"
+        ><span class="unactive">Home</span></a
+      >
+      <a class="navbar-item" href="/homepage/reservation" id="mouse"
+        ><span class="unactive">My Reservation</span></a
+      >
+      <a class="navbar-item" href="/homepage/listofcars" id="mouse"
+        ><span class="unactive">My Deal</span></a
+      >
+      <a class="navbar-item" href="/homepage/mycar" id="mouse"
+        ><span class="unactive">My Car</span></a
+      >
       <div class="navbar-item has-dropdown is-hoverable" id="mouse">
         <a class="navbar-link  is-active" id="mouse">
-          <img src="../../assets/images/profile-user.png" alt="">
+          <img src="../../assets/images/profile-user.png" alt="" />
         </a>
-        <div class="navbar-dropdown is-boxed is-right" >
+        <div class="navbar-dropdown is-boxed is-right">
           <a class="navbar-item " href="/homepage/profile">My profile</a>
           <hr class="navbar-divider" />
           <div class="navbar-item">
-            <div>
-              <p class="is-size-6-desktop">
-                <strong class="has-text-info">Sign out</strong>
-              </p>
-            </div>
+            <a class="has-text-info" (click)="signOut()">Sign out</a>
           </div>
         </div>
       </div>

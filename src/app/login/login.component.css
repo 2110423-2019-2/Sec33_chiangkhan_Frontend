@@ -46,7 +46,7 @@ span {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    width: -webkit-fill-available;
+    width: 532.8px;
     height: 50px;
     color: white;
     font-weight: 600;
@@ -59,7 +59,7 @@ span {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    width: -webkit-fill-available;
+    width: 532.8px;
     height: 50px;
     color: white;
     font-weight: 600;
@@ -70,7 +70,7 @@ span {
 #login:hover {
     background-color:rgba(24, 23, 23, 0.788);
     transition: 0.5s ;
-  }
+  } 
 #register:hover {
     background-color:rgba(24, 23, 23, 0.788);
     transition: 0.5s ;
@@ -94,7 +94,7 @@ P {
     font-weight: 700;
 }
 
-img #logo{
+#logo{
     margin-bottom: 20px;
     margin-top: 30px;
 }

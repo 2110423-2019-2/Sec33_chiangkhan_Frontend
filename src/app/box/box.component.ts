@@ -23,6 +23,7 @@ export class BoxComponent implements OnInit {
   }
 
   ngOnInit(){
+    document.getElementsByClassName("unactive")[3].className = "active"
     axios.get('http://localhost:8080/api/car/')
     .then((response) => {
       console.log(response);

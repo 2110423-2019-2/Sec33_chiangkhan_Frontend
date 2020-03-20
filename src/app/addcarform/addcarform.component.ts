@@ -1,5 +1,5 @@
 import { AddcarService } from './addcar.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 
@@ -10,13 +10,15 @@ import axios from 'axios';
 })
 export class AddcarformComponent implements OnInit {
   addcarForm = new FormGroup({
-    carType : new FormControl(),
-    carModel : new FormControl(),
-    licensePlate : new FormControl(),
+    licenseplate : new FormControl(),
     capacity : new FormControl(),
-    photo : new FormControl(),
-    photoDoc : new FormControl(),
-    description : new FormControl()
+    carModel : new FormControl(),
+    carType : new FormControl(),
+    carDescription : new FormControl(),
+    photoOfCarDocument : new FormControl()
+    // carType : new FormControl(),
+    // photo : new FormControl(),
+    
   })
   constructor(private addcarService:AddcarService) { }
 
@@ -28,9 +30,11 @@ export class AddcarformComponent implements OnInit {
     axios.post('http://localhost:8080/api/car/', this.addcarForm.value)
     .then(function (response) {
       console.log(response);
+      document.getElementsByClassName("modal modal-fx-fadeInScale is-active")[0].className = "modal modal-fx-fadeInScale"
     })
     .catch(function (error) {
       console.log(error);
+      alert("Fail")
     });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -8,14 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
   
-  
-    constructor() {
+  dateForm = new FormGroup({
+    startDate : new FormControl()
+  })
+  constructor() {
  
   }
 
   ngOnInit() {
     document.getElementsByClassName("unactive")[0].className = "active"
   }
-  
-
+ 
+  onChangeDate(){
+    console.log(this.dateForm.value)
+  }
 }
