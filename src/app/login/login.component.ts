@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       document.getElementsByClassName("input")[1].className = "input is-danger"
       document.getElementsByClassName("non-active")[0].className = "active"
     }else {
-      // hhussy0
+      // hhussy0 
       // 1kvWSXcXcpka
       console.log(this.loginForm.value)
       axios.post('http://localhost:8080/api/auth/login',this.loginForm.value)
@@ -69,3 +69,4 @@ export class LoginComponent implements OnInit {
   }
 
 }
+ 
