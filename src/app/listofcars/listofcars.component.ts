@@ -14,7 +14,9 @@ import { CARS } from './mock-cars';
     
     addDealForm = new FormGroup({
       start_dates: new FormControl(),
-      pickup_location: new FormControl()
+      pickup_location: new FormControl(),
+      end_dates: new FormControl(),
+      return_location: new FormControl()
     })
 
     constructor() { }
@@ -63,10 +65,11 @@ import { CARS } from './mock-cars';
   }
 
   submit_add_deal() {
-    console.log(this.addDealForm.value)
+    // console.log(this.addDealForm.value["start_dates"])
     this.cars.unshift({ id: 50, image: "https://assets.bugatti.com/fileadmin/_processed_/sei/p54/se-image-e6678a2b1c56c59044f81a3742c784d4.jpg", 
     Availability: 'Available', Type: 'Sport', Model: 'BMW i8', LicensePlate: 'พซ 1150', Seats: '5', Doors: '4',
-    StartDate: "someday", EndDate: '13/05/2019', PickupLocation: 'Suanlum', ReturnLocation: 'Suanlum', Price: '4,200' })
+    StartDate: this.addDealForm.value["start_dates"], EndDate: this.addDealForm.value["end_dates"],
+     PickupLocation: this.addDealForm.value["pickup_location"], ReturnLocation: this.addDealForm.value["return_location"], Price: '4,200' })
     this.closeform();
     
   }
