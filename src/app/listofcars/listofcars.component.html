@@ -12,27 +12,43 @@
     </header>
     <section class="modal-card-body reservation">
       <!-- User input Modal -->
-      <form>
         <!-- first column of user input -->
+        <form [formGroup] = "addDealForm">
         <div class="columns">
           <div class="column is-6">
-            <label for="types">Start Date: </label>
-            <input type="date" id="start_dates" name="start_dates" />
-            <br><br>
-            <label for="types">Pickup Location: </label>
-            <input type="text">
+            <div class="field">
+              <div class="control">
+                <label for="types">Start Date: </label>
+                <input type="date" id="start_dates" formControlname="start_dates" (click)="startDateChange()">
+              </div>
+            </div>
+            <br>
+          <div class="field">
+            <div class="control">
+              <label for="types">Pickup Location: </label>
+              <input type="text" id="pickup_location" formControlname="pickup_location" (click)="pickupLocationChange()">
+            </div>
           </div>
+      </div>
 
           <!-- second column of user input-->
           <div class="column is-6">
-            <label for="types">End Date: </label>
-            <input type="date" id="end_dates" name="end_dates" />
-            <br><br>
-            <label for="types">Return Location: </label>
-            <input type="text">
+            <div class="field">
+              <div class="control">
+                <label for="types">End Date: </label>
+                <input type="date" id="end_dates" formControlname="end_dates" (click)="endDateChange()">
+              </div>
+            </div>
+            <br>
+          <div class="field">
+            <div class="control">
+              <label for="types">Return Location: </label>
+              <input type="text" id="return_location" formControlname="return_location" (click)="returnLocationChange()">
+            </div>
+          </div>
           </div>
         </div>
-      </form>
+        </form>
       <br>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7751.3258
                    54892483!2d100.52568602422691!3d13.738845911423297!2m3!1f0!2f0!
@@ -41,7 +57,7 @@
                    20University!5e0!3m2!1sen!2sth!4v1584534945614!5m2!1sen!2sth"
                    width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" 
                    aria-hidden="false" tabindex="0"></iframe>
-      <button>Submit</button>
+      <button (click)="submit_add_deal()">Submit</button>
     </section>
     <footer class="modal-card-foot"></footer>
   </div>
