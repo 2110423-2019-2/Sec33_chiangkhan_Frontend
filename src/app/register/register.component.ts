@@ -61,6 +61,7 @@ export class RegisterComponent implements OnInit {
     }
     console.log(this.confirmPassword)
   }
+
   onSubmit(){
     console.log(this.registerForm.value)
     axios.post('http://localhost:8080/api/users',this.registerForm.value)
