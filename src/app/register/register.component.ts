@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { AuthService } from '../auth.service';
+import axios from 'axios';
 
 interface Course {
   description: string;
@@ -20,22 +21,22 @@ interface Course {
 })
 export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
-    firstName : new FormControl(),
-    lastName : new FormControl(),
-    userName : new FormControl(),
-    passWord : new FormControl(),
+    firstname : new FormControl(),
+    lastname : new FormControl(),
+    username : new FormControl(),
+    password : new FormControl(),
     email : new FormControl(),
-    phoneNumber : new FormControl(),
+    phone_num : new FormControl(),
     bankAccountForm: new FormGroup({
-      bankAccount: new FormControl(),
-      branch: new FormControl()
+      bank_account: new FormControl(),
+      bank_account_branch: new FormControl()
     }),
-    drivingLicense : new FormControl(),
     creditCardForm : new FormGroup({
-      creditCard : new FormControl(),
-      expDate : new FormControl(),
-      securityNumber : new FormControl()
+      credit_card_number : new FormControl(),
+      credit_card_expiry : new FormControl(),
+      credit_card_security : new FormControl()
     }),
+    driving_license : new FormControl(),
     address : new FormControl()
   })
   passwording:string = ""
@@ -64,8 +65,21 @@ export class RegisterComponent implements OnInit {
     }
     console.log(this.confirmPassword)
   }
+
   onSubmit(){
     console.log(this.registerForm.value)
+
+    axios.post('http://localhost:8080/api/users',this.registerForm.value)
+      .then((response) => {
+        console.log(response);
+        window.location.assign("/homepage")
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log('kuy');
+      });
+
+
   }
   cancel(){
     this.router.navigate(['/'])
