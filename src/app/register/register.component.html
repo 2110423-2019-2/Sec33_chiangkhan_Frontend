@@ -186,6 +186,26 @@
         >
        <button class="button" (click)="cancel()">Cancel</button>
       </div>
+      <div class="non-active" id=error>
+        <p>Please fill out all information</p>
+        <span (click)="hiddenError()"><i class="fas fa-times"></i></span>
+      </div>
     </div>
   </form>
+  <div class="modal" id="registerpop">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title" style="text-align:center">Registration complete</p>
+        <button class="delete" aria-label="close" (click)="del_registerpop()"></button>
+      </header>
+      <section class="modal-card-body">
+        <p style="text-align:center">Thank you for register</p>
+        <!-- Content ... -->
+      </section>
+      <footer class="modal-card-foot" style="text-align:center">
+        <button class="button is-rounded" id="buttona" (click)="moveToLogin()"> Back to sign in </button>
+      </footer>
+    </div>
+  </div>
 </div>
