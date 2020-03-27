@@ -89,13 +89,45 @@
             Reservation
           </button>
         </div>
-        <div class="column" id="remove">
+        <div class="column" id="remove" (click)="remove_deal_popup()">
           <button>Remove</button>
         </div>
       </div>
     </div>
 
-    <!-- modal -->
+    <!-- remove_deal_modal -->
+    <div class="modal modal-fx-fadeInScale" id="remove_deal_popup">
+      <div class="modal-background"></div>
+      <div class="modal-content modal-card" id="remove_deal_popup_content">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Remove</p>
+          <button class="delete" aria-label="close" (click)="close_remove_deal_popup()"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          <p style="text-align:center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+           font-size: larger;">Each remove car, you will not be</p>
+          <p style="text-align:center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+           font-size: larger;">able to recovery them.</p>
+          <br>
+          <div class="columns">
+            <div class="column">
+              <button style="width: 100px; padding: 10px 10px 10px 10px; margin-left: 220px;"
+               class="button is-rounded" id="b1" (click)="activate_remove_deal_popup()">Yes</button>
+            </div>
+            <div class="column">
+              <button style="width: 100px; padding: 10px 10px 10px 10px;" 
+              class="button is-rounded" id="pinkbutton" (click)="close_remove_deal_popup()">No</button>
+            </div>
+          </div>
+          <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+        </footer>
+      </div>
+    </div>
+
+    <!-- reservation modal -->
     <div class="modal modal-fx-fadeInScale" id="popup">
       <div class="modal-background"></div>
       <div class="modal-content modal-card">

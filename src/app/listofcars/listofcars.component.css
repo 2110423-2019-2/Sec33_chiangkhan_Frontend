@@ -1,5 +1,7 @@
 #Add_deal_button {
-  position: relative;
+  margin-top: 20px;
+  margin-left: 1200px;
+  border-bottom: 0px;
 }
 
 .carbox {
@@ -152,3 +154,9 @@ button:active {
   transform: scale(1);
   opacity: 1;
 }
+
+#remove_deal_popup_content {
+  height: 280px;
+}
+
+

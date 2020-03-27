@@ -71,7 +71,18 @@ import { CARS } from './mock-cars';
     StartDate: this.addDealForm.value["start_dates"], EndDate: this.addDealForm.value["end_dates"],
      PickupLocation: this.addDealForm.value["pickup_location"], ReturnLocation: this.addDealForm.value["return_location"], Price: '4,200' })
     this.closeform();
-    
+  }
+
+  remove_deal_popup() {
+    document.getElementById('remove_deal_popup').className = "modal modal-fx-fadeInScale is-active";
+  }
+
+  close_remove_deal_popup() {
+    document.getElementById('remove_deal_popup').className = "modal modal-fx-fadeInScale";
+  }
+
+  activate_remove_deal_popup() {
+    this.cars
   }
 
   }
