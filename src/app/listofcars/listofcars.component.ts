@@ -75,6 +75,7 @@ import { CARS } from './mock-cars';
 
   remove_deal_popup() {
     document.getElementById('remove_deal_popup').className = "modal modal-fx-fadeInScale is-active";
+    // this.cars.indexOf(document.getElementsByClassName("carbox"))
   }
 
   close_remove_deal_popup() {
@@ -82,7 +83,8 @@ import { CARS } from './mock-cars';
   }
 
   activate_remove_deal_popup() {
-    this.cars
+    this.cars.splice(0, 1);
+    this.close_remove_deal_popup();
   }
 
   }
