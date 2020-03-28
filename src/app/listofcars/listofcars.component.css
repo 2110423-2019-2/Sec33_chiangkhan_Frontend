@@ -159,4 +159,6 @@ button:active {
   height: 280px;
 }
 
-
+agm-map {
+    height: 300px;
+}

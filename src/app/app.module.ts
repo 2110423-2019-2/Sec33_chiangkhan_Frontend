@@ -27,6 +27,7 @@ import { HomepageCarPopupComponent } from './homepage-car-popup/homepage-car-pop
 import { HomepageCarReservationsComponent } from './homepage-car-reservations/homepage-car-reservations.component';
 import { HomepageCarReservationsPopupComponent } from './homepage-car-reservations-popup/homepage-car-reservations-popup.component';
 import { HomepageCarReservationsReserveconfirmPopupComponent } from './homepage-car-reservations-reserveconfirm-popup/homepage-car-reservations-reserveconfirm-popup.component';
+import { AgmCoreModule } from '@agm/core';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -72,7 +73,11 @@ const appRoutes: Routes = [
     FormsModule ,
     ReactiveFormsModule ,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB-0c0j8f41aRTUyGLZdFhBEF-7TPwnZOQ',
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
