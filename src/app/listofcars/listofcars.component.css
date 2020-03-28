@@ -1,3 +1,9 @@
+#Add_deal_button {
+  margin-top: 20px;
+  margin-left: 1200px;
+  border-bottom: 0px;
+}
+
 .carbox {
   width: 1200px;
   border: 12px ridge indianred;
@@ -147,4 +153,12 @@ button:active {
   -o-transform: scale(1);
   transform: scale(1);
   opacity: 1;
+}
+
+#remove_deal_popup_content {
+  height: 280px;
+}
+
+agm-map {
+    height: 300px;
 }
