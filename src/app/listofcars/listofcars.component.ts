@@ -24,9 +24,7 @@ export class ListofcarsComponent implements OnInit {
   address: string;
   private geoCoder;
   // geoCoder:any;
-    ngOnInit() {
-      document.getElementsByClassName("unactive")[2].className = "active"
-    }
+
 
   @ViewChild('search', { static: true })
   public searchElementRef: ElementRef;
@@ -42,10 +40,10 @@ export class ListofcarsComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) { }
-
   ngOnInit() {
-
+    document.getElementsByClassName("unactive")[2].className = "active"
   }
+ 
 
   cars = CARS;
   reservations = RESERVATIONS;
