@@ -2,17 +2,17 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <img src="{{ image1 }}" alt="car" height="300" width="300" />
+        <img src="{{car.photoOfCarDocument}}." alt="car" height="300" width="300" />
       </div>
       <div class="column">
         <p><mark class="status">&emsp;Available&emsp;</mark></p>
-        <p>Type: Sport</p>
-        <p>Model: BMW Z3</p>
-        <p>License Plate: 12-3456</p>
-        <p>Car description: Air conditioning</p>
+        <p>Type: Sport </p>
+        <p>Model: {{car.carModel}}</p>
+        <p>License : {{car.licenseplate}}</p>
+        <p>Car description: {{car.carDescription}}</p>
         <p>Automatic Transmission</p>
         <br />
-        <p>4 Seats | 4 Doors | 1 Baggage</p>
+        <p>Capacity : {{car.capacity}}</p>
         <br />
         <div class="columns">
           <div class="column"></div>

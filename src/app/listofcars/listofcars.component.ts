@@ -24,6 +24,9 @@ export class ListofcarsComponent implements OnInit {
   address: string;
   private geoCoder;
   // geoCoder:any;
+    ngOnInit() {
+      document.getElementsByClassName("unactive")[2].className = "active"
+    }
 
   @ViewChild('search', { static: true })
   public searchElementRef: ElementRef;
