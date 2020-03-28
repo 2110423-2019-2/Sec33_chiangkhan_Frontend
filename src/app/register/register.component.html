@@ -1,7 +1,6 @@
-<div class="columns">
-  <div class="column is-4" id="register-homepage">
+<!-- <div class="columns">
+  <div class="column is-2" id="register-homepage">
     <img src="../../assets/images/register-homepage.jpg" alt="" />
-    <span id="register">Register</span>
   </div>
   <form [formGroup]="registerForm" action="">
     <div class="column is-8" id="register-form">
@@ -197,11 +196,122 @@
       </header>
       <section class="modal-card-body">
         <p style="text-align:center">Thank you for register</p>
-        <!-- Content ... -->
       </section>
       <footer class="modal-card-foot" style="text-align:center">
         <button class="button is-rounded" id="buttona" (click)="moveToLogin()"> Back to sign in </button>
       </footer>
     </div>
   </div>
-</div>
+</div> -->
+<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Registration Info</h2>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" action="/" method="POST">
+                      <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <input class="input--style-2" type="text" placeholder="Firstname" formControlName="firstname" required>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                          <div class="input-group">
+                              <input class="input--style-2" type="text" placeholder="Lastname" formControlName="lastname">
+                          </div>
+                      </div>
+                    </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2" type="text" placeholder="Username" formControlName="username">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group" >
+                                    <div class="rs-select2">
+                                      <input class="input--style-2" type="password" placeholder="Password" formControlName="password" [(ngModel)] = "passwording" (input) = "onChangePassword()">
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="input-group" id="confirmpassword">
+                            <div class="rs-select2">
+                              <input class="input--style-2" type="password" placeholder="Confirm Password" [(ngModel)] = "confirmPassword" (input) = "onChangeConfirm()" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2" type="email" placeholder="Email" formControlName="email">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                              <div class="input-group">
+                                  <input class="input--style-2" type="text" placeholder="Phone number" formControlName="phone_num">
+                              </div>
+                          </div>
+                        </div>
+                        <div class="row row-space">
+                          <div class="col-2">
+                              <div class="input-group">
+                                  <input class="input--style-2" type="text" placeholder="Bank Account" formControlName="bank_account">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            <div class="input-group">
+                                <input class="input--style-2" type="text" placeholder="Bank Account Branch" formControlName="bank_account_branch">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row row-space">
+                        <div class="col-1">
+                            <div class="input-group">
+                                <input class="input--style-2" type="text" placeholder="Credit card" formControlName="credit_card_number">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="input-group">
+                              <input class="input--style-2" type="text" placeholder="Expire date (mm/yy) " formControlName="credit_card_expiry">
+                          </div>
+                      </div>
+                        <div class="col-3">
+                          <div class="input-group">
+                              <input class="input--style-2" type="text" placeholder="Security number (xxx)" formControlName="credit_card_security">
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                            <div class="input-group">
+                                <input class="input--style-2" type="text" placeholder="Driving license" formControlName="driving_license">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                          <div class="input-group">
+                              <input class="input--style-2" type="text" placeholder="Address" formControlName="address">
+                          </div>
+                      </div>
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="registerpop">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title" style="text-align:center">Registration complete</p>
+              <button class="delete" aria-label="close" (click)="del_registerpop()"></button>
+            </header>
+            <section class="modal-card-body">
+              <p style="text-align:center">Thank you for register</p>
+            </section>
+            <footer class="modal-card-foot" style="text-align:center">
+              <button class="button is-rounded" id="buttona" (click)="moveToLogin()"> Back to sign in </button>
+            </footer>
+          </div>
+        </div>
+    </div>
