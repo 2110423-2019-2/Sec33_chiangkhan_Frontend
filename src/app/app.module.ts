@@ -27,6 +27,7 @@ import { HomepageCarPopupComponent } from './homepage-car-popup/homepage-car-pop
 import { HomepageCarReservationsComponent } from './homepage-car-reservations/homepage-car-reservations.component';
 import { HomepageCarReservationsPopupComponent } from './homepage-car-reservations-popup/homepage-car-reservations-popup.component';
 import { HomepageCarReservationsReserveconfirmPopupComponent } from './homepage-car-reservations-reserveconfirm-popup/homepage-car-reservations-reserveconfirm-popup.component';
+import { AuthService } from './auth.service';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -74,7 +75,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

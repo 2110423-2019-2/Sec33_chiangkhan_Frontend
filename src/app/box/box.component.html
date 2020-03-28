@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div>
   <button class="button" (click)="popupadd()">Add car</button>
-  <div class="list1" *ngFor="let car of carArray">
-    <app-car [image1]="car"></app-car>
+  <div class="list1" *ngFor="let car of cars">
+    <app-car [car]= "car"></app-car>
   </div>
   <div class="modal modal-fx-fadeInScale" id="popupadd">
     <div class="modal-background"></div>

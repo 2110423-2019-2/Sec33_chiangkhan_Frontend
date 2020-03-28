@@ -13,6 +13,7 @@ import { CARS } from './mock-cars';
     constructor() { }
 
     ngOnInit() {
+      document.getElementsByClassName("unactive")[2].className = "active"
     }
 
     cars = CARS;

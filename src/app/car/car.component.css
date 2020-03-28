@@ -1,4 +1,7 @@
 
+section{
+  padding: 24px;
+}
 button {
     background-color: rgb(21, 65, 82);
     color: white;

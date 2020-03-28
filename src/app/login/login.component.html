@@ -1,25 +1,29 @@
-<div class="columns">
+
+<div class="columns is-desktop">
   <img
     class="column is-three-fifths"
     src="../../assets/images/car-homepage.jpg"
     id = "car-homepage"
   />
-  <div class="column" id="form-input">
-    <img src="../../assets/images/Rentsee - logo.png" alt="logo">
+  <div class="column is-4" id="form-input">
+    <div class="non-active" id=error>
+      <p>username or password is incorrect</p>
+      <span (click)="hiddenError()"><i class="fas fa-times"></i></span>
+    </div>
+    <img id="logo" src="../../assets/images/Rentsee - logo.png" alt="logo">
     <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
       <div class="field">
         <div class="control">
-          <input class="input" type="text" placeholder="Username" formControlName="username"/>
+          <input class="input" type="text" placeholder="Username" formControlName="username" (click)="usernameChange()"/>
         </div>
       </div>
       <div class="field">
         <div class="control">
-          <input class="input" type="password" placeholder="Password" formControlName="password"/>
+          <input class="input" type="password" placeholder="Password" formControlName="password" (click)="passwordChange()"/>
         </div>
       </div>
      <button class="button" type="submit"  id="login">Login</button>
     </form>
-  
       <a [routerLink]="'/register'"><button class="button" id="register">Register</button></a>
   </div>
 </div>

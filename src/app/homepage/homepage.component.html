@@ -110,9 +110,9 @@
       <br />
 
       <!-- Part 3 Dropdowns -->
-      <div class="column">
+      <div class="column" [formGroup] = "dateForm">
         <!-- Start Date -->
-        <input type="date" id="start_dates" name="start_dates">
+        <input type="date" id="start_dates" name="start_dates" formControlName="startDate" (input)="onChangeDate()">
 
         <br />
 
