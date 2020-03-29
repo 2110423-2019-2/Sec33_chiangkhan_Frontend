@@ -1,131 +1,32 @@
 <app-navbar></app-navbar>
-
-<div class="columns is-flex-desktop">
-  <!-- search bar -->
-  <div class="column is-3 searchbox">
-    <div class="input-group input-group-unstyled is-flex">
-      <input type="text" placeholder="Search.." class="input is-small form-control" />
-      <span class="input-group-addon">
-        <i class="fa fa-search"></i>
-      </span>
-    </div>
-    <br />
-
-    <!-- Part1 Labels -->
-    <div class="columns">
-      <div class="column is-2">
-        <label for="types">Type</label>
-        <br />
-        <label for="models">Model</label>
-        <br />
-        <label for="ratings">Rating</label>
-      </div>
-
-      <!-- Part 1 dropdowns -->
-      <div class="column">
-        <!-- Type -->
-        <select class="dropdown" id="types">
-          <option disabled selected value></option>
-          <option value="sport">Volvo</option>
-          <option value="minivan">Saab</option>
-          <option value="truck">Mercedes</option>
-          <option value="tuk-tuk">Audi</option>
-        </select>
-
-        <br />
-
-        <!-- Model -->
-        <select class="dropdown" id="models">
-          <option disabled selected value></option>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-
-        <!-- Rating -->
-        <select id="ratings">
-          <option disabled selected value></option>
-          <option value="1">Volvo</option>
-          <option value="2">Saab</option>
-          <option value="3">Mercedes</option>
-          <option value="4">Audi</option>
-          <option value="5">Audi</option>
-        </select>
-
-        <!-- Capacity -->
-        <label for="capacities">Capacity</label>
-
-        <select id="capacities">
-          <option disabled selected value></option>
-          <option value="1">Volvo</option>
-          <option value="2">Saab</option>
-          <option value="3">Mercedes</option>
-          <option value="4">Audi</option>
-        </select>
-      </div>
-    </div>
-
-    <hr />
-
-    <!-- Part 2 Labels -->
-    <div class="columns">
-      <div class="column is-2">
-        <label for="types">Location</label>
-        <br />
-        <label for="models">District</label>
-        <br />
-        <label for="ratings">Province</label>
-      </div>
-
-      <!-- Part 2 Dropdowns -->
-      <div class="column">
-        <!-- Location -->
-        <input type="text">
-
-        <br />
-
-        <!-- District -->
-        <input type="text">
-
-        <br />
-
-        <!-- Province -->
-        <input type="text">
-      </div>
-    </div>
-    <hr />
-
-    <!-- Part 3 -->
-    Date
-
-    <!-- Part 3 Labels -->
-    <div class="columns">
-      <div class="column is-3">
-        <label for="types">Start Date</label>
-        <br />
-        <label for="models">End date</label>
-      </div>
-
-      <br />
-
-      <!-- Part 3 Dropdowns -->
-      <div class="column" [formGroup] = "dateForm">
-        <!-- Start Date -->
-        <input type="date" id="start_dates" name="start_dates" formControlName="startDate" (input)="onChangeDate()">
-
-        <br />
-
-        <!-- End Date -->
-        <input type="date" id="start_dates" name="start_dates">  
-      </div>
+<div class="container">
+  <div class="container is-fluid">
+    <button class="button" (click)="toggleFilter()"><i class="fas fa-filter"></i>Filter</button>
+    <div class="filters" id="state-show">
+      <form class="is-flex" action="">
+        <fieldset>
+          <label class="fil" id="f" for="">Filter 1</label>
+          <input class="input input-0" type="text">
+        </fieldset> 
+        <fieldset>
+          <label class="fil" id="f" for="">Filter 2</label>
+          <input class="input input-0" type="text">
+        </fieldset>
+        <fieldset>
+          <label class="fil" id="f" for="">Filter 3</label>
+          <input class="input input-0" type="text">
+        </fieldset>
+        <fieldset>
+          <label class="fil" id="f" for="">Filter 4</label>
+          <input class="input input-0" type="text">
+        </fieldset>
+      </form>
     </div>
   </div>
-
-  <!-- Boss's Part -->
-  <div class="column" id="newest-deal">
-    <h1>Newest Deal</h1>
-    <app-homepage-car></app-homepage-car>
+  <div class="columns is-multiline">
+    <div class="column is-one-quarter" *ngFor="let car of mock_car">
+      <app-homepage-car></app-homepage-car>
+    </div>
   </div>
 </div>
 

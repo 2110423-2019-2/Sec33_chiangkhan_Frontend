@@ -1,43 +1,10 @@
-<app-homepage-car-popup></app-homepage-car-popup>
 <div class="card">
-  <div class="columns">
-    <div class="column is-3">
-      <div class="card-image">
-        <figure class="image">
-          <a href="/homepage/HomepageCarReservations" class="thumb">
-            <img src="../../assets/images/car-homepage.jpg"
-                 alt="Placeholder image" />
-          </a>
-          <div class="column" id="rating">
-            Rating :
-            <span id="star1" class="fa fa-star"></span>
-            <span id="star2" class="fa fa-star"></span>
-            <span id="star3" class="fa fa-star"></span>
-            <span id="star4" class="fa fa-star"></span>
-            <span id="star5" class="fa fa-star"></span>
-          </div>
-        </figure>
-      </div>
-    </div>
-    <div class="column" id="detail">
-      <div class="columns">
-        <img src="../../assets/images/profile-user.png" id="profile" alt="" />
-        <p>Name</p>
-      </div>
-      <p>Type :</p>
-      <p>Model :</p>
-      <p>Location :</p>
-      <p>Start Date :</p>
-      <p>End Date :</p>
-      <div class="columns">
-        <div class="column is-10">
-          <button class="button" (click)="openPopup()">More</button>
-        </div>
-        <div class="column">
-          <p id="price">Price : 2000</p>
-        </div>
-      </div>
-    </div>
+  <div class="card-content">
+    <img src="../../assets/images/wut.jpg" (click)="openPopup()">
   </div>
+  <footer class="card-footer">
+   <p>Owner</p>
+   <p id="p-review">Review</p>
+  </footer>
 </div>
-
+<app-homepage-car-popup></app-homepage-car-popup>

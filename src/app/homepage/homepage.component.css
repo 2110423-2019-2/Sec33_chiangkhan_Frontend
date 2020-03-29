@@ -1,31 +1,22 @@
-#newest-deal h1{
-    font-size: 2rem;
-    font-weight: 600;
-    margin-left: 1em;
+
+/* .label{
+    height: 0px;
+}  */
+
+.fil{
+    font-size: 0px;
+    transition: 0.5s;
+}
+.fill{
+    font-size: 30px;
+    transition: 0.5s;
+}
+.input.input-1{
+    height:40px;
+    transition: height 0.5s;
 }
 
-.searchbox {
-    border: 1px ridge darkcyan;
-    padding: 10px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: auto;
+.input.input-0{
+    height: 0px;
+    transition: height 1s , display 1s;
 }
-
-.input-group.input-group-unstyled input.form-control {
-    -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
-}
-.input-group-unstyled .input-group-addon {
-    border-radius: 4px;
-    border: 0px;
-    background-color: transparent;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    width: -webkit-fill-available
-  }
-
-  

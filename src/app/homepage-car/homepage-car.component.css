@@ -1,29 +1,19 @@
 .card{
-    margin: 10px;
-    padding: 20px;
-    border: 2px groove indigo;  
-    box-shadow: 5px 5px 20px grey;
+    margin: 5%;
+    box-shadow: none
+}
+.card-content{
+    padding: 0px;
 }
 
-#profile{
-    max-height: 2rem;
+.card-footer{
+    border-top : 0px solid;
+    justify-content: space-between;
 }
 
-#detail .columns {
-    margin: 0px;
-    margin-bottom: 10px;
+img{
+    border-radius: 5px;
 }
-
-#detail img {
-    padding-right: 15px;
-}
-
-#rating {
-    padding: 0;
-    padding-left: 20px;
-}
-#price{
-    font-weight: 700;
-    font-size: 1em;
-    text-align: right;
+img:hover{
+    cursor: pointer;
 }
