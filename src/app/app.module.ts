@@ -29,6 +29,7 @@ import { HomepageCarReservationsPopupComponent } from './homepage-car-reservatio
 import { HomepageCarReservationsReserveconfirmPopupComponent } from './homepage-car-reservations-reserveconfirm-popup/homepage-car-reservations-reserveconfirm-popup.component';
 import { AgmCoreModule } from '@agm/core';
 import { AuthService } from './auth.service';
+import { AppFooterComponent } from './app-footer/app-footer.component';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
     HomepageCarReservationsComponent,
     HomepageCarReservationsPopupComponent,
     HomepageCarReservationsReserveconfirmPopupComponent,
+    AppFooterComponent,
   ],
   imports: [
     BrowserModule,
