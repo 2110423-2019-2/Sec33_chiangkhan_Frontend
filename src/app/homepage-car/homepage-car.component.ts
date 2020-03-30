@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { REVIEWS } from '../review/mock-review';
 
 @Component({
@@ -8,6 +8,7 @@ import { REVIEWS } from '../review/mock-review';
 })
 export class HomepageCarComponent implements OnInit {
   reviews = REVIEWS ;
+  @Input() car;
   constructor() { }
 
   ngOnInit() {

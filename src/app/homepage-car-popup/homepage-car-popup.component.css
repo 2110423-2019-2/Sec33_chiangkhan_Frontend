@@ -57,3 +57,6 @@
     opacity: 1; }
   
 
+.modal-card-body{
+  padding: 50px;
+}

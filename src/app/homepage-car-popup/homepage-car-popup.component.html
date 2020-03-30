@@ -12,11 +12,11 @@
                 <div class="card-image">
                   <figure class="image">
                     <img
-                      src="../../assets/images/car-homepage.jpg"
+                      src="{{car_popup.photoOfCarDocument}}"
                       alt="Placeholder image"
                     />
                     <div class="column" id="rating">
-                      Rating :
+                      <strong>Rating :</strong> 
                       <span id="star1" class="fa fa-star"></span>
                       <span id="star2" class="fa fa-star"></span>
                       <span id="star3" class="fa fa-star"></span>
@@ -29,34 +29,38 @@
               <div class="column" id="detail">
                 <div class="columns">
                   <img src="../../assets/images/profile-user.png" id="profile" alt="" />
-                  <p>Name</p>
+                  <p><strong>Name</strong></p>
                 </div>
-                <p>Type :</p>
-                <p>Model :</p>
-                <p>Location :</p>
+                <p><strong>Type : </strong> {{car_popup.carType}}</p>
+                <p><strong>Model : </strong> {{car_popup.carModel}}</p>
+                <p><strong>Location : </strong></p>
                 <div class="columns" id="temp">
                     <div class="column">
-                        <p>Start Date :</p>
+                        <p><strong>Start Date : </strong>{{car_popup.availability[0].startDate}}</p>
                     </div>
                     <div class="column">
-                        <p>End Date :</p>
+                        <p><strong>End Date : </strong>{{car_popup.availability[0].endDate}}</p>
                     </div>
                 </div>
                 <div class="columns" id="temp">
                     <div class="column">
-                        <p>Pick up Province :</p>
-                        <p>Return Province :</p>
+                        <p><strong>Pick up Province : </strong></p>
+                        <p><strong>Return Province : </strong></p>
                     </div>
                     <div class="column">
-                        <p>Pick up District :</p>
-                        <p>Return District</p>
+                        <p><strong>Pick up District : </strong></p>
+                        <p><strong>Return District :</strong></p>
                     </div>
                 </div>
-                <p>4 Seats | 4 Doors | 1 Baggage</p>
               </div>
             </div>
-            <p>Car description : </p>
+            <a href="./homepage/HomepageCarReservations"><button class="button">Reserve</button></a>
             <hr>
+            <p><strong style="font-size: large;">Car description </strong> </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dicta facere eos aut. Iusto consequuntur pariatur dignissimos odio aut perferendis officiis inventore nesciunt autem. Cumque modi in pariatur ipsum neque.</p>
+            <hr>
+            <p><strong style="font-size: large;">Review</strong></p>
+            <br>
             <div *ngFor="let review of reviews">
                 <app-review [review]="review"></app-review>
               </div>
@@ -64,20 +68,3 @@
       </section>
     </div>
   </div>
-
-<!-- <div class="modal modal-fx-fadeInScale">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <div class="box">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae cum enim quisquam ducimus, facilis, esse nesciunt porro,
-      officiis totam veniam libero! Nisi hic vel aspernatur doloremque enim ut blanditiis perferendis, repudiandae
-      assumenda quibusdam delectus quam eum non maxime ullam quod qui ab in dolorem dolores vero amet! Perferendis
-      incidunt unde blanditiis harum vel velit, accusantium praesentium autem ut voluptas, voluptatibus fugiat.
-      Molestiae maiores aspernatur expedita, magnam commodi suscipit explicabo labore temporibus tenetur distinctio
-      mollitia facere eum ad officia? Sit eaque culpa ea saepe facilis. Consequatur, architecto. Optio eveniet
-      cupiditate accusantium vero consectetur, maiores eum culpa assumenda reprehenderit sequi aut nihil!
-  </div>
-  </div>
-  <button class="modal-close is-large" (click)="closePopup()" aria-label="close"></button>
-</div>
-  -->

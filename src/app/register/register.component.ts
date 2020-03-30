@@ -45,9 +45,8 @@ export class RegisterComponent implements OnInit {
     if(this.passwording === this.confirmPassword){
       this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group" 
       console.log("Yes")  
-    }else{  
+    }else{
       this.elem.nativeElement.querySelector('#conformpassword').className = "input-group-invalid" 
-      
     }
   } 
 

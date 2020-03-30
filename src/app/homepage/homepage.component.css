@@ -1,22 +1,36 @@
-
-/* .label{
-    height: 0px;
-}  */
-
 .fil{
     font-size: 0px;
+    font-weight: 600;
     transition: 0.5s;
 }
 .fill{
-    font-size: 30px;
+    font-size: 18px;
+    font-weight: 600;
     transition: 0.5s;
 }
+
+/* show  */
+fieldset{
+    margin-left: 2%;
+    margin-right: 2%;
+}
 .input.input-1{
+    display: block;
     height:40px;
     transition: height 0.5s;
 }
 
+/* not show  */
 .input.input-0{
+    display: none;
     height: 0px;
-    transition: height 1s , display 1s;
+    transition: height 0.5s ;
+}
+
+.button{
+    margin-left: 90%;
+    margin-top : 2.5%;
+}
+.filters{
+    margin-top: 2%;
 }

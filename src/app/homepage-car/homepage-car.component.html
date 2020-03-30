@@ -1,10 +1,10 @@
 <div class="card">
   <div class="card-content">
-    <img src="../../assets/images/wut.jpg" (click)="openPopup()">
+    <img src="{{car.photoOfCarDocument}}" (click)="openPopup()">
   </div>
   <footer class="card-footer">
-   <p>Owner</p>
-   <p id="p-review">Review</p>
+   <p>Owner : {{car.ownerId}}</p>
+   <p id="p-review">Review {{car.avgRating}}</p>
   </footer>
 </div>
-<app-homepage-car-popup></app-homepage-car-popup>
+<app-homepage-car-popup [car]="car"></app-homepage-car-popup>

@@ -1,6 +1,6 @@
 import { Component, OnInit , ElementRef} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import axios from 'axios';
 
 @Component({
   selector: 'app-homepage',
@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class HomepageComponent implements OnInit {
    
-  mock_car = ["car1","car2","car3","car4","car5","car6","car7","car8","car9"]
+  cars: any[] ; 
   dateForm = new FormGroup({
     startDate : new FormControl()
   })
@@ -19,37 +19,59 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
+    axios.get('http://localhost:8080/api/car/')
+    .then((response) => {
+      console.log(response);
+      this.cars = response.data
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .then(() => {
+    // always executed
+    });
     document.getElementsByClassName("unactive")[0].className = "active"
   }
  
   onChangeDate(){
-    console.log(this.dateForm.value)
+    // console.log(this.dateForm.value)
   }
   toggleFilter(){
-    console.log(this.elementref.nativeElement.querySelectorAll('.input'))
+    // console.log(this.elementref.nativeElement.querySelectorAll('.input'))
     if(this.state == 0){
-      console.log("yes")
+      // console.log("yes")
       this.elementref.nativeElement.querySelector('.input.input-0').className = "input input-1"
       this.elementref.nativeElement.querySelector('.input.input-0').className = "input input-1"
       this.elementref.nativeElement.querySelector('.input.input-0').className = "input input-1"
       this.elementref.nativeElement.querySelector('.input.input-0').className = "input input-1"
+      this.elementref.nativeElement.querySelector('.input.input-0').className = "input input-1"
+      this.elementref.nativeElement.querySelector('.input.input-0').className = "input input-1"
+      this.elementref.nativeElement.querySelector('.fil').className = "fill"
+      this.elementref.nativeElement.querySelector('.fil').className = "fill"
       this.elementref.nativeElement.querySelector('.fil').className = "fill"
       this.elementref.nativeElement.querySelector('.fil').className = "fill"
       this.elementref.nativeElement.querySelector('.fil').className = "fill"
       this.elementref.nativeElement.querySelector('.fil').className = "fill"
       this.state = 1
     }else{
-      console.log("no")
+      // console.log("no")
       this.elementref.nativeElement.querySelector('.input.input-1').className = "input input-0"
       this.elementref.nativeElement.querySelector('.input.input-1').className = "input input-0"
       this.elementref.nativeElement.querySelector('.input.input-1').className = "input input-0"
       this.elementref.nativeElement.querySelector('.input.input-1').className = "input input-0"
+      this.elementref.nativeElement.querySelector('.input.input-1').className = "input input-0"
+      this.elementref.nativeElement.querySelector('.input.input-1').className = "input input-0"
+      this.elementref.nativeElement.querySelector('.fill').className = "fil"
+      this.elementref.nativeElement.querySelector('.fill').className = "fil"
       this.elementref.nativeElement.querySelector('.fill').className = "fil"
       this.elementref.nativeElement.querySelector('.fill').className = "fil"
       this.elementref.nativeElement.querySelector('.fill').className = "fil"
       this.elementref.nativeElement.querySelector('.fill').className = "fil"
       this.state = 0
     }
+    
+  }
+  getSearchCar(){
     
   }
 }
