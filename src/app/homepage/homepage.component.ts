@@ -1,6 +1,8 @@
 import { Component, OnInit , ElementRef} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import axios from 'axios';
+import { isNull } from 'util';
+
 
 @Component({
   selector: 'app-homepage',
@@ -19,6 +21,7 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
+
     axios.get('http://localhost:8080/api/car/')
     .then((response) => {
       console.log(response);
@@ -74,4 +77,13 @@ export class HomepageComponent implements OnInit {
   getSearchCar(){
     
   }
+
+  search() {
+    var url_extend_type = (<HTMLInputElement>document.getElementById("car_type")).value
+    if (url_extend_type != "") {
+      document.getElementById("search").setAttribute('href', "/homepage/" + "?type=" + url_extend_type);
+    }
+    
+  }
+  
 }

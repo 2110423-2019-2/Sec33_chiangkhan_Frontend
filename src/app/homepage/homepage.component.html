@@ -7,30 +7,36 @@
     <div class="filters is-flex" id="state-show">
       <fieldset>
         <label class="fil" id="f" for="">Car type</label>
-        <input class="input input-0" type="text" name='type'/>
+        <input class="input input-0" type="text" name="type" id="car_type"/>
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Car Model</label>
-        <input class="input input-0" type="text" name='model'/>
+        <input class="input input-0" type="text" name="model" />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Car capacity</label>
-        <input class="input input-0" type="text" name='capacity'/>
+        <input class="input input-0" type="text" name="capacity" />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Location</label>
-        <input class="input input-0" type="text" name='location'/>
+        <input class="input input-0" type="text" name="location" />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Start Date</label>
-        <input class="input input-0" type="text" name='startDate'/>
+        <input class="input input-0" type="text" name="startDate" />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">End Date</label>
-        <input class="input input-0" type="text" name='endDate'/>
+        <input class="input input-0" type="text" name="endDate" />
       </fieldset>
       <fieldset>
-        <button class="button" type="submit" (click)="form.submit()">Search</button>
+        <!-- (click)="form.submit() -->
+        
+          <button class="button" type="submit" (click)="search()">
+            <a href="/homepage" id="search">
+            Search</a>
+          </button>
+        
       </fieldset>
     </div>
   </form>
@@ -42,5 +48,5 @@
 </div>
 
 <footer>
-<app-app-footer></app-app-footer>
+  <app-app-footer></app-app-footer>
 </footer>
