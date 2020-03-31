@@ -28,15 +28,14 @@ export class HomepageComponent implements OnInit {
 
   getSearchCar(){ 
     this.router.navigate(['/homepage', { 
-      carType :this.searchForm.value.cartype,
+      // carType :this.searchForm.value.cartype,
       capacity: this.searchForm.value.capacity,
-      location : this.searchForm.value.location ,
+      // location : this.searchForm.value.location ,
       carModel : this.searchForm.value.model
       }]);
   }
   ngOnInit() {
     this.route.paramMap.subscribe((params : ParamMap) => {
-      // console.log(params.keys.length)
       if(params.keys.length == 0){
         axios.get('http://localhost:8080/api/car/')
         .then((response) => {
@@ -47,13 +46,11 @@ export class HomepageComponent implements OnInit {
           console.log(error);
         })
       }else{
-        let paramm = { capacity : 2 , carType : null , carModel : null , location : null }
+        let paramm = {}
         for(let p in params.keys){
-          // console.log(p)
-          // console.log(params.keys[p])
-          // console.log(params.get(params.keys[p]))
-          if(params.get(params.keys[p]) != ""){
+          if(params.get(params.keys[p]) != "null"){
             paramm[params.keys[p]] = params.get(params.keys[p])
+            console.log(paramm)
           }
         }
         console.log(paramm)
@@ -74,7 +71,6 @@ export class HomepageComponent implements OnInit {
     // console.log(this.dateForm.value)
   }
   toggleFilter(){
-    // console.log(this.elementref.nativeElement.querySelectorAll('.input'))
     if(this.state == 0){
       // console.log("yes")
       this.elementref.nativeElement.querySelector('.input.input-0').className = "input input-1"

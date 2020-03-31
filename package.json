@@ -27,6 +27,7 @@
     "minimist": "^1.2.5",
     "ng-simple-slideshow": "^1.2.9",
     "rxjs": "^6.5.4",
+    "slideshow": "^1.0.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
