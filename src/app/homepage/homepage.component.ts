@@ -47,7 +47,7 @@ export class HomepageComponent implements OnInit {
           console.log(error);
         })
       }else{
-        let paramm = { capacity : null , carType : null , carModel : null , location : null }
+        let paramm = { capacity : 2 , carType : null , carModel : null , location : null }
         for(let p in params.keys){
           // console.log(p)
           // console.log(params.keys[p])
