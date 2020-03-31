@@ -3,50 +3,43 @@
   <button class="button" (click)="toggleFilter()">
     <i class="fas fa-filter"></i>Filter
   </button>
-  <form #form action="/" method="GET">
+  <form [formGroup] = "searchForm" action="/" method="get">
     <div class="filters is-flex" id="state-show">
       <fieldset>
         <label class="fil" id="f" for="">Car type</label>
-        <input class="input input-0" type="text" name="type" id="car_type"/>
+        <input class="input input-0" type="text" name='type' id='type' formControlName="cartype"/>
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Car Model</label>
-        <input class="input input-0" type="text" name="model" />
+        <input class="input input-0" type="text" name='model'id='model'formControlName="model"/>
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Car capacity</label>
-        <input class="input input-0" type="text" name="capacity" />
+        <input class="input input-0" type="text" name='capacity'id='capacity' formControlName="capacity"/>
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Location</label>
-        <input class="input input-0" type="text" name="location" />
+        <input class="input input-0" type="text" name='location' id='location'formControlName="location"/>
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Start Date</label>
-        <input class="input input-0" type="text" name="startDate" />
+        <input class="input input-0" type="text" name='startDate'id='startDate'formControlName="startDate"/>
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">End Date</label>
-        <input class="input input-0" type="text" name="endDate" />
+        <input class="input input-0" type="text" name='endDate' id='endDate' formControlName="endDate"/>
       </fieldset>
       <fieldset>
-        <!-- (click)="form.submit() -->
-        
-          <button class="button" type="submit" (click)="search()">
-            <a href="/homepage" id="search">
-            Search</a>
-          </button>
-        
+       <button class="button" type="submit" (click)="getSearchCar()">Search</button>
       </fieldset>
     </div>
   </form>
-  <div class="columns is-multiline">
+  <div class="columns is-multiline"> 
     <div class="column is-one-quarter" *ngFor="let car of cars">
       <app-homepage-car [car]="car"></app-homepage-car>
     </div>
   </div>
 </div>
-
 <footer>
   <app-app-footer></app-app-footer>
 </footer>
