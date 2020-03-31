@@ -1,63 +1,133 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="dropdown">
-    <div class="dropdown-trigger">
-      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-        <span>Dropdown button</span>
-        <span class="icon is-small">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-      </button>
-    </div>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-      <div class="dropdown-content">
-        <a href="#" class="dropdown-item">
-          Dropdown item
-        </a>
-        <a class="dropdown-item">
-          Other dropdown item
-        </a>
-        <a href="#" class="dropdown-item">
-          Other dropdown item
-        </a>
+  <div>
+    <div id="sort"class="dropdown">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          (click)="toggleDropdown1()"
+        >
+          <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
+          <span>{{ sortDropDown }}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a class="dropdown-item" (click)="sortbyAvgRatingInc()">
+            Review
+          </a>
+          <a class="dropdown-item" (click)="sortbycapacityInc()">
+            Capacity
+          </a>
+        </div>
       </div>
     </div>
+    <div id="order" class="dropdown">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          (click)="toggleDropdown2()"
+        >
+          <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
+          <span>{{ orderby }}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a class="dropdown-item" (click)="orderbyDESC()">
+            Max --> Min
+          </a>
+          <a class="dropdown-item" (click)="orderbyASC()">
+            Min --> Max
+          </a>
+        </div>
+      </div>
+    </div>
+    <button class="button" (click)="toggleFilter()">
+      <i class="fas fa-filter" style="padding-right: 5px;"></i>Filter
+    </button>
   </div>
-  <button class="button" (click)="toggleFilter()">
-    <i class="fas fa-filter"></i>Filter
-  </button>
-  <form [formGroup] = "searchForm" action="/" method="get">
+
+  <form [formGroup]="searchForm" action="/" method="get">
     <div class="filters is-flex" id="state-show">
       <fieldset>
         <label class="fil" id="f" for="">Car type</label>
-        <input class="input input-0" type="text" name='type' id='type' formControlName="cartype"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="type"
+          id="type"
+          formControlName="cartype"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Car Model</label>
-        <input class="input input-0" type="text" name='model'id='model'formControlName="model"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="model"
+          id="model"
+          formControlName="model"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Car capacity</label>
-        <input class="input input-0" type="text" name='capacity'id='capacity' formControlName="capacity"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="capacity"
+          id="capacity"
+          formControlName="capacity"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Location</label>
-        <input class="input input-0" type="text" name='location' id='location'formControlName="location"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="location"
+          id="location"
+          formControlName="location"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Start Date</label>
-        <input class="input input-0" type="text" name='startDate'id='startDate'formControlName="startDate"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="startDate"
+          id="startDate"
+          formControlName="startDate"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">End Date</label>
-        <input class="input input-0" type="text" name='endDate' id='endDate' formControlName="endDate"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="endDate"
+          id="endDate"
+          formControlName="endDate"
+        />
       </fieldset>
       <fieldset>
-       <button class="button" type="submit" (click)="getSearchCar()">Search</button>
+        <button class="button button-0" type="submit" (click)="getSearchCar()">
+          Search
+        </button>
       </fieldset>
     </div>
   </form>
-  <div class="columns is-multiline"> 
+  <div class="columns is-multiline">
     <div class="column is-one-quarter" *ngFor="let car of cars">
       <app-homepage-car [car]="car"></app-homepage-car>
     </div>

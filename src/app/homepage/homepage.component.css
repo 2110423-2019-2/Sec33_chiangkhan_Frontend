@@ -4,7 +4,7 @@
     transition: 0.5s;
 }
 .fill{
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     transition: 0.5s;
 }
@@ -21,14 +21,35 @@ fieldset{
 }
 
 /* not show  */
+.button.button-0{
+    display: none;
+    height: 0px;
+    transition: height 0.5s ;
+    margin-top :24px;
+}
+.button.button-1{
+    display: block;
+    height:40px;
+    transition: height 0.5s;
+    margin-top :24px;
+}
+
+/* not show  */
 .input.input-0{
     display: none;
     height: 0px;
     transition: height 0.5s ;
 }
 
+
 .button{
     margin-top : 2.5%;
+    
+}
+.dropdown{
+    margin-top : 2.45%;
+    margin-right: 2.5%;
+
 }
 .filters{
     margin-top: 2%;
