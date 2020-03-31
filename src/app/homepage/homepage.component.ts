@@ -58,6 +58,9 @@ export class HomepageComponent implements OnInit {
   ) {}
 
   getSearchCar() {
+    let duration = []
+    duration.push(this.searchForm.value.startDate,this.searchForm.value.endDate)
+    console.log(duration)
     this.router.navigate([
       "/homepage",
       {
@@ -65,7 +68,8 @@ export class HomepageComponent implements OnInit {
         capacity: this.searchForm.value.capacity,
         pickupArea : this.area,
         carModel: this.searchForm.value.model,
-        sortby: this.valueSort
+        sortby: this.valueSort,
+        duration : Array(duration)
       }
     ]);
     console.log(this.rightx);
@@ -73,13 +77,18 @@ export class HomepageComponent implements OnInit {
   }
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
+      let quote = ['\"']
       let paramm = {};
       for (let p in params.keys) {
-        if (
+        if(
           params.get(params.keys[p]) != "null" &&
           params.get(params.keys[p]) != ""
-        ) {
-          paramm[params.keys[p]] = params.get(params.keys[p]);
+        ){
+          if(params.keys[p] == "duration"){
+            paramm[params.keys[p]] = [params.get(params.keys[p]).split(",")];
+          }else{
+            paramm[params.keys[p]] = params.get(params.keys[p]);
+          }
         }
       }
       console.log(paramm);
