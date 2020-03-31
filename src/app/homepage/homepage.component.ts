@@ -22,7 +22,6 @@ export class HomepageComponent implements OnInit {
   dateForm = new FormGroup({
     startDate: new FormControl()
   });
-
   state: number = 0;
   sortDropDown: String = "sort";
   valueSort: String = "";
@@ -37,6 +36,9 @@ export class HomepageComponent implements OnInit {
   ) {}
 
   getSearchCar() {
+    let duration = []
+    duration.push(this.searchForm.value.startDate,this.searchForm.value.endDate)
+    console.log(duration)
     this.router.navigate([
       "/homepage",
       {
@@ -44,19 +46,25 @@ export class HomepageComponent implements OnInit {
         capacity: this.searchForm.value.capacity,
         // location : this.searchForm.value.location ,
         carModel: this.searchForm.value.model,
-        sortby: this.valueSort
+        sortby: this.valueSort,
+        duration : Array(duration)
       }
     ]);
   }
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
+      let quote = ['\"']
       let paramm = {};
       for (let p in params.keys) {
-        if (
+        if(
           params.get(params.keys[p]) != "null" &&
           params.get(params.keys[p]) != ""
-        ) {
-          paramm[params.keys[p]] = params.get(params.keys[p]);
+        ){
+          if(params.keys[p] == "duration"){
+            paramm[params.keys[p]] = [params.get(params.keys[p]).split(",")];
+          }else{
+            paramm[params.keys[p]] = params.get(params.keys[p]);
+          }
         }
       }
       console.log(paramm);
