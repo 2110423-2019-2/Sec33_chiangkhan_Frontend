@@ -28,15 +28,15 @@ export class HomepageComponent implements OnInit {
 
   getSearchCar(){ 
     this.router.navigate(['/homepage', { 
-      cartype :this.searchForm.value.cartype,
+      carType :this.searchForm.value.cartype,
       capacity: this.searchForm.value.capacity,
       location : this.searchForm.value.location ,
-      carmodel : this.searchForm.value.model
+      carModel : this.searchForm.value.model
       }]);
   }
   ngOnInit() {
     this.route.paramMap.subscribe((params : ParamMap) => {
-      console.log(params.keys.length)
+      // console.log(params.keys.length)
       if(params.keys.length == 0){
         axios.get('http://localhost:8080/api/car/')
         .then((response) => {
@@ -47,18 +47,17 @@ export class HomepageComponent implements OnInit {
           console.log(error);
         })
       }else{
-        let capacity = parseInt(params.get('capacity'))
-        let cartype = String(params.get('cartype'))
-        let location = String(params.get('location'))
-        let carmodel = String(params.get('carmodel'))
-        // let startDate = String(params.get('startDate'))
-        // let endDate = String(params.get('endDate'))
-        axios.get('http://localhost:8080/api/car/', { params: { 
-          cartype : cartype , 
-          capacity : capacity ,
-          location : location ,
-          carModel : carmodel
+        let paramm = { capacity : null , carType : null , carModel : null , location : null }
+        for(let p in params.keys){
+          // console.log(p)
+          // console.log(params.keys[p])
+          // console.log(params.get(params.keys[p]))
+          if(params.get(params.keys[p]) != ""){
+            paramm[params.keys[p]] = params.get(params.keys[p])
           }
+        }
+        console.log(paramm)
+        axios.get('http://localhost:8080/api/car/', { params: paramm
         })
         .then((response) => {
           console.log(response);
@@ -68,9 +67,7 @@ export class HomepageComponent implements OnInit {
           console.log(error);
         })
       }
-      
     })
-    
   }
 
   onChangeDate(){
