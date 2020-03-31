@@ -39,7 +39,8 @@ const appRoutes: Routes = [
   { path: "homepage/profile", component:ProfileComponent },
   { path: "homepage/listofcars", component:ListofcarsComponent },
   { path: "homepage/mycar" , component:BoxComponent },
-  { path: "homepage/HomepageCarReservations", component:HomepageCarReservationsComponent}
+  { path: "homepage/HomepageCarReservations", component:HomepageCarReservationsComponent},
+  { path: "homepage/search", component:HomepageComponent } ,
 ];   
 
 
