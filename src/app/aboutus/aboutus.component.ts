@@ -12,7 +12,7 @@ export class AboutusComponent implements OnInit {
     { url: '../assets/images/slide1.jpg', caption: 'The first slide', href: '#config' },
     { url: '../assets/images/slide2.jpg', clickAction: () => alert('custom click function') },
     { url: '../assets/images/slide3.jpg', caption: 'Apple TV', href: 'https://www.apple.com/' },
-    { url: '../assets/images/slide4.jpg', backgroundSize: 'contain', backgroundPosition: 'center' }
+    { url: '../assets/images/slide4.jpg'}
   ];
 
   height: string = '600px';
