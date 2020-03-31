@@ -17,3 +17,8 @@ img{
 img:hover{
     cursor: pointer;
 }
+
+
+.checked {
+    color: orange;
+}

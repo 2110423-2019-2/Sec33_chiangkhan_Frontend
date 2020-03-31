@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { REVIEWS } from '../review/mock-review';
 
 @Component({
@@ -9,18 +9,17 @@ import { REVIEWS } from '../review/mock-review';
 export class HomepageCarComponent implements OnInit {
   reviews = REVIEWS ;
   @Input() car;
-  constructor() { }
+  constructor(private elementref:ElementRef) { }
 
   ngOnInit() {
   }
   
   ngAfterViewInit(){
     var arr = Array.from(document.getElementsByClassName('fa-star'))
-    for(let j = 0 ; j < this.reviews.length ; j++){
-       for(let i = 0 ; i < this.reviews[j].rating ; i++){
-         arr[5*j+i+5].className = "fa fa-star checked"     
-      }
+    for(let j = 0 ; j < this.car.avgRating ; j++){
+      arr[j].className = "fa fa-star checked"     
     }
+
   }
   openPopup(){
     console.log("open popup")

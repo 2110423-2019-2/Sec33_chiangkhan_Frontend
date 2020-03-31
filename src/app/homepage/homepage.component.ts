@@ -25,8 +25,8 @@ export class HomepageComponent implements OnInit {
   state: number = 0;
   sortDropDown: String = "sort";
   valueSort: String = "";
-  orderby:String = "Max -> Min"
-  orderDropDown:String = ""
+  orderby: String = "Max -> Min";
+  orderDropDown: String = "";
 
   constructor(
     private elementref: ElementRef,
@@ -36,9 +36,11 @@ export class HomepageComponent implements OnInit {
   ) {}
 
   getSearchCar() {
-    let duration = []
-    duration.push(this.searchForm.value.startDate,this.searchForm.value.endDate)
-    console.log(duration)
+    let duration = [];
+    duration.push(
+      this.searchForm.value.startDate,
+      this.searchForm.value.endDate
+    );
     this.router.navigate([
       "/homepage",
       {
@@ -47,22 +49,27 @@ export class HomepageComponent implements OnInit {
         // location : this.searchForm.value.location ,
         carModel: this.searchForm.value.model,
         sortby: this.valueSort,
-        duration : Array(duration)
+        duration: Array(duration)
       }
     ]);
   }
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      let quote = ['\"']
       let paramm = {};
       for (let p in params.keys) {
-        if(
+        if (
           params.get(params.keys[p]) != "null" &&
           params.get(params.keys[p]) != ""
-        ){
-          if(params.keys[p] == "duration"){
+        ) {
+          if (
+            params.keys[p] == "duration" &&
+            params.get(params.keys[p]) != ","
+          ) {
+            console.log(params.get(params.keys[p]));
             paramm[params.keys[p]] = [params.get(params.keys[p]).split(",")];
-          }else{
+            continue;
+          } else if (params.get(params.keys[p]) == ",") {
+          } else {
             paramm[params.keys[p]] = params.get(params.keys[p]);
           }
         }
@@ -160,22 +167,20 @@ export class HomepageComponent implements OnInit {
     this.sortDropDown = "Capacity";
     this.valueSort = "avgRating DESC";
   }
-  orderbyDESC(){
-    this.orderby = "Max -> Min"
-    if(this.sortDropDown == "Capacity"){
-      this.valueSort = "capacity DESC"
-    }
-    else if(this.sortDropDown == "Review"){
-      this.valueSort = "Review DESC"
+  orderbyDESC() {
+    this.orderby = "Max -> Min";
+    if (this.sortDropDown == "Capacity") {
+      this.valueSort = "capacity DESC";
+    } else if (this.sortDropDown == "Review") {
+      this.valueSort = "Review DESC";
     }
   }
-  orderbyASC(){
-    this.orderby = "Min -> Max"
-    if(this.sortDropDown == "Capacity"){
-      this.valueSort = "capacity ASC"
-    }
-    else if(this.sortDropDown == "Review"){
-      this.valueSort = "avgRating ASC"
+  orderbyASC() {
+    this.orderby = "Min -> Max";
+    if (this.sortDropDown == "Capacity") {
+      this.valueSort = "capacity ASC";
+    } else if (this.sortDropDown == "Review") {
+      this.valueSort = "avgRating ASC";
     }
   }
 }

@@ -54,3 +54,7 @@ fieldset{
 .filters{
     margin-top: 2%;
 }
+
+.is-one-quarter{
+    width: 20%;
+}
