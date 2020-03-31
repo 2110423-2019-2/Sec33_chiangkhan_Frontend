@@ -4,6 +4,9 @@ import axios from "axios";
 import { Router, ParamMap } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
+import { ViewChild, NgZone } from '@angular/core';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
+
 @Component({
   selector: "app-homepage",
   templateUrl: "./homepage.component.html",
@@ -22,13 +25,31 @@ export class HomepageComponent implements OnInit {
   dateForm = new FormGroup({
     startDate: new FormControl()
   });
+
+  @ViewChild('search', { static: true })
+  public searchElementRef: ElementRef;
+
   state: number = 0;
   sortDropDown: String = "sort";
   valueSort: String = "";
   orderby: String = "Max -> Min";
   orderDropDown: String = "";
 
+  latitude: number;
+  longitude: number;
+  zoom: number;
+  address: string;
+  private geoCoder;
+
+  leftx: number;
+  lefty: number;
+  rightx: number;
+  righty: number;
+  area: String = "";
+
   constructor(
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
     private elementref: ElementRef,
     private router: Router,
     private route: ActivatedRoute,
@@ -46,7 +67,7 @@ export class HomepageComponent implements OnInit {
       {
         carType: this.searchForm.value.cartype,
         capacity: this.searchForm.value.capacity,
-        // location : this.searchForm.value.location ,
+        pickupArea : this.area,
         carModel: this.searchForm.value.model,
         sortby: this.valueSort,
         duration: Array(duration)
@@ -87,9 +108,6 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-  onChangeDate() {
-    // console.log(this.dateForm.value)
-  }
   toggleFilter() {
     if (this.state == 0) {
       // console.log("yes")
@@ -105,9 +123,6 @@ export class HomepageComponent implements OnInit {
         "input input-1";
       this.elementref.nativeElement.querySelector(".input.input-0").className =
         "input input-1";
-      this.elementref.nativeElement.querySelector(
-        ".button.button-0"
-      ).className = "button button-1";
       this.elementref.nativeElement.querySelector(".fil").className = "fill";
       this.elementref.nativeElement.querySelector(".fil").className = "fill";
       this.elementref.nativeElement.querySelector(".fil").className = "fill";
@@ -129,9 +144,6 @@ export class HomepageComponent implements OnInit {
         "input input-0";
       this.elementref.nativeElement.querySelector(".input.input-1").className =
         "input input-0";
-      this.elementref.nativeElement.querySelector(
-        ".button.button-1"
-      ).className = "button button-0";
       this.elementref.nativeElement.querySelector(".fill").className = "fil";
       this.elementref.nativeElement.querySelector(".fill").className = "fil";
       this.elementref.nativeElement.querySelector(".fill").className = "fil";
@@ -159,7 +171,7 @@ export class HomepageComponent implements OnInit {
   }
 
   sortbyAvgRatingInc() {
-    this.sortDropDown = "Review";
+    this.sortDropDown = "Rating";
     this.valueSort = "avgRating DESC";
   }
 
@@ -182,5 +194,79 @@ export class HomepageComponent implements OnInit {
     } else if (this.sortDropDown == "Review") {
       this.valueSort = "avgRating ASC";
     }
+  }
+
+  private setCurrentLocation() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 8;
+        this.getAddress(this.latitude, this.longitude);
+      });
+    }
+  }
+  markerDragEnd($event: MouseEvent) {
+    console.log($event);
+    this.latitude = $event.coords.lat;
+    this.longitude = $event.coords.lng;
+    this.getAddress(this.latitude, this.longitude);
+  }
+
+  getAddress(latitude, longitude) {
+    this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
+      console.log(results);
+      console.log(status);
+      if (status === 'OK') {
+        if (results[0]) {
+          this.zoom = 12;
+          this.address = results[0].formatted_address;
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+
+    });
+  }
+  // Add Deal Button
+  openMap() {
+    document.getElementById("form").className = "modal modal-fx-fadeInScale is-active";
+    this.mapsAPILoader.load().then(() => {
+      this.setCurrentLocation();
+      this.geoCoder = new google.maps.Geocoder;
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"]
+      });
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+          //set latitude, longitude and zoom
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          this.zoom = 12;
+        });
+      });
+    });
+  }
+  closeform() {
+    document.getElementById("form").className = "modal modal-fx-fadeInScale";
+  }
+  submit_add_deal() {
+    this.closeform();
+  }
+
+  updatePoint() {
+    this.lefty = this.latitude + 0.05;
+    this.leftx = this.longitude + 0.05;
+    this.righty = this.latitude - 0.05;
+    this.rightx = this.longitude - 0.05;
+    this.area = "[["+String(this.leftx)+","+String(this.lefty)+"],"+"["+String(this.rightx)+","+String(this.righty)+"]]"
   }
 }

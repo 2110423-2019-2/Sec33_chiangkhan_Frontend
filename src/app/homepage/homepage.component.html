@@ -1,13 +1,14 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div>
-    <div id="sort"class="dropdown">
+  <div style="padding-top: 2.5%;">
+    <div id="sort" class="dropdown">
       <div class="dropdown-trigger">
         <button
           class="button"
           aria-haspopup="true"
           aria-controls="dropdown-menu"
           (click)="toggleDropdown1()"
+          style="height: 45px;"
         >
           <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
           <span>{{ sortDropDown }}</span>
@@ -19,7 +20,7 @@
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
           <a class="dropdown-item" (click)="sortbyAvgRatingInc()">
-            Review
+            Rating
           </a>
           <a class="dropdown-item" (click)="sortbycapacityInc()">
             Capacity
@@ -34,6 +35,7 @@
           aria-haspopup="true"
           aria-controls="dropdown-menu"
           (click)="toggleDropdown2()"
+          style="height: 45px;"
         >
           <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
           <span>{{ orderby }}</span>
@@ -53,11 +55,18 @@
         </div>
       </div>
     </div>
-    <button class="button" (click)="toggleFilter()">
-      <i class="fas fa-filter" style="padding-right: 5px;"></i>Filter
+    <button class="button" (click)="toggleFilter()" style="height: 45px;">
+      <i class="fas fa-filter" style="padding-right: 5px; "></i>Filter
+    </button>
+    <button
+      class="button"
+      type="submit"
+      (click)="getSearchCar()"
+      style="height: 45px;"
+    >
+      Search
     </button>
   </div>
-
   <form [formGroup]="searchForm" action="/" method="get">
     <div class="filters is-flex" id="state-show">
       <fieldset>
@@ -92,13 +101,13 @@
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Location</label>
-        <input
+        <button
           class="input input-0"
-          type="text"
-          name="location"
-          id="location"
-          formControlName="location"
-        />
+          style="width:100px; height: 42px;"
+          (click)="openMap()"
+        >
+          Open map
+        </button>
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Start Date</label>
@@ -120,11 +129,6 @@
           formControlName="endDate"
         />
       </fieldset>
-      <fieldset>
-        <button class="button button-0" type="submit" (click)="getSearchCar()">
-          Search
-        </button>
-      </fieldset>
     </div>
   </form>
   <div class="columns is-multiline">
@@ -136,3 +140,46 @@
 <footer>
   <app-app-footer></app-app-footer>
 </footer>
+
+<div class="modal modal-fx-fadeInScale" id="form">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Choose Location</p>
+      <button class="delete" aria-label="close" (click)="closeform()"></button>
+    </header>
+    <section class="modal-card-body reservation">
+      <form (ngSubmit)="submit_add_deal()">
+        <div class="container">
+          <div class="form-group">
+            <label>Enter address</label>
+            <input
+              type="text"
+              class="form-control"
+              (keydown.enter)="$event.preventDefault()"
+              placeholder="Search Nearest Location"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="off"
+              type="text"
+              #search
+            />
+          </div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker
+              [latitude]="latitude"
+              [longitude]="longitude"
+              [markerDraggable]="true"
+              (dragEnd)="markerDragEnd($event)"
+            ></agm-marker>
+          </agm-map>
+          <h5>Address: {{ address }}</h5>
+          <div>Latitude: {{ latitude }}</div>
+          <div>Longitude: {{ longitude }}</div>
+        </div>
+        <button (click)="updatePoint()">Confirm</button>
+      </form>
+    </section>
+    <footer class="modal-card-foot"></footer>
+  </div>
+</div>

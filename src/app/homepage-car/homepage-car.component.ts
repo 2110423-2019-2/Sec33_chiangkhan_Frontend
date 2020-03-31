@@ -12,17 +12,19 @@ export class HomepageCarComponent implements OnInit {
   constructor(private elementref:ElementRef) { }
 
   ngOnInit() {
+    // console.log(this.elementref.nativeElement.querySelectorAll(".fa"))
   }
   
   ngAfterViewInit(){
-    var arr = Array.from(document.getElementsByClassName('fa-star'))
+    let arr = this.elementref.nativeElement.querySelectorAll(".fa")
     for(let j = 0 ; j < this.car.avgRating ; j++){
-      arr[j].className = "fa fa-star checked"     
+      arr[j].className = "fa fa-star checked"   
+      arr[j+5].className = "fa fa-star checked"      
     }
 
   }
   openPopup(){
     console.log("open popup")
-    document.getElementsByClassName("modal modal-fx-fadeInScale")[0].className = "modal modal-fx-fadeInScale is-active"
+    this.elementref.nativeElement.querySelectorAll(".modal")[0].className = "modal modal-fx-fadeInScale is-active";
   }
 }
