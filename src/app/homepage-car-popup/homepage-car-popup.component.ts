@@ -14,7 +14,9 @@ export class HomepageCarPopupComponent implements OnInit {
 
   ngOnInit() {
     this.car_popup = this.car ;
-    // console.log(this.car_popup)
+  }
+  ngAfterViewInit(){
+    
   }
   closePopup(){
     document.getElementsByClassName("modal modal-fx-fadeInScale is-active")[0].className = "modal modal-fx-fadeInScale"

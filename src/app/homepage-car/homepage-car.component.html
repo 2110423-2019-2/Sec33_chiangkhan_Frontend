@@ -4,7 +4,13 @@
   </div>
   <footer class="card-footer">
    <p>Owner : {{car.ownerId}}</p>
-   <p id="p-review">Review {{car.avgRating}}</p>
+   <div class="column" style="padding: 0px; flex: unset;">
+    <span id="star1" class="fa fa-star"></span>
+    <span id="star2" class="fa fa-star"></span>
+    <span id="star3" class="fa fa-star"></span>
+    <span id="star4" class="fa fa-star"></span>
+    <span id="star5" class="fa fa-star"></span>
+  </div>
   </footer>
 </div>
 <app-homepage-car-popup [car]="car"></app-homepage-car-popup>

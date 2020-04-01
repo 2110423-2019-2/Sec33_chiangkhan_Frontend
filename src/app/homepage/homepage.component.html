@@ -1,40 +1,138 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <button class="button" (click)="toggleFilter()">
-    <i class="fas fa-filter"></i>Filter
-  </button>
-  <form [formGroup] = "searchForm" action="/" method="get">
+  <div style="padding-top: 2.5%;">
+    <div id="sort" class="dropdown">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          (click)="toggleDropdown1()"
+          style="height: 45px;"
+        >
+          <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
+          <span>{{ sortDropDown }}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a class="dropdown-item" (click)="sortbyAvgRatingInc()">
+            Rating
+          </a>
+          <a class="dropdown-item" (click)="sortbycapacityInc()">
+            Capacity
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="order" class="dropdown">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          (click)="toggleDropdown2()"
+          style="height: 45px;"
+        >
+          <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
+          <span>{{ orderby }}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a class="dropdown-item" (click)="orderbyDESC()">
+            Max --> Min
+          </a>
+          <a class="dropdown-item" (click)="orderbyASC()">
+            Min --> Max
+          </a>
+        </div>
+      </div>
+    </div>
+    <button class="button" (click)="toggleFilter()" style="height: 45px;  margin-right: 15px;" >
+      <i class="fas fa-filter" style="padding-right: 5px; "></i>Filter
+    </button>
+    <button
+      class="button is-primary is-outlined"
+      type="submit"
+      (click)="getSearchCar()"
+      style="height: 45px;"
+    >
+      Search
+    </button>
+  </div>
+  <form [formGroup]="searchForm" action="/" method="get">
     <div class="filters is-flex" id="state-show">
       <fieldset>
         <label class="fil" id="f" for="">Car type</label>
-        <input class="input input-0" type="text" name='type' id='type' formControlName="cartype"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="type"
+          id="type"
+          formControlName="cartype"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Car Model</label>
-        <input class="input input-0" type="text" name='model'id='model'formControlName="model"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="model"
+          id="model"
+          formControlName="model"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Car capacity</label>
-        <input class="input input-0" type="text" name='capacity'id='capacity' formControlName="capacity"/>
+        <input
+          class="input input-0"
+          type="text"
+          name="capacity"
+          id="capacity"
+          formControlName="capacity"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Location</label>
-        <input class="input input-0" type="text" name='location' id='location'formControlName="location"/>
+        <button
+          class="input input-0"
+          style="width:150px; height: 42px;"
+          (click)="openMap()"
+        >
+        <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
+          Open map
+        </button>
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">Start Date</label>
-        <input class="input input-0" type="text" name='startDate'id='startDate'formControlName="startDate"/>
+        <input
+          class="input input-0"
+          type="date"
+          name="startDate"
+          id="startDate"
+          formControlName="startDate"
+        />
       </fieldset>
       <fieldset>
         <label class="fil" id="f" for="">End Date</label>
-        <input class="input input-0" type="text" name='endDate' id='endDate' formControlName="endDate"/>
-      </fieldset>
-      <fieldset>
-       <button class="button" type="submit" (click)="getSearchCar()">Search</button>
+        <input
+          class="input input-0"
+          type="date"
+          name="endDate"
+          id="endDate"
+          formControlName="endDate"
+        />
       </fieldset>
     </div>
   </form>
-  <div class="columns is-multiline"> 
+  <div class="columns is-multiline">
     <div class="column is-one-quarter" *ngFor="let car of cars">
       <app-homepage-car [car]="car"></app-homepage-car>
     </div>
@@ -43,3 +141,46 @@
 <footer>
   <app-app-footer></app-app-footer>
 </footer>
+
+<div class="modal modal-fx-fadeInScale" id="form">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card" style="height:auto; width: 1000px;">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Choose Location</p>
+      <button class="delete" aria-label="close" (click)="closeform()"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (ngSubmit)="submit_add_deal()">
+        <div class="container">
+          <div class="form-group">
+            <label style="margin: 20px;">Enter address</label>
+            <input
+              class="input"
+              type="text"
+              class="form-control"
+              (keydown.enter)="$event.preventDefault()"
+              placeholder="Search Nearest Location"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="off"
+              type="text"
+              #search
+            />
+          </div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker
+              [latitude]="latitude"
+              [longitude]="longitude"
+              [markerDraggable]="true"
+              (dragEnd)="markerDragEnd($event)"
+            ></agm-marker>
+          </agm-map>
+          <h5>Address: {{ address }}</h5>
+          <div>Latitude: {{ latitude }}</div>
+          <div>Longitude: {{ longitude }}</div>
+        </div>
+        <button class="button is-success" (click)="updatePoint()" style="margin-top: 20px;">Confirm</button>
+      </form>
+    </section>
+  </div>
+</div>

@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
   })
   passwording:string = ""
   confirmPassword:string = ""
+  phonenum:string= ""
   constructor(private authService : AuthService , private router : Router , private elem : ElementRef) {
     
   }
@@ -43,10 +44,11 @@ export class RegisterComponent implements OnInit {
   onChangeConfirm(){
     this.confirmPassword = this.confirmPassword
     if(this.passwording === this.confirmPassword){
-      this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group" 
+      this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group-success" 
       console.log("Yes")  
     }else{
-      this.elem.nativeElement.querySelector('#conformpassword').className = "input-group-invalid" 
+      console.log("no")
+      this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group-invalid" 
     }
   } 
 
@@ -94,4 +96,14 @@ export class RegisterComponent implements OnInit {
     document.getElementsByClassName("non-active")[0].className = "active"
   }
   
+  checkPhonenum(){
+    for(let index of this.phonenum){
+      if(isNaN(parseInt(index))){
+        this.elem.nativeElement.querySelector('#password').className = "input-group-invalid" 
+        break
+      }else{
+        this.elem.nativeElement.querySelector('#password').className = "input-group" 
+      }
+    }
+  }
 }
