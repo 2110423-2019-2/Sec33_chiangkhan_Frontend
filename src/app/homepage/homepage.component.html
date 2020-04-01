@@ -55,11 +55,11 @@
         </div>
       </div>
     </div>
-    <button class="button" (click)="toggleFilter()" style="height: 45px;">
+    <button class="button" (click)="toggleFilter()" style="height: 45px;  margin-right: 15px;" >
       <i class="fas fa-filter" style="padding-right: 5px; "></i>Filter
     </button>
     <button
-      class="button"
+      class="button is-primary is-outlined"
       type="submit"
       (click)="getSearchCar()"
       style="height: 45px;"
@@ -103,9 +103,10 @@
         <label class="fil" id="f" for="">Location</label>
         <button
           class="input input-0"
-          style="width:100px; height: 42px;"
+          style="width:150px; height: 42px;"
           (click)="openMap()"
         >
+        <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
           Open map
         </button>
       </fieldset>
@@ -143,17 +144,18 @@
 
 <div class="modal modal-fx-fadeInScale" id="form">
   <div class="modal-background"></div>
-  <div class="modal-content modal-card">
+  <div class="modal-content modal-card" style="height:auto; width: 1000px;">
     <header class="modal-card-head">
       <p class="modal-card-title">Choose Location</p>
       <button class="delete" aria-label="close" (click)="closeform()"></button>
     </header>
-    <section class="modal-card-body reservation">
+    <section class="modal-card-body">
       <form (ngSubmit)="submit_add_deal()">
         <div class="container">
           <div class="form-group">
-            <label>Enter address</label>
+            <label style="margin: 20px;">Enter address</label>
             <input
+              class="input"
               type="text"
               class="form-control"
               (keydown.enter)="$event.preventDefault()"
@@ -177,9 +179,8 @@
           <div>Latitude: {{ latitude }}</div>
           <div>Longitude: {{ longitude }}</div>
         </div>
-        <button (click)="updatePoint()">Confirm</button>
+        <button class="button is-success" (click)="updatePoint()" style="margin-top: 20px;">Confirm</button>
       </form>
     </section>
-    <footer class="modal-card-foot"></footer>
   </div>
 </div>

@@ -177,21 +177,21 @@ export class HomepageComponent implements OnInit {
 
   sortbycapacityInc() {
     this.sortDropDown = "Capacity";
-    this.valueSort = "avgRating DESC";
+    this.valueSort = "capacity DESC";
   }
   orderbyDESC() {
     this.orderby = "Max -> Min";
     if (this.sortDropDown == "Capacity") {
       this.valueSort = "capacity DESC";
-    } else if (this.sortDropDown == "Review") {
-      this.valueSort = "Review DESC";
+    } else if (this.sortDropDown == "Rating") {
+      this.valueSort = "avgRating DESC";
     }
   }
   orderbyASC() {
     this.orderby = "Min -> Max";
     if (this.sortDropDown == "Capacity") {
       this.valueSort = "capacity ASC";
-    } else if (this.sortDropDown == "Review") {
+    } else if (this.sortDropDown == "Rating") {
       this.valueSort = "avgRating ASC";
     }
   }

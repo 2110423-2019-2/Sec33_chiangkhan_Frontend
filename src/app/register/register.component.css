@@ -323,6 +323,12 @@
     border-bottom: 1px solid #e5e5e5;
     border-color: red;
   }
+  .input-group-success{
+    position: relative;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #e5e5e5;
+    border-color: green;
+  }
   
 
   .input--style-2 {
@@ -373,7 +379,7 @@
   
   .card-2 .card-body {
     display: table-cell;
-    padding: 80px 90px;
+    padding: 80px 60px;
     padding-bottom: 88px;
   }
   
