@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { REVIEWS } from '../review/mock-review';
 
 @Component({
@@ -8,20 +8,23 @@ import { REVIEWS } from '../review/mock-review';
 })
 export class HomepageCarComponent implements OnInit {
   reviews = REVIEWS ;
-  constructor() { }
+  @Input() car;
+  constructor(private elementref:ElementRef) { }
 
   ngOnInit() {
+    // console.log(this.elementref.nativeElement.querySelectorAll(".fa"))
   }
   
   ngAfterViewInit(){
-    var arr = Array.from(document.getElementsByClassName('fa-star'))
-    for(let j = 0 ; j < this.reviews.length ; j++){
-       for(let i = 0 ; i < this.reviews[j].rating ; i++){
-         arr[5*j+i+5].className = "fa fa-star checked"     
-      }
+    let arr = this.elementref.nativeElement.querySelectorAll(".fa")
+    for(let j = 0 ; j < this.car.avgRating ; j++){
+      arr[j].className = "fa fa-star checked"   
+      arr[j+5].className = "fa fa-star checked"      
     }
+
   }
   openPopup(){
-    document.getElementsByClassName("modal modal-fx-fadeInScale")[0].className = "modal modal-fx-fadeInScale is-active"
+    console.log("open popup")
+    this.elementref.nativeElement.querySelectorAll(".modal")[0].className = "modal modal-fx-fadeInScale is-active";
   }
 }

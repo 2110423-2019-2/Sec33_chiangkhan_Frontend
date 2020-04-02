@@ -1,130 +1,186 @@
 <app-navbar></app-navbar>
-
-<div class="columns is-flex-desktop">
-  <!-- search bar -->
-  <div class="column is-3 searchbox">
-    <div class="input-group input-group-unstyled is-flex">
-      <input type="text" placeholder="Search.." class="input is-small form-control" />
-      <span class="input-group-addon">
-        <i class="fa fa-search"></i>
-      </span>
-    </div>
-    <br />
-
-    <!-- Part1 Labels -->
-    <div class="columns">
-      <div class="column is-2">
-        <label for="types">Type</label>
-        <br />
-        <label for="models">Model</label>
-        <br />
-        <label for="ratings">Rating</label>
+<div class="container">
+  <div style="padding-top: 2.5%;">
+    <div id="sort" class="dropdown">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          (click)="toggleDropdown1()"
+          style="height: 45px;"
+        >
+          <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
+          <span>{{ sortDropDown }}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
       </div>
-
-      <!-- Part 1 dropdowns -->
-      <div class="column">
-        <!-- Type -->
-        <select class="dropdown" id="types">
-          <option disabled selected value></option>
-          <option value="sport">Volvo</option>
-          <option value="minivan">Saab</option>
-          <option value="truck">Mercedes</option>
-          <option value="tuk-tuk">Audi</option>
-        </select>
-
-        <br />
-
-        <!-- Model -->
-        <select class="dropdown" id="models">
-          <option disabled selected value></option>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-
-        <!-- Rating -->
-        <select id="ratings">
-          <option disabled selected value></option>
-          <option value="1">Volvo</option>
-          <option value="2">Saab</option>
-          <option value="3">Mercedes</option>
-          <option value="4">Audi</option>
-          <option value="5">Audi</option>
-        </select>
-
-        <!-- Capacity -->
-        <label for="capacities">Capacity</label>
-
-        <select id="capacities">
-          <option disabled selected value></option>
-          <option value="1">Volvo</option>
-          <option value="2">Saab</option>
-          <option value="3">Mercedes</option>
-          <option value="4">Audi</option>
-        </select>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a class="dropdown-item" (click)="sortbyAvgRatingInc()">
+            Rating
+          </a>
+          <a class="dropdown-item" (click)="sortbycapacityInc()">
+            Capacity
+          </a>
+        </div>
       </div>
     </div>
-
-    <hr />
-
-    <!-- Part 2 Labels -->
-    <div class="columns">
-      <div class="column is-2">
-        <label for="types">Location</label>
-        <br />
-        <label for="models">District</label>
-        <br />
-        <label for="ratings">Province</label>
+    <div id="order" class="dropdown">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          (click)="toggleDropdown2()"
+          style="height: 45px;"
+        >
+          <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
+          <span>{{ orderby }}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
       </div>
-
-      <!-- Part 2 Dropdowns -->
-      <div class="column">
-        <!-- Location -->
-        <input type="text">
-
-        <br />
-
-        <!-- District -->
-        <input type="text">
-
-        <br />
-
-        <!-- Province -->
-        <input type="text">
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a class="dropdown-item" (click)="orderbyDESC()">
+            Max --> Min
+          </a>
+          <a class="dropdown-item" (click)="orderbyASC()">
+            Min --> Max
+          </a>
+        </div>
       </div>
     </div>
-    <hr />
-
-    <!-- Part 3 -->
-    Date
-
-    <!-- Part 3 Labels -->
-    <div class="columns">
-      <div class="column is-3">
-        <label for="types">Start Date</label>
-        <br />
-        <label for="models">End date</label>
-      </div>
-
-      <br />
-
-      <!-- Part 3 Dropdowns -->
-      <div class="column" [formGroup] = "dateForm">
-        <!-- Start Date -->
-        <input type="date" id="start_dates" name="start_dates" formControlName="startDate" (input)="onChangeDate()">
-
-        <br />
-
-        <!-- End Date -->
-        <input type="date" id="start_dates" name="start_dates">  
-      </div>
+    <button class="button" (click)="toggleFilter()" style="height: 45px;  margin-right: 15px;" >
+      <i class="fas fa-filter" style="padding-right: 5px; "></i>Filter
+    </button>
+    <button
+      class="button is-primary is-outlined"
+      type="submit"
+      (click)="getSearchCar()"
+      style="height: 45px;"
+    >
+      Search
+    </button>
+  </div>
+  <form [formGroup]="searchForm" action="/" method="get">
+    <div class="filters is-flex" id="state-show">
+      <fieldset>
+        <label class="fil" id="f" for="">Car type</label>
+        <input
+          class="input input-0"
+          type="text"
+          name="type"
+          id="type"
+          formControlName="cartype"
+        />
+      </fieldset>
+      <fieldset>
+        <label class="fil" id="f" for="">Car Model</label>
+        <input
+          class="input input-0"
+          type="text"
+          name="model"
+          id="model"
+          formControlName="model"
+        />
+      </fieldset>
+      <fieldset>
+        <label class="fil" id="f" for="">Car capacity</label>
+        <input
+          class="input input-0"
+          type="text"
+          name="capacity"
+          id="capacity"
+          formControlName="capacity"
+        />
+      </fieldset>
+      <fieldset>
+        <label class="fil" id="f" for="">Location</label>
+        <button
+          class="input input-0"
+          style="width:150px; height: 42px;"
+          (click)="openMap()"
+        >
+        <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
+          Open map
+        </button>
+      </fieldset>
+      <fieldset>
+        <label class="fil" id="f" for="">Start Date</label>
+        <input
+          class="input input-0"
+          type="date"
+          name="startDate"
+          id="startDate"
+          formControlName="startDate"
+        />
+      </fieldset>
+      <fieldset>
+        <label class="fil" id="f" for="">End Date</label>
+        <input
+          class="input input-0"
+          type="date"
+          name="endDate"
+          id="endDate"
+          formControlName="endDate"
+        />
+      </fieldset>
+    </div>
+  </form>
+  <div class="columns is-multiline">
+    <div class="column is-one-quarter" *ngFor="let car of cars">
+      <app-homepage-car [car]="car"></app-homepage-car>
     </div>
   </div>
+</div>
+<footer>
+  <app-app-footer></app-app-footer>
+</footer>
 
-  <!-- Boss's Part -->
-  <div class="column" id="newest-deal">
-    <h1>Newest Deal</h1>
-    <app-homepage-car></app-homepage-car>
+<div class="modal modal-fx-fadeInScale" id="form">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card" style="height:auto; width: 1000px;">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Choose Location</p>
+      <button class="delete" aria-label="close" (click)="closeform()"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (ngSubmit)="submit_add_deal()">
+        <div class="container">
+          <div class="form-group">
+            <label style="margin: 20px;">Enter address</label>
+            <input
+              class="input"
+              type="text"
+              class="form-control"
+              (keydown.enter)="$event.preventDefault()"
+              placeholder="Search Nearest Location"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="off"
+              type="text"
+              #search
+            />
+          </div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker
+              [latitude]="latitude"
+              [longitude]="longitude"
+              [markerDraggable]="true"
+              (dragEnd)="markerDragEnd($event)"
+            ></agm-marker>
+          </agm-map>
+          <h5>Address: {{ address }}</h5>
+          <div>Latitude: {{ latitude }}</div>
+          <div>Longitude: {{ longitude }}</div>
+        </div>
+        <button class="button is-success" (click)="updatePoint()" style="margin-top: 20px;">Confirm</button>
+      </form>
+    </section>
   </div>
 </div>

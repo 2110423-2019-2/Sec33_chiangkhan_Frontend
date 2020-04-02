@@ -1,18 +1,9 @@
-import { element } from 'protractor';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { Component, OnInit, Input , ElementRef } from '@angular/core';
 import { AuthService } from '../auth.service';
 import axios from 'axios';
 
-interface Course {
-  description: string;
-  courseListIcon:string;
-  iconUrl:string;
-  longDescription:string;
-  url:string;
-}
 
 @Component({
   selector: 'app-register',
@@ -37,30 +28,29 @@ export class RegisterComponent implements OnInit {
   })
   passwording:string = ""
   confirmPassword:string = ""
-  constructor(private http:HttpClient , private authService : AuthService , private router : Router) {
+  phonenum:string= ""
+  constructor(private authService : AuthService , private router : Router , private elem : ElementRef) {
     
-   }
+  }
 
   ngOnInit() {
     
   }
-  ngOnChanges() {
-    
-  }
-  onChangePassword(){
+  
+  onChangePassword(){ 
     this.passwording = this.passwording 
     console.log(this.passwording)
   }
   onChangeConfirm(){
     this.confirmPassword = this.confirmPassword
     if(this.passwording === this.confirmPassword){
-      document.getElementById("confirm").className = "input is-success"
-      console.log("Yes")
+      this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group-success" 
+      console.log("Yes")  
     }else{
-      document.getElementById("confirm").className = "input is-danger"
+      console.log("no")
+      this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group-invalid" 
     }
-    console.log(this.confirmPassword)
-  }
+  } 
 
   onSubmit(){
     if(this.registerForm.value.firstname == null || this.registerForm.value.lastname == null  || this.registerForm.value.username == null 
@@ -68,25 +58,25 @@ export class RegisterComponent implements OnInit {
       || this.registerForm.value.bank_account == null  || this.registerForm.value.bank_account_branch == null || this.registerForm.value.credit_card_number == null
       || this.registerForm.value.credit_card_security == null  || this.registerForm.value.credit_card_expiry == null || this.registerForm.value.driving_license == null
       || this.registerForm.value.address == null){
-      document.getElementsByClassName("non-active")[0].className = "active";
+     
+        console.log("Incomplete")
     } else if(this.passwording !== this.confirmPassword) {
-      
+       
     }else {
     console.log(this.registerForm.value)
     axios.post('http://localhost:8080/api/users',this.registerForm.value)
       .then((response) => {
         console.log(response);
         document.getElementById('registerpop').className = "modal is-active";
-        document.getElementsByClassName("active")[0].className = "non-active"
         //window.location.assign("/")
       })
       .catch((error) => {
         console.log(error);
       });
-    }
+    } 
   }
-  cancel(){
-    this.router.navigate(['/'])
+  cancel(){ 
+    this.router.navigate(['/']) 
   }
 
   del_registerpop() {
@@ -106,4 +96,14 @@ export class RegisterComponent implements OnInit {
     document.getElementsByClassName("non-active")[0].className = "active"
   }
   
+  checkPhonenum(){
+    for(let index of this.phonenum){
+      if(isNaN(parseInt(index))){
+        this.elem.nativeElement.querySelector('#password').className = "input-group-invalid" 
+        break
+      }else{
+        this.elem.nativeElement.querySelector('#password').className = "input-group" 
+      }
+    }
+  }
 }

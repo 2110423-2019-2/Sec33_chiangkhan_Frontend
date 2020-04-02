@@ -29,6 +29,9 @@ import { HomepageCarReservationsPopupComponent } from './homepage-car-reservatio
 import { HomepageCarReservationsReserveconfirmPopupComponent } from './homepage-car-reservations-reserveconfirm-popup/homepage-car-reservations-reserveconfirm-popup.component';
 import { AgmCoreModule } from '@agm/core';
 import { AuthService } from './auth.service';
+import { AppFooterComponent } from './app-footer/app-footer.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import {SlideshowModule} from 'ng-simple-slideshow';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -38,7 +41,8 @@ const appRoutes: Routes = [
   { path: "homepage/profile", component:ProfileComponent },
   { path: "homepage/listofcars", component:ListofcarsComponent },
   { path: "homepage/mycar" , component:BoxComponent },
-  { path: "homepage/HomepageCarReservations", component:HomepageCarReservationsComponent}
+  { path: "homepage/HomepageCarReservations", component:HomepageCarReservationsComponent},
+  { path: "aboutus", component:AboutusComponent}
 ];   
 
 
@@ -66,6 +70,8 @@ const appRoutes: Routes = [
     HomepageCarReservationsComponent,
     HomepageCarReservationsPopupComponent,
     HomepageCarReservationsReserveconfirmPopupComponent,
+    AppFooterComponent,
+    AboutusComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +81,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule ,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    SlideshowModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB-0c0j8f41aRTUyGLZdFhBEF-7TPwnZOQ',
       libraries: ['places']

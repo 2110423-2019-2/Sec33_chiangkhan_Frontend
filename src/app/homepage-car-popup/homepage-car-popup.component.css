@@ -32,7 +32,7 @@
     opacity: 0; }
   .modal.is-active {
     visibility: visible; }
-    .modal.is-active .modal-background {
+  .modal.is-active .modal-background {
       opacity: 1; }
   .modal.modal-full-screen .modal-background {
     background-color: #fff; }
@@ -57,3 +57,10 @@
     opacity: 1; }
   
 
+.modal-card-body{
+  padding: 50px;
+}
+
+.checked {
+  color: orange;
+}
