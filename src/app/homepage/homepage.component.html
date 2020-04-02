@@ -132,8 +132,9 @@
       </fieldset>
     </div>
   </form>
-  <div class="columns is-multiline" style="height: 400px;" >
-    <div class="column is-one-quarter" *ngFor="let car of cars">
+  <h1 style="font-weight: bold; font-size: xx-large; padding-bottom: 20px;">Newest Deal Available</h1>
+  <div class="columns is-multiline is-center" >
+    <div class="column is-narrow" *ngFor="let car of cars">
       <app-homepage-car [car]="car"></app-homepage-car>
     </div>
   </div>

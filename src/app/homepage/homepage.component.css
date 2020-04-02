@@ -48,9 +48,6 @@ fieldset {
   margin-top: 2%;
 }
 
-.is-one-quarter {
-  width: 20%;
-}
 .modal-card {
   /* max-height: calc(100vh - 225px); */
   width: 700px;
@@ -58,10 +55,6 @@ fieldset {
   margin-top: auto;
   margin-bottom: auto;
 }
-
-/* .modal-background {
-        margin: 0px 0px 0px 0px;
-    } */
 
 .reservationbox {
   border: groove firebrick;

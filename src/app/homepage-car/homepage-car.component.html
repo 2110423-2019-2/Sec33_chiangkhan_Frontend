@@ -1,16 +1,24 @@
 <div class="card">
   <div class="card-content">
-    <img src="{{car.photoOfCarDocument}}" (click)="openPopup()">
-  </div>
-  <footer class="card-footer">
-   <p>Owner : {{car.ownerId}}</p>
-   <div class="column" style="padding: 0px; flex: unset;">
-    <span id="star1" class="fa fa-star"></span>
-    <span id="star2" class="fa fa-star"></span>
-    <span id="star3" class="fa fa-star"></span>
-    <span id="star4" class="fa fa-star"></span>
-    <span id="star5" class="fa fa-star"></span>
-  </div>
-  </footer>
+    <div class="columns">
+      <div class="column">
+        <img src="{{car.photoOfCarDocument}}" (click)="openPopup()">
+      </div>
+      <div class="column">
+        <p>Owner : {{car.ownerId}}</p>
+        <div class="tags">
+          <span class="tag">{{car.carType}}</span>
+          <span class="tag">{{car.carModel}}</span>
+        </div>
+        <p>Capacity : {{car.capacity}}</p>
+        <div class="column" style="padding: 0px; flex: unset;">
+         <span id="star1" class="fa fa-star"></span>
+         <span id="star2" class="fa fa-star"></span>
+         <span id="star3" class="fa fa-star"></span>
+         <span id="star4" class="fa fa-star"></span>
+         <span id="star5" class="fa fa-star"></span>
+       </div>
+      </div>
+    </div>
 </div>
 <app-homepage-car-popup [car]="car"></app-homepage-car-popup>

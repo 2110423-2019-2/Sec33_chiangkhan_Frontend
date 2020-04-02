@@ -1,12 +1,11 @@
 <app-navbar></app-navbar>
 <div class="container">
+    <h1 style="font-size: xx-large; font-weight: bolder;">My reservation</h1>
     <div *ngFor="let car of cars">
         <app-myreservation-car [car]= "car"></app-myreservation-car>
     </div>
 </div>
  
-<br><br><br>
-
 <footer>
     <app-app-footer></app-app-footer>
 </footer>

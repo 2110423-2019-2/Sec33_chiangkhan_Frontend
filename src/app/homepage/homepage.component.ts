@@ -47,6 +47,11 @@ export class HomepageComponent implements OnInit {
   righty: number;
   area: String = "";
 
+  mock_car = [{ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'}]
+
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
@@ -95,7 +100,6 @@ export class HomepageComponent implements OnInit {
           }
         }
       }
-      console.log(paramm);
       axios
         .get("http://localhost:8080/api/car/", { params: paramm })
         .then(response => {
@@ -106,6 +110,8 @@ export class HomepageComponent implements OnInit {
           console.log(error);
         });
     });
+    this.cars = this.mock_car;
+    console.log(this.cars)
   }
 
   toggleFilter() {
