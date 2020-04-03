@@ -1,6 +1,10 @@
 .navbar {
-    background-color: pink
+    background-color: pink;
+    position: fixed;
+    width: 100%;
+    top : 0;
 }
+
 img #logo{
     width :"150" ;
     height :"50" ;

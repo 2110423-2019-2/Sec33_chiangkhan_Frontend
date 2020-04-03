@@ -36,5 +36,7 @@ export class MyReservationCarComponent implements OnInit {
       this.elem.nativeElement.querySelectorAll('button')[3].className = 'button is-dark is-disabled'
     }
   }
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {this.elem.nativeElement.querySelector(".card-before").className = "card" },500);
+  }
 }
