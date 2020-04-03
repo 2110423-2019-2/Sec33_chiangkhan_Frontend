@@ -1,49 +1,21 @@
-.fil {
-  font-size: 0px;
-  font-weight: 600;
-  transition: 0.5s;
-}
-.fill {
-  font-size: 15px;
-  font-weight: 600;
-  transition: 0.5s;
-}
-
 /* show  */
 fieldset {
   margin-left: 2%;
   margin-right: 2%;
-}
-.input.input-1 {
-  display: block;
-  height: 40px;
-  transition: height 0.5s;
+  display: flex;
 }
 
-/* not show  */
-.button.button-0 {
-  display: none;
-  height: 0px;
-  transition: height 0.5s;
-  margin-top: 24px;
+.dropdown-item:hover {
+  background-color : pink;
+  color: black;
+  border-radius: 10px;
+  width: auto;
 }
-.button.button-1 {
-  display: block;
-  height: 40px;
-  transition: height 0.5s;
-  margin-top: 24px;
+.dropdown-item{
+  padding-right: 0%;
+  margin: 5px;
 }
 
-/* not show  */
-.input.input-0 {
-  display: none;
-  height: 0px;
-  transition: height 0.5s;
-}
-
-.dropdown {
-  margin-right: 2.5%;
-}
 .filters {
   margin-top: 2%;
 }
@@ -64,7 +36,7 @@ fieldset {
   margin-bottom: 10px;
 }
 
-.is-2 > img {
+.is-2>img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -150,6 +122,6 @@ agm-map {
   height: 300px;
 }
 
-.container{
+.container {
   margin-top: 80px;
-} 
+}

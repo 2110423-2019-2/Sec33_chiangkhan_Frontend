@@ -15,7 +15,6 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
 export class HomepageComponent implements OnInit {
   searchForm = new FormGroup({
     cartype: new FormControl(),
-    capacity: new FormControl(),
     model: new FormControl(),
     location: new FormControl(),
     startDate: new FormControl(),
@@ -35,6 +34,8 @@ export class HomepageComponent implements OnInit {
   orderby: String = "Max -> Min";
   orderDropDown: String = "";
 
+  valueCapacity:number ;
+
   latitude: number;
   longitude: number;
   zoom: number;
@@ -49,6 +50,10 @@ export class HomepageComponent implements OnInit {
 
   mock_car = [{ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
               {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'}, 
               {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
               {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'}]
 
@@ -71,7 +76,7 @@ export class HomepageComponent implements OnInit {
       "/homepage",
       {
         carType: this.searchForm.value.cartype,
-        capacity: this.searchForm.value.capacity,
+        capacity: this.valueCapacity,
         pickupArea : this.area,
         carModel: this.searchForm.value.model,
         sortby: this.valueSort,
@@ -114,77 +119,25 @@ export class HomepageComponent implements OnInit {
     console.log(this.cars)
   }
 
-  toggleFilter() {
-    if (this.state == 0) {
-      // console.log("yes")
-      this.elementref.nativeElement.querySelector(".input.input-0").className =
-        "input input-1";
-      this.elementref.nativeElement.querySelector(".input.input-0").className =
-        "input input-1";
-      this.elementref.nativeElement.querySelector(".input.input-0").className =
-        "input input-1";
-      this.elementref.nativeElement.querySelector(".input.input-0").className =
-        "input input-1";
-      this.elementref.nativeElement.querySelector(".input.input-0").className =
-        "input input-1";
-      this.elementref.nativeElement.querySelector(".input.input-0").className =
-        "input input-1";
-      this.elementref.nativeElement.querySelector(".fil").className = "fill";
-      this.elementref.nativeElement.querySelector(".fil").className = "fill";
-      this.elementref.nativeElement.querySelector(".fil").className = "fill";
-      this.elementref.nativeElement.querySelector(".fil").className = "fill";
-      this.elementref.nativeElement.querySelector(".fil").className = "fill";
-      this.elementref.nativeElement.querySelector(".fil").className = "fill";
-      this.state = 1;
-    } else {
-      // console.log("no")
-      this.elementref.nativeElement.querySelector(".input.input-1").className =
-        "input input-0";
-      this.elementref.nativeElement.querySelector(".input.input-1").className =
-        "input input-0";
-      this.elementref.nativeElement.querySelector(".input.input-1").className =
-        "input input-0";
-      this.elementref.nativeElement.querySelector(".input.input-1").className =
-        "input input-0";
-      this.elementref.nativeElement.querySelector(".input.input-1").className =
-        "input input-0";
-      this.elementref.nativeElement.querySelector(".input.input-1").className =
-        "input input-0";
-      this.elementref.nativeElement.querySelector(".fill").className = "fil";
-      this.elementref.nativeElement.querySelector(".fill").className = "fil";
-      this.elementref.nativeElement.querySelector(".fill").className = "fil";
-      this.elementref.nativeElement.querySelector(".fill").className = "fil";
-      this.elementref.nativeElement.querySelector(".fill").className = "fil";
-      this.elementref.nativeElement.querySelector(".fill").className = "fil";
-      this.state = 0;
-    }
-  }
-
-  toggleDropdown1() {
-    var dropdown = document.querySelector("#sort");
-    dropdown.addEventListener("click", function(event) {
-      event.stopPropagation();
-      dropdown.classList.toggle("is-active");
-    });
-  }
-
-  toggleDropdown2() {
-    var dropdown = document.querySelector("#order");
-    dropdown.addEventListener("click", function(event) {
-      event.stopPropagation();
-      dropdown.classList.toggle("is-active");
-    });
+  toggleDropdown(filter:String){
+    filter = '#' + filter ;
+    this.elementref.nativeElement.querySelector(filter).classList.toggle("is-active");
   }
 
   sortbyAvgRatingInc() {
     this.sortDropDown = "Rating";
     this.valueSort = "avgRating DESC";
+    this.getSearchCar()
+    this.toggleDropdown("sort")
   }
 
   sortbycapacityInc() {
     this.sortDropDown = "Capacity";
     this.valueSort = "capacity DESC";
+    this.getSearchCar()
+    this.toggleDropdown("sort")
   }
+ 
   orderbyDESC() {
     this.orderby = "Max -> Min";
     if (this.sortDropDown == "Capacity") {
@@ -192,6 +145,8 @@ export class HomepageComponent implements OnInit {
     } else if (this.sortDropDown == "Rating") {
       this.valueSort = "avgRating DESC";
     }
+    this.getSearchCar()
+    this.toggleDropdown("order")
   }
   orderbyASC() {
     this.orderby = "Min -> Max";
@@ -200,9 +155,15 @@ export class HomepageComponent implements OnInit {
     } else if (this.sortDropDown == "Rating") {
       this.valueSort = "avgRating ASC";
     }
+    this.getSearchCar()
+    this.toggleDropdown("order")
+  }
+  searchCapacity(capacity:number){
+    this.valueCapacity = capacity;
+    this.toggleDropdown("capacity")
   }
 
-  private setCurrentLocation() {
+  setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
