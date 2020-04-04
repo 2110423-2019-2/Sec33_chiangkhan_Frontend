@@ -1,18 +1,18 @@
 #buttona {
   background-color: rgb(21, 65, 82);
   color: white;
-  width: 150px;
   margin: auto;
   display: block;
 }
 
 
-.fa-check{
+.fa-check {
   align-self: center;
   color: #4dae3c;
   display: none;
 }
-.fa-times{
+
+.fa-times {
   align-self: center;
   color: red;
   display: none;
@@ -429,4 +429,20 @@ input {
     display: block;
     padding: 60px 50px;
   }
+}
+
+section>.modal-card-body {
+  background-color: cadetblue;
+}
+
+#invalid_register {
+  display: none;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color:red;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 20px;
+  background-color:rgba(255, 150, 150, 0.60);
 }

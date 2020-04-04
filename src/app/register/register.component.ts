@@ -58,13 +58,12 @@ export class RegisterComponent implements OnInit {
       || this.registerForm.value.bank_account == null  || this.registerForm.value.bank_account_branch == null || this.registerForm.value.credit_card_number == null
       || this.registerForm.value.credit_card_security == null  || this.registerForm.value.credit_card_expiry == null || this.registerForm.value.driving_license == null
       || this.registerForm.value.address == null){
-    } else if(this.passwording !== this.confirmPassword) {
-    }else {
+        this.elem.nativeElement.querySelector('#invalid_register').style.display = "flex"
+    }else{
     axios.post('http://localhost:8080/api/users',this.registerForm.value)
       .then((response) => {
         console.log(response);
-        document.getElementById('registerpop').className = "modal is-active";
-        //window.location.assign("/")
+        this.elem.nativeElement.querySelector('#registerpop').className = "modal is-active"
       })
       .catch((error) => {
         console.log(error);
@@ -110,7 +109,7 @@ export class RegisterComponent implements OnInit {
    
   }
   validateEmail(){
-    // implement validation
+    // implement validation email
   }
   validateCreditcard(){
     if(this.registerForm.value.credit_card_number.length != 16){

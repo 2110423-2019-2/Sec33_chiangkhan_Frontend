@@ -57,37 +57,174 @@
     </div>
     <button
       class="button is-primary is-outlined"
-      type="submit"
       (click)="getSearchCar()"
       style="height: 45px;"
     >
       Search
     </button>
+    <button
+    class="button is-primary is-outlined"
+    (click)="clearSearch()"
+    style="height: 45px;"
+  >
+    Clear
+  </button>
   </div>
-  <form [formGroup]="searchForm" action="/" method="get">
+  <form action="/" method="get">
     <div class="filters is-flex" id="state-show">
       <fieldset>
         <label id="f" for="">Car type</label>
-        <input
-          class="input"
-          type="text"
-          name="type"
-          id="type"
-          formControlName="cartype"
-        />
+        <div id="cartype" class="dropdown">
+          <div class="dropdown-trigger">
+            <button
+              class="input"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu"
+              style="width:150px; height: 42px;"
+              (click)="toggleDropdown('cartype')"
+            >
+              <span>{{ valueCartype }}</span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" (click)="searchCartype('personal')">
+                personal
+              </a>
+            </div>
+          </div>
+        </div>
       </fieldset>
       <fieldset>
         <label id="f" for="">Car Model</label>
-        <input
-          class="input"
-          type="text"
-          name="model"
-          id="model"
-          formControlName="model"
-        />
+        <div id="carmodel" class="dropdown">
+          <div class="dropdown-trigger">
+            <button
+              class="input"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu"
+              style="width:150px; height: 42px;"
+              (click)="toggleDropdown('carmodel')"
+            >
+              <span>{{ valueCarmodel }}</span>   
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu" style="max-height: 300px; overflow: auto;">
+            <div class="dropdown-content">
+              <a class="dropdown-item" (click)="searchCarmodel('BMW')">
+                BMW
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Buick')">
+                Buick
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Chevrolet')">
+                Chevrolet
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Honda')">
+                Honda
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Dodge')">
+                Dodge
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Mazda')">
+                Mazda
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Mitsubishi')">
+                Mitsubishi
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('GMC')">
+                GMC
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Land Rover')">
+                Land Rover
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Ford')">
+                Ford
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Aston Martin')">
+                Aston Martin
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Volkswagen')">
+                Volkswagen
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Maserati')">
+                Maserati
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Pontiac')">
+                Pontiac
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Porsche')">
+                Porsche
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Mercedes-Benz')">
+                Mercedes-Benz
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Geo')">
+                Geo
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Saturn')">
+                Saturn
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Lincoln')">
+                Lincoln
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Acura')">
+                Acura
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Nissan')">
+                Nissan
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Oldsmobile')">
+                Oldsmobile
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Toyota')">
+                Toyota
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Audi')">
+                Audi
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Kia')">
+                Kia
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Hyundai')">
+                Hyundai
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Bugatti')">
+                Bugatti
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Volvo')">
+                Volvo
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Mercury')">
+                Mercury
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Infiniti')">
+                Infiniti
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Saab')">
+                Saab
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Studebaker')">
+                Studebaker
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Subaru')">
+                Subaru
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Chrysler')">
+                Chrysler
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Lexus')">
+                Lexus
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Ferrari')">
+                Ferrari
+              </a>
+            </div>
+          </div>
+        </div>
       </fieldset>
       <fieldset>
-        <label  id="f" for="">Car capacity</label>
+        <label id="f" for="">Car capacity</label>
         <div id="capacity" class="dropdown">
           <div class="dropdown-trigger">
             <button
@@ -98,9 +235,6 @@
               (click)="toggleDropdown('capacity')"
             >
               <span>{{ valueCapacity }}</span>
-              <span class="icon is-small" style="padding-left: 115px;">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
-              </span>
             </button>
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
@@ -117,7 +251,6 @@
             </div>
           </div>
         </div>
-        
       </fieldset>
       <fieldset>
         <label id="f" for="">Location</label>

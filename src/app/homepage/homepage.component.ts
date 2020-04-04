@@ -14,8 +14,6 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
 })
 export class HomepageComponent implements OnInit {
   searchForm = new FormGroup({
-    cartype: new FormControl(),
-    model: new FormControl(),
     location: new FormControl(),
     startDate: new FormControl(),
     endDate: new FormControl()
@@ -35,6 +33,8 @@ export class HomepageComponent implements OnInit {
   orderDropDown: String = "";
 
   valueCapacity:number ;
+  valueCarmodel:String ;
+  valueCartype:String;
 
   latitude: number;
   longitude: number;
@@ -75,10 +75,10 @@ export class HomepageComponent implements OnInit {
     this.router.navigate([
       "/homepage",
       {
-        carType: this.searchForm.value.cartype,
+        carType: this.valueCartype,
         capacity: this.valueCapacity,
         pickupArea : this.area,
-        carModel: this.searchForm.value.model,
+        carModel: this.valueCarmodel,
         sortby: this.valueSort,
         duration: Array(duration)
       }
@@ -90,13 +90,12 @@ export class HomepageComponent implements OnInit {
       for (let p in params.keys) {
         if (
           params.get(params.keys[p]) != "null" &&
-          params.get(params.keys[p]) != ""
+          params.get(params.keys[p]) != "" &&  params.get(params.keys[p]) != "undefined"
         ) {
           if (
             params.keys[p] == "duration" &&
             params.get(params.keys[p]) != ","
           ) {
-            console.log(params.get(params.keys[p]));
             paramm[params.keys[p]] = [params.get(params.keys[p]).split(",")];
             continue;
           } else if (params.get(params.keys[p]) == ",") {
@@ -105,6 +104,7 @@ export class HomepageComponent implements OnInit {
           }
         }
       }
+      console.log(paramm)
       axios
         .get("http://localhost:8080/api/car/", { params: paramm })
         .then(response => {
@@ -119,7 +119,16 @@ export class HomepageComponent implements OnInit {
     console.log(this.cars)
   }
 
+  closeAllDropdown(filter:String){
+    let allDropdown = this.elementref.nativeElement.querySelectorAll('.dropdown')
+    for(let i = 0 ; i < allDropdown.length ; i++){
+      if(allDropdown[i].id != filter)
+       allDropdown[i].className = "dropdown"
+    }
+  }
+
   toggleDropdown(filter:String){
+    this.closeAllDropdown(filter)
     filter = '#' + filter ;
     this.elementref.nativeElement.querySelector(filter).classList.toggle("is-active");
   }
@@ -161,6 +170,14 @@ export class HomepageComponent implements OnInit {
   searchCapacity(capacity:number){
     this.valueCapacity = capacity;
     this.toggleDropdown("capacity")
+  }
+  searchCarmodel(model:String){
+    this.valueCarmodel = model;
+    this.toggleDropdown('carmodel')
+  }
+  searchCartype(type:String){
+    this.valueCartype = type;
+    this.toggleDropdown('cartype')
   }
 
   setCurrentLocation() {
@@ -235,5 +252,11 @@ export class HomepageComponent implements OnInit {
     this.righty = this.latitude - 0.05;
     this.rightx = this.longitude - 0.05;
     this.area = "[["+String(this.leftx)+","+String(this.lefty)+"],"+"["+String(this.rightx)+","+String(this.righty)+"]]"
+  }
+  clearSearch(){
+    this.valueCartype = null
+    this.valueCapacity = null
+    this.valueCarmodel = null
+    this.valueSort = null
   }
 }
