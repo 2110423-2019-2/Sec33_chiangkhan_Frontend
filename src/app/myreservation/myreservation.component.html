@@ -1,11 +1,15 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">My reservation</h1>
-    <div *ngFor="let car of cars">
-        <app-myreservation-car [car]= "car"></app-myreservation-car>
+  <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
+    My reservation
+  </h1>
+  <div class="columns is-multiline">
+    <div class="column is-narrow" *ngFor="let car of cars">
+      <app-myreservation-car [car]="car"></app-myreservation-car>
     </div>
+  </div>
 </div>
- 
+
 <footer>
-    <app-app-footer></app-app-footer>
+  <app-app-footer></app-app-footer>
 </footer>

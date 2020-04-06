@@ -1,40 +1,25 @@
 
 .card {
-  width: auto;
   border-radius: 20px;
   background-color: antiquewhite;
-  margin-bottom: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  padding: 25px;
   transform: translate(0px,-10px);
   transition-duration: 1s;
   opacity: 1;
-}
-.card-before{
-  width: auto;
-  border-radius: 20px;
-  background-color: antiquewhite;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 25px;
-  opacity: 0;
+  width: 650px;
+  height: 300px;
 }
 
 .card:hover {
   box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2);
 }
 
-#status {
-  background-color: burlywood;
+#eiei{
+  margin-right: 20px ;
 }
-
 a {
   color:black;
-}
-
-#detail {
-  padding: 20px;
 }
 
 .buttons {
@@ -50,9 +35,18 @@ a {
 
 #pickup {
   float: right;
-
 }
+img{
+  width: 250px;
+  height: 250px;
+  max-width: 250px;
+  max-height: 250px;
+} 
 
-#pickupHidden {
-  display: contents;
-}
+p{
+  font-family : 'Solway' ,serif;
+  font-weight: 500; 
+  font-size: 15px ;
+}  
+
+  

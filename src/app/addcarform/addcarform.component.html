@@ -1,47 +1,265 @@
-<div [formGroup]="addcarForm">
-    <div class="field">
-        <label class="label">Car Type</label>
-        <div class="control">
-            <input class="input" type="text" placeholder="Type of car" formControlName="carType"/>
+<div class="modal modal-fx-fadeInScale" id="popupadd">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <section class="modal-card-body">
+      <div [formGroup]="addcarForm">
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label">Car Type</label>
+              <div id="cartype" class="dropdown">
+                <div class="dropdown-trigger">
+                  <button
+                    class="input"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu"
+                    style="width: 160px; height: 42px;"
+                    (click)="toggleDropdown('cartype')"
+                  >
+                    <span>{{ valueCartype }}</span>
+                  </button>
+                </div>
+                <div
+                  class="dropdown-menu"
+                  id="dropdown-menu"
+                  role="menu"
+                  style="max-height: 500px; overflow: auto; width: 300px;"
+                >
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" (click)="addcarType('BMW')">
+                      BMW
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Buick')">
+                      Buick
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Chevrolet')">
+                      Chevrolet
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Honda')">
+                      Honda
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Dodge')">
+                      Dodge
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Mazda')">
+                      Mazda
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Mitsubishi')">
+                      Mitsubishi
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('GMC')">
+                      GMC
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Land Rover')">
+                      Land Rover
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Ford')">
+                      Ford
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      (click)="addcarType('Aston Martin')"
+                    >
+                      Aston Martin
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Volkswagen')">
+                      Volkswagen
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Maserati')">
+                      Maserati
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Pontiac')">
+                      Pontiac
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Porsche')">
+                      Porsche
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      (click)="addcarType('Mercedes-Benz')"
+                    >
+                      Mercedes-Benz
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Geo')">
+                      Geo
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Saturn')">
+                      Saturn
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Lincoln')">
+                      Lincoln
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Acura')">
+                      Acura
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Nissan')">
+                      Nissan
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Oldsmobile')">
+                      Oldsmobile
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Toyota')">
+                      Toyota
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Audi')">
+                      Audi
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Kia')">
+                      Kia
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Hyundai')">
+                      Hyundai
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Bugatti')">
+                      Bugatti
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Volvo')">
+                      Volvo
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Mercury')">
+                      Mercury
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Infiniti')">
+                      Infiniti
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Saab')">
+                      Saab
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Studebaker')">
+                      Studebaker
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Subaru')">
+                      Subaru
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Chrysler')">
+                      Chrysler
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Lexus')">
+                      Lexus
+                    </a>
+                    <a class="dropdown-item" (click)="addcarType('Ferrari')">
+                      Ferrari
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Car Model</label>
+              <div id="carmodel" class="dropdown">
+                <div class="dropdown-trigger">
+                  <button
+                    class="input"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu"
+                    style="width: 160px; height: 42px;"
+                    (click)="toggleDropdown('carmodel')"
+                  >
+                    <span>{{ valueCarmodel }}</span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" (click)="addcarModel('personal')">
+                      personal
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Capacity</label>
+              <div id="capacity" class="dropdown">
+                <div class="dropdown-trigger">
+                  <button
+                    class="input"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu"
+                    style="width: 160px; height: 42px;"
+                    (click)="toggleDropdown('capacity')"
+                  >
+                    <span>{{ valueCapacity }}</span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" (click)="addCapacity(2)">
+                      2
+                    </a>
+                    <a class="dropdown-item" (click)="addCapacity(3)">
+                      3
+                    </a>
+                    <a class="dropdown-item" (click)="addCapacity(4)">
+                      4
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="field">
-        <label class="label">Car Model</label>
-        <div class="control">
-            <input class="input" type="text" placeholder="Modal of car" formControlName="carModel"/>
+
+        <div class="field">
+          <label class="label">License Plate</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Car's License plate"
+              formControlName="licenseplate"
+            />
+          </div>
         </div>
-    </div>
-    <div class="field">
-        <label class="label">License Plate</label>
-        <div class="control">
-            <input class="input" type="text" placeholder="Car's License plate" formControlName="licenseplate"/>
+
+        <div class="field">
+          <label class="label">Photo of Car</label>
+          <div class="control">
+            <input
+              class="input"
+              type="file"
+              placeholder="Photo of car"
+              formControlName="photo"
+            />
+          </div>
         </div>
-    </div>
-    <div class="field">
-        <label class="label">Capacity</label>
-        <div class="control">
-            <input class="input" type="number" placeholder="Capacity" formControlName="capacity"/>
+        <div class="field">
+          <label class="label">Photo of Car Document</label>
+          <div class="control">
+            <input
+              class="input"
+              type="file"
+              placeholder="Car Document"
+              formControlName="photoOfCarDocument"
+            />
+          </div>
         </div>
-    </div>
-    <div class="field">
-        <label class="label">Photo of Car</label>
-        <div class="control">
-            <input class="input" type="file" placeholder="Photo of car" formControlName="photo"/>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Car's description"
+              formControlName="carDescription"
+            ></textarea>
+          </div>
         </div>
-    </div>
-    <div class="field">
-        <label class="label">Photo of Car Document</label>
-        <div class="control">
-            <input class="input" type="file" placeholder="Car Document" formControlName="photoOfCarDocument"/>
+        <div id="submit-form" class="has-text-centered">
+          <button class="button is-rounded" type="submit" (click)="onSubmit()">
+            Submit
+          </button>
+          <button
+            class="button is-rounded"
+            type="submit"
+            (click)="closePopup()"
+          >
+            Cancel
+          </button>
         </div>
-    </div>
-    <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-            <textarea class="textarea" placeholder="Car's description" formControlName="carDescription"></textarea>
-        </div>
-    </div>
-    <div id="submit-form" class="has-text-centered">
-        <button class="button is-rounded" type="submit" (click)="onSubmit()">Submit</button>
-    </div>
+      </div>
+    </section>
+  </div>
 </div>

@@ -48,12 +48,12 @@ export class HomepageComponent implements OnInit {
   righty: number;
   area: String = "";
 
-  mock_car = [{ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'}, 
+  mock_car = [{ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc00ff/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc00aa/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/00ff00/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/aa00cc/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/ff0000/ffffff'},
+              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/ccff00/ffffff'}, 
               {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
               {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'}]
 

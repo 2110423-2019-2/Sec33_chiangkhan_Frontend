@@ -7,8 +7,8 @@
       <div class="column">
         <p>Owner : {{car.ownerId}}</p>
         <div class="tags">
-          <span class="tag">{{car.carType}}</span>
-          <span class="tag">{{car.carModel}}</span>
+          <span class="tag is-link is-light">{{car.carType}}</span>
+          <span class="tag is-info is-light">{{car.carModel}}</span>
         </div>
         <p>Capacity : {{car.capacity}}</p>
         <div class="column" style="padding: 0px; flex: unset;">
@@ -20,5 +20,5 @@
        </div>
       </div>
     </div>
-</div>
+</div> 
 <app-homepage-car-popup [car]="car"></app-homepage-car-popup>
