@@ -3,6 +3,14 @@
   <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
     My reservation
   </h1>
+  <div class="tabs is-large">
+    <ul>
+      <li class="is-active" (click)="tab('all')" id="all"><a>All</a></li>
+      <li (click)="tab('reserving')" id="reserving"><a>Reserving</a></li>
+      <li (click)="tab('returned')" id="returned"><a>Returned</a></li>
+      <li (click)="tab('canceled')" id="canceled"><a>Canceled</a></li>
+    </ul>
+  </div>
   <div class="columns is-multiline">
     <div class="column is-narrow" *ngFor="let car of cars">
       <app-myreservation-car [car]="car"></app-myreservation-car>

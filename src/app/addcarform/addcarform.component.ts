@@ -25,7 +25,7 @@ export class AddcarformComponent implements OnInit {
   ngOnInit() {
     
   } 
-  onSubmit(){
+  addCar(){
     axios.post('http://localhost:8080/api/car/', this.addcarForm.value)
     .then(function (response) {
       console.log(response);

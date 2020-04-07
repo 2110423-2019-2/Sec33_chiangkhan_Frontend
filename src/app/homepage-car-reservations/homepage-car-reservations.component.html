@@ -14,11 +14,15 @@
         <img src="../../assets/images/profile-user.png" id="profile" alt="" />
         <p>Name</p>
       </div>
-      <p>Type: Sport car</p>
-      <p>Model: BMW Z3</p>
-      <p>Location: Bangkoknoi, Bangkoknoi</p>
-      <p>Start Date: 18-11-2019</p>
-      <p>End Date: 12-12-2019</p>
+      <article class="message is-info">
+        <div class="message-body">
+          <p>Type: Sport car</p>
+          <p>Model: BMW Z3</p>
+          <p>Location: Bangkoknoi, Bangkoknoi</p>
+          <p>Start Date: 18-11-2019</p>
+          <p>End Date: 12-12-2019</p>
+        </div>
+      </article>
     </div>
   </div>
   <div class="columns">
@@ -46,7 +50,6 @@
       <input class="input" type="text">
     </div>
   </div>
- <div>
   <article class="message is-success">
     <div class="message-header">
       <p>Agreement</p>
@@ -55,8 +58,10 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
     </div>
   </article>
- </div>
-
+  <label class="checkbox">
+    <input type="checkbox" (click)="confirmAgreement()">
+    Confirm
+  </label>
   <div class="boa">
     <div class="columns">
       <div class="column">
@@ -71,6 +76,6 @@
         <button class="button is-danger" (click)="openPopup()">Pay</button>
       </div>
     </div>
-    <button class="button is-danger" (click)="openPopup2()">Create Reservation</button>
+    <button class="button is-danger" (click)="createReservation()">Create Reservation</button>
   </div>
 </div>
