@@ -174,4 +174,14 @@ export class ListofcarsComponent implements OnInit {
     });
   }
 
+  add_car() {
+    document.getElementById("add_car_popup").className = "modal modal-fx-fadeInScale is-active";
+    console.log("ผมชื่อวินนี่")
+  }
+
+  close_add_car() {
+
+    document.getElementById("add_car_popup").className = "modal modal-fx-fadeInScale";
+  }
+
 }
