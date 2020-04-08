@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MyreservationPopupComponent implements OnInit {
   @Input() reviews;
+  valueRating:Number
   constructor() { }
 
   ngOnInit() {
@@ -23,5 +24,9 @@ export class MyreservationPopupComponent implements OnInit {
   }
   delete_agreement_popup(){
     document.getElementById('agreement_popup').className = "modal modal-fx-3dFlipVertical" ;
+  }
+  rating(rating:Number){
+    console.log("work")
+    this.valueRating = rating ;
   }
 }

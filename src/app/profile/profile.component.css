@@ -2,9 +2,18 @@
     margin-top: 1.5em;
 }
 
-.card{
-    margin-bottom: 10px;
-    box-shadow: 3px -1px 15px 0px;
+
+.card {
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  background-color: antiquewhite;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.container {
+  margin-top: 100px;
 }
 
 #about span{
@@ -12,7 +21,7 @@
 }
 
 #payment_info span{
-    font-weight: 600;
+    font-weight: 600; 
 }
 #bug{
     margin-top: 0px;

@@ -12,7 +12,7 @@
         >
           <div class="row row-space">
             <div class="col-2">
-              <div class="input-group">
+              <div class="input-group is-flex">
                 <input
                   class="input--style-2"
                   type="text"
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="input-group" id="confirmpassword">
-            <div class="rs-select2">
+            <div class="rs-select2 is-flex">
               <input
                 class="input--style-2"
                 type="password"
@@ -69,6 +69,8 @@
                 (input)="onChangeConfirm()"
                 [ngModelOptions]="{ standalone: true }"
               />
+              <i class="fas fa-check" id="valid_confirmEmail"></i>
+              <i class="fas fa-times" id="invalid_confirmEmail"></i>
             </div>
           </div>
           <div class="row row-space">
@@ -77,21 +79,25 @@
                 <input
                   class="input--style-2"
                   type="email"
-                  placeholder="Email"
+                  placeholder="example@example.com"
                   formControlName="email"
+                  (input)="validateEmail()"
                 />
+                <i class="fas fa-check" id="valid_email"></i>
+                <i class="fas fa-times" id="invalid_email"></i>
               </div>
             </div>
             <div class="col-2">
-              <div class="input-group" id="password">
+              <div class="input-group is-flex" id="password">
                 <input
                   class="input--style-2"
                   type="text"
                   placeholder="Phone number"
                   formControlName="phone_num"
-                  [(ngModel)]="phonenum"
-                  (input)="checkPhonenum()"
+                  (input)="validatePhonenum()"
                 />
+                <i class="fas fa-check" id="valid_phonenum"></i>
+                <i class="fas fa-times" id="invalid_phonenum"></i>
               </div>
             </div>
           </div>
@@ -103,7 +109,6 @@
                   type="text"
                   placeholder="Bank Account"
                   formControlName="bank_account"
-                  
                 />
               </div>
             </div>
@@ -119,17 +124,20 @@
             </div>
           </div>
           <div class="row row-space">
-            <div class="col-1">
-              <div class="input-group">
+            <div class="col-2">
+              <div class="input-group is-flex">
                 <input
                   class="input--style-2"
                   type="text"
                   placeholder="Credit card"
                   formControlName="credit_card_number"
+                  (input)="validateCreditcard()"
                 />
+                <i class="fas fa-check" id="valid_credit"></i>
+                <i class="fas fa-times" id="invalid_credit"></i>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <div class="input-group">
                 <input
                   class="input--style-2"
@@ -139,15 +147,18 @@
                 />
               </div>
             </div>
-            <div class="col-3">
-              <div class="input-group">
-                <input
-                  class="input--style-2"
-                  type="text"
-                  placeholder="Security number (xxx)"
-                  formControlName="credit_card_security"
-                />
-              </div>
+          </div>
+          <div class="col-3">
+            <div class="input-group is-flex">
+              <input
+                class="input--style-2"
+                type="text"
+                placeholder="Security number (xxx)"
+                formControlName="credit_card_security"
+                (input)="validateSecurity()"
+              />
+              <i class="fas fa-check" id="valid_security"></i>
+              <i class="fas fa-times" id="invalid_security"></i>
             </div>
           </div>
           <div class="col-2">
@@ -170,36 +181,29 @@
               />
             </div>
           </div>
-          <div class="p-t-30">
+          <div class="p-t-30 is-flex">
             <button class="btn btn--radius btn--green" type="submit">
               Register
             </button>
+            <div id ="invalid_register">
+              <i class="fas fa-times" style="display: block; padding-right: 10px;"></i>
+              <p style="color: red; font-weight: 600; padding-top: 7px;">Invalid input</p>
+            </div>
           </div>
         </form>
       </div>
     </div>
   </div>
-  <div class="modal" id="registerpop">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title" style="text-align:center">
-          Registration complete
-        </p>
-        <button
-          class="delete"
-          aria-label="close"
-          (click)="del_registerpop()"
-        ></button>
-      </header>
-      <section class="modal-card-body">
-        <p style="text-align:center">Thank you for register</p>
-      </section>
-      <footer class="modal-card-foot" style="text-align:center">
-        <button class="button is-rounded" id="buttona" (click)="moveToLogin()">
-          Back to sign in
-        </button>
-      </footer>
-    </div>
+</div>
+
+<div class="modal" id="registerpop">
+  <div class="modal-background"></div>
+  <div class="modal-card" style="height: 300px;">
+    <section class="modal-card-body" style="border-radius: 20px; background-color :hsl(130, 50%, 80%); ">
+      <p style="text-align:center;padding: 60px; font-size: xx-large; font-size: xx-large;">Thank you for register</p>
+      <button class="button is-rounded" id="buttona" (click)="moveToLogin()">
+        Back to sign in
+      </button>
+    </section>
   </div>
 </div>

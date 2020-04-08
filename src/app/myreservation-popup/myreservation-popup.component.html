@@ -1,14 +1,25 @@
 <div class="modal modal-fx-3dFlipVertical" id="review_popup">
   <div class="modal-background"></div>
-  <div class="modal-content modal-card">
+  <div class="modal-content modal-card" style="border-radius: 20px;">
     <section class="modal-card-body">
       <h1 class="has-text-centered">Review</h1>
       <div id="groupstar">
-        <i class="far fa-star fa-3x"></i>
-        <i class="far fa-star fa-3x"></i>
-        <i class="far fa-star fa-3x"></i>
-        <i class="far fa-star fa-3x"></i>
-        <i class="far fa-star fa-3x"></i>
+        <div class="rating-group">
+          <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
+          <label (click)="rating(1)" aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
+          <label (click)="rating(2)" aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
+          <label (click)="rating(3)" aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
+          <label (click)="rating(4)" aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
+          <label (click)="rating(5)" aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+          <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
+      </div>
+      </div>
+      <div class="control" style="margin-top: 20px;">
+        <textarea class="textarea is-hovered" placeholder=""></textarea>
       </div>
       <div class="field is-grouped">
         <p class="control">

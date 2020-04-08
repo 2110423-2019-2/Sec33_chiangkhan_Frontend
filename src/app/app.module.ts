@@ -31,7 +31,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AuthService } from './auth.service';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
-import {SlideshowModule} from 'ng-simple-slideshow';
+import { SlideshowModule } from 'ng-simple-slideshow';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },

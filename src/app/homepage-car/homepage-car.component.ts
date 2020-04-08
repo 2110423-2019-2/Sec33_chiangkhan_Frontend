@@ -27,4 +27,5 @@ export class HomepageCarComponent implements OnInit {
     console.log("open popup")
     this.elementref.nativeElement.querySelectorAll(".modal")[0].className = "modal modal-fx-fadeInScale is-active";
   }
+  
 }

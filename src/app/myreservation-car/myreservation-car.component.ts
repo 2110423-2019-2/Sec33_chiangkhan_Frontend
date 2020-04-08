@@ -26,15 +26,21 @@ export class MyReservationCarComponent implements OnInit {
   
   ngOnInit() {
     if(this.car.status == "Canceled"){
-      this.elem.nativeElement.querySelectorAll('button')[1].className = 'button is-danger is-disabled'
-      this.elem.nativeElement.querySelectorAll('button')[2].className = 'button is-info is-disabled'
-      this.elem.nativeElement.querySelectorAll('button')[3].className = 'button is-dark is-disabled'
+      this.elem.nativeElement.querySelectorAll('button')[0].style.display = 'none'
+      this.elem.nativeElement.querySelectorAll('button')[1].style.display = 'none'
+      this.elem.nativeElement.querySelectorAll('button')[2].style.display = 'none'
+      this.elem.nativeElement.querySelectorAll('button')[3].style.display = 'none'
+      this.elem.nativeElement.querySelector('.tag').className = 'tag is-danger is-light is-medium'
     }else if(this.car.status == "Returned"){
-      this.elem.nativeElement.querySelectorAll('button')[1].className = 'button is-danger is-disabled'
+      this.elem.nativeElement.querySelectorAll('button')[0].style.display = 'none'
+      this.elem.nativeElement.querySelectorAll('button')[1].style.display = 'none'
+      this.elem.nativeElement.querySelector('.tag').className = 'tag is-primary is-light is-medium'
     }else{
-      this.elem.nativeElement.querySelectorAll('button')[0].id = "pickup"
-      this.elem.nativeElement.querySelectorAll('button')[3].className = 'button is-dark is-disabled'
+      this.elem.nativeElement.querySelectorAll('button')[3].style.display = 'none'
+      this.elem.nativeElement.querySelector('.tag').className = 'tag is-success is-light is-medium'
     }
   }
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {this.elem.nativeElement.querySelector(".card-before").className = "card" },500);
+  }
 }

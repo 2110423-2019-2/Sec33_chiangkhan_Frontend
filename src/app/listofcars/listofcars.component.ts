@@ -146,7 +146,7 @@ export class ListofcarsComponent implements OnInit {
       console.log(results);
       console.log(status);
       if (status === 'OK') {
-        if (results[0]) {
+        if (results[0]) {  
           this.zoom = 12;
           this.address = results[0].formatted_address;
         } else {
