@@ -83,7 +83,7 @@ export class ListofcarsComponent implements OnInit {
             return;
           }
 
-          //set latitude, longitude and zoom
+          //set latitude, longitude and zoom 
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.zoom = 12;
@@ -152,10 +152,9 @@ export class ListofcarsComponent implements OnInit {
         } else {
           window.alert('No results found');
         }
-      } else {
+      } else { 
         window.alert('Geocoder failed due to: ' + status);
       }
-
     });
   }
 

@@ -45,7 +45,7 @@
   <div class="modal-content modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Add Deal</p>
-      <button class="delete" aria-label="close" (click)="closeform()"></button>
+      <button class="delete" aria-label="close" (click)="closeform('form')"></button>
     </header>
     <section class="modal-card-body reservation">
       <!-- User input Modal -->
@@ -60,7 +60,6 @@
                   type="date"
                   id="start_dates"
                   formControlName="start_dates"
-                  (click)="startDateChange()"
                 />
               </div>
             </div>
@@ -71,8 +70,7 @@
                 <input
                   type="text"
                   id="pickup_location"
-                  formControlName="pickup_location"
-                  (click)="pickupLocationChange()"
+                  formControlName="pickup_location"   
                 />
               </div>
             </div>
@@ -86,7 +84,6 @@
                   type="date"
                   id="end_dates"
                   formControlName="end_dates"
-                  (click)="endDateChange()"
                 />
               </div>
             </div>
@@ -98,7 +95,6 @@
                   type="text"
                   id="return_location"
                   formControlName="return_location"
-                  (click)="returnLocationChange()"
                 />
               </div>
             </div>
@@ -203,7 +199,7 @@
   <div class="modal-content modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Reservations History</p>
-      <button class="delete" aria-label="close" (click)="closepopup()"></button>
+      <button class="delete" aria-label="close" (click)="closeform('popup')"></button>
     </header>
     <section class="modal-card-body reservation">
       <!-- reservation box -->
