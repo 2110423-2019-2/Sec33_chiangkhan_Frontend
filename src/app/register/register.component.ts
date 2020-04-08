@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
   })
   passwording:string = ""
   confirmPassword:string = ""
-  phonenum:string= ""
   constructor(private authService : AuthService , private router : Router , private elem : ElementRef) {
     
   }
@@ -39,16 +38,17 @@ export class RegisterComponent implements OnInit {
   
   onChangePassword(){ 
     this.passwording = this.passwording 
-    console.log(this.passwording)
   }
   onChangeConfirm(){
     this.confirmPassword = this.confirmPassword
     if(this.passwording === this.confirmPassword){
       this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group-success" 
-      console.log("Yes")  
+      this.elem.nativeElement.querySelector('#valid_confirmEmail').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_confirmEmail').style.display = "none"
     }else{
-      console.log("no")
       this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group-invalid" 
+      this.elem.nativeElement.querySelector('#valid_confirmEmail').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_confirmEmail').style.display = "block"
     }
   } 
 
@@ -58,17 +58,12 @@ export class RegisterComponent implements OnInit {
       || this.registerForm.value.bank_account == null  || this.registerForm.value.bank_account_branch == null || this.registerForm.value.credit_card_number == null
       || this.registerForm.value.credit_card_security == null  || this.registerForm.value.credit_card_expiry == null || this.registerForm.value.driving_license == null
       || this.registerForm.value.address == null){
-     
-        console.log("Incomplete")
-    } else if(this.passwording !== this.confirmPassword) {
-       
-    }else {
-    console.log(this.registerForm.value)
+        this.elem.nativeElement.querySelector('#invalid_register').style.display = "flex"
+    }else{
     axios.post('http://localhost:8080/api/users',this.registerForm.value)
       .then((response) => {
         console.log(response);
-        document.getElementById('registerpop').className = "modal is-active";
-        //window.location.assign("/")
+        this.elem.nativeElement.querySelector('#registerpop').className = "modal is-active"
       })
       .catch((error) => {
         console.log(error);
@@ -82,7 +77,6 @@ export class RegisterComponent implements OnInit {
   del_registerpop() {
     document.getElementById('registerpop').className = "modal";
     window.location.assign("/");
-    console.log("work")
   }
 
   moveToLogin() {
@@ -96,14 +90,51 @@ export class RegisterComponent implements OnInit {
     document.getElementsByClassName("non-active")[0].className = "active"
   }
   
-  checkPhonenum(){
-    for(let index of this.phonenum){
-      if(isNaN(parseInt(index))){
-        this.elem.nativeElement.querySelector('#password').className = "input-group-invalid" 
-        break
-      }else{
-        this.elem.nativeElement.querySelector('#password').className = "input-group" 
+  validatePhonenum(){
+    if(this.registerForm.value.phone_num.length == 10){
+      for(let index of this.registerForm.value.phone_num){
+        if(isNaN(parseInt(index))){
+          this.elem.nativeElement.querySelector('#valid_phonenum').style.display = "none"
+          this.elem.nativeElement.querySelector('#invalid_phonenum').style.display = "block"
+          break
+        }else{
+          this.elem.nativeElement.querySelector('#valid_phonenum').style.display = "block"
+          this.elem.nativeElement.querySelector('#invalid_phonenum').style.display = "none"
+        }
       }
+    }else{
+      this.elem.nativeElement.querySelector('#valid_phonenum').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_phonenum').style.display = "block"
+    }
+   
+  }
+  validateEmail(){
+    // implement validation email
+  }
+  validateCreditcard(){
+    if(this.registerForm.value.credit_card_number.length != 16){
+      this.elem.nativeElement.querySelector('#valid_credit').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_credit').style.display = "block"
+    } else {
+      this.elem.nativeElement.querySelector('#valid_credit').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_credit').style.display = "none"
+    }
+  }
+  validateSecurity(){
+    if(this.registerForm.value.credit_card_security.length == 3){
+      for(let index of this.registerForm.value.credit_card_security){
+        if(isNaN(parseInt(index))){
+          this.elem.nativeElement.querySelector('#valid_security').style.display = "none"
+          this.elem.nativeElement.querySelector('#invalid_security').style.display = "block"
+          break
+        }else{
+          this.elem.nativeElement.querySelector('#valid_security').style.display = "block"
+          this.elem.nativeElement.querySelector('#invalid_security').style.display = "none"
+        }
+      }
+    }else{
+      this.elem.nativeElement.querySelector('#valid_security').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_security').style.display = "block"
     }
   }
 }

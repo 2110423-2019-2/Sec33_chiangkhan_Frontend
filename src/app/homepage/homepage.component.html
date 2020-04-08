@@ -7,7 +7,7 @@
           class="button"
           aria-haspopup="true"
           aria-controls="dropdown-menu"
-          (click)="toggleDropdown1()"
+          (click)="toggleDropdown('sort')"
           style="height: 45px;"
         >
           <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
@@ -34,7 +34,7 @@
           class="button"
           aria-haspopup="true"
           aria-controls="dropdown-menu"
-          (click)="toggleDropdown2()"
+          (click)="toggleDropdown('order')"
           style="height: 45px;"
         >
           <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
@@ -55,54 +55,207 @@
         </div>
       </div>
     </div>
-    <button class="button" (click)="toggleFilter()" style="height: 45px;  margin-right: 15px;" >
-      <i class="fas fa-filter" style="padding-right: 5px; "></i>Filter
-    </button>
     <button
       class="button is-primary is-outlined"
-      type="submit"
       (click)="getSearchCar()"
       style="height: 45px;"
     >
       Search
     </button>
+    <button
+    class="button is-primary is-outlined"
+    (click)="clearSearch()"
+    style="height: 45px;"
+  >
+    Clear
+  </button>
   </div>
-  <form [formGroup]="searchForm" action="/" method="get">
+  <form action="/" method="get">
     <div class="filters is-flex" id="state-show">
       <fieldset>
-        <label class="fil" id="f" for="">Car type</label>
-        <input
-          class="input input-0"
-          type="text"
-          name="type"
-          id="type"
-          formControlName="cartype"
-        />
+        <label id="f" for="">Car type</label>
+        <div id="cartype" class="dropdown">
+          <div class="dropdown-trigger">
+            <button
+              class="input"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu"
+              style="width:150px; height: 42px;"
+              (click)="toggleDropdown('cartype')"
+            >
+              <span>{{ valueCartype }}</span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" (click)="searchCartype('personal')">
+                personal
+              </a>
+            </div>
+          </div>
+        </div>
       </fieldset>
       <fieldset>
-        <label class="fil" id="f" for="">Car Model</label>
-        <input
-          class="input input-0"
-          type="text"
-          name="model"
-          id="model"
-          formControlName="model"
-        />
+        <label id="f" for="">Car Model</label>
+        <div id="carmodel" class="dropdown">
+          <div class="dropdown-trigger">
+            <button
+              class="input"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu"
+              style="width:150px; height: 42px;"
+              (click)="toggleDropdown('carmodel')"
+            >
+              <span>{{ valueCarmodel }}</span>   
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu" style="max-height: 300px; overflow: auto;">
+            <div class="dropdown-content">
+              <a class="dropdown-item" (click)="searchCarmodel('BMW')">
+                BMW
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Buick')">
+                Buick
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Chevrolet')">
+                Chevrolet
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Honda')">
+                Honda
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Dodge')">
+                Dodge
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Mazda')">
+                Mazda
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Mitsubishi')">
+                Mitsubishi
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('GMC')">
+                GMC
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Land Rover')">
+                Land Rover
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Ford')">
+                Ford
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Aston Martin')">
+                Aston Martin
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Volkswagen')">
+                Volkswagen
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Maserati')">
+                Maserati
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Pontiac')">
+                Pontiac
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Porsche')">
+                Porsche
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Mercedes-Benz')">
+                Mercedes-Benz
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Geo')">
+                Geo
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Saturn')">
+                Saturn
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Lincoln')">
+                Lincoln
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Acura')">
+                Acura
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Nissan')">
+                Nissan
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Oldsmobile')">
+                Oldsmobile
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Toyota')">
+                Toyota
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Audi')">
+                Audi
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Kia')">
+                Kia
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Hyundai')">
+                Hyundai
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Bugatti')">
+                Bugatti
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Volvo')">
+                Volvo
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Mercury')">
+                Mercury
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Infiniti')">
+                Infiniti
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Saab')">
+                Saab
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Studebaker')">
+                Studebaker
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Subaru')">
+                Subaru
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Chrysler')">
+                Chrysler
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Lexus')">
+                Lexus
+              </a>
+              <a class="dropdown-item" (click)="searchCarmodel('Ferrari')">
+                Ferrari
+              </a>
+            </div>
+          </div>
+        </div>
       </fieldset>
       <fieldset>
-        <label class="fil" id="f" for="">Car capacity</label>
-        <input
-          class="input input-0"
-          type="text"
-          name="capacity"
-          id="capacity"
-          formControlName="capacity"
-        />
+        <label id="f" for="">Car capacity</label>
+        <div id="capacity" class="dropdown">
+          <div class="dropdown-trigger">
+            <button
+              class="input"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu"
+              style="width:150px; height: 42px;"
+              (click)="toggleDropdown('capacity')"
+            >
+              <span>{{ valueCapacity }}</span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" (click)="searchCapacity(2)">
+                2
+              </a>
+              <a class="dropdown-item" (click)="searchCapacity(3)">
+                3
+              </a>
+              <a class="dropdown-item" (click)="searchCapacity(4)">
+                4
+              </a>
+            </div>
+          </div>
+        </div>
       </fieldset>
       <fieldset>
-        <label class="fil" id="f" for="">Location</label>
+        <label id="f" for="">Location</label>
         <button
-          class="input input-0"
+          class="input"
           style="width:150px; height: 42px;"
           (click)="openMap()"
         >
@@ -111,9 +264,9 @@
         </button>
       </fieldset>
       <fieldset>
-        <label class="fil" id="f" for="">Start Date</label>
+        <label id="f" for="">Start Date</label>
         <input
-          class="input input-0"
+          class="input"
           type="date"
           name="startDate"
           id="startDate"
@@ -121,9 +274,9 @@
         />
       </fieldset>
       <fieldset>
-        <label class="fil" id="f" for="">End Date</label>
+        <label id="f" for="">End Date</label>
         <input
-          class="input input-0"
+          class="input"
           type="date"
           name="endDate"
           id="endDate"
@@ -132,8 +285,9 @@
       </fieldset>
     </div>
   </form>
-  <div class="columns is-multiline">
-    <div class="column is-one-quarter" *ngFor="let car of cars">
+  <h1 style="font-weight: bold; font-size: xx-large; padding-bottom: 20px;">Newest Deal Available</h1>
+  <div class="columns is-multiline" style="justify-content: space-evenly;">
+    <div class="column is-narrow" *ngFor="let car of cars">
       <app-homepage-car [car]="car"></app-homepage-car>
     </div>
   </div>

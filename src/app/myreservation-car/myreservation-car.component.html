@@ -1,31 +1,33 @@
 <div class="card">
+  <div class="card-content">
     <div class="columns">
-      <div class="column is-3">
-        <div class="card-image">
-          <figure class="image">
-            <img
-              src="../../assets/images/car-homepage.jpg"
-              alt="Placeholder image"
-            />
-          </figure>
-        </div>
+      <div class="column is-two-fifths" id="eiei">
+        <img src="../../assets/images/car-homepage.jpg" />
       </div>
       <div class="column" id="detail">
-        <span id="status">{{car.status}}</span>
-        <button id="pickupHidden" class="button is-dark">Pickup</button>
-        <p>Status : {{car.type}}</p>
-        <p>Model : {{car.Model}}</p>
-        <p>License : {{car.licensePlate}}</p>
-        <p>Pickup Date : {{car.PickupDate}}</p>
-        <p>Pickup Location : {{car.PickupLocation}}</p>
-        <p>Pickup Date : {{car.PickupDate}}</p>
-        <p>Return Location : {{car.ReturnLocation}}</p>
+        <span class="tag is-link is-light">{{ car.status }}</span>
+        <button class="button is-rounded" id="pickup">Pickup</button>
+        <p>Status : {{ car.type }}</p>
+        <p>Model : {{ car.Model }}</p>
+        <p>License : {{ car.licensePlate }}</p>
+        <p>Pickup Date : {{ car.PickupDate }}</p>
+        <p>Pickup Location : {{ car.PickupLocation }}</p>
+        <p>Pickup Date : {{ car.PickupDate }}</p>
+        <p>Return Location : {{ car.ReturnLocation }}</p>
+
         <div class="buttons">
-          <button class="button is-danger" (click)="cancel_popup()">Cancel</button>
-          <button class="button is-info" (click)="agreement_popup()">Agreement</button>
-          <button class="button is-dark" (click)="review_popup()">Review</button>
+          <button class="button is-rounded is-danger" (click)="cancel_popup()">
+            Cancel
+          </button>
+          <button class="button is-rounded is-info" (click)="agreement_popup()">
+            Agreement
+          </button>
+          <button class="button is-rounded is-dark" (click)="review_popup()">
+            Review
+          </button>
         </div>
-        <app-myreservation-popup></app-myreservation-popup>
       </div>
     </div>
   </div>
+</div>
+<app-myreservation-popup></app-myreservation-popup>

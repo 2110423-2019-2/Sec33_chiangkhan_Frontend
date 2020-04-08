@@ -3,6 +3,7 @@
   padding: 20px;
   border: 2px groove indigo;
   box-shadow: 5px 5px 20px grey;
+  margin-top: 90px; 
 }
 
 #detail img {

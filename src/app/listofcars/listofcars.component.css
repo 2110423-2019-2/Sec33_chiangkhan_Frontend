@@ -162,3 +162,7 @@ button:active {
 agm-map {
     height: 300px;
 }
+
+.container{
+  margin-top: 80px;
+}

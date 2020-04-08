@@ -42,7 +42,8 @@ export class ListofcarsComponent implements OnInit {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone ,
+    private elem : ElementRef
   ) { }
   ngOnInit() {
     document.getElementsByClassName("unactive")[2].className = "active"
@@ -95,25 +96,9 @@ export class ListofcarsComponent implements OnInit {
     });
   }
 
-  closeform() {
-
-    document.getElementById("form").className = "modal modal-fx-fadeInScale";
-  }
-
-  startDateChange() {
-    // document.getElementById("start_dates")
-  }
-
-  endDateChange() {
-    // document.getElementById("start_dates")
-  }
-
-  pickupLocationChange() {
-
-  }
-
-  returnLocationChange() {
-
+  closeform(form:String) {
+    form = "#" + form ;
+    this.elem.nativeElement.querySelector(form).className = "modal modal-fx-fadeInScale"
   }
 
   submit_add_deal() {
@@ -124,7 +109,7 @@ export class ListofcarsComponent implements OnInit {
     //   StartDate: this.addDealForm.value["start_dates"], EndDate: this.addDealForm.value["end_dates"],
     //   PickupLocation: "latitude: " + this.latitude + ", " + this.longitude, ReturnLocation: "latitude: " + this.latitude + ", " + this.longitude, Price: '4,200'
     // })
-    this.addDealForm()
+    // this.addDealForm.addControl('pickup_location', []);
     console.log(this.addDealForm.value);
     // axios.post('http://localhost:8080/api/car/', this.addDealForm.value)
     // .then(function (response) {
@@ -174,7 +159,7 @@ export class ListofcarsComponent implements OnInit {
       console.log(results);
       console.log(status);
       if (status === 'OK') {
-        if (results[0]) {
+        if (results[0]) {  
           this.zoom = 12;
           this.address = results[0].formatted_address;
         } else {
@@ -189,11 +174,9 @@ export class ListofcarsComponent implements OnInit {
 
   add_car() {
     document.getElementById("add_car_popup").className = "modal modal-fx-fadeInScale is-active";
-    console.log("ผมชื่อวินนี่")
   }
 
   close_add_car() {
-
     document.getElementById("add_car_popup").className = "modal modal-fx-fadeInScale";
   }
 

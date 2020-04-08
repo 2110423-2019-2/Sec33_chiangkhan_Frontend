@@ -1,24 +1,9 @@
 <app-navbar></app-navbar>
-<div>
+<div class="container">
   <button class="button" (click)="popupadd()">Add car</button>
   <div class="list1" *ngFor="let car of cars">
-    <app-car [car]= "car"></app-car>
-  </div>
-  <div class="modal modal-fx-fadeInScale" id="popupadd">
-    <div class="modal-background"></div>
-    <div class="modal-content modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Add car</p>
-        <button
-          class="delete"
-          aria-label="close"
-          (click)="del_popupadd()"
-        ></button>
-      </header>
-      <section class="modal-card-body">
-        <app-addcarform></app-addcarform>
-      </section>
-      <footer class="modal-card-foot"></footer>
-    </div>
+    <app-car [car]="car"></app-car>
   </div>
 </div>
+
+<app-addcarform></app-addcarform>
