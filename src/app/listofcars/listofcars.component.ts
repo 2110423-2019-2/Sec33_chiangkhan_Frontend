@@ -6,6 +6,7 @@ import { CARS } from './mock-cars';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 // import { google } from “google-maps”; 
+import axios from 'axios';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class ListofcarsComponent implements OnInit {
     start_dates: new FormControl(),
     pickup_location: new FormControl(),
     end_dates: new FormControl(),
-    return_location: new FormControl()
+    // return_location: new FormControl()
   })
 
   constructor(
@@ -114,13 +115,21 @@ export class ListofcarsComponent implements OnInit {
 
   submit_add_deal() {
     // console.log(this.addDealForm.value["start_dates"])
-    this.cars.unshift({
-      id: 50, image: "https://assets.bugatti.com/fileadmin/_processed_/sei/p54/se-image-e6678a2b1c56c59044f81a3742c784d4.jpg",
-      Availability: 'Available', Type: 'Sport', Model: 'BMW i8', LicensePlate: 'พซ 1150', Seats: '5', Doors: '4',
-      StartDate: this.addDealForm.value["start_dates"], EndDate: this.addDealForm.value["end_dates"],
-      PickupLocation: "latitude: " + this.latitude + ", " + this.longitude, ReturnLocation: "latitude: " + this.latitude + ", " + this.longitude, Price: '4,200'
+    // this.cars.unshift({
+    //   id: 50, image: "https://assets.bugatti.com/fileadmin/_processed_/sei/p54/se-image-e6678a2b1c56c59044f81a3742c784d4.jpg",
+    //   Availability: 'Available', Type: 'Sport', Model: 'BMW i8', LicensePlate: 'พซ 1150', Seats: '5', Doors: '4',
+    //   StartDate: this.addDealForm.value["start_dates"], EndDate: this.addDealForm.value["end_dates"],
+    //   PickupLocation: "latitude: " + this.latitude + ", " + this.longitude, ReturnLocation: "latitude: " + this.latitude + ", " + this.longitude, Price: '4,200'
+    // })
+    axios.post('http://localhost:8080/api/car/', this.addDealForm.value)
+    .then(function (response) {
+      console.log(response);
+      this.closeform();
     })
-    this.closeform();
+    .catch(function (error) {
+      console.log(error);
+      alert("Fail")
+    });
   }
 
   remove_deal_popup() {
