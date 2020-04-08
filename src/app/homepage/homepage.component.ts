@@ -14,14 +14,10 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
 })
 export class HomepageComponent implements OnInit {
   searchForm = new FormGroup({
-    location: new FormControl(),
     startDate: new FormControl(),
     endDate: new FormControl()
   });
   cars: any[];
-  dateForm = new FormGroup({
-    startDate: new FormControl()
-  });
 
   @ViewChild('search', { static: true })
   public searchElementRef: ElementRef;
@@ -36,7 +32,7 @@ export class HomepageComponent implements OnInit {
   valueCarmodel:String ;
   valueCartype:String;
 
-  latitude: number;
+  latitude: number; 
   longitude: number;
   zoom: number;
   address: string;
@@ -115,7 +111,7 @@ export class HomepageComponent implements OnInit {
           console.log(error);
         });
     });
-    this.cars = this.mock_car;
+    // this.cars = this.mock_car;
     console.log(this.cars)
   }
 

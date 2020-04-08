@@ -33,6 +33,7 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
 
+
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
   { path: "register",  component: RegisterComponent },
@@ -72,6 +73,7 @@ const appRoutes: Routes = [
     HomepageCarReservationsReserveconfirmPopupComponent,
     AppFooterComponent,
     AboutusComponent,
+    
   ],
   imports: [
     BrowserModule,

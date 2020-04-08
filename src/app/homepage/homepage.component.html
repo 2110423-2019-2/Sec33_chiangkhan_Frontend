@@ -70,7 +70,7 @@
     Clear
   </button>
   </div>
-  <form action="/" method="get">
+  <form [formGroup] = "searchForm" action="/" method="get">
     <div class="filters is-flex" id="state-show">
       <fieldset>
         <label id="f" for="">Car type</label>
@@ -83,7 +83,7 @@
               style="width:150px; height: 42px;"
               (click)="toggleDropdown('cartype')"
             >
-              <span>{{ valueCartype }}</span>
+              <span>{{ valueCartype }}</span> 
             </button>
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
@@ -296,7 +296,7 @@
   <app-app-footer></app-app-footer>
 </footer>
 
-<div class="modal modal-fx-fadeInScale" id="form">
+<div class="modal modal-fx-fadeInScale" id="form"> 
   <div class="modal-background"></div>
   <div class="modal-content modal-card" style="height:auto; width: 1000px;">
     <header class="modal-card-head">
@@ -316,7 +316,7 @@
               placeholder="Search Nearest Location"
               autocorrect="off"
               autocapitalize="off"
-              spellcheck="off"
+              spellcheck="off" 
               type="text"
               #search
             />
