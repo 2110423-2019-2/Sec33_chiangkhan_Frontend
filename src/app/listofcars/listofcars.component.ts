@@ -53,19 +53,9 @@ export class ListofcarsComponent implements OnInit {
   cars = CARS;
   reservations = RESERVATIONS;
 
-  functionOne() {
-
-    document.getElementById("popup").className = "modal modal-fx-fadeInScale is-active";
-    console.log("work one");
-  }
-  closepopup() {
-
-    document.getElementById("popup").className = "modal modal-fx-fadeInScale";
-  }
-
+  
   // Add Deal Button
   functionTwo() {
-
     document.getElementById("form").className = "modal modal-fx-fadeInScale is-active";
     // this.renderMap();
     console.log("work two");
@@ -100,6 +90,11 @@ export class ListofcarsComponent implements OnInit {
     form = "#" + form ;
     this.elem.nativeElement.querySelector(form).className = "modal modal-fx-fadeInScale"
   }
+  openform(form:String) {
+    form = "#" + form ;
+    this.elem.nativeElement.querySelector(form).className = "modal modal-fx-fadeInScale is-active"
+  }
+
 
   submit_add_deal() {
     // console.log(this.addDealForm.value["start_dates"])
@@ -170,13 +165,4 @@ export class ListofcarsComponent implements OnInit {
       }
     });
   }
-
-  add_car() {
-    document.getElementById("add_car_popup").className = "modal modal-fx-fadeInScale is-active";
-  }
-
-  close_add_car() {
-    document.getElementById("add_car_popup").className = "modal modal-fx-fadeInScale";
-  }
-
 }

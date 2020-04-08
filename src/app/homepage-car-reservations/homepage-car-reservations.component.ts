@@ -15,14 +15,15 @@ export class HomepageCarReservationsComponent implements OnInit {
   openPopup(){
     document.getElementsByClassName("modal modal-fx-fadeInScale")[0].className = "modal modal-fx-fadeInScale is-active"
   }
-  createReservation(){
+
+  genarateAgreement(){
     if(this.isConfirm){
       document.getElementsByClassName("modal modal-fx-fadeInScale")[1].className = "modal modal-fx-fadeInScale is-active"
     }else{
       alert("You must confirm agreement")
     }
-    
   }
+  
   confirmAgreement(){
     if(!this.isConfirm){
       this.isConfirm = true;

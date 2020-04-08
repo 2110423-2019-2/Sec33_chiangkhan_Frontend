@@ -6,7 +6,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   styleUrls: ['./myreservation.component.css']
 })
 export class MyReservationComponent implements OnInit {
-
+  isvalid:boolean = true ;
   constructor(private elem:ElementRef) { }
 
   ngOnInit() {

@@ -35,7 +35,7 @@ export class AddcarformComponent implements OnInit {
       console.log(error);
       alert("Fail")
     });
-  }
+  } 
 
   addcarType(type:String){
     this.valueCartype = type ;

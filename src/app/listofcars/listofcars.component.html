@@ -42,7 +42,7 @@
           <!-- second column of user input-->
           <div class="column is-6">
             <div class="pick_car">
-              <button class="pick_car_button" (click)="add_car()">
+              <button class="pick_car_button" (click)=" openform('add_car_popup')">
                 Add your car
               </button>
             </div>
@@ -114,7 +114,7 @@
       <br /><br />
       <div class="columns">
         <div class="column" id="reservation">
-          <button class="column" id="remove" (click)="functionOne()">
+          <button class="column" id="remove" (click)=" openform('popup')">
             Reservation
           </button>
         </div>
@@ -188,7 +188,7 @@
           <button
             class="delete"
             aria-label="close"
-            (click)="closepopup()"
+            (click)="closeform('popup')"
           ></button>
         </header>
         <section class="modal-card-body reservation">
