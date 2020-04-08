@@ -125,11 +125,13 @@
               (dragEnd)="markerDragEnd($event)"
             ></agm-marker>
           </agm-map>
-
-          <h5>Address: {{ address }}</h5>
-          <div>Latitude: {{ latitude }}</div>
-          <div>Longitude: {{ longitude }}</div>
-        </div>
+         
+          <h5>Address: {{address}}</h5>
+          <form id="mapCenterForm" formControlName="pickup_location">
+          <div>Latitude: {{latitude}}</div>
+          <div>Longitude: {{longitude}}</div>
+          </form>
+        </div>        
 
         <button>Submit</button>
       </form>
