@@ -11,14 +11,22 @@
   height: 300px;
 }
 
+.card-before {
+  border-radius: 20px;
+  background-color: antiquewhite;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  width: 650px;
+  height: 300px;
+}
 .card:hover {
-  box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2); 
 }
 
 #eiei{
   margin-right: 20px ;
 }
-a {
+a { 
   color:black;
 }
 

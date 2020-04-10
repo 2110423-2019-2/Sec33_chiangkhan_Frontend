@@ -25,6 +25,7 @@ export class AddcarformComponent implements OnInit {
   ngOnInit() {
     
   } 
+  
   addCar(){
     axios.post('http://localhost:8080/api/car/', this.addcarForm.value)
     .then(function (response) {
@@ -35,7 +36,7 @@ export class AddcarformComponent implements OnInit {
       console.log(error);
       alert("Fail")
     });
-  }
+  } 
 
   addcarType(type:String){
     this.valueCartype = type ;

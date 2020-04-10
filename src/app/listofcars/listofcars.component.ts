@@ -53,19 +53,9 @@ export class ListofcarsComponent implements OnInit {
   cars = CARS;
   reservations = RESERVATIONS;
 
-  functionOne() {
-
-    document.getElementById("popup").className = "modal modal-fx-fadeInScale is-active";
-    console.log("work one");
-  }
-  closepopup() {
-
-    document.getElementById("popup").className = "modal modal-fx-fadeInScale";
-  }
-
+  
   // Add Deal Button
   functionTwo() {
-
     document.getElementById("form").className = "modal modal-fx-fadeInScale is-active";
     // this.renderMap();
     console.log("work two");
@@ -100,27 +90,24 @@ export class ListofcarsComponent implements OnInit {
     form = "#" + form ;
     this.elem.nativeElement.querySelector(form).className = "modal modal-fx-fadeInScale"
   }
+  openform(form:String) {
+    form = "#" + form ;
+    this.elem.nativeElement.querySelector(form).className = "modal modal-fx-fadeInScale is-active"
+  }
+
 
   submit_add_deal() {
-    // console.log(this.addDealForm.value["start_dates"])
-    // this.cars.unshift({
-    //   id: 50, image: "https://assets.bugatti.com/fileadmin/_processed_/sei/p54/se-image-e6678a2b1c56c59044f81a3742c784d4.jpg",
-    //   Availability: 'Available', Type: 'Sport', Model: 'BMW i8', LicensePlate: 'พซ 1150', Seats: '5', Doors: '4',
-    //   StartDate: this.addDealForm.value["start_dates"], EndDate: this.addDealForm.value["end_dates"],
-    //   PickupLocation: "latitude: " + this.latitude + ", " + this.longitude, ReturnLocation: "latitude: " + this.latitude + ", " + this.longitude, Price: '4,200'
-    // })
-    // this.addDealForm.addControl('pickup_location', []);
-    console.log(this.addDealForm.value);
-    // axios.post('http://localhost:8080/api/car/', this.addDealForm.value)
-    // .then(function (response) {
-    //   console.log(response);
-    //   this.closeform();
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    //   alert("Fail")
-    // });
+    axios.post('http://localhost:8080/api/car/', this.addDealForm.value)
+    .then(function (response) {
+      console.log(response);
+      this.closeform();
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert("Fail")
+    });
 }
+
   remove_deal_popup() {
     document.getElementById('remove_deal_popup').className = "modal modal-fx-fadeInScale is-active";
     console.log("hey you")
@@ -170,13 +157,4 @@ export class ListofcarsComponent implements OnInit {
       }
     });
   }
-
-  add_car() {
-    document.getElementById("add_car_popup").className = "modal modal-fx-fadeInScale is-active";
-  }
-
-  close_add_car() {
-    document.getElementById("add_car_popup").className = "modal modal-fx-fadeInScale";
-  }
-
 }
