@@ -1,5 +1,5 @@
 import { Car } from './../listofcars/car';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 
 import { REVIEWS } from '../review/mock-review';
 
@@ -12,15 +12,7 @@ export class CarComponent implements OnInit {
   @Input() 
   car;
 
-  constructor() { }
-
-  popupremove() {
-    document.getElementById('popupremove').className = "modal modal-fx-fadeInScale is-active";
-  }
-  del_popupremove() {
-    document.getElementById('popupremove').className = "modal modal-fx-fadeInScale";
-    console.log("work")
-  }
+  constructor(private elem :ElementRef) { }
 
   reviews = REVIEWS ;
 
@@ -28,8 +20,16 @@ export class CarComponent implements OnInit {
     
   }
 
-  review_popup(){
-    document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
+  ngAfterViewInit(): void {
+    setTimeout(() => {this.elem.nativeElement.querySelector(".card-before").className = "card" },500);
+  }
+  showPopup(popup:String){
+    popup = "#" + popup
+    this.elem.nativeElement.querySelector(popup).className = "modal modal-fx-fadeInScale is-active"
+  }
+  deletePopup(popup:String){
+    popup = "#" + popup
+    this.elem.nativeElement.querySelector(popup).className = "modal modal-fx-fadeInScale"
   }
 
 }

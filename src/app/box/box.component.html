@@ -1,8 +1,32 @@
 <app-navbar></app-navbar>
 <div class="container">
+  <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
+    My Car
+  </h1>
   <button class="button" (click)="popupadd()">Add car</button>
-  <div class="list1" *ngFor="let car of cars">
-    <app-car [car]="car"></app-car>
+  <div class="tabs is-boxed is-medium is-centered">
+    <ul>
+      <li class="is-active" (click)="tab('all')" id="all">
+        <a>
+          <span>All</span>
+        </a>
+      </li>
+      <li (click)="tab('available')" id="available">
+        <a>
+          <span>Available</span>
+        </a>
+      </li>
+      <li (click)="tab('reserve')" id="reserve">
+        <a>
+          <span>Reserve</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="columns is-multiline">
+    <div class="column is-narrow" *ngFor="let car of cars">
+      <app-car [car]="car"></app-car>
+    </div>
   </div>
 </div>
 
