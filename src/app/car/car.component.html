@@ -2,14 +2,13 @@
   <div class="card-content">
     <div class="columns">
       <div class="column is-two-fifths" id="eiei">
-        <img src="../../assets/images/car-homepage.jpg" />
+        <img src={{car.photoOfCarDocument}} />
       </div>
       <div class="column" id="detail">
         <span class="tag is-link is-light">{{ car.status }}</span>
-        <p>Type : {{ car.type }}</p>
-        <p>Model : {{ car.Model }}</p>
-        <p>License : {{ car.licensePlate }}</p>
-        <p>Car description : </p>
+        <p>Type : {{ car.carType }}</p>
+        <p>Model : {{ car.carModel }}</p>
+        <p>License : {{ car.licenseplate}}</p>
         <div class="buttons">
           <button
             class="button is-rounded is-info"

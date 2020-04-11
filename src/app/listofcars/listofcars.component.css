@@ -61,11 +61,13 @@ button:active {
 .modal-card {
   /* max-height: calc(100vh - 225px); */
   width: 700px;
-  height: 500px;
   margin-top: auto;
   margin-bottom: auto;
 }
-
+.card:hover{
+  background-color:pink;
+  cursor: pointer;
+}
 /* .modal-background {
       margin: 0px 0px 0px 0px;
   } */
@@ -76,9 +78,10 @@ button:active {
   box-shadow: 10px 10px 10px gray;
   padding: 20px;
   margin-bottom: 10px;
+  max-height: auto
 }
 
-.is-2>img {
+.is-2>img { 
   width: 50px;
   height: 50px;
   border-radius: 50%;

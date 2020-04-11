@@ -17,15 +17,15 @@ import axios from 'axios';
 
 export class ListofcarsComponent implements OnInit {
 
-  // @ViewChild('mapRef', {static: true }) mapElement: ElementRef;
-  // @ViewChild(‘search’, {static: false}) public searchElementRef: ElementRef;
+  reservations = RESERVATIONS;
   latitude: number;
   longitude: number;
   zoom: number;
   address: string;
+  myCars : any
+  myCar_id : number;
   private geoCoder;
-  // geoCoder:any;
-
+  pickuplocation : String;
 
   @ViewChild('search', { static: true })
   public searchElementRef: ElementRef;
@@ -33,12 +33,8 @@ export class ListofcarsComponent implements OnInit {
   addDealForm = new FormGroup({
     start_dates: new FormControl(),
     end_dates: new FormControl(),
-    location: new FormGroup({
-      pickup_location: new FormControl(),
-      return_location: new FormControl()
-    })
+    price : new FormControl(),
   })
-
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -47,23 +43,25 @@ export class ListofcarsComponent implements OnInit {
   ) { }
   ngOnInit() {
     document.getElementsByClassName("unactive")[2].className = "active"
+    axios
+    .get("http://localhost:8080/api/car/")
+    .then(response => {
+      console.log(response);
+      this.myCars = response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
- 
-
-  cars = CARS;
-  reservations = RESERVATIONS;
-
   
   // Add Deal Button
   functionTwo() {
     document.getElementById("form").className = "modal modal-fx-fadeInScale is-active";
     // this.renderMap();
-    console.log("work two");
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
-
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
       });
@@ -71,12 +69,10 @@ export class ListofcarsComponent implements OnInit {
         this.ngZone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
           //verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
           //set latitude, longitude and zoom 
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
@@ -94,10 +90,23 @@ export class ListofcarsComponent implements OnInit {
     form = "#" + form ;
     this.elem.nativeElement.querySelector(form).className = "modal modal-fx-fadeInScale is-active"
   }
-
+  fetchcar(){
+    axios.get("http://localhost:8080/api/car/")
+    .then(response => {
+      console.log(response);
+      this.myCars = response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
 
   submit_add_deal() {
-    axios.post('http://localhost:8080/api/car/', this.addDealForm.value)
+    this.pickuplocation = "(" + this.latitude + "," + this.longitude + ")"
+    this.addDealForm.value["pickuplocation"] = this.pickuplocation
+    this.addDealForm.value["carId"] = this.myCar_id
+    console.log(this.addDealForm.value)
+    axios.post('http://localhost:8080/api/carAvailable/', this.addDealForm.value)
     .then(function (response) {
       console.log(response);
       this.closeform();
@@ -107,19 +116,8 @@ export class ListofcarsComponent implements OnInit {
       alert("Fail")
     });
 }
+  removeDeal(){
 
-  remove_deal_popup() {
-    document.getElementById('remove_deal_popup').className = "modal modal-fx-fadeInScale is-active";
-    console.log("hey you")
-  }
-
-  close_remove_deal_popup() {
-    document.getElementById('remove_deal_popup').className = "modal modal-fx-fadeInScale";
-  }
-
-  activate_remove_deal_popup() {
-    this.cars.splice(0, 1);
-    this.close_remove_deal_popup();
   }
 
   // Get Current Location Coordinates
@@ -156,5 +154,9 @@ export class ListofcarsComponent implements OnInit {
         window.alert('Geocoder failed due to: ' + status);
       }
     });
+  }
+  selectCar(mycar:any){
+    this.closeform('add_car_popup')
+    this.myCar_id = mycar.carId ;
   }
 }

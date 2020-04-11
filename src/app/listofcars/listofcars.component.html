@@ -2,13 +2,61 @@
 
 <!-- Add Available car -->
 <button id="Add_deal_button" (click)="functionTwo()">Add Deal</button>
+
+
+<!-- Car Boxes -->
+<div class="carbox" *ngFor="let car of myCars">
+  <div class="columns">
+    <div class="column">
+      <img src="{{ [car.photoOfCarDocument] }}" alt="car" height="300" width="300" />
+    </div>
+    <div class="column">
+      <span class="background-bisque">{{ [car.Availability] }}</span>
+      <p>Type: {{ [car.carType] }}</p>
+      <p>LicensePlate: {{ [car.licensePlate] }}</p>
+      <p>Start Date: {{ [car.startDate] }}</p>
+      <p>Pickup Location: {{ [car.availability.pickupLocation] }}</p>
+      <br />
+    </div>
+    <div class="column">
+      <span id="model">Model: {{ [car.carModel] }}</span>
+      <br /><br /><br />
+      <p>End Date: {{ [car.availability.endDate] }}</p>
+      <br /><br />
+      <div class="columns">
+        <div class="column" id="reservation">
+          <button class="column" id="remove" (click)="openform('popup')">
+            Reservation
+          </button>
+        </div>
+        <div class="column" id="remove">
+          <button (click)="openform('remove_deal_popup')">Remove</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<br /><br /><br />
+
+<footer>
+  <app-app-footer></app-app-footer>
+</footer>
+
+
 <!-- modal -->
 <div class="modal modal-fx-fadeInScale" id="form">
   <div class="modal-background"></div>
   <div class="modal-content modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Add Deal</p>
-      <button class="delete" aria-label="close" (click)="closeform('form')"></button>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="closeform('form')"
+      ></button>
     </header>
     <section class="modal-card-body reservation">
       <!-- User input Modal -->
@@ -30,60 +78,56 @@
             <div class="field">
               <div class="control">
                 <label for="types">End Date: </label>
-                <input
-                  type="date"
-                  id="end_dates"
-                  formControlName="end_dates"
-                />
+                <input type="date" id="end_dates" formControlName="end_dates" />
               </div>
             </div>
-            
+            <div class="field">
+              <div class="control">
+                <label for="types">Price pre Date: </label>
+                <input type="number" id="price" formControlName="price" />
+              </div>
+            </div>
           </div>
           <!-- second column of user input-->
           <div class="column is-6">
             <div class="pick_car">
-              <button class="pick_car_button" (click)=" openform('add_car_popup')">
+              <button
+                class="pick_car_button"
+                type="button"
+                (click)="openform('add_car_popup')"
+              >
                 Add your car
               </button>
             </div>
             <br />
-
-            <!-- Add Car Modal -->
-            <div class="modal modal-fx-fadeInScale modal-in-modal" id="add_car_popup">
-              <div class="modal-background"></div>
-              <div class="modal-content modal-card" id="add_car_popup_content">
-                <header class="modal-card-head">
-                  <p class="modal-card-title">Select Car</p>
-                  <button class="delete" aria-label="close" (click)="closeform('add_car_popup')"></button>
-                </header>
-                <section class="modal-card-body">
-                  <!-- Content ... -->
-                  
-                  <!-- Content ... -->
-                </section>
-                <footer class="modal-card-foot"></footer>
-              </div>
-            </div>
           </div>
         </div>
-        <br />
-        <div class="container">
-          <!-- <h1>Angular Google Maps with Places Search Example</h1> -->
-          <div class="form-group">
-            <label>Enter address</label>
-            <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
-          </div>
-         
-          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-            <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
-              (dragEnd)="markerDragEnd($event)"></agm-marker>
-          </agm-map>
-         
-          <h5>Address: {{address}}</h5>
-          <div>Latitude: {{latitude}}</div>
-          <div>Longitude: {{longitude}}</div>
-        </div>        
-
+        <!-- <h1>Angular Google Maps with Places Search Example</h1> -->
+        <div class="form-group">
+          <label>Enter address</label>
+          <input
+            type="text"
+            class="form-control"
+            (keydown.enter)="$event.preventDefault()"
+            placeholder="Search Nearest Location"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="off"
+            type="text"
+            #search
+          />
+        </div>
+        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+          <agm-marker
+            [latitude]="latitude"
+            [longitude]="longitude"
+            [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"
+          ></agm-marker>
+        </agm-map>
+        <h5>Address: {{ address }}</h5>
+        <div>Latitude: {{ latitude }}</div>
+        <div>Longitude: {{ longitude }}</div>
         <button>Submit</button>
       </form>
     </section>
@@ -91,38 +135,76 @@
   </div>
 </div>
 
-<!-- Car Boxes -->
-<div class="carbox" *ngFor="let car of cars">
-  <div class="columns">
-    <div class="column">
-      <img src="{{ [car.image] }}" alt="car" height="300" width="300" />
-    </div>
-    <div class="column">
-      <span class="background-bisque">{{ [car.Availability] }}</span>
-      <p>Type: {{ [car.Type] }}</p>
-      <p>LicensePlate: {{ [car.LicensePlate] }}</p>
-      <p>Start Date: {{ [car.StartDate] }}</p>
-      <p>Pickup Location: {{ [car.PickupLocation] }}</p>
-      <p>Return Location: {{ [car.ReturnLocation] }}</p>
-      <br />
-      <p>{{ [car.Seats] }} Seats | {{ [car.Doors] }} Doors</p>
-    </div>
-    <div class="column">
-      <span id="model">Model: {{ [car.Model] }}</span>
-      <br /><br /><br />
-      <p>End Date: {{ [car.EndDate] }}</p>
-      <br /><br />
-      <div class="columns">
-        <div class="column" id="reservation">
-          <button class="column" id="remove" (click)=" openform('popup')">
-            Reservation
-          </button>
-        </div>
-        <div class="column" id="remove">
-          <button (click)="remove_deal_popup()">Remove</button>
+<!-- Add Car Modal -->
+<div class="modal modal-fx-fadeInScale modal-in-modal" id="add_car_popup">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card" id="add_car_popup_content">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Select Car</p>
+      <button
+        class="delete"
+        aria-label="close"
+        type="button"
+        (click)="closeform('add_car_popup')"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="card" *ngFor="let mycar of myCars" >
+        <div class="card-content" (click)="selectCar(mycar)">
+          <div class="content">
+            {{ mycar.licenseplate }}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+    <footer class="modal-card-foot"></footer>
+  </div>
+</div>
+
+<!-- reservation modal -->
+<div class="modal modal-fx-fadeInScale" id="popup">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Reservations History</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="closeform('popup')"
+      ></button>
+    </header>
+    <section class="modal-card-body reservation">
+      <!-- reservation box -->
+      <div class="reservationbox" *ngFor="let reservation of reservations">
+        <div class="columns">
+          <div class="column is-2">
+            <img src="{{ reservation.image }}" alt="bosskung" />
+          </div>
+          <div class="column is-three-fifths">
+            <span>{{ reservation.name }}</span>
+            <br />
+            <b>Type:</b> {{ reservation.type }}
+            <br />
+            <b>Pickup Date:</b> {{ reservation.pickup_date }}
+            <br />
+            <b>Return Date:</b> {{ reservation.return_date }}
+          </div>
+          <div class="column is-5">
+            <span>{{ reservation.reserve_time }}</span>
+            <br />
+            <b>Model:</b> {{ reservation.model }}
+            <br />
+            <b>Location:</b> {{ reservation.pickup_location }}
+            <br />
+            <b>Return Location:</b> {{ reservation.return_location }}
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot"></footer>
+  </div>
+</div>
+
 
     <!-- remove_deal_modal -->
     <div class="modal modal-fx-fadeInScale" id="remove_deal_popup">
@@ -133,20 +215,28 @@
           <button
             class="delete"
             aria-label="close"
-            (click)="close_remove_deal_popup()"
+            (click)="closeform('remove_deal_popup')"
           ></button>
         </header>
         <section class="modal-card-body">
           <!-- Content ... -->
           <p
-            style="text-align:center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-           font-size: larger;"
+            style="
+              text-align: center;
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+              font-size: larger;
+            "
           >
             Each remove car, you will not be
           </p>
           <p
-            style="text-align:center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-           font-size: larger;"
+            style="
+              text-align: center;
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+              font-size: larger;
+            "
           >
             able to recovery them.
           </p>
@@ -154,10 +244,14 @@
           <div class="columns">
             <div class="column">
               <button
-                style="width: 100px; padding: 10px 10px 10px 10px; margin-left: 220px;"
+                style="
+                  width: 100px;
+                  padding: 10px 10px 10px 10px;
+                  margin-left: 220px;
+                "
                 class="button is-rounded"
                 id="b1"
-                (click)="activate_remove_deal_popup()"
+                (click)="removeDeal()"
               >
                 Yes
               </button>
@@ -167,7 +261,7 @@
                 style="width: 100px; padding: 10px 10px 10px 10px;"
                 class="button is-rounded"
                 id="pinkbutton"
-                (click)="close_remove_deal_popup()"
+                (click)="closeform('remove_deal_popup')"
               >
                 No
               </button>
@@ -178,55 +272,3 @@
         <footer class="modal-card-foot"></footer>
       </div>
     </div>
-
-    <!-- reservation modal -->
-    <div class="modal modal-fx-fadeInScale" id="popup">
-      <div class="modal-background"></div>
-      <div class="modal-content modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Reservations History</p>
-          <button
-            class="delete"
-            aria-label="close"
-            (click)="closeform('popup')"
-          ></button>
-        </header>
-        <section class="modal-card-body reservation">
-          <!-- reservation box -->
-          <div class="reservationbox" *ngFor="let reservation of reservations">
-            <div class="columns">
-              <div class="column is-2">
-                <img src="{{ reservation.image }}" alt="bosskung" />
-              </div>
-              <div class="column is-three-fifths">
-                <span>{{ reservation.name }}</span>
-                <br />
-                <b>Type:</b> {{ reservation.type }}
-                <br />
-                <b>Pickup Date:</b> {{ reservation.pickup_date }}
-                <br />
-                <b>Return Date:</b> {{ reservation.return_date }}
-              </div>
-              <div class="column is-5">
-                <span>{{ reservation.reserve_time }}</span>
-                <br />
-                <b>Model:</b> {{ reservation.model }}
-                <br />
-                <b>Location:</b> {{ reservation.pickup_location }}
-                <br />
-                <b>Return Location:</b> {{ reservation.return_location }}
-              </div>
-            </div>
-          </div>
-        </section>
-        <footer class="modal-card-foot"></footer>
-      </div>
-    </div>
-  </div>
-</div>
-
-<br><br><br>
-
-<footer>
-  <app-app-footer></app-app-footer>
-</footer>
