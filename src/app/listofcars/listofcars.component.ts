@@ -102,19 +102,28 @@ export class ListofcarsComponent implements OnInit {
   }
 
   submit_add_deal() {
-    this.pickuplocation = "(" + this.latitude + "," + this.longitude + ")"
-    this.addDealForm.value["pickuplocation"] = this.pickuplocation
-    this.addDealForm.value["carId"] = this.myCar_id
-    console.log(this.addDealForm.value)
-    axios.post('http://localhost:8080/api/carAvailable/', this.addDealForm.value)
-    .then(function (response) {
-      console.log(response);
-      this.closeform();
-    })
-    .catch(function (error) {
-      console.log(error);
-      alert("Fail")
-    });
+    console.log(this.verify_submit);
+    if (this.verify_submit()) {
+      console.log("can submit");
+      this.pickuplocation = "(" + this.latitude + "," + this.longitude + ")"
+      this.addDealForm.value["pickuplocation"] = this.pickuplocation
+      this.addDealForm.value["carId"] = this.myCar_id
+      console.log(this.addDealForm.value)
+      axios.post('http://localhost:8080/api/carAvailable/', this.addDealForm.value)
+      .then(function (response) {
+        console.log(response);
+        this.closeform();
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("Fail")
+      });
+    }
+    else {
+      console.log("can't submit");
+      alert("Missing Value!");
+    }
+    
 }
   removeDeal(){
 
@@ -158,5 +167,26 @@ export class ListofcarsComponent implements OnInit {
   selectCar(mycar:any){
     this.closeform('add_car_popup')
     this.myCar_id = mycar.carId ;
+  }
+
+  verify_submit() {
+    console.log("executed verify submit");
+    if (this.addDealForm.get('start_dates').value == null) {
+      console.log("datepicker start is null!");
+      return false;
+    }
+    if (this.addDealForm.get('end_dates').value == null) {
+      console.log("datepicker end is null!");
+      return false;
+    }
+    if (this.addDealForm.get('price').value == null) {
+      console.log("price is null!");
+      return false;
+    }
+    if (this.addDealForm.value["carId"] == null) {
+      console.log("car is null!");
+      return false;
+    }
+    return true;
   }
 }
