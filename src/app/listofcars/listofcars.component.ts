@@ -33,10 +33,6 @@ export class ListofcarsComponent implements OnInit {
   addDealForm = new FormGroup({
     start_dates: new FormControl(),
     end_dates: new FormControl(),
-    location: new FormGroup({
-      pickup_location: new FormControl(),
-      return_location: new FormControl()
-    })
   })
 
 
@@ -109,7 +105,7 @@ export class ListofcarsComponent implements OnInit {
     //   StartDate: this.addDealForm.value["start_dates"], EndDate: this.addDealForm.value["end_dates"],
     //   PickupLocation: "latitude: " + this.latitude + ", " + this.longitude, ReturnLocation: "latitude: " + this.latitude + ", " + this.longitude, Price: '4,200'
     // })
-    // this.addDealForm.addControl('pickup_location', []);
+    this.addDealForm.addControl('pickup_location', new FormControl([this.latitude, this.longitude]));
     console.log(this.addDealForm.value);
     // axios.post('http://localhost:8080/api/car/', this.addDealForm.value)
     // .then(function (response) {
