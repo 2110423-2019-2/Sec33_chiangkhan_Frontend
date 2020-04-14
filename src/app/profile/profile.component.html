@@ -5,10 +5,7 @@
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
-            <img
-              src="../../assets/images/boom.jpg"
-              alt="Placeholder image"
-            />
+            <img src="../../assets/images/boom.jpg" alt="Placeholder image" />
           </figure>
         </div>
         <div class="card-content">
@@ -26,20 +23,28 @@
         </div>
       </div>
     </div>
-    <div class="column ">
+    <div class="column">
       <div class="card">
         <div class="card-content">
           <div class="columns" id="bug">
             <div class="column">
               <div class="content" id="about">
                 <div>
-                    <h1><img src="../../assets/images/about.png" alt="" height="60px" width="40px"> About</h1>
-                    <p><span>First name</span> : Boom</p>
-                    <p><span>Last name </span>: Smith</p>
-                    <p><span>Email</span> : boomlnwza@gmail.com</p>
-                    <p><span>Phone number</span> : @boomkp [IG]</p>
-                    <p><span>Driving license number</span> : 123456789</p>
-                    <p><span>Address</span> : 1428 I-House Chula Bangkok</p>
+                  <h1>
+                    <img
+                      src="../../assets/images/about.png"
+                      alt=""
+                      height="60px"
+                      width="40px"
+                    />
+                    About
+                  </h1>
+                  <p><span id="first_name">First name</span> : Boom</p>
+                  <p><span>Last name </span>: Smith</p>
+                  <p><span>Email</span> : boomlnwza@gmail.com</p>
+                  <p><span>Phone number</span> : @boomkp [IG]</p>
+                  <p><span>Driving license number</span> : 123456789</p>
+                  <p><span>Address</span> : 1428 I-House Chula Bangkok</p>
                 </div>
               </div>
             </div>
@@ -57,69 +62,102 @@
       </div>
       <div class="card">
         <div class="card-content">
-          <div class="content" id ="payment_info">
+          <div class="content" id="payment_info">
             <div>
-                <h1><img src="../../assets/images/credit-card-with-tick.png" alt="" height="60px" width="40px"> Payment Info</h1>
-                <p><span>Bank account number</span> : xxx-xxx-xxxx</p>
-                <p><span>Credit card number</span> : xxxxxxxxxx</p>
-                <p><span>Expire</span> : 7/23 </p>
-                <p><span>CVV </span>: XXX</p>
+              <h1>
+                <img
+                  src="../../assets/images/credit-card-with-tick.png"
+                  alt=""
+                  height="60px"
+                  width="40px"
+                />
+                Payment Info
+              </h1>
+              <p><span>Bank account number</span> : xxx-xxx-xxxx</p>
+              <p><span>Credit card number</span> : xxxxxxxxxx</p>
+              <p><span>Expire</span> : 7/23</p>
+              <p><span>CVV </span>: XXX</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Edit Profile Modal -->
   <div class="modal modal-fx-fadeInScale">
     <div class="modal-background"></div>
     <div class="modal-content modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Edit Profile</p>
-        <button class="delete" aria-label="close" (click)="closePopup()"></button>
+        <button
+          class="delete"
+          aria-label="close"
+          (click)="closePopup()"
+        ></button>
       </header>
+      <form [formGroup]="editForm" (ngSubmit)="updateProfile()">
       <section class="modal-card-body">
-        <div class="field">
-          <label class="label">First Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith" value="boomkp">
+          <div class="field">
+            <label class="label">First Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="e.g Barney"
+                value="boomkp"
+                formControlName="first_name"
+              />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Last Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith" value="Smith">
+          <div class="field">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="e.g Stinson"
+                value="Smith"
+                formControlName="last_name"
+              />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith">
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g legend_waitforit@gmail.com"  formControlName="email"/>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Phone number</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith">
+          <div class="field">
+            <label class="label">Phone number</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g 1150" formControlName="phone_number" />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Driving license number</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith">
+          <div class="field">
+            <label class="label">Driving license number</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g 1-1073-JWY" formControlName="license_number"/>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Address</label>
-          <div class="control">
-            <textarea class="textarea" placeholder="Address"></textarea>
+          <div class="field">
+            <label class="label">Address</label>
+            <div class="control">
+              <textarea class="textarea" placeholder="e.g. Siam Paragon" formControlName="address"></textarea>
+            </div>
           </div>
-        </div>
+        
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" (click)="updateProfile()">Save changes</button>
+        <button class="button is-success" type="submit" [disabled]="!editForm.valid">
+          Save changes
+        </button>
+      
         <button class="button" (click)="closePopup()">Cancel</button>
       </footer>
+    </form>
     </div>
   </div>
+
 </div>
 <app-app-footer></app-app-footer>
