@@ -5,8 +5,10 @@
   <div class="columns">
     <div class="column is-2">
       <figure class="image">
-        <img src="../../assets/images/car-homepage.jpg"
-             alt="Placeholder image" />
+        <img
+          src="../../assets/images/car-homepage.jpg"
+          alt="Placeholder image"
+        />
       </figure>
     </div>
     <div class="column" id="detail">
@@ -16,66 +18,184 @@
       </div>
       <article class="message is-info">
         <div class="message-body">
-          <p>Type: Sport car</p>
-          <p>Model: BMW Z3</p>
-          <p>Location: Bangkoknoi, Bangkoknoi</p>
-          <p>Start Date: 18-11-2019</p>
-          <p>End Date: 12-12-2019</p>
+          <p>Type: {{ carReserve.carType }}</p>
+          <p>Model: {{ carReserve.carModel }}</p>
+          <p>Location: {{ carReserve.carType }}</p>
+          <p>Start Date: {{ carReserve.startDate }}</p>
+          <p>End Date: {{ carReserve.endDate }}</p>
         </div>
       </article>
     </div>
   </div>
-  <div class="columns">
-    <div class="column is-1">
-      <label for="pickup_date">Pickup Date</label>
-      <br />
-      <label for="locations">Pickup Location</label>
+  <form action="" [formGroup]="reserveForm">
+    <div class="columns">
+      <div class="column is-2">
+        <label for="pickup_date">Pickup Date</label>
+        <br />
+        <label for="locations">Pickup Location</label>
+      </div>
+
+      <div class="column is-2">
+        <input
+          class="button"
+          type="date"
+          id="pickup_date"
+          name="pickup_date"
+          formControlName="pickupDate"
+        />
+        <br />
+        <button
+          class="input"
+          style="width: 150px; height: 42px;"
+          (click)="openMap('pickup')"
+        >
+          <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
+          Open map
+        </button>
+      </div>
+
+      <div class="column is-2">
+        <label for="return_date">Return Date</label>
+        <br />
+        <label for="locations">Return Location</label>
+      </div>
+
+      <div class="column is-2">
+        <input
+          class="button"
+          type="date"
+          id="return_date"
+          name="return_date"
+          formControlName="returnDate"
+        />
+        <br />
+        <button
+          class="input"
+          style="width: 150px; height: 42px;"
+          (click)="openMap('return')"
+        >
+          <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
+          Open map
+        </button>
+      </div>
     </div>
 
-    <div class="column is-2">
-      <input class="button"type="date" id="pickup_date" name="pickup_date">
-      <br />
-      <input class="input" type="text">
-    </div>
-
-    <div class="column is-1">
-      <label for="return_date">Return Date</label>
-      <br />
-      <label for="locations">Return Location</label>
-    </div>
-
-    <div class="column is-2">
-      <input class="button" type="date" id="return_date" name="return_date">
-      <br />
-      <input class="input" type="text">
-    </div>
-  </div>
-  <article class="message is-success">
-    <div class="message-header">
-      <p>Agreement</p>
-    </div>
-    <div class="message-body">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-    </div>
-  </article>
-  <label class="checkbox">
-    <input type="checkbox" (click)="confirmAgreement()">
-    Confirm
-  </label>
+    <article class="message is-success">
+      <div class="message-header">
+        <p>Agreement</p>
+      </div>
+      <div class="message-body">
+        {{ carReserve.agreement }}
+      </div>
+    </article>
+    <label class="checkbox">
+      <input type="checkbox" (click)="confirmAgreement()" />
+      Confirm
+    </label>
+  </form>
   <div class="boa">
     <div class="columns">
       <div class="column">
         <div class="column is-3 feebox">
-          <p>Rental Fee:          2,000 THB</p>
-          <p>xxx Fee:             100   THB</p>
+          <p>Rental Fee: 2,000 THB</p>
+          <p>xxx Fee: 100 THB</p>
           <hr />
-          <p>Total:               2,100 THB</p>
+          <p>Total: 2,100 THB</p>
         </div>
       </div>
       <div class="column">
         <button class="button is-danger" (click)="openPopup()">Pay</button>
       </div>
     </div>
-    <button class="button is-danger" (click)="genarateAgreement()">Create Reservation</button>
+    <button class="button is-danger" (click)="genarateAgreement()">
+      Create Reservation
+    </button>
+  </div>
+</div>
+
+<div class="modal modal-fx-fadeInScale" id="return"> 
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card" style="height:auto; width: 1000px;">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Choose return Location</p>
+      <button class="delete" aria-label="close" (click)="closeform('return')"></button>
+    </header>
+    <section class="modal-card-body">
+      <form >
+        <div class="container">
+          <div class="form-group">
+            <label>Enter address</label>
+            <input
+              type="text"
+              class="input form-control"
+              (keydown.enter)="$event.preventDefault()"
+              placeholder="Search Nearest Location"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="off"
+              type="text"
+              #search
+              style="margin-bottom: 10px;"
+            />
+          </div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker
+              [latitude]="latitude"
+              [longitude]="longitude"
+              [markerDraggable]="true"
+              (dragEnd)="markerDragEnd($event)"
+            ></agm-marker>
+          </agm-map>
+          <h5>Address: {{ address }}</h5>
+          <div>Latitude: {{ latitude }}</div>
+          <div>Longitude: {{ longitude }}</div>
+        </div>
+        <button class="button is-success" (click)="addreturnLocation()" style="margin-top: 20px;">Confirm</button>
+      </form>
+    </section>
+  </div>
+</div>
+
+
+<div class="modal modal-fx-fadeInScale" id="pickup"> 
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card" style="height:auto; width: 1000px;">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Choose pickup Location</p>
+      <button class="delete" aria-label="close" (click)="closeform('pickup')"></button>
+    </header>
+    <section class="modal-card-body">
+      <form >
+        <div class="container">
+          <div class="form-group">
+            <label>Enter address</label>
+            <input
+              type="text"
+              class="input form-control"
+              (keydown.enter)="$event.preventDefault()"
+              placeholder="Search Nearest Location"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="off"
+              type="text"
+              #search
+              style="margin-bottom: 10px;"
+            />
+          </div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker
+              [latitude]="latitude"
+              [longitude]="longitude"
+              [markerDraggable]="true"
+              (dragEnd)="markerDragEnd($event)"
+            ></agm-marker>
+          </agm-map>
+          <h5>Address: {{ address }}</h5>
+          <div>Latitude: {{ latitude }}</div>
+          <div>Longitude: {{ longitude }}</div>
+        </div>
+        <button class="button is-success" (click)="addpickupLocation()" style="margin-top: 20px;">Confirm</button>
+      </form>
+    </section>
   </div>
 </div>

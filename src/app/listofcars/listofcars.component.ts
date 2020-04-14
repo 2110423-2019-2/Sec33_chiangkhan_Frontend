@@ -1,11 +1,8 @@
 import { FormGroup, FormControl } from "@angular/forms";
 import { RESERVATIONS } from "./../reservations/mock-reservations";
 import { Component, OnInit } from "@angular/core";
-import { CARS } from "./mock-cars";
-// import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ViewChild, ElementRef, NgZone } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
-// import { google } from “google-maps”;
 import axios from "axios";
 
 @Component({

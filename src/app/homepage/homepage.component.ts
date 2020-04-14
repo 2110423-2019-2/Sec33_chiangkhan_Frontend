@@ -262,7 +262,7 @@ export class HomepageComponent implements OnInit {
   }
   // Add Deal Button
   openMap() {
-    document.getElementById("form").className =
+    document.getElementById("map").className =
       "modal modal-fx-fadeInScale is-active";
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
