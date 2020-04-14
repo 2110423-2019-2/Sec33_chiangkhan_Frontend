@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { ViewChild, NgZone } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
+import { element } from "protractor";
 
 @Component({
   selector: "app-homepage",
@@ -18,11 +19,13 @@ export class HomepageComponent implements OnInit {
     endDate: new FormControl(),
   });
   cars: any[];
+  carsAvailable: any[];
 
   @ViewChild("search", { static: true })
   public searchElementRef: ElementRef;
   amountAllcar: number;
   pagination: any;
+  paginationCurrent:any;
   stateShowCar: number = 0;
   state: number = 0;
   sortDropDown: String = "sort";
@@ -70,6 +73,7 @@ export class HomepageComponent implements OnInit {
         carModel: this.valueCarmodel,
         sortby: this.valueSort,
         duration: Array(duration),
+        pagination:this.paginationCurrent
       },
     ]);
   }
@@ -82,6 +86,9 @@ export class HomepageComponent implements OnInit {
           params.get(params.keys[p]) != "" &&
           params.get(params.keys[p]) != "undefined"
         ) {
+          if(params.keys[p] == "pagination"){
+            continue
+          }
           if (
             params.keys[p] == "duration" &&
             params.get(params.keys[p]) != ","
@@ -101,31 +108,56 @@ export class HomepageComponent implements OnInit {
           console.log(response);
           this.cars = response.data;
           this.amountAllcar = this.getAmountCarAvailable(this.cars);
-          this.pagination = Array(Math.floor(this.amountAllcar / 100))
+          this.pagination = Array(Math.floor(this.amountAllcar / 30))
             .fill(0)
             .map((x, i) => i + 1);
         })
-        .catch((error) => { 
+        .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
+          let carsAvailable = [];
+          this.cars.forEach((car) => {
+            car.availability.forEach((element) => {
+              let temp = Object.assign({}, car);
+              let temp1 = Object.assign(temp, element);
+              delete temp1["availability"];
+              carsAvailable.push(temp1);
+            });
+          });
+          this.carsAvailable = carsAvailable;
+          this.carsAvailable = this.carsAvailable.slice(
+            this.stateShowCar,
+            this.stateShowCar + 30
+          );
+          console.log(this.carsAvailable);
         });
     });
-    // this.cars = this.mock_car;
-    console.log(this.cars);
   }
-  
   getAmountCarAvailable(cars: any) {
     let sum = 0;
-    cars.forEach((element) => {
-      sum += element.availability.length;  
+    cars.forEach((car) => {
+      sum += car.availability.length;
     });
     console.log("allcar : " + sum);
-    return sum;  
-  } 
+    return sum;
+  }
 
   paginationActive(pagination_num: number) {
-    this.elementref.nativeElement.querySelectorAll(".pagination-link")[
-      pagination_num - 1
-    ].className = "pagination-link is-current";
+    this.stateShowCar = pagination_num*30
+    this.paginationCurrent = pagination_num+1
+    console.log(this.stateShowCar)
+    let allPag = this.elementref.nativeElement.querySelectorAll(
+      ".pagination-link"
+    );
+    for (let i = 0; i < allPag.length; i++) {
+      if (i != pagination_num) {
+        allPag[i].className = "pagination-link";
+      } else {
+        allPag[i].className = "pagination-link is-current";
+      }
+    }
+    this.getSearchCar()
   }
   closeAllDropdown(filter: String) {
     let allDropdown = this.elementref.nativeElement.querySelectorAll(
@@ -134,6 +166,7 @@ export class HomepageComponent implements OnInit {
     for (let i = 0; i < allDropdown.length; i++) {
       if (allDropdown[i].id != filter) allDropdown[i].className = "dropdown";
     }
+    this.getSearchCar()
   }
 
   toggleDropdown(filter: String) {

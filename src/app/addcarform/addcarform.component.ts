@@ -11,9 +11,6 @@ import axios from 'axios';
 export class AddcarformComponent implements OnInit {
   addcarForm = new FormGroup({
     licenseplate : new FormControl(),
-    capacity : new FormControl(),
-    carModel : new FormControl(),
-    carType : new FormControl(),
     carDescription : new FormControl(),
     photoOfCarDocument : new FormControl()
   })
@@ -27,6 +24,8 @@ export class AddcarformComponent implements OnInit {
   } 
   
   addCar(){
+    Object.assign(this.addcarForm.value,{"capacity":this.valueCapacity},{"carType":this.valueCartype},{"carModel":this.valueCarmodel})
+    console.log(this.addcarForm.value)
     axios.post('http://localhost:8080/api/car/', this.addcarForm.value)
     .then(function (response) {
       console.log(response);

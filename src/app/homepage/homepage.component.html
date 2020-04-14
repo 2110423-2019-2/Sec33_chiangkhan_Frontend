@@ -290,8 +290,8 @@
     <a class="pagination-previous">Previous</a>
     <a class="pagination-next">Next page</a>
     <ul class="pagination-list" >
-      <li><a class="pagination-link is-current" aria-label="Goto page 1">1</a></li>
-      <li *ngFor = "let number of pagination" (click)="paginationActive(number-1)"><a class="pagination-link" aria-label="Goto page 1">{{number+1}}</a></li>
+      <li (click)="paginationActive(0)"><a class="pagination-link is-current" aria-label="Goto page 1">1</a></li>
+      <li *ngFor = "let number of pagination" (click)="paginationActive(number)"><a class="pagination-link" aria-label="Goto page 1">{{number+1}}</a></li>
       <!-- <li><span class="pagination-ellipsis">&hellip;</span></li>
       <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
       <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
@@ -301,8 +301,8 @@
     </ul>
   </nav>
   <div class="columns is-multiline" style="justify-content: space-evenly;">
-    <div class="column is-narrow" *ngFor="let car of cars">
-      <app-homepage-car [car]="car"></app-homepage-car>
+    <div class="column is-narrow" *ngFor="let car of carsAvailable">
+      <app-homepage-car [car]="car" ></app-homepage-car>
     </div>
   </div>
 </div>
