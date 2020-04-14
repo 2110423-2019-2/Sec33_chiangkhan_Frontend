@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ReviewComponent } from '../review/review.component';
 import { REVIEWS } from '../review/mock-review';
@@ -18,13 +19,13 @@ export class BoxComponent implements OnInit {
   popup(){
     document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
   }
-  constructor(private elem : ElementRef) { 
+  constructor(private elem : ElementRef , private router: Router) { 
     
   }
 
   ngOnInit(){
     document.getElementsByClassName("unactive")[3].className = "active"
-    axios.get('http://localhost:8080/api/car/')
+    axios.get('http://localhost:8080/api/car/mycar')
     .then((response) => {
       console.log(response);
       this.cars = response.data
