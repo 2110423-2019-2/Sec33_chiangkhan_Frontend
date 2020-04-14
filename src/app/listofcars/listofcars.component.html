@@ -3,12 +3,16 @@
 <!-- Add Available car -->
 <button id="Add_deal_button" (click)="functionTwo()">Add Deal</button>
 
-
 <!-- Car Boxes -->
 <div class="carbox" *ngFor="let car of myCars">
   <div class="columns">
     <div class="column">
-      <img src="{{ [car.photoOfCarDocument] }}" alt="car" height="300" width="300" />
+      <img
+        src="{{ [car.photoOfCarDocument] }}"
+        alt="car"
+        height="300"
+        width="300"
+      />
     </div>
     <div class="column">
       <span class="background-bisque">{{ [car.Availability] }}</span>
@@ -34,8 +38,6 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
 
@@ -44,7 +46,6 @@
 <footer>
   <app-app-footer></app-app-footer>
 </footer>
-
 
 <!-- modal -->
 <div class="modal modal-fx-fadeInScale" id="form">
@@ -63,14 +64,15 @@
       <!-- first column of user input -->
       <form [formGroup]="addDealForm" (ngSubmit)="submit_add_deal()">
         <div class="columns">
-          <div class="column is-6">
+          <div class="column is-9">
             <div class="field">
               <div class="control">
                 <label for="types">Start Date: </label>
                 <input
+                  class="input"
                   type="date"
                   id="start_dates"
-                  formControlName="start_dates"
+                  formControlName="startDates"
                 />
               </div>
             </div>
@@ -78,18 +80,34 @@
             <div class="field">
               <div class="control">
                 <label for="types">End Date: </label>
-                <input type="date" id="end_dates" formControlName="end_dates" />
+                <input
+                  class="input"
+                  type="date"
+                  id="end_dates"
+                  formControlName="endDates"
+                />
               </div>
             </div>
             <div class="field">
               <div class="control">
                 <label for="types">Price pre Date: </label>
-                <input type="number" id="price" formControlName="price" />
+                <input
+                  class="input"
+                  type="number"
+                  id="price"
+                  formControlName="price"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <label for="types">Agreement : </label>
+                <textarea class="textarea" placeholder="e.g. Don't steal my cay" formControlName="agreement"></textarea>
               </div>
             </div>
           </div>
           <!-- second column of user input-->
-          <div class="column is-6">
+          <div class="column">
             <div class="pick_car">
               <button
                 class="pick_car_button"
@@ -107,7 +125,7 @@
           <label>Enter address</label>
           <input
             type="text"
-            class="form-control"
+            class="input form-control"
             (keydown.enter)="$event.preventDefault()"
             placeholder="Search Nearest Location"
             autocorrect="off"
@@ -115,6 +133,7 @@
             spellcheck="off"
             type="text"
             #search
+            style="margin-bottom: 10px;"
           />
         </div>
         <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
@@ -149,7 +168,7 @@
       ></button>
     </header>
     <section class="modal-card-body">
-      <div class="card" *ngFor="let mycar of myCars" >
+      <div class="card" *ngFor="let mycar of myCars">
         <div class="card-content" (click)="selectCar(mycar)">
           <div class="content">
             {{ mycar.licenseplate }}
@@ -205,70 +224,69 @@
   </div>
 </div>
 
-
-    <!-- remove_deal_modal -->
-    <div class="modal modal-fx-fadeInScale" id="remove_deal_popup">
-      <div class="modal-background"></div>
-      <div class="modal-content modal-card" id="remove_deal_popup_content">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Remove</p>
+<!-- remove_deal_modal -->
+<div class="modal modal-fx-fadeInScale" id="remove_deal_popup">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card" id="remove_deal_popup_content">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Remove</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="closeform('remove_deal_popup')"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      <p
+        style="
+          text-align: center;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+            sans-serif;
+          font-size: larger;
+        "
+      >
+        Each remove car, you will not be
+      </p>
+      <p
+        style="
+          text-align: center;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+            sans-serif;
+          font-size: larger;
+        "
+      >
+        able to recovery them.
+      </p>
+      <br />
+      <div class="columns">
+        <div class="column">
           <button
-            class="delete"
-            aria-label="close"
+            style="
+              width: 100px;
+              padding: 10px 10px 10px 10px;
+              margin-left: 220px;
+            "
+            class="button is-rounded"
+            id="b1"
+            (click)="removeDeal()"
+          >
+            Yes
+          </button>
+        </div>
+        <div class="column">
+          <button
+            style="width: 100px; padding: 10px 10px 10px 10px;"
+            class="button is-rounded"
+            id="pinkbutton"
             (click)="closeform('remove_deal_popup')"
-          ></button>
-        </header>
-        <section class="modal-card-body">
-          <!-- Content ... -->
-          <p
-            style="
-              text-align: center;
-              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
-                sans-serif;
-              font-size: larger;
-            "
           >
-            Each remove car, you will not be
-          </p>
-          <p
-            style="
-              text-align: center;
-              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
-                sans-serif;
-              font-size: larger;
-            "
-          >
-            able to recovery them.
-          </p>
-          <br />
-          <div class="columns">
-            <div class="column">
-              <button
-                style="
-                  width: 100px;
-                  padding: 10px 10px 10px 10px;
-                  margin-left: 220px;
-                "
-                class="button is-rounded"
-                id="b1"
-                (click)="removeDeal()"
-              >
-                Yes
-              </button>
-            </div>
-            <div class="column">
-              <button
-                style="width: 100px; padding: 10px 10px 10px 10px;"
-                class="button is-rounded"
-                id="pinkbutton"
-                (click)="closeform('remove_deal_popup')"
-              >
-                No
-              </button>
-            </div>
-          </div>
-          <!-- Content ... -->
-        </section>
-        <footer class="modal-card-foot"></footer>
+            No
+          </button>
+        </div>
       </div>
-    </div>
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot"></footer>
+  </div>
+</div>

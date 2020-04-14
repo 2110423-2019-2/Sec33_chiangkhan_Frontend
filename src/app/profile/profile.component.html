@@ -5,48 +5,57 @@
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
-            <img
-              src="../../assets/images/boom.jpg"
-              alt="Placeholder image"
-            />
+            <img src="../../assets/images/boom.jpg" alt="Placeholder image" />
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">Boom Smith</p>
-              <p class="subtitle is-6">@boomsmith</p>
+              <p class="title is-4">{{ information.name }}</p>
+              <p class="subtitle is-6">@{{ information.username }}</p>
             </div>
           </div>
           <div class="content">
-            <p>Status : Single</p>
-            <p>Interest : Man</p>
             <br />
           </div>
         </div>
       </div>
     </div>
-    <div class="column ">
+    <div class="column">
       <div class="card">
         <div class="card-content">
           <div class="columns" id="bug">
             <div class="column">
               <div class="content" id="about">
                 <div>
-                    <h1><img src="../../assets/images/about.png" alt="" height="60px" width="40px"> About</h1>
-                    <p><span>First name</span> : Boom</p>
-                    <p><span>Last name </span>: Smith</p>
-                    <p><span>Email</span> : boomlnwza@gmail.com</p>
-                    <p><span>Phone number</span> : @boomkp [IG]</p>
-                    <p><span>Driving license number</span> : 123456789</p>
-                    <p><span>Address</span> : 1428 I-House Chula Bangkok</p>
+                  <h1>
+                    <img
+                      src="../../assets/images/about.png"
+                      alt=""
+                      height="60px"
+                      width="40px"
+                    />
+                    About
+                  </h1>
+                  <p><span>First name</span>{{ information.name }}</p>
+                  <p><span>Last name </span>: Smith</p>
+                  <p><span>Email</span> : {{ information.email }}</p>
+                  <p><span>Phone number</span> : {{ information.phone_num }}</p>
+                  <p>
+                    <span>Driving license number</span> :
+                    {{ information.driving_license }}
+                  </p>
+                  <p><span>Address</span> : {{ information.address }}</p>
                 </div>
               </div>
             </div>
             <div class="column" id="edit">
               <div class="field is-grouped">
                 <p class="control">
-                  <button class="button is-link" (click)="editProfile()">
+                  <button
+                    class="button is-link"
+                    (click)="editProfile('editProfile')"
+                  >
                     Edit
                   </button>
                 </p>
@@ -57,67 +66,170 @@
       </div>
       <div class="card">
         <div class="card-content">
-          <div class="content" id ="payment_info">
+          <div class="content" id="payment_info">
             <div>
-                <h1><img src="../../assets/images/credit-card-with-tick.png" alt="" height="60px" width="40px"> Payment Info</h1>
-                <p><span>Bank account number</span> : xxx-xxx-xxxx</p>
-                <p><span>Credit card number</span> : xxxxxxxxxx</p>
-                <p><span>Expire</span> : 7/23 </p>
-                <p><span>CVV </span>: XXX</p>
+              <h1>
+                <img
+                  src="../../assets/images/credit-card-with-tick.png"
+                  alt=""
+                  height="60px"
+                  width="40px"
+                />
+                Payment Info
+              </h1>
+              <p>
+                <span>Bank account number</span> :
+                {{ information.bank_account }}
+              </p>
+              <p>
+                <span>Credit card number</span> :
+                {{ information.credit_card_number }}
+              </p>
+              <p><span>Expire</span> : {{ information.credit_card_expiry }}</p>
+              <p><span>CVV </span>: {{ information.credit_card_security }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal modal-fx-fadeInScale">
+  <div class="modal modal-fx-fadeInScale" id="editProfile">
     <div class="modal-background"></div>
     <div class="modal-content modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Edit Profile</p>
-        <button class="delete" aria-label="close" (click)="closePopup()"></button>
+        <button
+          class="delete"
+          aria-label="close"
+          (click)="closePopup('editProfile')"
+        ></button>
       </header>
       <section class="modal-card-body">
-        <div class="field">
-          <label class="label">First Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith" value="boomkp">
+        <form action="" [formGroup]="updateProfileForm">
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="e.g Alex Smith"
+                value="{{ information.name }}"
+                formControlName="name"
+              />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Last Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith" value="Smith">
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input
+                class="input"
+                type="password"
+                placeholder="new password"
+                formControlName="password"
+              />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith">
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="example@example.com"
+                value="{{ information.email }}"
+                formControlName="email"
+              />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Phone number</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith">
+          <div class="field">
+            <label class="label">Phone number</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="0833333333"
+                value="{{ information.phone_num }}"
+                formControlName="phone_num"
+              />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Driving license number</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith">
+          <div class="field">
+            <label class="label">Driving license number</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="e.g Alex Smith"
+                value="{{ information.driving_license }}"
+                formControlName="driving_license"
+              />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Address</label>
-          <div class="control">
-            <textarea class="textarea" placeholder="Address"></textarea>
+          <div class="field">
+            <label class="label">Address</label>
+            <div class="control">
+              <textarea class="textarea" placeholder="Address" formControlName="address">{{
+                this.information.address
+              }}</textarea>
+            </div>
           </div>
-        </div>
+          <div class="field">
+            <label class="label">Bank account number</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="xxxxxxxxxx"
+                value="{{ information.bank_account }}"
+                formControlName="bank_account"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Credit card number</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="xxxx/xxxx/xxxx/xxxx"
+                value="{{ information.credit_card_number }}"
+                formControlName="credit_card_number"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Expiry</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="mm/yy"
+                value="{{ information.credit_card_expiry }}"
+                formControlName="credit_card_expiry"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">CVV</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="XXX"
+                value="{{ information.credit_card_security }}"
+                formControlName="credit_card_security"
+              />
+            </div>
+          </div>
+        </form>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" (click)="updateProfile()">Save changes</button>
-        <button class="button" (click)="closePopup()">Cancel</button>
+        <button class="button is-success" (click)="updateProfile()">
+          Save changes
+        </button>
+        <button class="button" (click)="closePopup('editProfile')">
+          Cancel
+        </button>
       </footer>
     </div>
   </div>
