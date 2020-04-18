@@ -27,5 +27,6 @@ export class HomepageCarComponent implements OnInit {
     form = "#" + form
     this.elementref.nativeElement.querySelector(form).className = "modal modal-fx-fadeInScale is-active";
   }
-  
+
+
 }

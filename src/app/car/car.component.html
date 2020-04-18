@@ -58,9 +58,9 @@
   <div class="modal-content modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Review</p>
-      <button class="delete" aria-label="close"></button>
+      <button class="delete" aria-label="close" (click)="deletePopup('review')"></button>
     </header>
-    <section class="modal-card-body" style="border-radius: 20px;">
+    <section class="modal-card-body" >
         <div *ngFor="let review of reviews">
           <app-review [review]="review"></app-review>
         </div>
