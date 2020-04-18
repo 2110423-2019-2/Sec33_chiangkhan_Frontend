@@ -29,13 +29,9 @@
   </div>
   <form action="" [formGroup]="reserveForm">
     <div class="columns">
-      <div class="column is-2">
+      <div class="column">
         <label for="pickup_date">Pickup Date</label>
         <br />
-        <label for="locations">Pickup Location</label>
-      </div>
-
-      <div class="column is-2">
         <input
           class="button"
           type="date"
@@ -43,24 +39,10 @@
           name="pickup_date"
           formControlName="pickupDate"
         />
-        <br />
-        <button
-          class="input"
-          style="width: 150px; height: 42px;"
-          (click)="openMap('pickup')"
-        >
-          <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
-          Open map
-        </button>
       </div>
-
-      <div class="column is-2">
+      <div class="column">
         <label for="return_date">Return Date</label>
         <br />
-        <label for="locations">Return Location</label>
-      </div>
-
-      <div class="column is-2">
         <input
           class="button"
           type="date"
@@ -68,6 +50,10 @@
           name="return_date"
           formControlName="returnDate"
         />
+      </div>
+
+      <div class="column">
+        <label for="locations">Return Location</label>
         <br />
         <button
           class="input"
@@ -113,15 +99,19 @@
   </div>
 </div>
 
-<div class="modal modal-fx-fadeInScale" id="return"> 
+<div class="modal modal-fx-fadeInScale" id="return">
   <div class="modal-background"></div>
-  <div class="modal-content modal-card" style="height:auto; width: 1000px;">
+  <div class="modal-content modal-card" style="height: auto; width: 1000px;">
     <header class="modal-card-head">
       <p class="modal-card-title">Choose return Location</p>
-      <button class="delete" aria-label="close" (click)="closeform('return')"></button>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="closeform('return')"
+      ></button>
     </header>
     <section class="modal-card-body">
-      <form >
+      <form>
         <div class="container">
           <div class="form-group">
             <label>Enter address</label>
@@ -150,22 +140,31 @@
           <div>Latitude: {{ latitude }}</div>
           <div>Longitude: {{ longitude }}</div>
         </div>
-        <button class="button is-success" (click)="addreturnLocation()" style="margin-top: 20px;">Confirm</button>
+        <button
+          class="button is-success"
+          (click)="addreturnLocation()"
+          style="margin-top: 20px;"
+        >
+          Confirm
+        </button>
       </form>
     </section>
   </div>
 </div>
 
-
-<div class="modal modal-fx-fadeInScale" id="pickup"> 
+<div class="modal modal-fx-fadeInScale" id="pickup">
   <div class="modal-background"></div>
-  <div class="modal-content modal-card" style="height:auto; width: 1000px;">
+  <div class="modal-content modal-card" style="height: auto; width: 1000px;">
     <header class="modal-card-head">
       <p class="modal-card-title">Choose pickup Location</p>
-      <button class="delete" aria-label="close" (click)="closeform('pickup')"></button>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="closeform('pickup')"
+      ></button>
     </header>
     <section class="modal-card-body">
-      <form >
+      <form>
         <div class="container">
           <div class="form-group">
             <label>Enter address</label>
@@ -194,7 +193,13 @@
           <div>Latitude: {{ latitude }}</div>
           <div>Longitude: {{ longitude }}</div>
         </div>
-        <button class="button is-success" (click)="addpickupLocation()" style="margin-top: 20px;">Confirm</button>
+        <button
+          class="button is-success"
+          (click)="addpickupLocation()"
+          style="margin-top: 20px;"
+        >
+          Confirm
+        </button>
       </form>
     </section>
   </div>

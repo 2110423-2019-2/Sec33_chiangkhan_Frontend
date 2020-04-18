@@ -9,6 +9,7 @@ import { Router, NavigationStart, ActivatedRoute } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { Location } from "@angular/common";
+import axios from "axios";
 
 @Component({
   selector: "app-homepage-car-reservations",
@@ -64,14 +65,23 @@ export class HomepageCarReservationsComponent implements OnInit {
     Object.assign(
       this.reserveForm.value,
       { carAvailableId: this.carReserve.carAvailableId },
-      { status: "RESERVED" },
+      { status: "PENDING" },
       { returnLocation: this.returnlocation }
     );
     console.log(this.reserveForm.value);
     if (this.isConfirm) {
-      document.getElementsByClassName(
-        "modal modal-fx-fadeInScale"
-      )[1].className = "modal modal-fx-fadeInScale is-active";
+      axios
+        .post("http://localhost:8080/api/car-reservation", this.reserveForm.value)
+        .then((response) => {
+          console.log(response);
+          document.getElementsByClassName(
+            "modal modal-fx-fadeInScale"
+          )[1].className = "modal modal-fx-fadeInScale is-active";
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {});
     } else {
       alert("You must confirm agreement");
     }

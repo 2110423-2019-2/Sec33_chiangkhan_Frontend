@@ -25,7 +25,7 @@ export class HomepageComponent implements OnInit {
   public searchElementRef: ElementRef;
   amountAllcar: number;
   pagination: any;
-  paginationCurrent:any;
+  paginationCurrent:any = 0;
   stateShowCar: number = 0;
   state: number = 0;
   sortDropDown: String = "sort";
@@ -142,7 +142,21 @@ export class HomepageComponent implements OnInit {
     console.log("allcar : " + sum);
     return sum;
   }
-
+  togglePage(number:Number){
+    this.paginationCurrent += number
+    this.stateShowCar = this.paginationCurrent*30
+    let allPag = this.elementref.nativeElement.querySelectorAll(
+      ".pagination-link"
+    );
+    for (let i = 0; i < allPag.length; i++) {
+      if (i != this.paginationCurrent) {
+        allPag[i].className = "pagination-link";
+      } else {
+        allPag[i].className = "pagination-link is-current";
+      }
+    }
+    this.getSearchCar()
+  }
   paginationActive(pagination_num: number) {
     this.stateShowCar = pagination_num*30
     this.paginationCurrent = pagination_num+1

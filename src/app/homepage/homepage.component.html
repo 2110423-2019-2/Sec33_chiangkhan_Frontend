@@ -287,8 +287,8 @@
   </form>
   <h1 style="font-weight: bold; font-size: xx-large; padding-bottom: 20px;">Newest Deal Available</h1>
   <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-    <a class="pagination-previous">Previous</a>
-    <a class="pagination-next">Next page</a>
+    <a class="pagination-previous" (click)="togglePage(-1)">Previous</a>
+    <a class="pagination-next" (click)="togglePage(1)">Next page</a>
     <ul class="pagination-list" >
       <li (click)="paginationActive(0)"><a class="pagination-link is-current" aria-label="Goto page 1">1</a></li>
       <li *ngFor = "let number of pagination" (click)="paginationActive(number)"><a class="pagination-link" aria-label="Goto page 1">{{number+1}}</a></li>

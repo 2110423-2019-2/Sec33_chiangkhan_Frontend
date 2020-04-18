@@ -1,9 +1,9 @@
 import { FormGroup, FormControl } from "@angular/forms";
-import { RESERVATIONS } from "./../reservations/mock-reservations";
 import { Component, OnInit } from "@angular/core";
 import { ViewChild, ElementRef, NgZone } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
 import axios from "axios";
+
 
 @Component({
   selector: "app-listofcars",
@@ -11,13 +11,14 @@ import axios from "axios";
   styleUrls: ["./listofcars.component.css"],
 })
 export class ListofcarsComponent implements OnInit {
-  reservations = RESERVATIONS;
+  
   latitude: number;
   longitude: number;
   zoom: number;
   address: string;
   myCars: any;
   myCar_id: number;
+  myDeal: any;
   private geoCoder;
   pickuplocation: String;
 
@@ -25,10 +26,10 @@ export class ListofcarsComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   addDealForm = new FormGroup({
-    startDates: new FormControl(),
-    endDates: new FormControl(),
+    startDate: new FormControl(),
+    endDate: new FormControl(),
     price: new FormControl(),
-    agreement : new FormControl()
+    agreement: new FormControl(),
   });
 
   constructor(
@@ -46,6 +47,28 @@ export class ListofcarsComponent implements OnInit {
       })
       .catch((error) => {
         console.log(error);
+      });
+    axios
+      .get("http://localhost:8080/api/car/myDeal")
+      .then((response) => {
+        console.log(response);
+        this.myDeal = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        let carsDeal = [];
+        this.myDeal.forEach((car) => {
+          car.availability.forEach((element) => {
+            let temp = Object.assign({}, car);
+            let temp1 = Object.assign(temp, element);
+            delete temp1["availability"];
+            carsDeal.push(temp1);
+          });
+        });
+        this.myDeal = carsDeal
+        console.log(this.myDeal)
       });
   }
 
@@ -93,7 +116,7 @@ export class ListofcarsComponent implements OnInit {
   }
   fetchcar() {
     axios
-      .get("http://localhost:8080/api/car/")
+      .get("http://localhost:8080/api/car")
       .then((response) => {
         console.log(response);
         this.myCars = response.data;
@@ -112,9 +135,9 @@ export class ListofcarsComponent implements OnInit {
       console.log("can submit");
       axios
         .post("http://localhost:8080/api/carAvailable/", this.addDealForm.value)
-        .then(function (response) {
+        .then((response)=> {
           console.log(response);
-          this.closeform();
+          this.closeform('form')
         })
         .catch(function (error) {
           console.log(error);
@@ -125,7 +148,6 @@ export class ListofcarsComponent implements OnInit {
       alert("Missing Value!");
     }
   }
-  removeDeal() {}
 
   // Get Current Location Coordinates
   private setCurrentLocation() {
@@ -172,15 +194,15 @@ export class ListofcarsComponent implements OnInit {
 
   verify_submit() {
     console.log("executed verify submit");
-    if (this.addDealForm.get("start_dates").value == null) {
+    if (this.addDealForm.value["startDate"] == null) {
       console.log("datepicker start is null!");
       return false;
     }
-    if (this.addDealForm.get("end_dates").value == null) {
+    if (this.addDealForm.value["endDate"] == null) {
       console.log("datepicker end is null!");
       return false;
     }
-    if (this.addDealForm.get("price").value == null) {
+    if (this.addDealForm.value["price"] == null) {
       console.log("price is null!");
       return false;
     }

@@ -5,14 +5,15 @@
         <img src={{car.photoOfCarDocument}} />
       </div>
       <div class="column" id="detail">
-        <span class="tag is-link is-light">{{ car.status }}</span>
+        <span class="tag is-link is-light">{{ carStatus }}</span>
         <p>Type : {{ car.carType }}</p>
         <p>Model : {{ car.carModel }}</p>
+        <p>Capacity {{car.capacity}}</p>
         <p>License : {{ car.licenseplate}}</p>
         <div class="buttons">
           <button
             class="button is-rounded is-info"
-            (click)="showPopup('popupremove')"
+            (click)="showPopup('review')"
           >
             Review
           </button>
@@ -48,6 +49,21 @@
           cancel
         </button>
       </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal modal-fx-fadeInScale" id="review">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Review</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body" style="border-radius: 20px;">
+        <div *ngFor="let review of reviews">
+          <app-review [review]="review"></app-review>
+        </div>
     </section>
   </div>
 </div>

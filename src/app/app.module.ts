@@ -32,6 +32,7 @@ import { AuthService } from './auth.service';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
+import { ListofCardealComponent } from './listof-cardeal/listof-cardeal.component';
 
 
 const appRoutes: Routes = [
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
     HomepageCarReservationsReserveconfirmPopupComponent,
     AppFooterComponent,
     AboutusComponent,
+    ListofCardealComponent,
     
   ],
   imports: [
