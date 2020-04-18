@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from "@angular/core";
 import axios from "axios";
-import { FormGroup, FormControl } from "@angular/forms";
-import { AuthService} from '../auth.service'
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { AuthService } from "../auth.service";
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
@@ -9,24 +9,37 @@ import { AuthService} from '../auth.service'
 })
 export class ProfileComponent implements OnInit {
   information: any;
+  confirmpassword: String;
   updateProfileForm = new FormGroup({
     name: new FormControl(),
     password: new FormControl(),
-    email: new FormControl(),
-    phone_num: new FormControl(),
-    bank_account: new FormControl(),
+    email: new FormControl("", Validators.email),
+    phone_num: new FormControl("", [
+      Validators.minLength(10),
+      Validators.maxLength(10),
+    ]),
+    bank_account: new FormControl("", [
+      Validators.minLength(10),
+      Validators.maxLength(10),
+    ]),
     bank_account_branch: new FormControl(),
-    credit_card_number: new FormControl(),
+    credit_card_number: new FormControl("", [
+      Validators.minLength(16),
+      Validators.maxLength(16),
+    ]),
     credit_card_expiry: new FormControl(),
-    credit_card_security: new FormControl(),
+    credit_card_security: new FormControl("", [
+      Validators.minLength(3),
+      Validators.maxLength(3),
+    ]),
     driving_license: new FormControl(),
     address: new FormControl(),
   });
 
-  constructor(private elem: ElementRef,private auth:AuthService) {}
+  constructor(private elem: ElementRef, private auth: AuthService) {}
 
   ngOnInit() {
-    this.auth.checkStatus()
+    this.auth.checkStatus();
     axios
       .get("http://localhost:8080/api/member/info")
       .then((response) => {
@@ -38,6 +51,7 @@ export class ProfileComponent implements OnInit {
       });
     this.setValue();
   }
+
   editProfile(form: String) {
     this.setValue();
     form = "#" + form;
@@ -48,6 +62,49 @@ export class ProfileComponent implements OnInit {
     form = "#" + form;
     this.elem.nativeElement.querySelector(form).className =
       "modal modal-fx-fadeInScale";
+  }
+  onChangeCredit() {
+    if(this.updateProfileForm.controls.credit_card_number.status == "INVALID"){
+      this.elem.nativeElement.querySelector("#credit").className = "input is-danger"
+    }else{
+      this.elem.nativeElement.querySelector("#credit").className = "input is-success"
+    }
+  }
+  onChangeBank() {
+    if(this.updateProfileForm.controls.bank_account.status == "INVALID"){
+      this.elem.nativeElement.querySelector("#bank_account").className = "input is-danger"
+    }else{
+      this.elem.nativeElement.querySelector("#bank_account").className = "input is-success"
+    }
+  }
+  onChangeEmail() {
+    if(this.updateProfileForm.controls.email.status == "INVALID"){
+      this.elem.nativeElement.querySelector("#emai;").className = "input is-danger"
+    }else{
+      this.elem.nativeElement.querySelector("#email").className = "input is-success"
+    }
+  }
+  onChangePhone() {
+    console.log(this.updateProfileForm.controls)
+    if(this.updateProfileForm.controls.phone_num.status == "INVALID"){
+      this.elem.nativeElement.querySelector("#phone").className = "input is-danger"
+    }else{
+      this.elem.nativeElement.querySelector("#phone").className = "input is-success"
+    }
+  }
+  onChangeExpiry() {
+    if(this.updateProfileForm.controls.credit_card_expiry.status == "INVALID"){
+      this.elem.nativeElement.querySelector("#CVV").className = "input is-danger"
+    }else{
+      this.elem.nativeElement.querySelector("#CVV").className = "input is-success"
+    }
+  }
+  onChangeCVV(){
+    if(this.updateProfileForm.controls.credit_card_security.status == "INVALID"){
+      this.elem.nativeElement.querySelector("#CVV").className = "input is-danger"
+    }else{
+      this.elem.nativeElement.querySelector("#CVV").className = "input is-success"
+    }
   }
 
   updateProfile() {
