@@ -1,32 +1,59 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, ElementRef } from "@angular/core";
+import axios from "axios";
 @Component({
-  selector: 'app-myreservation-popup',
-  templateUrl: './myreservation-popup.component.html',
-  styleUrls: ['./myreservation-popup.component.css']
+  selector: "app-myreservation-popup",
+  templateUrl: "./myreservation-popup.component.html",
+  styleUrls: ["./myreservation-popup.component.css"],
 })
 export class MyreservationPopupComponent implements OnInit {
   @Input() reviews;
-  valueRating:Number
-  constructor() { }
+  @Input() car;
+  valueRating: Number;
+  comment: String;
+  information: any;
+  constructor(private elem: ElementRef) {}
 
   ngOnInit() {
-    
+   //get member by ownerId
   }
-  ngAfterViewInit(){
-    
+  ngAfterViewInit() {}
+  closePopup(form: String) {
+    form = "#" + form;
+    this.elem.nativeElement.querySelector(form).className =
+      "modal modal-fx-3dFlipVertical";
   }
-  delete_review_popup(){
-    document.getElementById('review_popup').className = "modal modal-fx-3dFlipVertical" ;
+  addReview() {
+    let reviewForm = Object.assign(
+      {},
+      { comment: this.comment },
+      { rating: this.valueRating },
+      { carId: this.car.relatedCarAvailable.carId }
+    );
+    console.log(reviewForm);
+    axios
+      .post("http://localhost:8080/api/review/", reviewForm)
+      .then((response) => {
+        console.log(response);
+        this.closePopup("review_popup");
+      })
+      .catch((error) => console.log(error));
   }
-  delete_cancel_popup(){
-    document.getElementById('cancel_popup').className = "modal modal-fx-3dFlipVertical" ;
+  rating(rating: Number) {
+    this.valueRating = rating;
+    console.log(this.valueRating);
   }
-  delete_agreement_popup(){
-    document.getElementById('agreement_popup').className = "modal modal-fx-3dFlipVertical" ;
-  }
-  rating(rating:Number){
-    console.log("work")
-    this.valueRating = rating ;
+  cancelReservation() {
+    console.log(this.car.carReservationId);
+    axios
+      .patch(
+        "http://localhost:8080/api/car-reservation/" +
+          this.car.carReservationId,
+        { status: "CANCELLED" }
+      )
+      .then((response) => {
+        console.log(response);
+        this.closePopup("cancel_popup");
+      })
+      .catch((error) => console.log(error));
   }
 }

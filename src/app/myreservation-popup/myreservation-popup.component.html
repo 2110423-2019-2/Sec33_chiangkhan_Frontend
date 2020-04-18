@@ -5,30 +5,102 @@
       <h1 class="has-text-centered">Review</h1>
       <div id="groupstar">
         <div class="rating-group">
-          <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-          <label (click)="rating(1)" aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-          <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-          <label (click)="rating(2)" aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-          <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-          <label (click)="rating(3)" aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-          <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-          <label (click)="rating(4)" aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-          <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-          <label (click)="rating(5)" aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-          <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-      </div>
+          <input
+            disabled
+            checked
+            class="rating__input rating__input--none"
+            name="rating3"
+            id="rating3-none"
+            value="0"
+            type="radio"
+          />
+          <label
+            (click)="rating(1)"
+            aria-label="1 star"
+            class="rating__label"
+            for="rating3-1"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="rating3"
+            id="rating3-1"
+            value="1"
+            type="radio"
+          />
+          <label
+            (click)="rating(2)"
+            aria-label="2 stars"
+            class="rating__label"
+            for="rating3-2"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="rating3"
+            id="rating3-2"
+            value="2"
+            type="radio"
+          />
+          <label
+            (click)="rating(3)"
+            aria-label="3 stars"
+            class="rating__label"
+            for="rating3-3"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="rating3"
+            id="rating3-3"
+            value="3"
+            type="radio"
+          />
+          <label
+            (click)="rating(4)"
+            aria-label="4 stars"
+            class="rating__label"
+            for="rating3-4"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="rating3"
+            id="rating3-4"
+            value="4"
+            type="radio"
+          />
+          <label
+            (click)="rating(5)"
+            aria-label="5 stars"
+            class="rating__label"
+            for="rating3-5"
+            ><i class="rating__icon rating__icon--star fa fa-star"></i
+          ></label>
+          <input
+            class="rating__input"
+            name="rating3"
+            id="rating3-5"
+            value="5"
+            type="radio"
+          />
+        </div>
       </div>
       <div class="control" style="margin-top: 20px;">
-        <textarea class="textarea is-hovered" placeholder=""></textarea>
+        <textarea
+          class="textarea is-hovered"
+          placeholder="write review here"
+          [(ngModel)]="comment"
+        ></textarea>
       </div>
       <div class="field is-grouped">
         <p class="control">
-          <button class="button is-link">
+          <button class="button is-link" (click)="addReview()">
             Yes
           </button>
         </p>
         <p class="control">
-          <button class="button" (click)="delete_review_popup()">
+          <button class="button" (click)="closePopup('review_popup')">
             No
           </button>
         </p>
@@ -39,18 +111,20 @@
 
 <div class="modal modal-fx-3dFlipVertical" id="cancel_popup">
   <div class="modal-background"></div>
-  <div class="model-content modal-card"> 
+  <div class="model-content modal-card">
     <section class="modal-card-body">
       <h1 class="has-text-centered">Cancel the reservation?</h1>
-      <p class="has-text-centered">Each cancel reservation, you will not be able to recovery them.</p>
+      <p class="has-text-centered">
+        Each cancel reservation, you will not be able to recovery them.
+      </p>
       <div class="field is-grouped">
         <p class="control">
-          <button class="button is-link">
+          <button class="button is-link" (click)="cancelReservation()">
             Yes
           </button>
         </p>
         <p class="control">
-          <button class="button" (click)=" delete_cancel_popup()">
+          <button class="button" (click)="closePopup('cancel_popup')">
             No
           </button>
         </p>
@@ -67,11 +141,34 @@
       <button
         class="delete"
         aria-label="close"
-        (click)="delete_agreement_popup()"
+        (click)="closePopup('agreement_popup')"
       ></button>
     </header>
     <section class="modal-card-body">
-      
+      <article class="message is-info">
+        <div class="message-body">
+          <p><strong>1. THE PARTIES TO THIS AGREEMENT ARE :</strong> </p>
+          <p><strong>1.1 THE LESSOR</strong></p>
+          <!-- <p>Name : {{information.name}}</p> 
+          <p>Email : {{information.email}}</p>
+          <p>Phone : {{information.phone_num}}</p>
+          <p>Address : {{information.address}}</p> -->
+          <p><strong>1.2 THE LESSEE</strong> </p>
+          <p>Name : {{car.lessee.name}}</p>
+          <p>Email : {{car.lessee.email}}</p>
+          <p>Phone : {{car.lessee.phone_num}}</p>
+          <p>Address : {{car.lessee.address}}</p>
+        </div>
+      </article>
+      <div class="is-flex" style="margin-bottom: 5px;">
+        <p style="margin-right: 10px; margin-top: 7px;">Lessor :</p>
+        <p style="margin-right: 10px; margin-top: 7px;">Pending</p>
+      </div>
+      <div class="is-flex" style="margin-bottom: 5px;">
+        <p style="margin-right: 10px; margin-top: 7px;">Lessee :</p>
+        <button class="button is-rounded" style="margin-right: 5px;">Confirm</button>
+        <button class="button is-rounded">Reject</button>
+      </div>
     </section>
     <footer class="modal-card-foot"></footer>
   </div>

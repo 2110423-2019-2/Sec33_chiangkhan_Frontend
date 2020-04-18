@@ -1,70 +1,80 @@
-import { AddcarService } from './addcar.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit, ElementRef } from '@angular/core';
-import axios from 'axios';
+import { Router } from "@angular/router";
+import { AddcarService } from "./addcar.service";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Component, OnInit, ElementRef } from "@angular/core";
+import axios from "axios";
 
 @Component({
-  selector: 'app-addcarform',
-  templateUrl: './addcarform.component.html',
-  styleUrls: ['./addcarform.component.css']
+  selector: "app-addcarform",
+  templateUrl: "./addcarform.component.html",
+  styleUrls: ["./addcarform.component.css"],
 })
 export class AddcarformComponent implements OnInit {
   addcarForm = new FormGroup({
-    licenseplate : new FormControl(),
-    capacity : new FormControl(),
-    carModel : new FormControl(),
-    carType : new FormControl(),
-    carDescription : new FormControl(),
-    photoOfCarDocument : new FormControl()
-  })
-  valueCartype:String;
-  valueCarmodel:String;
-  valueCapacity:Number;
-  constructor(private addcarService:AddcarService , private elem:ElementRef ) { }
+    licenseplate: new FormControl(),
+    carDescription: new FormControl(),
+    photoOfCarDocument: new FormControl(),
+  });
+  valueCartype: String;
+  valueCarmodel: String;
+  valueCapacity: Number;
+  constructor(
+    private addcarService: AddcarService,
+    private elem: ElementRef,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
-    
-  } 
-  addCar(){
-    axios.post('http://localhost:8080/api/car/', this.addcarForm.value)
-    .then(function (response) {
-      console.log(response);
-      document.getElementsByClassName("modal modal-fx-fadeInScale is-active")[0].className = "modal modal-fx-fadeInScale"
-    })
-    .catch(function (error) {
-      console.log(error);
-      alert("Fail")
-    });
+  ngOnInit() {}
+
+  addCar() {
+    Object.assign(
+      this.addcarForm.value,
+      { capacity: this.valueCapacity },
+      { carType: this.valueCartype },
+      { carModel: this.valueCarmodel }
+    );
+    console.log(this.addcarForm.value);
+    axios
+      .post("http://localhost:8080/api/car/", this.addcarForm.value)
+      .then(function (response) {
+        console.log(response);
+        document.getElementsByClassName(
+          "modal modal-fx-fadeInScale is-active"
+        )[0].className = "modal modal-fx-fadeInScale";
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("Fail");
+      });
   }
 
-  addcarType(type:String){
-    this.valueCartype = type ;
-    this.toggleDropdown(type)
+  addcarType(type: String) {
+    this.valueCartype = type;
+    this.toggleDropdown(type);
   }
-  addcarModel(model:String){
+  addcarModel(model: String) {
     this.valueCarmodel = model;
-    this.toggleDropdown(model)
+    this.toggleDropdown(model);
   }
-  addCapacity(capacity:Number){
+  addCapacity(capacity: Number) {
     this.valueCapacity = capacity;
-    this.toggleDropdown('capacity')
+    this.toggleDropdown("capacity");
   }
-  closeAllDropdown(filter:String){
-    let allDropdown = this.elem.nativeElement.querySelectorAll('.dropdown')
-    for(let i = 0 ; i < allDropdown.length ; i++){
-      if(allDropdown[i].id != filter)
-       allDropdown[i].className = "dropdown"
+  closeAllDropdown(filter: String) {
+    let allDropdown = this.elem.nativeElement.querySelectorAll(".dropdown");
+    for (let i = 0; i < allDropdown.length; i++) {
+      if (allDropdown[i].id != filter) allDropdown[i].className = "dropdown";
     }
   }
-  toggleDropdown(filter:String){
-    this.closeAllDropdown(filter)
-    filter = '#' + filter ;
+  toggleDropdown(filter: String) {
+    this.closeAllDropdown(filter);
+    filter = "#" + filter;
     this.elem.nativeElement.querySelector(filter).classList.toggle("is-active");
   }
-  closePopup(){
-    console.log('wok')
-    this.elem.nativeElement.querySelector(".modal").className = "modal modal-fx-fadeInScale"
+  closePopup() {
+    console.log("wok");
+    this.elem.nativeElement.querySelector(".modal").className =
+      "modal modal-fx-fadeInScale";
   }
 }
-
-    

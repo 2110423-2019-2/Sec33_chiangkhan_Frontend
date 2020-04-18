@@ -1,70 +1,80 @@
 <div id="modal-id" class="modal modal-fx-fadeInScale">
-    <div class="modal-background"></div>
-    <div class="modal-content modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Detail</p>
-        <button class="delete" aria-label="close" (click)="closePopup()"></button>
-      </header>
-      <section class="modal-card-body">
-        <div class="card">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Detail</p>
+      <button class="delete" aria-label="close" (click)="closePopup()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="card">
+        <div class="columns">
+          <div class="column is-4">
+            <div class="card-image">
+              <figure class="image">
+                <img
+                  src="{{ car_popup.photoOfCarDocument }}"
+                  alt="Placeholder image"
+                />
+                <div class="column" id="rating">
+                  <strong>Rating :</strong>
+                  <span id="star1" class="fa fa-star"></span>
+                  <span id="star2" class="fa fa-star"></span>
+                  <span id="star3" class="fa fa-star"></span>
+                  <span id="star4" class="fa fa-star"></span>
+                  <span id="star5" class="fa fa-star"></span>
+                </div>
+              </figure>
+            </div>
+          </div>
+          <div class="column" id="detail">
             <div class="columns">
-              <div class="column is-4">
-                <div class="card-image">
-                  <figure class="image">
-                    <img
-                      src="{{car_popup.photoOfCarDocument}}"
-                      alt="Placeholder image"
-                    />
-                    <div class="column" id="rating">
-                      <strong>Rating :</strong> 
-                      <span id="star1" class="fa fa-star"></span>
-                      <span id="star2" class="fa fa-star"></span>
-                      <span id="star3" class="fa fa-star"></span>
-                      <span id="star4" class="fa fa-star"></span>
-                      <span id="star5" class="fa fa-star"></span>
-                    </div>
-                  </figure>
-                </div>
+              <img
+                src="../../assets/images/profile-user.png"
+                id="profile"
+                alt=""
+                style="margin-right: 10px;"
+              />
+              <p><strong>Name</strong></p>
+            </div>
+            <p><strong>Type : </strong> {{ car_popup.carType }}</p>
+            <p><strong>Model : </strong> {{ car_popup.carModel }}</p>
+            <p><strong>Location : </strong></p>
+            <div class="columns" id="temp">
+              <div class="column">
+                <!-- <p><strong>Start Date : </strong>{{car_popup.availability[0].startDate}}</p> -->
               </div>
-              <div class="column" id="detail">
-                <div class="columns">
-                  <img src="../../assets/images/profile-user.png" id="profile" alt="" style="margin-right: 10px;"/>
-                  <p><strong>Name</strong></p>
-                </div>
-                <p><strong>Type : </strong> {{car_popup.carType}}</p>
-                <p><strong>Model : </strong> {{car_popup.carModel}}</p>
-                <p><strong>Location : </strong></p>
-                <div class="columns" id="temp">
-                    <div class="column">
-                        <!-- <p><strong>Start Date : </strong>{{car_popup.availability[0].startDate}}</p> -->
-                    </div>
-                    <div class="column">
-                        <!-- <p><strong>End Date : </strong>{{car_popup.availability[0].endDate}}</p> -->
-                    </div>
-                </div>
-                <div class="columns" id="temp">
-                    <div class="column">
-                        <p><strong>Pick up Province : </strong></p>
-                        <p><strong>Return Province : </strong></p>
-                    </div>
-                    <div class="column">
-                        <p><strong>Pick up District : </strong></p>
-                        <p><strong>Return District :</strong></p>
-                    </div>
-                </div>
+              <div class="column">
+                <!-- <p><strong>End Date : </strong>{{car_popup.availability[0].endDate}}</p> -->
               </div>
             </div>
-            <a href="./homepage/HomepageCarReservations"><button class="button is-success">Reserve</button></a>
-            <hr>
-            <p><strong style="font-size: large;">Car description </strong> </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dicta facere eos aut. Iusto consequuntur pariatur dignissimos odio aut perferendis officiis inventore nesciunt autem. Cumque modi in pariatur ipsum neque.</p>
-            <hr>
-            <p><strong style="font-size: large;">Review</strong></p>
-            <br>
-            <div *ngFor="let review of reviews">
-                <app-review [review]="review"></app-review>
+            <div class="columns" id="temp">
+              <div class="column">
+                <p><strong>Pick up Province : </strong></p>
               </div>
+              <div class="column">
+                <p><strong>Pick up District : </strong></p>
+              </div>
+            </div>
           </div>
-      </section>
-    </div>
+        </div>
+        <button class="button is-success" (click)="reserveCar()">
+          Reserve
+        </button>
+        <hr />
+        <p><strong style="font-size: large;">Car description </strong></p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+          dicta facere eos aut. Iusto consequuntur pariatur dignissimos odio aut
+          perferendis officiis inventore nesciunt autem. Cumque modi in pariatur
+          ipsum neque.
+        </p>
+        <hr />
+        <p><strong style="font-size: large;">Review</strong></p>
+        <br />
+        <div *ngFor="let review of reviews">
+          <app-review [review]="review"></app-review>
+        </div>
+      </div>
+    </section>
   </div>
+</div>

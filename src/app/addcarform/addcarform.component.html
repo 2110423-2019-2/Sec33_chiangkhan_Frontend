@@ -6,7 +6,7 @@
         <div class="columns">
           <div class="column">
             <div class="field">
-              <label class="label">Car Type</label>
+              <label class="label">Car Model</label>
               <div id="cartype" class="dropdown">
                 <div class="dropdown-trigger">
                   <button
@@ -16,7 +16,7 @@
                     style="width: 160px; height: 42px;"
                     (click)="toggleDropdown('cartype')"
                   >
-                    <span>{{ valueCartype }}</span>
+                    <span>{{ valueCarmodel}}</span>
                   </button>
                 </div>
                 <div
@@ -26,118 +26,118 @@
                   style="max-height: 500px; overflow: auto; width: 300px;"
                 >
                   <div class="dropdown-content">
-                    <a class="dropdown-item" (click)="addcarType('BMW')">
+                    <a class="dropdown-item" (click)="addcarModel('BMW')">
                       BMW
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Buick')">
+                    <a class="dropdown-item" (click)="addcarModel('Buick')">
                       Buick
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Chevrolet')">
+                    <a class="dropdown-item" (click)="addcarModel('Chevrolet')">
                       Chevrolet
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Honda')">
+                    <a class="dropdown-item" (click)="addcarModel('Honda')">
                       Honda
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Dodge')">
+                    <a class="dropdown-item" (click)="addcarModel('Dodge')">
                       Dodge
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Mazda')">
+                    <a class="dropdown-item" (click)="addcarModel('Mazda')">
                       Mazda
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Mitsubishi')">
+                    <a class="dropdown-item" (click)="addcarModel('Mitsubishi')">
                       Mitsubishi
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('GMC')">
+                    <a class="dropdown-item" (click)="addcarModel('GMC')">
                       GMC
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Land Rover')">
+                    <a class="dropdown-item" (click)="addcarModel('Land Rover')">
                       Land Rover
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Ford')">
+                    <a class="dropdown-item" (click)="addcarModel('Ford')">
                       Ford
                     </a>
                     <a
                       class="dropdown-item"
-                      (click)="addcarType('Aston Martin')"
+                      (click)="addcarModel('Aston Martin')"
                     >
                       Aston Martin
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Volkswagen')">
+                    <a class="dropdown-item" (click)="addcarModel('Volkswagen')">
                       Volkswagen
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Maserati')">
+                    <a class="dropdown-item" (click)="addcarModel('Maserati')">
                       Maserati
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Pontiac')">
+                    <a class="dropdown-item" (click)="addcarModel('Pontiac')">
                       Pontiac
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Porsche')">
+                    <a class="dropdown-item" (click)="addcarModel('Porsche')">
                       Porsche
                     </a>
                     <a
                       class="dropdown-item"
-                      (click)="addcarType('Mercedes-Benz')"
+                      (click)="addcarModel('Mercedes-Benz')"
                     >
                       Mercedes-Benz
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Geo')">
+                    <a class="dropdown-item" (click)="addcarModel('Geo')">
                       Geo
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Saturn')">
+                    <a class="dropdown-item" (click)="addcarModel('Saturn')">
                       Saturn
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Lincoln')">
+                    <a class="dropdown-item" (click)="addcarModel('Lincoln')">
                       Lincoln
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Acura')">
+                    <a class="dropdown-item" (click)="addcarModel('Acura')">
                       Acura
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Nissan')">
+                    <a class="dropdown-item" (click)="addcarModel('Nissan')">
                       Nissan
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Oldsmobile')">
+                    <a class="dropdown-item" (click)="addcarModel('Oldsmobile')">
                       Oldsmobile
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Toyota')">
+                    <a class="dropdown-item" (click)="addcarModel('Toyota')">
                       Toyota
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Audi')">
+                    <a class="dropdown-item" (click)="addcarModel('Audi')">
                       Audi
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Kia')">
+                    <a class="dropdown-item" (click)="addcarModel('Kia')">
                       Kia
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Hyundai')">
+                    <a class="dropdown-item" (click)="addcarModel('Hyundai')">
                       Hyundai
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Bugatti')">
+                    <a class="dropdown-item" (click)="addcarModel('Bugatti')">
                       Bugatti
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Volvo')">
+                    <a class="dropdown-item" (click)="addcarModel('Volvo')">
                       Volvo
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Mercury')">
+                    <a class="dropdown-item" (click)="addcarModel('Mercury')">
                       Mercury
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Infiniti')">
+                    <a class="dropdown-item" (click)="addcarModel('Infiniti')">
                       Infiniti
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Saab')">
+                    <a class="dropdown-item" (click)="addcarModel('Saab')">
                       Saab
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Studebaker')">
+                    <a class="dropdown-item" (click)="addcarModel('Studebaker')">
                       Studebaker
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Subaru')">
+                    <a class="dropdown-item" (click)="addcarModel('Subaru')">
                       Subaru
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Chrysler')">
+                    <a class="dropdown-item" (click)="addcarModel('Chrysler')">
                       Chrysler
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Lexus')">
+                    <a class="dropdown-item" (click)="addcarModel('Lexus')">
                       Lexus
                     </a>
-                    <a class="dropdown-item" (click)="addcarType('Ferrari')">
+                    <a class="dropdown-item" (click)="addcarModel('Ferrari')">
                       Ferrari
                     </a>
                   </div>
@@ -147,7 +147,7 @@
           </div>
           <div class="column">
             <div class="field">
-              <label class="label">Car Model</label>
+              <label class="label">Car Type</label>
               <div id="carmodel" class="dropdown">
                 <div class="dropdown-trigger">
                   <button
@@ -157,12 +157,12 @@
                     style="width: 160px; height: 42px;"
                     (click)="toggleDropdown('carmodel')"
                   >
-                    <span>{{ valueCarmodel }}</span>
+                    <span>{{ valueCartype }}</span>
                   </button>
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
                   <div class="dropdown-content">
-                    <a class="dropdown-item" (click)="addcarModel('personal')">
+                    <a class="dropdown-item" (click)="addcarType('personal')">
                       personal
                     </a>
                   </div>
@@ -214,20 +214,8 @@
             />
           </div>
         </div>
-
         <div class="field">
           <label class="label">Photo of Car</label>
-          <div class="control">
-            <input
-              class="input"
-              type="file"
-              placeholder="Photo of car"
-              formControlName="photo"
-            />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Photo of Car Document</label>
           <div class="control">
             <input
               class="input"

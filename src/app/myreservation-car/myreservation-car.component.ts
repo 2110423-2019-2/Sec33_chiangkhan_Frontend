@@ -1,46 +1,58 @@
-import { REVIEWS } from '../review/mock-review';
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { ReviewComponent } from '../review/review.component';
-
+import { REVIEWS } from "../review/mock-review";
+import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
+import axios from "axios";
 
 @Component({
-  selector: 'app-myreservation-car',
-  templateUrl: './myreservation-car.component.html',
-  styleUrls: ['./myreservation-car.component.css']
+  selector: "app-myreservation-car",
+  templateUrl: "./myreservation-car.component.html",
+  styleUrls: ["./myreservation-car.component.css"],
 })
 export class MyReservationCarComponent implements OnInit {
-  reviews = REVIEWS ;
-  @Input() car ;
-  constructor(private elem: ElementRef) {
-    
+  reviews = REVIEWS;
+  @Input() car;
+  state_button: String = "Pickup";
+  display_reserve: boolean = false;
+  display_return: boolean = false;
+  display_cancel: boolean = false;
+  display_pending: boolean = false;
+  constructor(private elem: ElementRef) {}
+  openPopup(form: String) {
+    form = "#" + form;
+    this.elem.nativeElement.querySelector(form).className =
+      "modal modal-fx-3dFlipVertical is-active";
   }
-  review_popup(){
-    document.getElementById('review_popup').className = "modal modal-fx-3dFlipVertical is-active" ;
-  }
-  cancel_popup(){
-    document.getElementById('cancel_popup').className = "modal modal-fx-3dFlipVertical is-active" ;
-  }
-  agreement_popup(){
-    document.getElementById('agreement_popup').className = "modal modal-fx-3dFlipVertical is-active" ;
-  }
-  
-  ngOnInit() {
-    if(this.car.status == "Canceled"){
-      this.elem.nativeElement.querySelectorAll('button')[0].style.display = 'none'
-      this.elem.nativeElement.querySelectorAll('button')[1].style.display = 'none'
-      this.elem.nativeElement.querySelectorAll('button')[2].style.display = 'none'
-      this.elem.nativeElement.querySelectorAll('button')[3].style.display = 'none'
-      this.elem.nativeElement.querySelector('.tag').className = 'tag is-danger is-light is-medium'
-    }else if(this.car.status == "Returned"){
-      this.elem.nativeElement.querySelectorAll('button')[0].style.display = 'none'
-      this.elem.nativeElement.querySelectorAll('button')[1].style.display = 'none'
-      this.elem.nativeElement.querySelector('.tag').className = 'tag is-primary is-light is-medium'
-    }else{
-      this.elem.nativeElement.querySelectorAll('button')[3].style.display = 'none'
-      this.elem.nativeElement.querySelector('.tag').className = 'tag is-success is-light is-medium'
+  pickup_return() {
+    if (this.state_button == "Pickup") {
+      this.state_button = "Return";
+    } else {
+      axios
+        .patch(
+          "http://localhost:8080/api/car-reservation/" +
+            this.car.carReservationId,
+          { status: "RETURNED" }
+        )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.log(error));
     }
   }
+
+  ngOnInit() {
+    if (this.car.status == "CANCELLED") {
+      this.display_cancel = true;
+    } else if (this.car.status == "RETURNED") {
+      this.display_return = true;
+    } else if (this.car.status == "PENDING") {
+      this.display_pending = true;
+    } else {
+      this.display_reserve = true;
+    }
+    console.log(this.car);
+  }
   ngAfterViewInit(): void {
-    setTimeout(() => {this.elem.nativeElement.querySelector(".card-before").className = "card" },500);
+    setTimeout(() => {
+      this.elem.nativeElement.querySelector(".card-before").className = "card";
+    }, 500);
   }
 }

@@ -1,59 +1,69 @@
-<section class="section">
-  <div class="container">
+<div class="card-before">
+  <div class="card-content">
     <div class="columns">
-      <div class="column">
-        <img src="{{car.photoOfCarDocument}}." alt="car" height="300" width="300" />
+      <div class="column is-two-fifths" id="eiei">
+        <img src={{car.photoOfCarDocument}} />
       </div>
-      <div class="column">
-        <p><mark class="status">&emsp;Available&emsp;</mark></p>
-        <p>Type: Sport </p>
-        <p>Model: {{car.carModel}}</p>
-        <p>License : {{car.licenseplate}}</p>
-        <p>Car description: {{car.carDescription}}</p>
-        <p>Automatic Transmission</p>
-        <br />
-        <p>Capacity : {{car.capacity}}</p>
-        <br />
-        <div class="columns">
-          <div class="column"></div>
-          <div class="column">
-            <button class="button is-rounded" (click)="review_popup()">
-              Review
-            </button>
-          </div>
-          <div class="column">
-            <button class="button is-rounded" (click)="popupremove()">
-              Remove
-            </button>
-          </div>
+      <div class="column" id="detail">
+        <span class="tag is-link is-light">{{ carStatus }}</span>
+        <p>Type : {{ car.carType }}</p>
+        <p>Model : {{ car.carModel }}</p>
+        <p>Capacity {{car.capacity}}</p>
+        <p>License : {{ car.licenseplate}}</p>
+        <div class="buttons">
+          <button
+            class="button is-rounded is-info"
+            (click)="showPopup('review')"
+          >
+            Review
+          </button>
+          <button
+            class="button is-rounded is-danger"
+            (click)="showPopup('popupremove')"
+          >
+            Remove
+          </button>
         </div>
       </div>
     </div>
-    <div class="modal modal-fx-fadeInScale" id="popupremove">
-      <div class="modal-background"></div>
-      <div class="modal-content modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Remove</p>
-          <button class="delete" aria-label="close" (click)="del_popupremove()"></button>
-        </header>
-        <section class="modal-card-body">
-          <!-- Content ... -->
-          <p style="text-align:center">Each remove car, you will not be</p>
-          <p style="text-align:center">able to recovery them.</p>
-          <br>
-          <div class="columns">
-            <div class="column">
-              <button class="button is-rounded" id="b1">Yes</button>
-            </div>
-            <div class="column">
-              <button class="button is-rounded" id="pinkbutton" (click)="del_popupremove()">No</button>
-            </div>
-          </div>
-          <!-- Content ... -->
-        </section>
-        <footer class="modal-card-foot">
-        </footer>
-      </div>
-    </div>
   </div>
-</section>
+</div>
+
+<div class="modal modal-fx-fadeInScale" id="popupremove">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <section class="modal-card-body" style="border-radius: 20px;">
+      <p style="text-align: center; font-weight: bolder; font-size: larger;">Each remove car, you will not be</p>
+      <p style="text-align: center; font-weight: bolder; font-size: larger;">able to recovery them.</p>
+      <br />
+      <div class="buttons" style="justify-content: center;">
+        <button
+          class="button is-rounded is-danger"
+        >
+          Remove
+        </button>
+        <button
+          class="button is-rounded"
+          (click)="deletePopup('popupremove')"
+        >
+          cancel
+        </button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal modal-fx-fadeInScale" id="review">
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Review</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body" style="border-radius: 20px;">
+        <div *ngFor="let review of reviews">
+          <app-review [review]="review"></app-review>
+        </div>
+    </section>
+  </div>
+</div>

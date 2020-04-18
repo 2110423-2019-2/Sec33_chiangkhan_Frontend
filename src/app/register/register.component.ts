@@ -12,8 +12,7 @@ import axios from 'axios';
 })
 export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
-    firstname : new FormControl(),
-    lastname : new FormControl(),
+    name : new FormControl(),
     username : new FormControl(),
     password : new FormControl(),
     email : new FormControl(),
@@ -53,22 +52,22 @@ export class RegisterComponent implements OnInit {
   } 
 
   onSubmit(){
-    if(this.registerForm.value.firstname == null || this.registerForm.value.lastname == null  || this.registerForm.value.username == null 
+    if(this.registerForm.value.name == null || this.registerForm.value.username == null 
       || this.registerForm.value.password == null  || this.registerForm.value.email == null || this.registerForm.value.phone_num == null
       || this.registerForm.value.bank_account == null  || this.registerForm.value.bank_account_branch == null || this.registerForm.value.credit_card_number == null
       || this.registerForm.value.credit_card_security == null  || this.registerForm.value.credit_card_expiry == null || this.registerForm.value.driving_license == null
-      || this.registerForm.value.address == null){
+      || this.registerForm.value.address == null){ 
         this.elem.nativeElement.querySelector('#invalid_register').style.display = "flex"
     }else{
     axios.post('http://localhost:8080/api/users',this.registerForm.value)
       .then((response) => {
-        console.log(response);
+        console.log(response); 
         this.elem.nativeElement.querySelector('#registerpop').className = "modal is-active"
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((error) => { 
+        console.log(error); 
       });
-    } 
+    }   
   }
   cancel(){ 
     this.router.navigate(['/']) 

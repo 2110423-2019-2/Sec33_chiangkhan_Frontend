@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ReviewComponent } from '../review/review.component';
 import { REVIEWS } from '../review/mock-review';
 import axios from 'axios';
@@ -11,20 +12,20 @@ export class BoxComponent implements OnInit {
 
   cars: any[] ;  
   reviews = REVIEWS ;
-
+           
   review_popup(){
     document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
   }
   popup(){
     document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
   }
-  constructor() { 
+  constructor(private elem : ElementRef , private router: Router) { 
     
   }
 
   ngOnInit(){
     document.getElementsByClassName("unactive")[3].className = "active"
-    axios.get('http://localhost:8080/api/car/')
+    axios.get('http://localhost:8080/api/car/mycar')
     .then((response) => {
       console.log(response);
       this.cars = response.data
@@ -33,8 +34,9 @@ export class BoxComponent implements OnInit {
       console.log(error);
     })
     .then(() => {
-    // always executed
+      
     });
+    console.log(this.cars)
   }
 
   popupadd() {
@@ -44,6 +46,18 @@ export class BoxComponent implements OnInit {
     document.getElementById('popupadd').className = "modal modal-fx-fadeInScale";
     console.log("work")
   }
-
+  untab(tab:String){
+    var t = this.elem.nativeElement.querySelectorAll('li')
+    for(let i = 0 ; i < t.length ; i++){
+      if(t[i].id != tab){
+        t[i].className = ""
+      }
+    }
+  }
+  tab(tab:String){
+    this.untab(tab);
+    tab = '#' + tab ;
+    this.elem.nativeElement.querySelector(tab).className = 'is-active'
+  }
 
 }

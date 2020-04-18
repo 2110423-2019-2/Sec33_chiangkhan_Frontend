@@ -63,3 +63,8 @@
   font-size: 1em;
   text-align: right;
 }
+
+agm-map {
+  margin: 20px;
+  height: 300px;
+}

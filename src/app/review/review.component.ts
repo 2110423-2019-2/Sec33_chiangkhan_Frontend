@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-review',
@@ -11,7 +11,7 @@ export class ReviewComponent implements OnInit,OnChanges {
   review : any ;
  
   
-  constructor() {
+  constructor(private elementref:ElementRef) {
     
   }
   ngOnChanges(){
@@ -19,10 +19,13 @@ export class ReviewComponent implements OnInit,OnChanges {
   }
 
   ngOnInit() {
-  // console.log(this.review)
-  // for(let i = 0 ; i < this.review.rating ; i++){
-  //   console.log(document.getElementsByClassName("fa"))  
-  // }
+
+  }
+  ngAfterViewInit(){
+    let arr = this.elementref.nativeElement.querySelectorAll(".fa")
+    for(let j = 0 ; j < this.review.rating ; j++){
+      arr[j].className = "fa fa-star checked"    
+    }
 
   }
   

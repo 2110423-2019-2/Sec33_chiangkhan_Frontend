@@ -4,35 +4,40 @@ import axios from "axios";
 import { Router, ParamMap } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
-import { ViewChild, NgZone } from '@angular/core';
-import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { ViewChild, NgZone } from "@angular/core";
+import { MapsAPILoader, MouseEvent } from "@agm/core";
+import { element } from "protractor";
 
 @Component({
   selector: "app-homepage",
   templateUrl: "./homepage.component.html",
-  styleUrls: ["./homepage.component.css"]
+  styleUrls: ["./homepage.component.css"],
 })
 export class HomepageComponent implements OnInit {
   searchForm = new FormGroup({
     startDate: new FormControl(),
-    endDate: new FormControl()
+    endDate: new FormControl(),
   });
   cars: any[];
+  carsAvailable: any[];
 
-  @ViewChild('search', { static: true })
+  @ViewChild("search", { static: true })
   public searchElementRef: ElementRef;
-
+  amountAllcar: number;
+  pagination: any;
+  paginationCurrent:any = 0;
+  stateShowCar: number = 0;
   state: number = 0;
   sortDropDown: String = "sort";
   valueSort: String = "";
   orderby: String = "Max -> Min";
   orderDropDown: String = "";
 
-  valueCapacity:number ;
-  valueCarmodel:String ;
-  valueCartype:String;
+  valueCapacity: number;
+  valueCarmodel: String;
+  valueCartype: String;
 
-  latitude: number; 
+  latitude: number;
   longitude: number;
   zoom: number;
   address: string;
@@ -43,15 +48,6 @@ export class HomepageComponent implements OnInit {
   rightx: number;
   righty: number;
   area: String = "";
-
-  mock_car = [{ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc00ff/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc00aa/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/00ff00/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/aa00cc/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/ff0000/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/ccff00/ffffff'}, 
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'},
-              {ownerId : 8  ,licenseplate : 'F5-10-69-79-F7-8F' , capacity : 2 ,carType : "personal", carModel : 'GMC' , car_description: "Hello world" , avgRating : 2 , photoOfCarDocument :'http://dummyimage.com/250x250.png/cc0000/ffffff'}]
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -73,11 +69,12 @@ export class HomepageComponent implements OnInit {
       {
         carType: this.valueCartype,
         capacity: this.valueCapacity,
-        pickupArea : this.area,
+        pickupArea: this.area,
         carModel: this.valueCarmodel,
         sortby: this.valueSort,
-        duration: Array(duration)
-      }
+        duration: Array(duration),
+        pagination:this.paginationCurrent
+      },
     ]);
   }
   ngOnInit() {
@@ -86,8 +83,12 @@ export class HomepageComponent implements OnInit {
       for (let p in params.keys) {
         if (
           params.get(params.keys[p]) != "null" &&
-          params.get(params.keys[p]) != "" &&  params.get(params.keys[p]) != "undefined"
+          params.get(params.keys[p]) != "" &&
+          params.get(params.keys[p]) != "undefined"
         ) {
+          if(params.keys[p] == "pagination"){
+            continue
+          }
           if (
             params.keys[p] == "duration" &&
             params.get(params.keys[p]) != ","
@@ -100,49 +101,110 @@ export class HomepageComponent implements OnInit {
           }
         }
       }
-      console.log(paramm)
+      console.log(paramm);
       axios
         .get("http://localhost:8080/api/car/", { params: paramm })
-        .then(response => {
+        .then((response) => {
           console.log(response);
           this.cars = response.data;
+          this.amountAllcar = this.getAmountCarAvailable(this.cars);
+          this.pagination = Array(Math.floor(this.amountAllcar / 30))
+            .fill(0)
+            .map((x, i) => i + 1);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
+          let carsAvailable = [];
+          this.cars.forEach((car) => {
+            car.availability.forEach((element) => {
+              let temp = Object.assign({}, car);
+              let temp1 = Object.assign(temp, element);
+              delete temp1["availability"];
+              carsAvailable.push(temp1);
+            });
+          });
+          this.carsAvailable = carsAvailable;
+          this.carsAvailable = this.carsAvailable.slice(
+            this.stateShowCar,
+            this.stateShowCar + 30
+          );
+          console.log(this.carsAvailable);
         });
     });
-    // this.cars = this.mock_car;
-    console.log(this.cars)
   }
-
-  closeAllDropdown(filter:String){
-    let allDropdown = this.elementref.nativeElement.querySelectorAll('.dropdown')
-    for(let i = 0 ; i < allDropdown.length ; i++){
-      if(allDropdown[i].id != filter)
-       allDropdown[i].className = "dropdown"
+  getAmountCarAvailable(cars: any) {
+    let sum = 0;
+    cars.forEach((car) => {
+      sum += car.availability.length;
+    });
+    console.log("allcar : " + sum);
+    return sum;
+  }
+  togglePage(number:Number){
+    this.paginationCurrent += number
+    this.stateShowCar = this.paginationCurrent*30
+    let allPag = this.elementref.nativeElement.querySelectorAll(
+      ".pagination-link"
+    );
+    for (let i = 0; i < allPag.length; i++) {
+      if (i != this.paginationCurrent) {
+        allPag[i].className = "pagination-link";
+      } else {
+        allPag[i].className = "pagination-link is-current";
+      }
     }
+    this.getSearchCar()
+  }
+  paginationActive(pagination_num: number) {
+    this.stateShowCar = pagination_num*30
+    this.paginationCurrent = pagination_num+1
+    console.log(this.stateShowCar)
+    let allPag = this.elementref.nativeElement.querySelectorAll(
+      ".pagination-link"
+    );
+    for (let i = 0; i < allPag.length; i++) {
+      if (i != pagination_num) {
+        allPag[i].className = "pagination-link";
+      } else {
+        allPag[i].className = "pagination-link is-current";
+      }
+    }
+    this.getSearchCar()
+  }
+  closeAllDropdown(filter: String) {
+    let allDropdown = this.elementref.nativeElement.querySelectorAll(
+      ".dropdown"
+    );
+    for (let i = 0; i < allDropdown.length; i++) {
+      if (allDropdown[i].id != filter) allDropdown[i].className = "dropdown";
+    }
+    this.getSearchCar()
   }
 
-  toggleDropdown(filter:String){
-    this.closeAllDropdown(filter)
-    filter = '#' + filter ;
-    this.elementref.nativeElement.querySelector(filter).classList.toggle("is-active");
+  toggleDropdown(filter: String) {
+    this.closeAllDropdown(filter);
+    filter = "#" + filter;
+    this.elementref.nativeElement
+      .querySelector(filter)
+      .classList.toggle("is-active");
   }
 
   sortbyAvgRatingInc() {
     this.sortDropDown = "Rating";
     this.valueSort = "avgRating DESC";
-    this.getSearchCar()
-    this.toggleDropdown("sort")
+    this.getSearchCar();
+    this.toggleDropdown("sort");
   }
 
   sortbycapacityInc() {
     this.sortDropDown = "Capacity";
     this.valueSort = "capacity DESC";
-    this.getSearchCar()
-    this.toggleDropdown("sort")
+    this.getSearchCar();
+    this.toggleDropdown("sort");
   }
- 
+
   orderbyDESC() {
     this.orderby = "Max -> Min";
     if (this.sortDropDown == "Capacity") {
@@ -150,8 +212,8 @@ export class HomepageComponent implements OnInit {
     } else if (this.sortDropDown == "Rating") {
       this.valueSort = "avgRating DESC";
     }
-    this.getSearchCar()
-    this.toggleDropdown("order")
+    this.getSearchCar();
+    this.toggleDropdown("order");
   }
   orderbyASC() {
     this.orderby = "Min -> Max";
@@ -160,24 +222,24 @@ export class HomepageComponent implements OnInit {
     } else if (this.sortDropDown == "Rating") {
       this.valueSort = "avgRating ASC";
     }
-    this.getSearchCar()
-    this.toggleDropdown("order")
+    this.getSearchCar();
+    this.toggleDropdown("order");
   }
-  searchCapacity(capacity:number){
+  searchCapacity(capacity: number) {
     this.valueCapacity = capacity;
-    this.toggleDropdown("capacity")
+    this.toggleDropdown("capacity");
   }
-  searchCarmodel(model:String){
+  searchCarmodel(model: String) {
     this.valueCarmodel = model;
-    this.toggleDropdown('carmodel')
+    this.toggleDropdown("carmodel");
   }
-  searchCartype(type:String){
+  searchCartype(type: String) {
     this.valueCartype = type;
-    this.toggleDropdown('cartype')
+    this.toggleDropdown("cartype");
   }
 
   setCurrentLocation() {
-    if ('geolocation' in navigator) {
+    if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
@@ -194,31 +256,37 @@ export class HomepageComponent implements OnInit {
   }
 
   getAddress(latitude, longitude) {
-    this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
-      console.log(status);
-      if (status === 'OK') {
-        if (results[0]) {
-          this.zoom = 12;
-          this.address = results[0].formatted_address;
+    this.geoCoder.geocode(
+      { location: { lat: latitude, lng: longitude } },
+      (results, status) => {
+        console.log(results);
+        console.log(status);
+        if (status === "OK") {
+          if (results[0]) {
+            this.zoom = 12;
+            this.address = results[0].formatted_address;
+          } else {
+            window.alert("No results found");
+          }
         } else {
-          window.alert('No results found');
+          window.alert("Geocoder failed due to: " + status);
         }
-      } else {
-        window.alert('Geocoder failed due to: ' + status);
       }
-
-    });
+    );
   }
   // Add Deal Button
   openMap() {
-    document.getElementById("form").className = "modal modal-fx-fadeInScale is-active";
+    document.getElementById("map").className =
+      "modal modal-fx-fadeInScale is-active";
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder;
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
+      this.geoCoder = new google.maps.Geocoder();
+      let autocomplete = new google.maps.places.Autocomplete(
+        this.searchElementRef.nativeElement,
+        {
+          types: ["address"],
+        }
+      );
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
@@ -247,12 +315,22 @@ export class HomepageComponent implements OnInit {
     this.leftx = this.longitude + 0.05;
     this.righty = this.latitude - 0.05;
     this.rightx = this.longitude - 0.05;
-    this.area = "[["+String(this.leftx)+","+String(this.lefty)+"],"+"["+String(this.rightx)+","+String(this.righty)+"]]"
+    this.area =
+      "[[" +
+      String(this.leftx) +
+      "," +
+      String(this.lefty) +
+      "]," +
+      "[" +
+      String(this.rightx) +
+      "," +
+      String(this.righty) +
+      "]]";
   }
-  clearSearch(){
-    this.valueCartype = null
-    this.valueCapacity = null
-    this.valueCarmodel = null
-    this.valueSort = null
+  clearSearch() {
+    this.valueCartype = null;
+    this.valueCapacity = null;
+    this.valueCarmodel = null;
+    this.valueSort = null;
   }
 }
