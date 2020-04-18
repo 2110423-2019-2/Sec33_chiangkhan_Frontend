@@ -11,10 +11,20 @@ export class MyreservationPopupComponent implements OnInit {
   valueRating: Number;
   comment: String;
   information: any;
+  display_confirming: boolean = true;
+  display_confirmed: boolean = false;
   constructor(private elem: ElementRef) {}
 
   ngOnInit() {
-   //get member by ownerId
+    //get member by ownerId
+    // console.log(this.car)
+    if (this.car.status == "RESERVED") {
+      this.display_confirming = false;
+      this.display_confirmed = true;
+    } else if (this.car.status == "PENDING") {
+      this.display_confirming = true;
+      this.display_confirmed = false;
+    }
   }
   ngAfterViewInit() {}
   closePopup(form: String) {
@@ -29,7 +39,6 @@ export class MyreservationPopupComponent implements OnInit {
       { rating: this.valueRating },
       { carId: this.car.relatedCarAvailable.carId }
     );
-    console.log(reviewForm);
     axios
       .post("http://localhost:8080/api/review/", reviewForm)
       .then((response) => {
@@ -53,6 +62,19 @@ export class MyreservationPopupComponent implements OnInit {
       .then((response) => {
         console.log(response);
         this.closePopup("cancel_popup");
+      })
+      .catch((error) => console.log(error));
+  }
+  confirmAgreement() {
+    axios
+      .patch(
+        "http://localhost:8080/api/car-reservation/" +
+          this.car.carReservationId,
+        { status: "RESERVED" }
+      )
+      .then((response) => {
+        console.log(response);
+        this.closePopup("agreement_popup");
       })
       .catch((error) => console.log(error));
   }

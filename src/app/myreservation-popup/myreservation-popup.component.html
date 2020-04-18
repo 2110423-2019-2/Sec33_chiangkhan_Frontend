@@ -162,12 +162,19 @@
       </article>
       <div class="is-flex" style="margin-bottom: 5px;">
         <p style="margin-right: 10px; margin-top: 7px;">Lessor :</p>
-        <p style="margin-right: 10px; margin-top: 7px;">Pending</p>
+        <p style="margin-right: 10px; margin-top: 7px;">Confirmed</p>
       </div>
       <div class="is-flex" style="margin-bottom: 5px;">
         <p style="margin-right: 10px; margin-top: 7px;">Lessee :</p>
-        <button class="button is-rounded" style="margin-right: 5px;">Confirm</button>
-        <button class="button is-rounded">Reject</button>
+        <div *ngIf="display_confirming">
+          <button class="button is-rounded"  (click)="confirmAgreement()" style="margin-right: 5px;">Confirm</button>
+          <button class="button is-rounded">Reject</button>
+        </div>
+        <div *ngIf="display_confirmed">
+          <p style="margin-right: 10px; margin-top: 7px;">Confirmed</p>
+        </div>
+        
+        
       </div>
     </section>
     <footer class="modal-card-foot"></footer>
