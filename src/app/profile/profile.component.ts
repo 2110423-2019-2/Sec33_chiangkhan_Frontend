@@ -9,7 +9,8 @@ import { AuthService } from "../auth.service";
 })
 export class ProfileComponent implements OnInit {
   information: any;
-  confirmpassword: String;
+  confirmpassword: String ="";
+  confirmpasswordValid:boolean;
   updateProfileForm = new FormGroup({
     name: new FormControl(),
     password: new FormControl(),
@@ -63,6 +64,15 @@ export class ProfileComponent implements OnInit {
     this.elem.nativeElement.querySelector(form).className =
       "modal modal-fx-fadeInScale";
   }
+  onChangeConfirmPass(){
+    if(this.confirmpassword === this.updateProfileForm.value.password){
+      this.confirmpasswordValid = true
+      this.elem.nativeElement.querySelector("#confirmPassword").className = "input is-success"
+    }else{
+      this.confirmpasswordValid = false
+      this.elem.nativeElement.querySelector("#confirmPassword").className = "input is-danger"
+    }
+  }
   onChangeCredit() {
     if(this.updateProfileForm.controls.credit_card_number.status == "INVALID"){
       this.elem.nativeElement.querySelector("#credit").className = "input is-danger"
@@ -109,7 +119,7 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     console.log(this.updateProfileForm.value);
-    if (this.verify_edit_profile()) {
+    if (this.verify_edit_profile() && this.confirmpasswordValid) {
       axios
         .put(
           "http://localhost:8080/api/member/update",
