@@ -1,35 +1,39 @@
 .navbar {
-    background-color: pink;
-    position: fixed;
-    width: 100%;
-    top : 0;
+  background-color: pink;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
-img #logo{
-    width :"150" ;
-    height :"50" ;
+img #logo {
+  width: "150";
+  height: "50";
 }
 .navbar-item img {
-    max-height: 2.75rem;
+  max-height: 2.75rem;
 }
 
-#mouse:hover{
-    background-color:pink;
-    
+#mouse:hover {
+  background-color: pink;
 }
 
-span:hover{
-    color :  palevioletred
+span:hover {
+  color: palevioletred;
 }
-span{
-    text-decoration:brown;
-    font-weight: 600;
-    color:black;
-    
+span {
+  text-decoration: brown;
+  font-weight: 600;
+  color: black;
 }
 
 a .active {
-    text-decoration: underline;
-    color: palevioletred;
-    
+  text-decoration: underline;
+  color: palevioletred;
+}
+
+.navbar-item:hover {
+  background-color: pink;
+  color: black;
+  border-radius: 10px;
+  width: auto;
 }

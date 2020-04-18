@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {IUser} from './user'
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import axios from "axios";
+import { error } from "protractor";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
+  constructor() {}
 
-  private REST_API_SERVER = "https://127.0.0.0:3000/auth/login";
-  private _url = '../assets/user.json'
-  constructor (private httpClient: HttpClient) {
-   }
-  
-
-  public login(loginForm:any){
-    return this.httpClient.post<any>("http://localhost:8080/api/auth/login",loginForm).subscribe()
-    
+  public checkStatus() {
+    axios
+      .get("http://localhost:8080/api/auth/status")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        window.location.assign('/')
+      });
   }
 }
-

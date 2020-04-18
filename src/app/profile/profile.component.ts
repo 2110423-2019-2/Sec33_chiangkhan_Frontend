@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from "@angular/core";
 import axios from "axios";
 import { FormGroup, FormControl } from "@angular/forms";
-
+import { AuthService} from '../auth.service'
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
@@ -23,9 +23,10 @@ export class ProfileComponent implements OnInit {
     address: new FormControl(),
   });
 
-  constructor(private elem: ElementRef) {}
+  constructor(private elem: ElementRef,private auth:AuthService) {}
 
   ngOnInit() {
+    this.auth.checkStatus()
     axios
       .get("http://localhost:8080/api/member/info")
       .then((response) => {

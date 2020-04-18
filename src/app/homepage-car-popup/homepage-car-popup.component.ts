@@ -1,7 +1,6 @@
 import { Router, ActivatedRoute } from "@angular/router";
 import { Component, OnInit, Input } from "@angular/core";
-import { REVIEWS } from "../review/mock-review";
-
+import axios from 'axios'
 @Component({
   selector: "app-homepage-car-popup",
   templateUrl: "./homepage-car-popup.component.html",
@@ -10,7 +9,7 @@ import { REVIEWS } from "../review/mock-review";
 export class HomepageCarPopupComponent implements OnInit {
   @Input() car;
   car_popup: any;
-  reviews = REVIEWS;
+  reviews:any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -18,6 +17,15 @@ export class HomepageCarPopupComponent implements OnInit {
 
   ngOnInit() {
     this.car_popup = this.car;
+    axios
+    .get("http://localhost:8080/api/car/" + this.car.carId + "/carReview")
+    .then((response) => {
+      console.log(response);
+      this.reviews = response.data[0].review
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
   ngAfterViewInit() {}
   reserveCar() {

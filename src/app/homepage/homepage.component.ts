@@ -1,12 +1,10 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
+import { Component, OnInit, ElementRef,ViewChild, NgZone } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import axios from "axios";
-import { Router, ParamMap } from "@angular/router";
-import { ActivatedRoute } from "@angular/router";
+import { Router, ParamMap , ActivatedRoute} from "@angular/router";
 import { Location } from "@angular/common";
-import { ViewChild, NgZone } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
-import { element } from "protractor";
+import { AuthService } from '../auth.service'
+import axios from "axios";
 
 @Component({
   selector: "app-homepage",
@@ -55,7 +53,8 @@ export class HomepageComponent implements OnInit {
     private elementref: ElementRef,
     private router: Router,
     private route: ActivatedRoute,
-    public _location: Location
+    public _location: Location,
+    private auth:AuthService
   ) {}
 
   getSearchCar() {
@@ -78,6 +77,7 @@ export class HomepageComponent implements OnInit {
     ]);
   }
   ngOnInit() {
+    this.auth.checkStatus()
     this.route.paramMap.subscribe((params: ParamMap) => {
       let paramm = {};
       for (let p in params.keys) {

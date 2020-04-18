@@ -2,6 +2,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { ViewChild, ElementRef, NgZone } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
+import { AuthService} from '../auth.service'
 import axios from "axios";
 
 
@@ -35,9 +36,11 @@ export class ListofcarsComponent implements OnInit {
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private elem: ElementRef
+    private elem: ElementRef,
+    private auth:AuthService
   ) {}
   ngOnInit() {
+    this.auth.checkStatus()
     document.getElementsByClassName("unactive")[2].className = "active";
     axios
       .get("http://localhost:8080/api/car/mycar")
