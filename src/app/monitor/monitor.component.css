@@ -1,0 +1,111 @@
+/* .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+} */
+
+@keyframes radious {
+    100%,
+    0% {
+      border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%;
+    }
+    20% {
+      border-radius: 35% 65% 50% 50% / 35% 65% 35% 65%;
+    }
+    40% {
+      border-radius: 35% 65% 65% 35% / 65% 50% 50% 35%;
+    }
+    60% {
+      border-radius: 35% 65% 50% 50% / 30% 30% 70% 70%;
+    }
+    80% {
+      border-radius: 40% 60% 40% 60% / 40% 50% 50% 60%;
+    }
+  }
+  
+  @keyframes blob_a {
+    100%,
+    0% {
+      transform: none;
+    }
+    50% {
+      transform: translate(50%, 20%) rotateY(10deg) scale(1.2);
+    }
+  }
+  
+  @keyframes blob_b {
+    100%,
+    0% {
+      transform: none;
+    }
+    50% {
+      transform: translate(50%, 20%) rotate(-200deg) scale(1.2);
+    }
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .box {
+    position: relative;
+    margin: 5rem auto;
+    background-image: linear-gradient(to right, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);
+    overflow: hidden;
+  }
+  
+  .box .wave {
+    display: block;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .box img.wave[src*="top"] {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    top: -1px;
+  }
+  
+  .box .inner {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .box .inner h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 2.6em;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 12px rgba(0,0,0,.15);
+  }
+  
+  .box .blob b {
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    top: 50%;
+    left: 70%;
+    background-image: linear-gradient(to right, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);
+    border-radius: 30% 70% 20% 40%;
+    opacity: .25;
+    animation: 
+      transform 20s ease-in-out infinite both alternate,
+      blob_a 40s ease-in-out infinite both;
+  }
+  
+  .box .blob b:first-child {
+    width: 1000px;
+    height: 1000px;
+    top: -250px;
+    left: -500px;
+    transform: rotate(-180deg);
+    animation: 
+      radious 30s ease-in-out infinite both alternate, 
+      blob_b 60s ease-in-out infinite both;
+  }

@@ -33,6 +33,7 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { ListofCardealComponent } from './listof-cardeal/listof-cardeal.component';
+import { MonitorComponent } from './monitor/monitor.component';
 
 
 const appRoutes: Routes = [
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
   { path: "homepage/listofcars", component:ListofcarsComponent },
   { path: "homepage/mycar" , component:BoxComponent },
   { path: "homepage/HomepageCarReservations", component:HomepageCarReservationsComponent},
-  { path: "aboutus", component:AboutusComponent}
+  { path: "aboutus", component:AboutusComponent},
+  { path: "monitor", component:MonitorComponent},
 ];   
 
 
@@ -75,6 +77,7 @@ const appRoutes: Routes = [
     AppFooterComponent,
     AboutusComponent,
     ListofCardealComponent,
+    MonitorComponent,
     
   ],
   imports: [
