@@ -1,4 +1,3 @@
-import { REVIEWS } from "../review/mock-review";
 import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import axios from "axios";
 
@@ -8,7 +7,7 @@ import axios from "axios";
   styleUrls: ["./myreservation-car.component.css"],
 })
 export class MyReservationCarComponent implements OnInit {
-  reviews = REVIEWS;
+  
   @Input() car;
   state_button: String = "Pickup";
   display_reserve: boolean = false;

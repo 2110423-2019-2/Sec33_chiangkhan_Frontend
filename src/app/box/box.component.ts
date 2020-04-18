@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ReviewComponent } from '../review/review.component';
-import { REVIEWS } from '../review/mock-review';
+import { AuthService} from '../auth.service'
 import axios from 'axios';
 @Component({
   selector: 'app-box',
@@ -11,7 +10,6 @@ import axios from 'axios';
 export class BoxComponent implements OnInit {
 
   cars: any[] ;  
-  reviews = REVIEWS ;
            
   review_popup(){
     document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
@@ -19,11 +17,12 @@ export class BoxComponent implements OnInit {
   popup(){
     document.getElementById('review_popup').className = "modal modal-fx-fadeInScale is-active" ;
   }
-  constructor(private elem : ElementRef , private router: Router) { 
+  constructor(private elem : ElementRef , private router: Router,private auth:AuthService) { 
     
   }
 
   ngOnInit(){
+    this.auth.checkStatus()
     document.getElementsByClassName("unactive")[3].className = "active"
     axios.get('http://localhost:8080/api/car/mycar')
     .then((response) => {

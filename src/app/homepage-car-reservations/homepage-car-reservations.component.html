@@ -23,6 +23,7 @@
           <p>Location: {{ carReserve.carType }}</p>
           <p>Start Date: {{ carReserve.startDate }}</p>
           <p>End Date: {{ carReserve.endDate }}</p>
+          <p>Price per day: {{ carReserve.price }}</p>
         </div>
       </article>
     </div>
@@ -39,7 +40,7 @@
           name="pickup_date"
           formControlName="pickupDate"
         />
-      </div>
+      </div> 
       <div class="column">
         <label for="return_date">Return Date</label>
         <br />
@@ -83,14 +84,13 @@
     <div class="columns">
       <div class="column">
         <div class="column is-3 feebox">
-          <p>Rental Fee: 2,000 THB</p>
-          <p>xxx Fee: 100 THB</p>
+          <p>Rental Fee : {{duration}} Day x {{carReserve.price}} THB</p>
           <hr />
-          <p>Total: 2,100 THB</p>
+          <p>Total : {{totalPrice}} THB</p>
         </div>
       </div>
       <div class="column">
-        <button class="button is-danger" (click)="openPopup()">Pay</button>
+        <button class="button is-danger" (click)="calculateDuration()">Pay</button>
       </div>
     </div>
     <button class="button is-danger" (click)="genarateAgreement()">
@@ -152,55 +152,3 @@
   </div>
 </div>
 
-<div class="modal modal-fx-fadeInScale" id="pickup">
-  <div class="modal-background"></div>
-  <div class="modal-content modal-card" style="height: auto; width: 1000px;">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Choose pickup Location</p>
-      <button
-        class="delete"
-        aria-label="close"
-        (click)="closeform('pickup')"
-      ></button>
-    </header>
-    <section class="modal-card-body">
-      <form>
-        <div class="container">
-          <div class="form-group">
-            <label>Enter address</label>
-            <input
-              type="text"
-              class="input form-control"
-              (keydown.enter)="$event.preventDefault()"
-              placeholder="Search Nearest Location"
-              autocorrect="off"
-              autocapitalize="off"
-              spellcheck="off"
-              type="text"
-              #search
-              style="margin-bottom: 10px;"
-            />
-          </div>
-          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-            <agm-marker
-              [latitude]="latitude"
-              [longitude]="longitude"
-              [markerDraggable]="true"
-              (dragEnd)="markerDragEnd($event)"
-            ></agm-marker>
-          </agm-map>
-          <h5>Address: {{ address }}</h5>
-          <div>Latitude: {{ latitude }}</div>
-          <div>Longitude: {{ longitude }}</div>
-        </div>
-        <button
-          class="button is-success"
-          (click)="addpickupLocation()"
-          style="margin-top: 20px;"
-        >
-          Confirm
-        </button>
-      </form>
-    </section>
-  </div>
-</div>

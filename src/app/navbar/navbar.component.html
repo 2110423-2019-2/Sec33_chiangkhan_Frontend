@@ -20,11 +20,13 @@
         ><span class="unactive">My Car</span></a
       >
       <div class="navbar-item has-dropdown is-hoverable" id="mouse">
-        <a class="navbar-link  is-active" id="mouse">
+        <a class="navbar-link is-active" id="mouse">
           <img src="../../assets/images/profile-user.png" alt="" />
         </a>
         <div class="navbar-dropdown is-boxed is-right">
-          <a class="navbar-item " href="/homepage/profile">My profile</a>
+          <div class="navbar-item">
+            <a href="/homepage/profile">My profile</a>
+          </div>
           <hr class="navbar-divider" />
           <div class="navbar-item">
             <a class="has-text-info" (click)="signOut()">Sign out</a>

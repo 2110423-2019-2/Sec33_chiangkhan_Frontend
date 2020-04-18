@@ -9,6 +9,7 @@ import { Router, NavigationStart, ActivatedRoute } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { Location } from "@angular/common";
+import { AuthService } from "../auth.service";
 import axios from "axios";
 
 @Component({
@@ -37,14 +38,16 @@ export class HomepageCarReservationsComponent implements OnInit {
   rightx: number;
   righty: number;
   area: String = "";
-
+  duration: number;
+  totalPrice:number
   constructor(
     public router: Router,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private elementref: ElementRef,
     private route: ActivatedRoute,
-    public _location: Location
+    public _location: Location,
+    private auth: AuthService
   ) {
     const navigation = this.router.getCurrentNavigation();
     this.carReserve = navigation.extras.state
@@ -53,7 +56,14 @@ export class HomepageCarReservationsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth.checkStatus();
     console.log(this.carReserve);
+  }
+  ngDoCheck(): void {
+    if(this.reserveForm.value.returnDate != null && this.reserveForm.value.pickupDate != null){
+      this.calculateDuration()
+    }
+    
   }
 
   openPopup() {
@@ -71,7 +81,10 @@ export class HomepageCarReservationsComponent implements OnInit {
     console.log(this.reserveForm.value);
     if (this.isConfirm) {
       axios
-        .post("http://localhost:8080/api/car-reservation", this.reserveForm.value)
+        .post(
+          "http://localhost:8080/api/car-reservation",
+          this.reserveForm.value
+        )
         .then((response) => {
           console.log(response);
           document.getElementsByClassName(
@@ -176,18 +189,21 @@ export class HomepageCarReservationsComponent implements OnInit {
       "]]";
   }
   addreturnLocation() {
-    console.log("ee");
     this.returnlocation = "(" + this.latitude + "," + this.longitude + ")";
     this.closeform("return");
   }
-  addpickupLocation() {
-    console.log("aa");
-    this.pickuplocation = "(" + this.latitude + "," + this.longitude + ")";
-    this.closeform("pickup");
-  }
+
   closeform(form: String) {
     form = "#" + form;
     this.elementref.nativeElement.querySelector(form).className =
       "modal modal-fx-fadeInScale";
+  }
+  calculateDuration() {
+    let returnDate = new Date(this.reserveForm.value.returnDate);
+    let pickupDate = new Date(this.reserveForm.value.pickupDate);
+    this.duration =
+      (returnDate.getTime() - pickupDate.getTime()) / (1000 * 3600 * 24)+1;
+    let price:number = this.carReserve.price
+    this.totalPrice = this.duration * price
   }
 }

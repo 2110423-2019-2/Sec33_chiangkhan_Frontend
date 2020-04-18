@@ -1,25 +1,29 @@
-<div class="card">
+<div class="card-before">
   <div class="card-content">
     <div class="columns">
       <div class="column">
-        <img src="{{car.photoOfCarDocument}}" (click)="openPopup()">
+        <img
+          src="{{ car.photoOfCarDocument }}"
+          (click)="openPopup('modal-id')"
+        />
       </div>
       <div class="column">
-        <p>Owner : {{car.ownerId}}</p>
+        <p>Owner : {{ car.ownerId }}</p>
         <div class="tags">
-          <span class="tag is-link is-light">{{car.carType}}</span>
-          <span class="tag is-info is-light">{{car.carModel}}</span>
+          <span class="tag is-link is-light">{{ car.carType }}</span>
+          <span class="tag is-info is-light">{{ car.carModel }}</span>
         </div>
-        <p>Price : {{car.price}}</p>
-        <p>Capacity : {{car.capacity}}</p>
+        <p>Price : {{ car.price }}</p>
+        <p>Capacity : {{ car.capacity }}</p>
         <div class="column" style="padding: 0px; flex: unset;">
-         <span id="star1" class="fa fa-star"></span>
-         <span id="star2" class="fa fa-star"></span>
-         <span id="star3" class="fa fa-star"></span>
-         <span id="star4" class="fa fa-star"></span>
-         <span id="star5" class="fa fa-star"></span>
-       </div>
+          <span id="star1" class="fa fa-star"></span>
+          <span id="star2" class="fa fa-star"></span>
+          <span id="star3" class="fa fa-star"></span>
+          <span id="star4" class="fa fa-star"></span>
+          <span id="star5" class="fa fa-star"></span>
+        </div>
       </div>
     </div>
-</div> 
+  </div>
+</div>
 <app-homepage-car-popup [car]="car"></app-homepage-car-popup>

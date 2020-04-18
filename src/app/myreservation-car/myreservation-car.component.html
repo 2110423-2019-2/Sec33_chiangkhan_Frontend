@@ -69,13 +69,6 @@
             >
               Agreement
             </button>
-            <button
-              class="button is-rounded is-dark"
-              (click)="openPopup('review_popup')"
-              disabled
-            >
-              Review
-            </button>
           </div>
         </div>
       </div>
@@ -100,30 +93,6 @@
           <p>Pickup Location : {{ car.PickupLocation }}</p>
           <p>Pickup Date : {{ car.PickupDate }}</p>
           <p>Return Location : {{ car.ReturnLocation }}</p>
-
-          <div class="buttons">
-            <button
-              class="button is-rounded is-danger"
-              disabled
-              (click)="openPopup('cancel_popup')"
-            >
-              Cancel
-            </button>
-            <button
-              class="button is-rounded is-info"
-              disabled
-              (click)="openPopup('agreement_popup')"
-            >
-              Agreement
-            </button>
-            <button
-              class="button is-rounded is-dark"
-              disabled
-              (click)="openPopup('review_popup')"
-            >
-              Review
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -150,13 +119,6 @@
           <p>Return Location : {{ car.ReturnLocation }}</p>
 
           <div class="buttons">
-            <button
-              class="button is-rounded is-danger"
-              (click)="openPopup('cancel_popup')"
-              disabled
-            >
-              Cancel
-            </button>
             <button
               class="button is-rounded is-info"
               (click)="openPopup('agreement_popup')"

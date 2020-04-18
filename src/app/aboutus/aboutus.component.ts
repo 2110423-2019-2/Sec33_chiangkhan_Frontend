@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IImage } from '../IImage';
-
+import { AuthService} from '../auth.service'
 @Component({
   selector: 'app-aboutus',
   templateUrl: './aboutus.component.html',
@@ -40,9 +40,10 @@ export class AboutusComponent implements OnInit {
   enablePan: boolean = false;
   noLoop: boolean = false;
 
-  constructor() { }
+  constructor(private auth:AuthService) { }
 
   ngOnInit() {
+    this.auth.checkStatus()
   }
 
 }

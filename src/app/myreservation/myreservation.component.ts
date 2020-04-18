@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from "@angular/core";
+import { AuthService} from '../auth.service'
 import axios from "axios";
 @Component({
   selector: "app-myreservation",
@@ -8,10 +9,10 @@ import axios from "axios";
 export class MyReservationComponent implements OnInit {
   isvalid: boolean = true;
   carReservation: any;
-  constructor(private elem: ElementRef) {}
+  constructor(private elem: ElementRef,private auth:AuthService) {}
 
   ngOnInit() {
-    // activeNavbar
+    this.auth.checkStatus()
     document.getElementsByClassName("unactive")[1].className = "active";
     axios
       .get("http://localhost:8080/api/car-reservation/")
@@ -24,58 +25,6 @@ export class MyReservationComponent implements OnInit {
       });
     console.log(this.carReservation);
   }
-  cars = [
-    {
-      status: "Canceled",
-      type: "Sport car",
-      Model: "BMW Z3",
-      licensePlate: "12-3456",
-      PickupDate: "18-11-2019",
-      PickupLocation: "AAAAA",
-      ReturnDate: "12-12'2019",
-      ReturnLocation: "BBBBB",
-    },
-    {
-      status: "Returned",
-      type: "Truck",
-      Model: "BMW Z1",
-      licensePlate: "12-3456",
-      PickupDate: "18-11-2019",
-      PickupLocation: "AAAAA",
-      ReturnDate: "12-12'2019",
-      ReturnLocation: "BBBBB",
-    },
-    {
-      status: "Reserving",
-      type: "Sport car",
-      Model: "BMW Z3",
-      licensePlate: "12-3456",
-      PickupDate: "18-11-2019",
-      PickupLocation: "AAAAA",
-      ReturnDate: "12-12'2019",
-      ReturnLocation: "BBBBB",
-    },
-    {
-      status: "Canceled",
-      type: "Sport car",
-      Model: "BMW Z3",
-      licensePlate: "12-3456",
-      PickupDate: "18-11-2019",
-      PickupLocation: "AAAAA",
-      ReturnDate: "12-12'2019",
-      ReturnLocation: "BBBBB",
-    },
-    {
-      status: "Canceled",
-      type: "Sport car",
-      Model: "BMW Z3",
-      licensePlate: "12-3456",
-      PickupDate: "18-11-2019",
-      PickupLocation: "AAAAA",
-      ReturnDate: "12-12'2019",
-      ReturnLocation: "BBBBB",
-    },
-  ];
 
   untab(tab: String) {
     var t = this.elem.nativeElement.querySelectorAll("li");
