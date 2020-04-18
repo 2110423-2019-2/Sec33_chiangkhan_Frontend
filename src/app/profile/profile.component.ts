@@ -136,7 +136,7 @@ export class ProfileComponent implements OnInit {
     let info = {
       name: this.information.name,
       password: this.information.password,
-      email: this.information.email,
+      email: this.information.email, 
       phone_num: this.information.phone_num,
       bank_account: this.information.bank_account,
       bank_account_branch: this.information.bank_account_branch,
