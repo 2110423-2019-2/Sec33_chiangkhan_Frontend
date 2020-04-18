@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Input , ElementRef } from '@angular/core';
 import { AuthService } from '../auth.service';
 import axios from 'axios';
@@ -12,21 +12,23 @@ import axios from 'axios';
 })
 export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
-    name : new FormControl(),
-    username : new FormControl(),
-    password : new FormControl(),
-    email : new FormControl(),
-    phone_num : new FormControl(),
-    bank_account: new FormControl(),
-    bank_account_branch: new FormControl(),
-    credit_card_number : new FormControl(),
-    credit_card_expiry : new FormControl(),
-    credit_card_security : new FormControl() ,
-    driving_license : new FormControl(),
-    address : new FormControl()
+    name : new FormControl("",Validators.required),
+    username : new FormControl("",Validators.required),
+    password : new FormControl("",Validators.required),
+    email : new FormControl("",[Validators.email,Validators.required]),
+    phone_num : new FormControl("",[Validators.minLength(10),Validators.maxLength(10),Validators.required]),
+    bank_account: new FormControl("",[Validators.minLength(10),Validators.maxLength(10),Validators.required]),
+    bank_account_branch: new FormControl("",Validators.required),
+    credit_card_number : new FormControl("",[Validators.minLength(16),Validators.maxLength(16),Validators.required]),
+    credit_card_expiry : new FormControl("",Validators.required),
+    credit_card_security : new FormControl("",[Validators.minLength(3),Validators.maxLength(3),Validators.required]) ,
+    driving_license : new FormControl("",Validators.required),
+    address : new FormControl("",Validators.required)
   })
+  
   passwording:string = ""
   confirmPassword:string = ""
+  comfirmPassworldValid:boolean 
   constructor(private authService : AuthService , private router : Router , private elem : ElementRef) {
     
   }
@@ -35,16 +37,15 @@ export class RegisterComponent implements OnInit {
     
   }
   
-  onChangePassword(){ 
-    this.passwording = this.passwording 
-  }
   onChangeConfirm(){
     this.confirmPassword = this.confirmPassword
     if(this.passwording === this.confirmPassword){
+      this.comfirmPassworldValid = true
       this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group-success" 
       this.elem.nativeElement.querySelector('#valid_confirmEmail').style.display = "block"
       this.elem.nativeElement.querySelector('#invalid_confirmEmail').style.display = "none"
     }else{
+      this.comfirmPassworldValid = false
       this.elem.nativeElement.querySelector('#confirmpassword').className = "input-group-invalid" 
       this.elem.nativeElement.querySelector('#valid_confirmEmail').style.display = "none"
       this.elem.nativeElement.querySelector('#invalid_confirmEmail').style.display = "block"
@@ -52,11 +53,9 @@ export class RegisterComponent implements OnInit {
   } 
 
   onSubmit(){
-    if(this.registerForm.value.name == null || this.registerForm.value.username == null 
-      || this.registerForm.value.password == null  || this.registerForm.value.email == null || this.registerForm.value.phone_num == null
-      || this.registerForm.value.bank_account == null  || this.registerForm.value.bank_account_branch == null || this.registerForm.value.credit_card_number == null
-      || this.registerForm.value.credit_card_security == null  || this.registerForm.value.credit_card_expiry == null || this.registerForm.value.driving_license == null
-      || this.registerForm.value.address == null){ 
+    this.validateAll()
+    console.log(this.registerForm.controls)
+    if(!this.registerForm.valid || !this.comfirmPassworldValid || this.confirmPassword == null){ 
         this.elem.nativeElement.querySelector('#invalid_register').style.display = "flex"
     }else{
     axios.post('http://localhost:8080/api/users',this.registerForm.value)
@@ -88,7 +87,27 @@ export class RegisterComponent implements OnInit {
   showError(){
     document.getElementsByClassName("non-active")[0].className = "active"
   }
-  
+  validateAll(){
+    this.validateBank()
+    this.validateCreditcard()
+    this.validateEmail()
+    this.validatePhonenum()
+    this.validateSecurity()
+    this.validateName()
+    this.validatelicensePlate()
+    this.validatePassword()
+    this.validateUsername()
+    this.validateAddress()
+  }
+  validateBranch(){
+    if(this.registerForm.controls.bank_account_branch.status != "VALID"){
+      this.elem.nativeElement.querySelector('#valid_branch').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_branch').style.display = "block"
+    }else{
+      this.elem.nativeElement.querySelector('#valid_branch').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_branch').style.display = "none"
+    }
+  }
   validatePhonenum(){
     if(this.registerForm.value.phone_num.length == 10){
       for(let index of this.registerForm.value.phone_num){
@@ -107,8 +126,69 @@ export class RegisterComponent implements OnInit {
     }
    
   }
+  validateName(){
+    if(this.registerForm.controls.name.status != "VALID"){
+      this.elem.nativeElement.querySelector('#valid_name').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_name').style.display = "block"
+    }else{
+      this.elem.nativeElement.querySelector('#valid_name').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_name').style.display = "none"
+    }
+  }
+  validatePassword(){
+    this.passwording = this.passwording 
+    if(this.registerForm.controls.password.status != "VALID"){
+      this.elem.nativeElement.querySelector('#valid_password').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_password').style.display = "block"
+    }else{
+      this.elem.nativeElement.querySelector('#valid_password').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_password').style.display = "none"
+    }
+  }
+  validateUsername(){
+    if(this.registerForm.controls.username.status != "VALID"){
+      this.elem.nativeElement.querySelector('#valid_username').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_username').style.display = "block"
+    }else{
+      this.elem.nativeElement.querySelector('#valid_username').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_username').style.display = "none"
+    }
+  }
+  validatelicensePlate(){
+    if(this.registerForm.controls.driving_license.status != "VALID"){
+      this.elem.nativeElement.querySelector('#valid_licensePlate').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_licensePlate').style.display = "block"
+    }else{
+      this.elem.nativeElement.querySelector('#valid_licensePlate').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_licensePlate').style.display = "none"
+    }
+  }
+  validateAddress(){
+    if(this.registerForm.controls.address.status != "VALID"){
+      this.elem.nativeElement.querySelector('#valid_address').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_address').style.display = "block"
+    }else{
+      this.elem.nativeElement.querySelector('#valid_address').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_address').style.display = "none"
+    }
+  }
   validateEmail(){
-    // implement validation email
+    if(this.registerForm.controls.email.status != "VALID"){
+      this.elem.nativeElement.querySelector('#valid_email').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_email').style.display = "block"
+    }else{
+      this.elem.nativeElement.querySelector('#valid_email').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_email').style.display = "none"
+    }
+  }
+  validateBank(){
+    if(this.registerForm.controls.bank_account.status != "VALID"){
+      this.elem.nativeElement.querySelector('#valid_bank_account').style.display = "none"
+      this.elem.nativeElement.querySelector('#invalid_bank_account').style.display = "block"
+    }else{
+      this.elem.nativeElement.querySelector('#valid_bank_account').style.display = "block"
+      this.elem.nativeElement.querySelector('#invalid_bank_account').style.display = "none"
+    }
   }
   validateCreditcard(){
     if(this.registerForm.value.credit_card_number.length != 16){

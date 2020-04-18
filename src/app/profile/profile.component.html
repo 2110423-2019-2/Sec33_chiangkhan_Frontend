@@ -5,7 +5,10 @@
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
-            <img src="../../assets/images/boom.jpg" alt="Placeholder image" />
+            <img
+              src="../../assets/images/car-rental.png"
+              alt="Placeholder image"
+            />
           </figure>
         </div>
         <div class="card-content">
@@ -38,8 +41,7 @@
                     About
                   </h1>
 
-                  <p><span>First name</span>{{ information.name }}</p>
-                  <p><span>Last name </span>: Smith</p>
+                  <p><span>First name :</span> {{ information.name }}</p>
                   <p><span>Email</span> : {{ information.email }}</p>
                   <p><span>Phone number</span> : {{ information.phone_num }}</p>
                   <p>
@@ -134,14 +136,27 @@
               </div>
             </div>
             <div class="field">
+              <label class="label">confirm Password</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="password"
+                  placeholder="confirm password"
+                  [(ngModel)]="confirmpassword"
+                />
+              </div>
+            </div>
+            <div class="field">
               <label class="label">Email</label>
               <div class="control">
                 <input
+                  id="email"
                   class="input"
                   type="text"
                   placeholder="example@example.com"
                   value="{{ information.email }}"
                   formControlName="email"
+                  (input)="onChangeEmail()"
                 />
               </div>
             </div>
@@ -149,11 +164,13 @@
               <label class="label">Phone number</label>
               <div class="control">
                 <input
+                  id="phone"
                   class="input"
                   type="text"
                   placeholder="0833333333"
                   value="{{ information.phone_num }}"
                   formControlName="phone_num"
+                  (input)="onChangePhone()"
                 />
               </div>
             </div>
@@ -184,11 +201,13 @@
               <label class="label">Bank account number</label>
               <div class="control">
                 <input
+                  id="bank_account"
                   class="input"
                   type="text"
                   placeholder="xxxxxxxxxx"
                   value="{{ information.bank_account }}"
                   formControlName="bank_account"
+                  (input)="onChangeBank()"
                 />
               </div>
             </div>
@@ -196,11 +215,13 @@
               <label class="label">Credit card number</label>
               <div class="control">
                 <input
+                  id="credit"
                   class="input"
                   type="text"
                   placeholder="xxxx/xxxx/xxxx/xxxx"
                   value="{{ information.credit_card_number }}"
                   formControlName="credit_card_number"
+                  (input)="onChangeCredit()"
                 />
               </div>
             </div>
@@ -213,6 +234,7 @@
                   placeholder="mm/yy"
                   value="{{ information.credit_card_expiry }}"
                   formControlName="credit_card_expiry"
+                  (input)="onChangeExpiry()"
                 />
               </div>
             </div>
@@ -220,11 +242,13 @@
               <label class="label">CVV</label>
               <div class="control">
                 <input
+                  id="CVV"
                   class="input"
                   type="text"
                   placeholder="XXX"
                   value="{{ information.credit_card_security }}"
                   formControlName="credit_card_security"
+                  (input)="onChangeCVV()"
                 />
               </div>
             </div>

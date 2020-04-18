@@ -19,34 +19,39 @@
                   placeholder="name"
                   formControlName="name"
                   required
+                  (input)="validateName()"
                 />
+                <i class="fas fa-check" id="valid_name"></i>
+                <i class="fas fa-times" id="invalid_name"></i>
               </div>
             </div>
-
           </div>
           <div class="row row-space">
             <div class="col-2">
-              <div class="input-group">
+              <div class="input-group is-flex">
                 <input
                   class="input--style-2"
                   type="text"
                   placeholder="Username"
                   formControlName="username"
+                  (input)="validateUsername()"
                 />
+                <i class="fas fa-check" id="valid_username"></i>
+                <i class="fas fa-times" id="invalid_username"></i>
               </div>
             </div>
             <div class="col-2">
-              <div class="input-group">
-                <div class="rs-select2">
-                  <input
-                    class="input--style-2"
-                    type="password"
-                    placeholder="Password"
-                    formControlName="password"
-                    [(ngModel)]="passwording"
-                    (input)="onChangePassword()"
-                  />
-                </div>
+              <div class="input-group is-flex">
+                <input
+                  class="input--style-2"
+                  type="password"
+                  placeholder="Password"
+                  formControlName="password"
+                  [(ngModel)]="passwording"
+                  (input)="validatePassword()"
+                />
+                <i class="fas fa-check" id="valid_password"></i>
+                <i class="fas fa-times" id="invalid_password"></i>
               </div>
             </div>
           </div>
@@ -66,7 +71,7 @@
           </div>
           <div class="row row-space">
             <div class="col-2">
-              <div class="input-group">
+              <div class="input-group is-flex">
                 <input
                   class="input--style-2"
                   type="email"
@@ -79,7 +84,7 @@
               </div>
             </div>
             <div class="col-2">
-              <div class="input-group is-flex" id="password">
+              <div class="input-group is-flex">
                 <input
                   class="input--style-2"
                   type="text"
@@ -94,23 +99,29 @@
           </div>
           <div class="row row-space">
             <div class="col-2">
-              <div class="input-group">
+              <div class="input-group is-flex">
                 <input
                   class="input--style-2"
                   type="text"
                   placeholder="Bank Account"
                   formControlName="bank_account"
+                  (input)="validateBank()"
                 />
+                <i class="fas fa-check" id="valid_bank_account"></i>
+                <i class="fas fa-times" id="invalid_bank_account"></i>
               </div>
             </div>
             <div class="col-2">
-              <div class="input-group">
+              <div class="input-group is-flex">
                 <input
                   class="input--style-2"
                   type="text"
                   placeholder="Bank Account Branch"
                   formControlName="bank_account_branch"
+                  (input)="validateBranch()"
                 />
+                <i class="fas fa-check" id="valid_branch"></i>
+                <i class="fas fa-times" id="invalid_branch"></i>
               </div>
             </div>
           </div>
@@ -153,32 +164,43 @@
             </div>
           </div>
           <div class="col-2">
-            <div class="input-group">
+            <div class="input-group is-flex">
               <input
                 class="input--style-2"
                 type="text"
                 placeholder="Driving license"
                 formControlName="driving_license"
+                (input)="validatelicensePlate()"
               />
+              <i class="fas fa-check" id="valid_licensePlate"></i>
+              <i class="fas fa-times" id="invalid_licensePlate"></i>
             </div>
           </div>
           <div class="col-2">
-            <div class="input-group">
+            <div class="input-group is-flex">
               <input
                 class="input--style-2"
                 type="text"
                 placeholder="Address"
                 formControlName="address"
+                (input)="validateAddress()"
               />
+              <i class="fas fa-check" id="valid_address"></i>
+              <i class="fas fa-times" id="invalid_address"></i>
             </div>
           </div>
           <div class="p-t-30 is-flex">
             <button class="btn btn--radius btn--green" type="submit">
               Register
             </button>
-            <div id ="invalid_register">
-              <i class="fas fa-times" style="display: block; padding-right: 10px;"></i>
-              <p style="color: red; font-weight: 600; padding-top: 7px;">Invalid input</p>
+            <div id="invalid_register">
+              <i
+                class="fas fa-times"
+                style="display: block; padding-right: 10px;"
+              ></i>
+              <p style="color: red; font-weight: 600; padding-top: 7px;">
+                Invalid input
+              </p>
             </div>
           </div>
         </form>
@@ -190,8 +212,20 @@
 <div class="modal" id="registerpop">
   <div class="modal-background"></div>
   <div class="modal-card" style="height: 300px;">
-    <section class="modal-card-body" style="border-radius: 20px; background-color :hsl(130, 50%, 80%); ">
-      <p style="text-align:center;padding: 60px; font-size: xx-large; font-size: xx-large;">Thank you for register</p>
+    <section
+      class="modal-card-body"
+      style="border-radius: 20px; background-color: hsl(130, 50%, 80%);"
+    >
+      <p
+        style="
+          text-align: center;
+          padding: 60px;
+          font-size: xx-large;
+          font-size: xx-large;
+        "
+      >
+        Thank you for register
+      </p>
       <button class="button is-rounded" id="buttona" (click)="moveToLogin()">
         Back to sign in
       </button>
