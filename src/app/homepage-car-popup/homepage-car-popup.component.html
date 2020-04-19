@@ -41,10 +41,10 @@
             <p><strong>Location : </strong></p>
             <div class="columns" id="temp">
               <div class="column">
-                <!-- <p><strong>Start Date : </strong>{{car_popup.availability[0].startDate}}</p> -->
+                <p><strong>Start Date : </strong>{{car_popup.startDate | slice: 0:10}}</p>
               </div>
               <div class="column">
-                <!-- <p><strong>End Date : </strong>{{car_popup.availability[0].endDate}}</p> -->
+                <p><strong>End Date : </strong>{{car_popup.endDate | slice: 0:10}}</p>
               </div>
             </div>
             <div class="columns" id="temp">
@@ -61,10 +61,7 @@
         <hr />
         <p><strong style="font-size: large;">Car description </strong></p>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-          dicta facere eos aut. Iusto consequuntur pariatur dignissimos odio aut
-          perferendis officiis inventore nesciunt autem. Cumque modi in pariatur
-          ipsum neque.
+         {{car_popup.agreement}}
         </p>
         <hr />
         <p><strong style="font-size: large;">Review</strong></p>

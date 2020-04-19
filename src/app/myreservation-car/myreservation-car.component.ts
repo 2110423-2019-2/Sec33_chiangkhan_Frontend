@@ -27,7 +27,7 @@ export class MyReservationCarComponent implements OnInit {
       axios
         .patch(
           "http://localhost:8080/api/car-reservation/" +
-            this.car.carReservationId,
+            this.car.carReservationId, 
           { status: "RETURNED" }
         )
         .then((response) => {
@@ -48,6 +48,8 @@ export class MyReservationCarComponent implements OnInit {
       this.display_reserve = true;
     }
     console.log(this.car);
+    console.log(this.car.relatedCarAvailable.pickupLocation.x)
+    console.log(this.car.relatedCarAvailable.pickupLocation.y)
   }
   ngAfterViewInit(): void {
     setTimeout(() => {

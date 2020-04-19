@@ -16,8 +16,6 @@ export class MyreservationPopupComponent implements OnInit {
   constructor(private elem: ElementRef) {}
 
   ngOnInit() {
-    //get member by ownerId
-    // console.log(this.car)
     if (this.car.status == "RESERVED") {
       this.display_confirming = false;
       this.display_confirmed = true;
@@ -38,7 +36,7 @@ export class MyreservationPopupComponent implements OnInit {
       { comment: this.comment },
       { rating: this.valueRating },
       { carId: this.car.relatedCarAvailable.carId }
-    );
+    ); 
     axios
       .post("http://localhost:8080/api/review/", reviewForm)
       .then((response) => {

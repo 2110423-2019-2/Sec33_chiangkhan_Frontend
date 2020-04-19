@@ -18,12 +18,12 @@
       </div>
       <article class="message is-info">
         <div class="message-body">
-          <p>Type: {{ carReserve.carType }}</p>
-          <p>Model: {{ carReserve.carModel }}</p>
-          <p>Location: {{ carReserve.carType }}</p>
-          <p>Start Date: {{ carReserve.startDate }}</p>
-          <p>End Date: {{ carReserve.endDate }}</p>
-          <p>Price per day: {{ carReserve.price }}</p>
+          <p>Type : {{ carReserve.carType }}</p>
+          <p>Model : {{ carReserve.carModel }}</p>
+          <p>Location : {{ carReserve.carType }}</p>
+          <p>Start Date : {{ carReserve.startDate | slice: 0:10}}</p>
+          <p>End Date : {{ carReserve.endDate | slice: 0:10 }}</p>
+          <p>Price per day : {{ carReserve.price }}</p>
         </div>
       </article>
     </div>

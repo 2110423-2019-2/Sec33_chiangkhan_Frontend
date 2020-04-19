@@ -13,9 +13,9 @@
           <p>Model : {{ car.carModel }}</p>
           <p>License : {{ car.licensePlate }}</p>
           <p>Pickup Date : {{ car.pickupDate }}</p>
-          <p>Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }}</p>
+          <p>Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{car.relatedCarAvailable.pickupLocation.y}}</p>
           <p>Return Date : {{ car.returnDate }}</p>
-          <p>Return Location : {{ car.ReturnLocation }}</p>
+          <p>Return Location : {{ car.returnLocation.x }}, {{ car.returnLocation.y }}</p>
 
           <div class="buttons">
             <button
@@ -51,11 +51,10 @@
           <button class="button is-rounded" (click)="pickup_return()" id="pickup">{{state_button}}</button>
           <p>Model : {{ car.carModel }}</p>
           <p>License : {{ car.licensePlate }}</p>
-          <p>Pickup Date : {{ car.PickupDate }}</p>
-          <p>Pickup Location : {{ car.PickupLocation }}</p>
-          <p>Pickup Date : {{ car.PickupDate }}</p>
-          <p>Return Location : {{ car.ReturnLocation }}</p>
-
+          <p>Pickup Date : {{ car.pickupDate }}</p>
+          <p>Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{car.relatedCarAvailable.pickupLocation.y}}</p>
+          <p>Return Date : {{ car.returnDate }}</p>
+          <p>Return Location : {{ car.returnLocation.x }}, {{ car.returnLocation.y }}</p>
           <div class="buttons">
             <button
               class="button is-rounded is-danger"
@@ -89,10 +88,10 @@
           <button class="button is-rounded" id="pickup" style="display: none;">Pickup</button>
           <p>Model : {{ car.carModel }}</p>
           <p>License : {{ car.licensePlate }}</p>
-          <p>Pickup Date : {{ car.PickupDate }}</p>
-          <p>Pickup Location : {{ car.PickupLocation }}</p>
-          <p>Pickup Date : {{ car.PickupDate }}</p>
-          <p>Return Location : {{ car.ReturnLocation }}</p>
+          <p>Pickup Date : {{ car.pickupDate }}</p>
+          <p>Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{car.relatedCarAvailable.pickupLocation.y}}</p>
+          <p>Return Date : {{ car.returnDate }}</p>
+          <p>Return Location : {{ car.returnLocation.x }}, {{ car.returnLocation.y }}</p>
         </div>
       </div>
     </div>
