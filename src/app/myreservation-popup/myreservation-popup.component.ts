@@ -16,7 +16,7 @@ export class MyreservationPopupComponent implements OnInit {
   constructor(private elem: ElementRef) {}
 
   ngOnInit() {
-    if (this.car.status == "RESERVED") {
+    if (this.car.status == "RESERVED" || this.car.status == "RETURNED") {
       this.display_confirming = false;
       this.display_confirmed = true;
     } else if (this.car.status == "PENDING") {
@@ -55,7 +55,7 @@ export class MyreservationPopupComponent implements OnInit {
       .patch(
         "http://localhost:8080/api/car-reservation/" +
           this.car.carReservationId,
-        { status: "CANCELLED" }
+        { status: "CANCELED" }
       )
       .then((response) => {
         console.log(response);

@@ -1,18 +1,18 @@
 <app-navbar></app-navbar>
+<div class="container" style="min-height: 1300px;">
+  <!-- Add Available car -->
+  <button id="Add_deal_button" (click)="functionTwo()">Add Deal</button>
 
-<!-- Add Available car -->
-<button id="Add_deal_button" (click)="functionTwo()">Add Deal</button>
+  <!-- Car Boxes -->
+  <div class="carbox" *ngFor="let car of myDeal">
+    <app-listof-cardeal [car]="car"></app-listof-cardeal>
+  </div>
 
-<!-- Car Boxes -->
-<div class="carbox" *ngFor="let car of myDeal">
-  <app-listof-cardeal [car]="car"></app-listof-cardeal>
+  <br /><br /><br />
 </div>
-
-<br /><br /><br />
-
-<footer>
-  <app-app-footer></app-app-footer>
-</footer>
+  <footer>
+    <app-app-footer></app-app-footer>
+  </footer>
 
 <!-- modal -->
 <div class="modal modal-fx-fadeInScale" id="form">
@@ -69,7 +69,11 @@
             <div class="field">
               <div class="control">
                 <label for="types">Agreement : </label>
-                <textarea class="textarea" placeholder="e.g. Don't steal my cay" formControlName="agreement"></textarea>
+                <textarea
+                  class="textarea"
+                  placeholder="e.g. Don't steal my cay"
+                  formControlName="agreement"
+                ></textarea>
               </div>
             </div>
           </div>
@@ -146,6 +150,3 @@
     <footer class="modal-card-foot"></footer>
   </div>
 </div>
-
-
-

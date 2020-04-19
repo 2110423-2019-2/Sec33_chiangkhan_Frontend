@@ -8,17 +8,17 @@
     />
   </div>
   <div class="column">
-    <span class="background-bisque">{{ [car.isInUse] }}</span>
-    <p>Type: {{ [car.carType] }}</p>
-    <p>LicensePlate: {{ [car.licensePlate] }}</p>
-    <p>Start Date: {{ [car.startDate] }}</p>
-    <p>Pickup Location: {{ [car.pickupLocation] }}</p>
+    <span class="background-bisque">isReserved : {{[car.isInUse] }}</span>
+    <p>Type : {{ [car.carType] }}</p>
+    <p>LicensePlate : {{ [car.licenseplate] }}</p>
+    <p>Start Date : {{ car.startDate | slice :0:10 }}</p>
+    <p>Pickup Location : {{ [car.pickupLocation.x] }},{{ [car.pickupLocation.y] }}</p>
     <br />
   </div>
   <div class="column">
-    <span id="model">Model: {{ [car.carModel] }}</span>
+    <span id="model">Model : {{ [car.carModel] }}</span>
     <br /><br /><br />
-    <p>End Date: {{ [car.endDate] }}</p>
+    <p>End Date : {{car.endDate | slice :0:10 }}</p>
     <br /><br />
     <div class="columns">
       <div class="column" id="reservation">

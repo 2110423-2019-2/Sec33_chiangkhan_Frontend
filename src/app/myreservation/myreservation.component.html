@@ -1,14 +1,15 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container" style="min-height: 1300px;">
   <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
     My reservation
   </h1>  
   <div class="tabs is-large is-boxed">
     <ul>
       <li class="is-active" (click)="tab('all')" id="all"><a>All</a></li>
-      <li (click)="tab('reserving')" id="reserving"><a>Reserving</a></li>
-      <li (click)="tab('returned')" id="returned"><a>Returned</a></li>
-      <li (click)="tab('canceled')" id="canceled"><a>Canceled</a></li>
+      <li (click)="tab('RESERVED')" id="RESERVED"><a>Reserved</a></li>
+      <li (click)="tab('PICKED')" id="PICKED"><a>Picked</a></li>
+      <li (click)="tab('RETURNED')" id="RETURNED"><a>Returned</a></li>
+      <li (click)="tab('CANCELED')" id="CANCELED"><a>Canceled</a></li>
     </ul>
   </div>
   <div class="columns is-multiline">

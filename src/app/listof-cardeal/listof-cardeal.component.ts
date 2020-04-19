@@ -14,6 +14,7 @@ export class ListofCardealComponent implements OnInit {
   ngOnInit() {
     console.log(this.car);
   }
+
   openform(form: String) {
     form = "#" + form;
     this.elem.nativeElement.querySelector(form).className =

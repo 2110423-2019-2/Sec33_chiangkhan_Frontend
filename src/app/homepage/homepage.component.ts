@@ -1,9 +1,15 @@
-import { Component, OnInit, ElementRef,ViewChild, NgZone } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  NgZone,
+} from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { Router, ParamMap , ActivatedRoute} from "@angular/router";
+import { Router, ParamMap, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
-import { AuthService } from '../auth.service'
+import { AuthService } from "../auth.service";
 import axios from "axios";
 
 @Component({
@@ -23,7 +29,7 @@ export class HomepageComponent implements OnInit {
   public searchElementRef: ElementRef;
   amountAllcar: number;
   pagination: any;
-  paginationCurrent:any = 0;
+  paginationCurrent: any = 0;
   stateShowCar: number = 0;
   state: number = 0;
   sortDropDown: String = "sort";
@@ -46,7 +52,7 @@ export class HomepageComponent implements OnInit {
   rightx: number;
   righty: number;
   area: String = "";
-
+  name: any;
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
@@ -54,7 +60,7 @@ export class HomepageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public _location: Location,
-    private auth:AuthService
+    private auth: AuthService
   ) {}
 
   getSearchCar() {
@@ -72,12 +78,12 @@ export class HomepageComponent implements OnInit {
         carModel: this.valueCarmodel,
         sortby: this.valueSort,
         duration: Array(duration),
-        pagination:this.paginationCurrent
+        pagination: this.paginationCurrent,
       },
     ]);
   }
   ngOnInit() {
-    this.auth.checkStatus()
+    this.auth.checkStatus();
     this.route.paramMap.subscribe((params: ParamMap) => {
       let paramm = {};
       for (let p in params.keys) {
@@ -86,8 +92,8 @@ export class HomepageComponent implements OnInit {
           params.get(params.keys[p]) != "" &&
           params.get(params.keys[p]) != "undefined"
         ) {
-          if(params.keys[p] == "pagination"){
-            continue
+          if (params.keys[p] == "pagination") {
+            continue;
           }
           if (
             params.keys[p] == "duration" &&
@@ -118,8 +124,14 @@ export class HomepageComponent implements OnInit {
         .finally(() => {
           let carsAvailable = [];
           this.cars.forEach((car) => {
+            // axios
+            //   .get("http://localhost:8080/api/member/" + car.ownerId + "/name")
+            //   .then((response) => {
+            //     this.name = response.data.name;
+            //     console.log(this.name)
+            //   });
             car.availability.forEach((element) => {
-              let temp = Object.assign({}, car);
+              let temp = Object.assign({}, car );
               let temp1 = Object.assign(temp, element);
               delete temp1["availability"];
               carsAvailable.push(temp1);
@@ -142,9 +154,9 @@ export class HomepageComponent implements OnInit {
     console.log("allcar : " + sum);
     return sum;
   }
-  togglePage(number:Number){
-    this.paginationCurrent += number
-    this.stateShowCar = this.paginationCurrent*30
+  togglePage(number: Number) {
+    this.paginationCurrent += number;
+    this.stateShowCar = this.paginationCurrent * 30;
     let allPag = this.elementref.nativeElement.querySelectorAll(
       ".pagination-link"
     );
@@ -155,12 +167,12 @@ export class HomepageComponent implements OnInit {
         allPag[i].className = "pagination-link is-current";
       }
     }
-    this.getSearchCar()
+    this.getSearchCar();
   }
   paginationActive(pagination_num: number) {
-    this.stateShowCar = pagination_num*30
-    this.paginationCurrent = pagination_num+1
-    console.log(this.stateShowCar)
+    this.stateShowCar = pagination_num * 30;
+    this.paginationCurrent = pagination_num + 1;
+    console.log(this.stateShowCar);
     let allPag = this.elementref.nativeElement.querySelectorAll(
       ".pagination-link"
     );
@@ -171,7 +183,7 @@ export class HomepageComponent implements OnInit {
         allPag[i].className = "pagination-link is-current";
       }
     }
-    this.getSearchCar()
+    this.getSearchCar();
   }
   closeAllDropdown(filter: String) {
     let allDropdown = this.elementref.nativeElement.querySelectorAll(
@@ -180,7 +192,7 @@ export class HomepageComponent implements OnInit {
     for (let i = 0; i < allDropdown.length; i++) {
       if (allDropdown[i].id != filter) allDropdown[i].className = "dropdown";
     }
-    this.getSearchCar()
+    this.getSearchCar();
   }
 
   toggleDropdown(filter: String) {

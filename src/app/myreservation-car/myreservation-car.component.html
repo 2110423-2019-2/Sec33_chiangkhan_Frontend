@@ -11,11 +11,18 @@
             car.status
           }}</span>
           <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licensePlate }}</p>
-          <p>Pickup Date : {{ car.pickupDate }}</p>
-          <p>Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{car.relatedCarAvailable.pickupLocation.y}}</p>
-          <p>Return Date : {{ car.returnDate }}</p>
-          <p>Return Location : {{ car.returnLocation.x }}, {{ car.returnLocation.y }}</p>
+          <p>License : {{ car.licenseplate }}</p>
+          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
+          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
+          <p>
+            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+              car.relatedCarAvailable.pickupLocation.y
+            }}
+          </p>
+          <p>
+            Return Location : {{ car.returnLocation.x }},
+            {{ car.returnLocation.y }}
+          </p>
 
           <div class="buttons">
             <button
@@ -37,7 +44,7 @@
   </div>
 </ng-template>
 
-<ng-template [ngIf]="display_reserve" #reserving>
+<ng-template [ngIf]="display_picked" #picked>
   <div class="card-before" id="reserving">
     <div class="card-content">
       <div class="columns">
@@ -45,16 +52,29 @@
           <img src="../../assets/images/car-homepage.jpg" />
         </div>
         <div class="column" id="detail">
-          <span class="tag is-link is-light" style="margin-bottom: 10px;">{{
-            car.status
-          }}</span>
-          <button class="button is-rounded" (click)="pickup_return()" id="pickup">{{state_button}}</button>
+          <span class="tag is-link is-light" style="margin-bottom: 10px;">
+            RESERVE/PICKED
+          </span>
+          <button
+            class="button is-rounded"
+            (click)="pickup_return()"
+            id="pickup"
+          >
+            {{ state_button }}
+          </button>
           <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licensePlate }}</p>
-          <p>Pickup Date : {{ car.pickupDate }}</p>
-          <p>Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{car.relatedCarAvailable.pickupLocation.y}}</p>
-          <p>Return Date : {{ car.returnDate }}</p>
-          <p>Return Location : {{ car.returnLocation.x }}, {{ car.returnLocation.y }}</p>
+          <p>License : {{ car.licenseplate }}</p>
+          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
+          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
+          <p>
+            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+              car.relatedCarAvailable.pickupLocation.y
+            }}
+          </p>
+          <p>
+            Return Location : {{ car.returnLocation.x }},
+            {{ car.returnLocation.y }}
+          </p>
           <div class="buttons">
             <button
               class="button is-rounded is-danger"
@@ -82,16 +102,73 @@
           <img src="../../assets/images/car-homepage.jpg" />
         </div>
         <div class="column" id="detail">
+          <span class="tag is-light is-danger" style="margin-bottom: 10px;">{{
+            car.status
+          }}</span>
+          <p>Model : {{ car.carModel }}</p>
+          <p>License : {{ car.licensePlate }}</p>
+          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
+          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
+          <p>
+            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+              car.relatedCarAvailable.pickupLocation.y
+            }}
+          </p>
+          <p>
+            Return Location : {{ car.returnLocation.x }},
+            {{ car.returnLocation.y }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template [ngIf]="display_reserve" #reserving>
+  <div class="card-before" id="reserving">
+    <div class="card-content">
+      <div class="columns">
+        <div class="column is-two-fifths" id="eiei">
+          <img src="../../assets/images/car-homepage.jpg" />
+        </div>
+        <div class="column" id="detail">
           <span class="tag is-link is-light" style="margin-bottom: 10px;">{{
             car.status
           }}</span>
-          <button class="button is-rounded" id="pickup" style="display: none;">Pickup</button>
+          <button
+            class="button is-rounded"
+            (click)="pickup_return()"
+            id="pickup"
+          >
+            {{ state_button }}
+          </button>
           <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licensePlate }}</p>
-          <p>Pickup Date : {{ car.pickupDate }}</p>
-          <p>Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{car.relatedCarAvailable.pickupLocation.y}}</p>
-          <p>Return Date : {{ car.returnDate }}</p>
-          <p>Return Location : {{ car.returnLocation.x }}, {{ car.returnLocation.y }}</p>
+          <p>License : {{ car.licenseplate }}</p>
+          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
+          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
+          <p>
+            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+              car.relatedCarAvailable.pickupLocation.y
+            }}
+          </p>
+          <p>
+            Return Location : {{ car.returnLocation.x }},
+            {{ car.returnLocation.y }}
+          </p>
+          <div class="buttons">
+            <button
+              class="button is-rounded is-danger"
+              (click)="openPopup('cancel_popup')"
+            >
+              Cancel
+            </button>
+            <button
+              class="button is-rounded is-info"
+              (click)="openPopup('agreement_popup')"
+            >
+              Agreement
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -109,13 +186,22 @@
           <span class="tag is-link is-light" style="margin-bottom: 10px;">{{
             car.status
           }}</span>
-          <button class="button is-rounded" id="pickup" style="display: none;">Pickup</button>
+          <button class="button is-rounded" id="pickup" style="display: none;">
+            Pickup
+          </button>
           <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licensePlate }}</p>
-          <p>Pickup Date : {{ car.PickupDate }}</p>
-          <p>Pickup Location : {{ car.PickupLocation }}</p>
-          <p>Pickup Date : {{ car.PickupDate }}</p>
-          <p>Return Location : {{ car.ReturnLocation }}</p>
+          <p>License : {{ car.licenseplate }}</p>
+          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
+          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
+          <p>
+            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+              car.relatedCarAvailable.pickupLocation.y
+            }}
+          </p>
+          <p>
+            Return Location : {{ car.returnLocation.x }},
+            {{ car.returnLocation.y }}
+          </p>
 
           <div class="buttons">
             <button

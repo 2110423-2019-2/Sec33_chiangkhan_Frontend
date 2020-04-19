@@ -13,7 +13,6 @@ export class AddcarformComponent implements OnInit {
   addcarForm = new FormGroup({
     licenseplate: new FormControl(),
     carDescription: new FormControl(),
-    photoOfCarDocument: new FormControl(),
   });
   valueCartype: String;
   valueCarmodel: String;
@@ -29,6 +28,7 @@ export class AddcarformComponent implements OnInit {
   addCar() {
     Object.assign(
       this.addcarForm.value,
+      { photoOfCarDocument : 'http://dummyimage.com/250x250.png/cc0000/ffffff'},
       { capacity: this.valueCapacity },
       { carType: this.valueCartype },
       { carModel: this.valueCarmodel }

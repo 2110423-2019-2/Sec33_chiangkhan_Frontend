@@ -7,13 +7,13 @@ import axios from "axios";
   styleUrls: ["./myreservation-car.component.css"],
 })
 export class MyReservationCarComponent implements OnInit {
-  
-  @Input() car;
-  state_button: String = "Pickup";
+  @Input() car: any;
+  state_button: String ;
   display_reserve: boolean = false;
   display_return: boolean = false;
   display_cancel: boolean = false;
   display_pending: boolean = false;
+  display_picked:boolean = false;
   constructor(private elem: ElementRef) {}
   openPopup(form: String) {
     form = "#" + form;
@@ -22,12 +22,21 @@ export class MyReservationCarComponent implements OnInit {
   }
   pickup_return() {
     if (this.state_button == "Pickup") {
-      this.state_button = "Return";
+      axios
+      .patch(
+        "http://localhost:8080/api/car-reservation/" +
+          this.car.carReservationId,
+        { status: "PICKED" }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
     } else {
       axios
         .patch(
           "http://localhost:8080/api/car-reservation/" +
-            this.car.carReservationId, 
+            this.car.carReservationId,
           { status: "RETURNED" }
         )
         .then((response) => {
@@ -38,20 +47,43 @@ export class MyReservationCarComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.car.status == "CANCELLED") {
+    if (this.car.status == "CANCELED") {
       this.display_cancel = true;
     } else if (this.car.status == "RETURNED") {
       this.display_return = true;
     } else if (this.car.status == "PENDING") {
       this.display_pending = true;
-    } else {
+    } else if(this.car.status == "PICKED"){
+      this.state_button = "Return"
+      this.display_picked = true;
+    }else if(this.car.status == "RESERVED"){
+      this.state_button = "Pickup"
       this.display_reserve = true;
     }
-    console.log(this.car);
-    console.log(this.car.relatedCarAvailable.pickupLocation.x)
-    console.log(this.car.relatedCarAvailable.pickupLocation.y)
   }
   ngAfterViewInit(): void {
+    axios
+      .get(
+        "http://localhost:8080/api/car/" +
+          this.car.relatedCarAvailable.carId +
+          "/carInfo"
+      )
+      .then((response) => {
+        Object.assign(this.car, response.data);
+        axios
+          .get("http://localhost:8080/api/member/" + this.car.ownerId + "/name")
+          .then((response) => {
+            Object.assign(this.car, response.data);
+            console.log(this.car);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     setTimeout(() => {
       this.elem.nativeElement.querySelector(".card-before").className = "card";
     }, 500);
