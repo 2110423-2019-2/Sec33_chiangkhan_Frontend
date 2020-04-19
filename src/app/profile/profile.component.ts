@@ -13,7 +13,6 @@ export class ProfileComponent implements OnInit {
   confirmpasswordValid:boolean;
   updateProfileForm = new FormGroup({
     name: new FormControl(),
-    password: new FormControl(),
     email: new FormControl("", Validators.email),
     phone_num: new FormControl("", [
       Validators.minLength(10),
@@ -119,10 +118,10 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     console.log(this.updateProfileForm.value);
-    if (this.verify_edit_profile() && this.confirmpasswordValid) {
+    if (this.verify_edit_profile()) {
       axios
         .put(
-          "http://localhost:8080/api/member/update",
+          "http://localhost:8080/api/member/notupdatepass",
           this.updateProfileForm.value
         )
         .then((response) => console.log(response))
@@ -135,7 +134,6 @@ export class ProfileComponent implements OnInit {
   setValue() {
     let info = {
       name: this.information.name,
-      password: this.information.password,
       email: this.information.email, 
       phone_num: this.information.phone_num,
       bank_account: this.information.bank_account,

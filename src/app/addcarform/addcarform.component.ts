@@ -28,7 +28,7 @@ export class AddcarformComponent implements OnInit {
   addCar() {
     Object.assign(
       this.addcarForm.value,
-      { photoOfCarDocument : 'http://dummyimage.com/250x250.png/cc0000/ffffff'},
+      { photoOfCarDocument : 'http://dummyimage.com/250x250.png/cc0000/ff00ff'},
       { capacity: this.valueCapacity },
       { carType: this.valueCartype },
       { carModel: this.valueCarmodel }

@@ -3,6 +3,13 @@
     <a class="navbar-item" href="/homepage">
       <img id="logo" src="../../assets/images/Rentsee - logo.png" />
     </a>
+    <ng-template [ngIf]="is_admin" #moditor>
+      <a class="navbar-item" href="/monitor" id="mouse"
+        ><span class="unactive">Monitor</span></a
+      >
+    </ng-template>
+     
+    
   </div>
 
   <div class="navbar-menu">

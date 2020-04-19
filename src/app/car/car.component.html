@@ -5,11 +5,12 @@
         <img src={{car.photoOfCarDocument}} />
       </div>
       <div class="column" id="detail">
-        <span class="tag is-link is-light">{{ carStatus }}</span>
+        <span class="tag is-link is-light is-medium" style="margin-bottom: 5px;">{{ carStatus }}</span>
         <p>Type : {{ car.carType }}</p>
         <p>Model : {{ car.carModel }}</p>
         <p>Capacity {{car.capacity}}</p>
         <p>License : {{ car.licenseplate}}</p>
+        <br><br><br>
         <div class="buttons">
           <button
             class="button is-rounded is-info"

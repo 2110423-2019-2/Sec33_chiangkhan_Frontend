@@ -4,7 +4,7 @@
     <div class="card-content">
       <div class="columns">
         <div class="column is-two-fifths" id="eiei">
-          <img src="../../assets/images/car-homepage.jpg" />
+          <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
           <span class="tag is-light" style="margin-bottom: 10px;">{{
@@ -49,7 +49,7 @@
     <div class="card-content">
       <div class="columns">
         <div class="column is-two-fifths" id="eiei">
-          <img src="../../assets/images/car-homepage.jpg" />
+          <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
           <span class="tag is-link is-light" style="margin-bottom: 10px;">
@@ -99,14 +99,14 @@
     <div class="card-content">
       <div class="columns">
         <div class="column is-two-fifths" id="eiei">
-          <img src="../../assets/images/car-homepage.jpg" />
+          <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
           <span class="tag is-light is-danger" style="margin-bottom: 10px;">{{
             car.status
           }}</span>
           <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licensePlate }}</p>
+          <p>License : {{ car.licenseplate }}</p>
           <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
           <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
           <p>
@@ -129,7 +129,7 @@
     <div class="card-content">
       <div class="columns">
         <div class="column is-two-fifths" id="eiei">
-          <img src="../../assets/images/car-homepage.jpg" />
+          <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
           <span class="tag is-link is-light" style="margin-bottom: 10px;">{{
@@ -180,7 +180,7 @@
     <div class="card-content">
       <div class="columns">
         <div class="column is-two-fifths" id="eiei">
-          <img src="../../assets/images/car-homepage.jpg" />
+          <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
           <span class="tag is-link is-light" style="margin-bottom: 10px;">{{
