@@ -5,6 +5,7 @@ fieldset {
   display: flex;
 }
 
+
 .dropdown-item:hover {
   background-color : pink;
   color: black;
@@ -125,3 +126,24 @@ agm-map {
 .container {
   margin-top: 80px;
 }
+
+.page-wrapper {
+  min-height: 100vh;
+}
+
+.bg-red {
+  background: #FDFDFD;
+}
+
+.p-t-180 {
+  padding-top: 50px;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+
+
+
+

@@ -114,7 +114,7 @@ export class HomepageComponent implements OnInit {
           console.log(response);
           this.cars = response.data;
           this.amountAllcar = this.getAmountCarAvailable(this.cars);
-          this.pagination = Array(Math.floor(this.amountAllcar / 30))
+          this.pagination = Array(Math.floor(this.amountAllcar / 51))
             .fill(0)
             .map((x, i) => i + 1);
         })
@@ -134,7 +134,7 @@ export class HomepageComponent implements OnInit {
           this.carsAvailable = carsAvailable;
           this.carsAvailable = this.carsAvailable.slice(
             this.stateShowCar,
-            this.stateShowCar + 30
+            this.stateShowCar + 51
           );
           console.log(this.carsAvailable);
         });
@@ -154,7 +154,7 @@ export class HomepageComponent implements OnInit {
       this.paginationCurrent > 0 &&
       this.paginationCurrent <= this.pagination.length
     ) {
-      this.stateShowCar = this.paginationCurrent * 30;
+      this.stateShowCar = this.paginationCurrent * 51;
       let allPag = this.elementref.nativeElement.querySelectorAll(
         ".pagination-link"
       );
@@ -171,7 +171,7 @@ export class HomepageComponent implements OnInit {
     }
   }
   paginationActive(pagination_num: number) {
-    this.stateShowCar = pagination_num * 30;
+    this.stateShowCar = pagination_num * 51;
     this.paginationCurrent = pagination_num + 1;
     console.log(this.stateShowCar);
     let allPag = this.elementref.nativeElement.querySelectorAll(

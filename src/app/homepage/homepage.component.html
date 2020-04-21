@@ -1,332 +1,363 @@
 <app-navbar></app-navbar>
-<div class="container" style="min-height: 1300px;">
-  <div style="padding-top: 2.5%; padding-left: 25px;">
-    <div id="sort" class="dropdown">
-      <div class="dropdown-trigger">
-        <button
-          class="button"
-          aria-haspopup="true"
-          aria-controls="dropdown-menu"
-          (click)="toggleDropdown('sort')"
-          style="height: 45px;"
-        >
-          <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
-          <span>{{ sortDropDown }}</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <a class="dropdown-item" (click)="sortbyAvgRatingInc()">
-            Rating
-          </a>
-          <a class="dropdown-item" (click)="sortbycapacityInc()">
-            Capacity
-          </a>
-        </div>
-      </div>
-    </div>
-    <div id="order" class="dropdown">
-      <div class="dropdown-trigger">
-        <button
-          class="button"
-          aria-haspopup="true"
-          aria-controls="dropdown-menu"
-          (click)="toggleDropdown('order')"
-          style="height: 45px;"
-        >
-          <i class="fas fa-sort-alpha-down-alt" style="padding-right: 5px;"></i>
-          <span>{{ orderby }}</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <a class="dropdown-item" (click)="orderbyDESC()">
-            Max --> Min
-          </a>
-          <a class="dropdown-item" (click)="orderbyASC()">
-            Min --> Max
-          </a>
-        </div>
-      </div>
-    </div>
-    <button
-      class="button is-primary is-outlined"
-      (click)="getSearchCar()"
-      style="height: 45px;"
-    >
-      Search
-    </button>
-    <button
-      class="button is-primary is-outlined"
-      (click)="clearSearch()"
-      style="height: 45px;"
-    >
-      Clear
-    </button>
-  </div>
-  <form [formGroup]="searchForm" action="/" method="get">
-    <div class="filters is-flex" id="state-show">
-      <fieldset>
-        <label id="f" for="">Car type</label>
-        <div id="cartype" class="dropdown">
+<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+  <div class="wrapper wrapper--w960">
+    <div class="container" style="min-height: 1300px;">
+      <div class="is-flex" style="padding-top: 2.5%; padding-left: 25px;">
+        <div id="sort" class="dropdown">
           <div class="dropdown-trigger">
             <button
-              class="input"
+              class="button"
               aria-haspopup="true"
               aria-controls="dropdown-menu"
-              style="width: 150px; height: 42px;"
-              (click)="toggleDropdown('cartype')"
+              (click)="toggleDropdown('sort')"
+              style="height: 45px; margin-right: 2em;"
             >
-              <span>{{ valueCartype }}</span>
+              <i
+                class="fas fa-sort-alpha-down-alt"
+                style="padding-right: 5px;"
+              ></i>
+              <span>{{ sortDropDown }}</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
             </button>
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              <a class="dropdown-item" (click)="searchCartype('personal')">
-                personal
+              <a class="dropdown-item" (click)="sortbyAvgRatingInc()">
+                Rating
+              </a>
+              <a class="dropdown-item" (click)="sortbycapacityInc()">
+                Capacity
               </a>
             </div>
           </div>
         </div>
-      </fieldset>
-      <fieldset>
-        <label id="f" for="">Car Model</label>
-        <div id="carmodel" class="dropdown">
+        <div id="order" class="dropdown">
           <div class="dropdown-trigger">
             <button
-              class="input"
+              class="button"
               aria-haspopup="true"
               aria-controls="dropdown-menu"
-              style="width: 150px; height: 42px;"
-              (click)="toggleDropdown('carmodel')"
+              (click)="toggleDropdown('order')"
+              style="height: 45px;"
             >
-              <span>{{ valueCarmodel }}</span>
+              <i
+                class="fas fa-sort-alpha-down-alt"
+                style="padding-right: 5px;"
+              ></i>
+              <span>{{ orderby }}</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
             </button>
           </div>
-          <div
-            class="dropdown-menu"
-            id="dropdown-menu"
-            role="menu"
-            style="max-height: 300px; overflow: auto;"
-          >
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              <a class="dropdown-item" (click)="searchCarmodel('BMW')">
-                BMW
+              <a class="dropdown-item" (click)="orderbyDESC()">
+                Max --> Min
               </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Buick')">
-                Buick
+              <a class="dropdown-item" (click)="orderbyASC()">
+                Min --> Max
               </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Chevrolet')">
-                Chevrolet
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Honda')">
-                Honda
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Dodge')">
-                Dodge
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Mazda')">
-                Mazda
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Mitsubishi')">
-                Mitsubishi
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('GMC')">
-                GMC
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Land Rover')">
-                Land Rover
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Ford')">
-                Ford
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Aston Martin')">
-                Aston Martin
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Volkswagen')">
-                Volkswagen
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Maserati')">
-                Maserati
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Pontiac')">
-                Pontiac
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Porsche')">
-                Porsche
-              </a>
-              <a
-                class="dropdown-item"
-                (click)="searchCarmodel('Mercedes-Benz')"
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: 50em;">
+           <button
+          class="button is-success is-rounded"
+          (click)="getSearchCar()"
+          style="height: 45px; margin-right: 1em;"
+        >
+          Search
+        </button>
+        <button
+          class="button is-danger is-rounded"
+          (click)="clearSearch()"
+          style="height: 45px;"
+        >
+          Clear
+        </button>
+        </div>
+       
+      </div>
+      <form [formGroup]="searchForm" action="/" method="get">
+        <div class="filters is-flex" id="state-show">
+          <fieldset>
+            <label id="f" for=""><strong>Car type</strong></label>
+            <div id="cartype" class="dropdown">
+              <div class="dropdown-trigger">
+                <button
+                  class="input"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                  style="width: 150px; height: 42px;"
+                  (click)="toggleDropdown('cartype')"
+                >
+                  <span>{{ valueCartype }}</span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a class="dropdown-item" (click)="searchCartype('personal')">
+                    personal
+                  </a>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <label id="f" for=""><strong>Car Model</strong></label>
+            <div id="carmodel" class="dropdown">
+              <div class="dropdown-trigger">
+                <button
+                  class="input"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                  style="width: 150px; height: 42px;"
+                  (click)="toggleDropdown('carmodel')"
+                >
+                  <span>{{ valueCarmodel }}</span>
+                </button>
+              </div>
+              <div
+                class="dropdown-menu"
+                id="dropdown-menu"
+                role="menu"
+                style="max-height: 300px; overflow: auto;"
               >
-                Mercedes-Benz
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Geo')">
-                Geo
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Saturn')">
-                Saturn
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Lincoln')">
-                Lincoln
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Acura')">
-                Acura
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Nissan')">
-                Nissan
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Oldsmobile')">
-                Oldsmobile
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Toyota')">
-                Toyota
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Audi')">
-                Audi
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Kia')">
-                Kia
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Hyundai')">
-                Hyundai
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Bugatti')">
-                Bugatti
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Volvo')">
-                Volvo
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Mercury')">
-                Mercury
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Infiniti')">
-                Infiniti
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Saab')">
-                Saab
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Studebaker')">
-                Studebaker
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Subaru')">
-                Subaru
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Chrysler')">
-                Chrysler
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Lexus')">
-                Lexus
-              </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Ferrari')">
-                Ferrari
-              </a>
+                <div class="dropdown-content">
+                  <a class="dropdown-item" (click)="searchCarmodel('BMW')">
+                    BMW
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Buick')">
+                    Buick
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    (click)="searchCarmodel('Chevrolet')"
+                  >
+                    Chevrolet
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Honda')">
+                    Honda
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Dodge')">
+                    Dodge
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Mazda')">
+                    Mazda
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    (click)="searchCarmodel('Mitsubishi')"
+                  >
+                    Mitsubishi
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('GMC')">
+                    GMC
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    (click)="searchCarmodel('Land Rover')"
+                  >
+                    Land Rover
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Ford')">
+                    Ford
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    (click)="searchCarmodel('Aston Martin')"
+                  >
+                    Aston Martin
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    (click)="searchCarmodel('Volkswagen')"
+                  >
+                    Volkswagen
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Maserati')">
+                    Maserati
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Pontiac')">
+                    Pontiac
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Porsche')">
+                    Porsche
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    (click)="searchCarmodel('Mercedes-Benz')"
+                  >
+                    Mercedes-Benz
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Geo')">
+                    Geo
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Saturn')">
+                    Saturn
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Lincoln')">
+                    Lincoln
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Acura')">
+                    Acura
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Nissan')">
+                    Nissan
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    (click)="searchCarmodel('Oldsmobile')"
+                  >
+                    Oldsmobile
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Toyota')">
+                    Toyota
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Audi')">
+                    Audi
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Kia')">
+                    Kia
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Hyundai')">
+                    Hyundai
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Bugatti')">
+                    Bugatti
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Volvo')">
+                    Volvo
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Mercury')">
+                    Mercury
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Infiniti')">
+                    Infiniti
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Saab')">
+                    Saab
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    (click)="searchCarmodel('Studebaker')"
+                  >
+                    Studebaker
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Subaru')">
+                    Subaru
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Chrysler')">
+                    Chrysler
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Lexus')">
+                    Lexus
+                  </a>
+                  <a class="dropdown-item" (click)="searchCarmodel('Ferrari')">
+                    Ferrari
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </fieldset>
-      <fieldset>
-        <label id="f" for="">Car capacity</label>
-        <div id="capacity" class="dropdown">
-          <div class="dropdown-trigger">
+          </fieldset>
+          <fieldset>
+            <label id="f" for=""><strong>Car capacity</strong></label>
+            <div id="capacity" class="dropdown">
+              <div class="dropdown-trigger">
+                <button
+                  class="input"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                  style="width: 150px; height: 42px;"
+                  (click)="toggleDropdown('capacity')"
+                >
+                  <span>{{ valueCapacity }}</span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a class="dropdown-item" (click)="searchCapacity(2)">
+                    2
+                  </a>
+                  <a class="dropdown-item" (click)="searchCapacity(3)">
+                    3
+                  </a>
+                  <a class="dropdown-item" (click)="searchCapacity(4)">
+                    4
+                  </a>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <label id="f" for=""><strong>Location</strong></label>
             <button
               class="input"
-              aria-haspopup="true"
-              aria-controls="dropdown-menu"
               style="width: 150px; height: 42px;"
-              (click)="toggleDropdown('capacity')"
+              (click)="openMap()"
             >
-              <span>{{ valueCapacity }}</span>
+              <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
+              Open map
             </button>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu" role="menu">
-            <div class="dropdown-content">
-              <a class="dropdown-item" (click)="searchCapacity(2)">
-                2
-              </a>
-              <a class="dropdown-item" (click)="searchCapacity(3)">
-                3
-              </a>
-              <a class="dropdown-item" (click)="searchCapacity(4)">
-                4
-              </a>
-            </div>
-          </div>
+          </fieldset>
+          <fieldset>
+            <label id="f" for=""><strong>Start Date</strong></label>
+            <input
+              class="input"
+              type="date"
+              name="startDate"
+              id="startDate"
+              formControlName="startDate"
+            />
+          </fieldset>
+          <fieldset>
+            <label id="f" for=""><strong>End Date</strong></label>
+            <input
+              class="input"
+              type="date"
+              name="endDate"
+              id="endDate"
+              formControlName="endDate"
+            />
+          </fieldset>
         </div>
-      </fieldset>
-      <fieldset>
-        <label id="f" for="">Location</label>
-        <button
-          class="input"
-          style="width: 150px; height: 42px;"
-          (click)="openMap()"
-        >
-          <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
-          Open map
-        </button>
-      </fieldset>
-      <fieldset>
-        <label id="f" for="">Start Date</label>
-        <input
-          class="input"
-          type="date"
-          name="startDate"
-          id="startDate"
-          formControlName="startDate"
-        />
-      </fieldset>
-      <fieldset>
-        <label id="f" for="">End Date</label>
-        <input
-          class="input"
-          type="date"
-          name="endDate"
-          id="endDate"
-          formControlName="endDate"
-        />
-      </fieldset>
-    </div>
-  </form>
-  <h1 style="font-weight: bold; font-size: xx-large; padding-bottom: 20px;">
-    Newest Deal Available
-  </h1>
-  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" (click)="togglePage(-1)">Previous</a>
-    <a class="pagination-next" (click)="togglePage(1)">Next page</a>
-    <ul class="pagination-list">
-      <li (click)="paginationActive(0)">
-        <a class="pagination-link is-current" aria-label="Goto page 1">1</a>
-      </li>
-      <li *ngFor="let number of pagination" (click)="paginationActive(number)">
-        <a class="pagination-link" aria-label="Goto page 1">{{ number + 1 }}</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="columns is-multiline" style="justify-content: space-evenly;">
-    <div class="column is-narrow" *ngFor="let car of carsAvailable">
-      <app-homepage-car [car]="car"></app-homepage-car>
+      </form>
+      <h1 style="font-weight: bold; font-size: xx-large; padding-bottom: 2em; padding-top: 0.5em;">
+        Newest Deal Available
+      </h1>
+      <div class="columns is-multiline" style="justify-content: space-evenly;">
+        <div class="column is-narrow" *ngFor="let car of carsAvailable">
+          <app-homepage-car [car]="car"></app-homepage-car>
+        </div>
+      </div>
+      <nav
+        class="pagination is-centered"
+        role="navigation"
+        aria-label="pagination"
+        style="margin: 2em;"
+      >
+        <a class="pagination-previous" (click)="togglePage(-1)">Previous</a>
+        <a class="pagination-next" (click)="togglePage(1)">Next page</a>
+        <ul class="pagination-list">
+          <li (click)="paginationActive(0)">
+            <a class="pagination-link is-current" aria-label="Goto page 1">1</a>
+          </li>
+          <li
+            *ngFor="let number of pagination"
+            (click)="paginationActive(number)"
+          >
+            <a class="pagination-link" aria-label="Goto page 1">{{
+              number + 1
+            }}</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
-  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" (click)="togglePage(-1)">Previous</a>
-    <a class="pagination-next" (click)="togglePage(1)">Next page</a>
-    <ul class="pagination-list">
-      <li (click)="paginationActive(0)">
-        <a class="pagination-link is-current" aria-label="Goto page 1">1</a>
-      </li>
-      <li *ngFor="let number of pagination" (click)="paginationActive(number)">
-        <a class="pagination-link" aria-label="Goto page 1">{{ number + 1 }}</a>
-      </li>
-    </ul>
-  </nav>
 </div>
-
 <footer>
   <app-app-footer></app-app-footer>
 </footer>
