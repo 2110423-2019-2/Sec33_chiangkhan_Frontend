@@ -78,7 +78,6 @@ export class HomepageCarReservationsComponent implements OnInit {
       { status: "PENDING" },
       { returnLocation: this.returnlocation }
     );
-    console.log(this.reserveForm.value);
     if (this.isConfirm) {
       axios
         .post(
@@ -92,7 +91,6 @@ export class HomepageCarReservationsComponent implements OnInit {
           )[1].className = "modal modal-fx-fadeInScale is-active";
         })
         .catch((error) => {
-          console.log(error);
           console.log(error.response);
           if(error.response.data.message.massage == "notEnoughtMoney"){
             alert("Your cash not enough to reserve this car")
