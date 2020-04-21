@@ -67,7 +67,7 @@ button:active {
 
 .is-three-fifths {
   /* letter-spacing: 2px; */
-  line-height: 30px;
+  
   width: 260px;
 }
 
@@ -75,9 +75,6 @@ button:active {
   font-size: 20px;
 }
 
-.is-5 {
-  line-height: 30px;
-}
 
 .is-5 span {
   font-size: 14px;

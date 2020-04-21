@@ -7,30 +7,28 @@ import axios from "axios";
   styleUrls: ["./car.component.css"],
 })
 export class CarComponent implements OnInit {
-  @Input()car;
-
+  @Input() car;
   constructor(private elem: ElementRef) {}
 
   reviews: any;
-  carStatus:String
+  carStatus: String;
   ngOnInit() {
-    this.setStatus()
+    this.setStatus();
     axios
       .get("http://localhost:8080/api/car/" + this.car.carId + "/carReview")
       .then((response) => {
         console.log(response);
-        this.reviews = response.data[0].review
+        this.reviews = response.data[0].review;
       })
       .catch((error) => {
         console.log(error);
       });
   }
-
-  setStatus(){
-    if(this.car.isInUse){
-      this.carStatus = "Reserved"
-    }else{
-      this.carStatus = "Available"
+  setStatus() {
+    if (this.car.isInUse) {
+      this.carStatus = "Reserved";
+    } else {
+      this.carStatus = "Available";
     }
   }
   ngAfterViewInit(): void {
@@ -47,5 +45,17 @@ export class CarComponent implements OnInit {
     popup = "#" + popup;
     this.elem.nativeElement.querySelector(popup).className =
       "modal modal-fx-fadeInScale";
+  }
+  removeCar() {
+    console.log(this.car)
+    axios
+      .delete("http://localhost:8080/api/car/"+this.car.carId+"/deleteCar")
+      .then((response) => {
+        console.log(response);
+        this.deletePopup('popupremove')
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }

@@ -116,27 +116,21 @@
       <section class="modal-card-body reservation">
         <!-- reservation box -->
         <div class="reservationbox" *ngFor="let reservation of reservations">
+          <h1><strong> Lessee : </strong> {{reservation.lessee.name}}</h1>
           <div class="columns">
-            <div class="column is-2">
-              <img src="{{ reservation.image }}" alt="bosskung" />
-            </div>
             <div class="column is-three-fifths">
-              <span>{{ reservation.name }}</span>
-              <br />
-              <b>Type:</b> {{ reservation.type }}
-              <br />
-              <b>Pickup Date:</b> {{ reservation.pickup_date }}
-              <br />
-              <b>Return Date:</b> {{ reservation.return_date }}
+              <b>Type :</b> {{ car.carType }}
+              <br>
+              <b>Pickup Date:</b> {{ reservation.pickupDate | slice:0:10 }}
+              <br>
+              <b>Return Date:</b> {{ reservation.returnDate | slice:0:10  }}
             </div>
             <div class="column is-5">
-              <span>{{ reservation.reserve_time }}</span>
-              <br />
-              <b>Model:</b> {{ reservation.model }}
-              <br />
-              <b>Location:</b> {{ reservation.pickup_location }}
-              <br />
-              <b>Return Location:</b> {{ reservation.return_location }}
+              <b>Model :</b> {{ car.carModel }}
+              <br>
+              <b>Location:</b> {{ [car.pickupLocation.x] }},{{ [car.pickupLocation.y] }}
+              <br>
+              <b>Return Location:</b> {{ reservation.returnLocation.x}},{{ reservation.returnLocation.y}}
             </div>
           </div>
         </div>

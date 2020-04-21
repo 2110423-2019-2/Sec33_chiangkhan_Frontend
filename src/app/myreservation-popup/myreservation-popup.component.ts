@@ -1,5 +1,8 @@
+import { Router } from "@angular/router";
 import { Component, OnInit, Input, ElementRef } from "@angular/core";
 import axios from "axios";
+import { Route } from "@angular/compiler/src/core";
+import { MyReservationComponent } from "../myreservation/myreservation.component";
 @Component({
   selector: "app-myreservation-popup",
   templateUrl: "./myreservation-popup.component.html",
@@ -13,7 +16,11 @@ export class MyreservationPopupComponent implements OnInit {
   information: any;
   display_confirming: boolean = true;
   display_confirmed: boolean = false;
-  constructor(private elem: ElementRef) {}
+  constructor(
+    private elem: ElementRef,
+    private router: Router,
+    private myReservation: MyReservationComponent
+  ) {}
 
   ngOnInit() {
     if (this.car.status == "RESERVED" || this.car.status == "RETURNED") {
@@ -36,7 +43,7 @@ export class MyreservationPopupComponent implements OnInit {
       { comment: this.comment },
       { rating: this.valueRating },
       { carId: this.car.relatedCarAvailable.carId }
-    ); 
+    );
     axios
       .post("http://localhost:8080/api/review/", reviewForm)
       .then((response) => {
@@ -60,6 +67,7 @@ export class MyreservationPopupComponent implements OnInit {
       .then((response) => {
         console.log(response);
         this.closePopup("cancel_popup");
+        this.myReservation.tab('CANCELED')
       })
       .catch((error) => console.log(error));
   }
@@ -73,6 +81,36 @@ export class MyreservationPopupComponent implements OnInit {
       .then((response) => {
         console.log(response);
         this.closePopup("agreement_popup");
+        this.myReservation.tab('all')
+      })
+      .catch((error) => console.log(error));
+  }
+  pickupCar() {
+    axios
+      .patch(
+        "http://localhost:8080/api/car-reservation/" +
+          this.car.carReservationId,
+        { status: "PICKED" }
+      )
+      .then((response) => {
+        console.log(response);
+        this.closePopup("popupPickup");
+        // this.router.navigate(['/homepage/reservation',{ filter: "Picked" }]);
+        this.myReservation.tab('PICKED')
+      })
+      .catch((error) => console.log(error));
+  }
+  returnCar() {
+    axios
+      .patch(
+        "http://localhost:8080/api/car-reservation/" +
+          this.car.carReservationId,
+        { status: "RETURNED" }
+      )
+      .then((response) => {
+        console.log(response);
+        this.closePopup("popupReturn");
+        this.myReservation.tab('RETURNED')
       })
       .catch((error) => console.log(error));
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ElementRef } from "@angular/core";
-import { RESERVATIONS } from "./../reservations/mock-reservations";
 import axios from "axios";
 @Component({
   selector: "app-listof-cardeal",
@@ -8,11 +7,14 @@ import axios from "axios";
 })
 export class ListofCardealComponent implements OnInit {
   @Input() car;
-  reservations = RESERVATIONS;
+  reservations: any;
   constructor(private elem: ElementRef) {}
 
   ngOnInit() {
-    console.log(this.car);
+    axios.get("http://localhost:8080/api/car/"+this.car.carId+"/revervationHistory").then((response) => {
+      this.reservations = response.data[0].reservation
+      console.log(this.reservations);
+    });
   }
 
   openform(form: String) {
@@ -33,8 +35,7 @@ export class ListofCardealComponent implements OnInit {
       )
       .then((response) => {
         console.log(response);
-        this.closeform('remove_deal_popup')
-        
+        this.closeform("remove_deal_popup");
       })
       .catch((error) => {
         console.log(error);

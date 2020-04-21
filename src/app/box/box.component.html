@@ -24,9 +24,17 @@
     </ul>
   </div>
   <div class="columns is-multiline">
-    <div class="column is-narrow" *ngFor="let car of cars">
+    <ng-template [ngIf]="hasCar">
+       <div class="column is-narrow" *ngFor="let car of cars">
       <app-car [car]="car"></app-car>
     </div>
+    </ng-template>
+    <ng-template [ngIf]="noCar">
+      <div>
+        <br><br>
+        <h1 style="margin-left: 3em; font-size: larger; ">No car</h1>
+      </div>
+    </ng-template>
   </div>
 </div>
 

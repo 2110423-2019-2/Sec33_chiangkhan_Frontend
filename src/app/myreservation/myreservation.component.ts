@@ -11,7 +11,8 @@ import { Router } from "@angular/router";
 export class MyReservationComponent implements OnInit {
   isvalid: boolean = true;
   carReservation: any;
-  filterReservation: any;
+  hasCar:boolean
+  noCar:boolean
   constructor(
     private elem: ElementRef,
     private auth: AuthService,
@@ -31,11 +32,12 @@ export class MyReservationComponent implements OnInit {
       .catch((error) => {
         console.log(error);
       }).finally(()=>{
-        console.log("===========================")
         console.log(params.get(params.keys[0]))
         if(params.get(params.keys[0]) != "all" && params.get(params.keys[0]) != null){
           this.filterCar(params.get(params.keys[0]))
         }
+        this.hasCar = this.carReservation.length == 0 ? false : true
+        this.noCar = !this.hasCar
       });
     });
     document.getElementsByClassName("unactive")[1].className = "active";
@@ -69,6 +71,5 @@ export class MyReservationComponent implements OnInit {
       }
     });
     this.carReservation = filter
-    console.log(this.filterReservation);
   }
 }

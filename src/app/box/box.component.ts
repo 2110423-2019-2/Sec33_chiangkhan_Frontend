@@ -11,7 +11,8 @@ import axios from "axios";
 })
 export class BoxComponent implements OnInit {
   cars: any[];
-
+  hasCar :boolean 
+  noCar :boolean
   review_popup() {
     document.getElementById("review_popup").className =
       "modal modal-fx-fadeInScale is-active";
@@ -41,10 +42,12 @@ export class BoxComponent implements OnInit {
         })
         .finally(() => {
           console.log(params.get(params.keys[0]));
-          if (params.get(params.keys[0]) != "null") {  
+          if (params.get(params.keys[0]) != "null" && params.get(params.keys[0]) != null) {  
             console.log("filter")
             this.filterCar(params.get(params.keys[0]));
           }
+          this.hasCar = this.cars.length == 0 ? false : true
+          this.noCar = !this.hasCar
         });
     });
     document.getElementsByClassName("unactive")[3].className = "active";

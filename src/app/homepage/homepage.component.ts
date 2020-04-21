@@ -124,14 +124,8 @@ export class HomepageComponent implements OnInit {
         .finally(() => {
           let carsAvailable = [];
           this.cars.forEach((car) => {
-            // axios
-            //   .get("http://localhost:8080/api/member/" + car.ownerId + "/name")
-            //   .then((response) => {
-            //     this.name = response.data.name;
-            //     console.log(this.name)
-            //   });
             car.availability.forEach((element) => {
-              let temp = Object.assign({}, car );
+              let temp = Object.assign({}, car);
               let temp1 = Object.assign(temp, element);
               delete temp1["availability"];
               carsAvailable.push(temp1);
@@ -154,20 +148,27 @@ export class HomepageComponent implements OnInit {
     console.log("allcar : " + sum);
     return sum;
   }
-  togglePage(number: Number) {
+  togglePage(number: number) {
     this.paginationCurrent += number;
-    this.stateShowCar = this.paginationCurrent * 30;
-    let allPag = this.elementref.nativeElement.querySelectorAll(
-      ".pagination-link"
-    );
-    for (let i = 0; i < allPag.length; i++) {
-      if (i != this.paginationCurrent) {
-        allPag[i].className = "pagination-link";
-      } else {
-        allPag[i].className = "pagination-link is-current";
+    if (
+      this.paginationCurrent > 0 &&
+      this.paginationCurrent <= this.pagination.length
+    ) {
+      this.stateShowCar = this.paginationCurrent * 30;
+      let allPag = this.elementref.nativeElement.querySelectorAll(
+        ".pagination-link"
+      );
+      for (let i = 0; i < allPag.length; i++) {
+        if (i != this.paginationCurrent) {
+          allPag[i].className = "pagination-link";
+        } else {
+          allPag[i].className = "pagination-link is-current";
+        }
       }
+      this.getSearchCar();
+    }else{
+      this.paginationCurrent -= number;
     }
-    this.getSearchCar();
   }
   paginationActive(pagination_num: number) {
     this.stateShowCar = pagination_num * 30;

@@ -8,12 +8,12 @@ import axios from "axios";
 })
 export class MyReservationCarComponent implements OnInit {
   @Input() car: any;
-  state_button: String ;
+  state_button: String;
   display_reserve: boolean = false;
   display_return: boolean = false;
   display_cancel: boolean = false;
   display_pending: boolean = false;
-  display_picked:boolean = false;
+  display_picked: boolean = false;
   constructor(private elem: ElementRef) {}
   openPopup(form: String) {
     form = "#" + form;
@@ -22,27 +22,11 @@ export class MyReservationCarComponent implements OnInit {
   }
   pickup_return() {
     if (this.state_button == "Pickup") {
-      axios
-      .patch(
-        "http://localhost:8080/api/car-reservation/" +
-          this.car.carReservationId,
-        { status: "PICKED" }
-      )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
+      this.elem.nativeElement.querySelector("#popupPickup").className =
+        "modal modal-fx-3dFlipVertical is-active";
     } else {
-      axios
-        .patch(
-          "http://localhost:8080/api/car-reservation/" +
-            this.car.carReservationId,
-          { status: "RETURNED" }
-        )
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => console.log(error));
+      this.elem.nativeElement.querySelector("#popupReturn").className =
+        "modal modal-fx-3dFlipVertical is-active";
     }
   }
 
@@ -53,11 +37,11 @@ export class MyReservationCarComponent implements OnInit {
       this.display_return = true;
     } else if (this.car.status == "PENDING") {
       this.display_pending = true;
-    } else if(this.car.status == "PICKED"){
-      this.state_button = "Return"
+    } else if (this.car.status == "PICKED") {
+      this.state_button = "Return";
       this.display_picked = true;
-    }else if(this.car.status == "RESERVED"){
-      this.state_button = "Pickup"
+    } else if (this.car.status == "RESERVED") {
+      this.state_button = "Pickup";
       this.display_reserve = true;
     }
   }

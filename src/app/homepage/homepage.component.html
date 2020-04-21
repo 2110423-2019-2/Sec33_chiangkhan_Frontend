@@ -63,14 +63,14 @@
       Search
     </button>
     <button
-    class="button is-primary is-outlined"
-    (click)="clearSearch()"
-    style="height: 45px;"
-  >
-    Clear
-  </button>
+      class="button is-primary is-outlined"
+      (click)="clearSearch()"
+      style="height: 45px;"
+    >
+      Clear
+    </button>
   </div>
-  <form [formGroup] = "searchForm" action="/" method="get">
+  <form [formGroup]="searchForm" action="/" method="get">
     <div class="filters is-flex" id="state-show">
       <fieldset>
         <label id="f" for="">Car type</label>
@@ -80,10 +80,10 @@
               class="input"
               aria-haspopup="true"
               aria-controls="dropdown-menu"
-              style="width:150px; height: 42px;"
+              style="width: 150px; height: 42px;"
               (click)="toggleDropdown('cartype')"
             >
-              <span>{{ valueCartype }}</span> 
+              <span>{{ valueCartype }}</span>
             </button>
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
@@ -103,13 +103,18 @@
               class="input"
               aria-haspopup="true"
               aria-controls="dropdown-menu"
-              style="width:150px; height: 42px;"
+              style="width: 150px; height: 42px;"
               (click)="toggleDropdown('carmodel')"
             >
-              <span>{{ valueCarmodel }}</span>   
+              <span>{{ valueCarmodel }}</span>
             </button>
           </div>
-          <div class="dropdown-menu" id="dropdown-menu" role="menu" style="max-height: 300px; overflow: auto;">
+          <div
+            class="dropdown-menu"
+            id="dropdown-menu"
+            role="menu"
+            style="max-height: 300px; overflow: auto;"
+          >
             <div class="dropdown-content">
               <a class="dropdown-item" (click)="searchCarmodel('BMW')">
                 BMW
@@ -156,7 +161,10 @@
               <a class="dropdown-item" (click)="searchCarmodel('Porsche')">
                 Porsche
               </a>
-              <a class="dropdown-item" (click)="searchCarmodel('Mercedes-Benz')">
+              <a
+                class="dropdown-item"
+                (click)="searchCarmodel('Mercedes-Benz')"
+              >
                 Mercedes-Benz
               </a>
               <a class="dropdown-item" (click)="searchCarmodel('Geo')">
@@ -231,7 +239,7 @@
               class="input"
               aria-haspopup="true"
               aria-controls="dropdown-menu"
-              style="width:150px; height: 42px;"
+              style="width: 150px; height: 42px;"
               (click)="toggleDropdown('capacity')"
             >
               <span>{{ valueCapacity }}</span>
@@ -256,10 +264,10 @@
         <label id="f" for="">Location</label>
         <button
           class="input"
-          style="width:150px; height: 42px;"
+          style="width: 150px; height: 42px;"
           (click)="openMap()"
         >
-        <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
+          <i class="fas fa-map-marked-alt" style="padding-right: 5px;"></i>
           Open map
         </button>
       </fieldset>
@@ -285,29 +293,47 @@
       </fieldset>
     </div>
   </form>
-  <h1 style="font-weight: bold; font-size: xx-large; padding-bottom: 20px;">Newest Deal Available</h1>
+  <h1 style="font-weight: bold; font-size: xx-large; padding-bottom: 20px;">
+    Newest Deal Available
+  </h1>
   <nav class="pagination is-centered" role="navigation" aria-label="pagination">
     <a class="pagination-previous" (click)="togglePage(-1)">Previous</a>
     <a class="pagination-next" (click)="togglePage(1)">Next page</a>
-    <ul class="pagination-list" >
-      <li (click)="paginationActive(0)"><a class="pagination-link is-current" aria-label="Goto page 1">1</a></li>
-      <li *ngFor = "let number of pagination" (click)="paginationActive(number)"><a class="pagination-link" aria-label="Goto page 1">{{number+1}}</a></li>
+    <ul class="pagination-list">
+      <li (click)="paginationActive(0)">
+        <a class="pagination-link is-current" aria-label="Goto page 1">1</a>
+      </li>
+      <li *ngFor="let number of pagination" (click)="paginationActive(number)">
+        <a class="pagination-link" aria-label="Goto page 1">{{ number + 1 }}</a>
+      </li>
     </ul>
   </nav>
   <div class="columns is-multiline" style="justify-content: space-evenly;">
     <div class="column is-narrow" *ngFor="let car of carsAvailable">
-      <app-homepage-car [car]="car" ></app-homepage-car>
+      <app-homepage-car [car]="car"></app-homepage-car>
     </div>
   </div>
+  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <a class="pagination-previous" (click)="togglePage(-1)">Previous</a>
+    <a class="pagination-next" (click)="togglePage(1)">Next page</a>
+    <ul class="pagination-list">
+      <li (click)="paginationActive(0)">
+        <a class="pagination-link is-current" aria-label="Goto page 1">1</a>
+      </li>
+      <li *ngFor="let number of pagination" (click)="paginationActive(number)">
+        <a class="pagination-link" aria-label="Goto page 1">{{ number + 1 }}</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 
 <footer>
   <app-app-footer></app-app-footer>
 </footer>
 
-<div class="modal modal-fx-fadeInScale" id="form"> 
+<div class="modal modal-fx-fadeInScale" id="form">
   <div class="modal-background"></div>
-  <div class="modal-content modal-card" style="height:auto; width: 1000px;">
+  <div class="modal-content modal-card" style="height: auto; width: 1000px;">
     <header class="modal-card-head">
       <p class="modal-card-title">Choose Location</p>
       <button class="delete" aria-label="close" (click)="closeform()"></button>
@@ -325,7 +351,7 @@
               placeholder="Search Nearest Location"
               autocorrect="off"
               autocapitalize="off"
-              spellcheck="off" 
+              spellcheck="off"
               type="text"
               #search
             />
@@ -342,7 +368,13 @@
           <div>Latitude: {{ latitude }}</div>
           <div>Longitude: {{ longitude }}</div>
         </div>
-        <button class="button is-success" (click)="updatePoint()" style="margin-top: 20px;">Confirm</button>
+        <button
+          class="button is-success"
+          (click)="updatePoint()"
+          style="margin-top: 20px;"
+        >
+          Confirm
+        </button>
       </form>
     </section>
   </div>
