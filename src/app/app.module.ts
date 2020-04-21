@@ -14,7 +14,6 @@ import { ReviewComponent } from './review/review.component';
 import { MyReservationCarComponent } from './myreservation-car/myreservation-car.component';
 import { MyreservationPopupComponent } from './myreservation-popup/myreservation-popup.component';
 import { ListofcarsComponent } from './listofcars/listofcars.component';
-import { ReservationsComponent } from './reservations/reservations.component';
 import { CarComponent } from './car/car.component';
 import { BoxComponent } from './box/box.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
@@ -63,7 +62,6 @@ const appRoutes: Routes = [
     ReviewComponent,
     MyreservationPopupComponent,
     ListofcarsComponent,
-    ReservationsComponent,
     CarComponent,
     BoxComponent,
     PopUpComponent,

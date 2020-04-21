@@ -64,7 +64,10 @@ export class RegisterComponent implements OnInit {
         this.elem.nativeElement.querySelector('#registerpop').className = "modal is-active"
       })
       .catch((error) => { 
-        console.log(error); 
+        console.log(error.response.data.message)
+        if(error.response.data.message == "DuplicateUser"){
+          alert("username already exist in Database")
+        }
       });
     }   
   }

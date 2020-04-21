@@ -94,8 +94,10 @@ export class HomepageCarReservationsComponent implements OnInit {
         .catch((error) => {
           console.log(error);
           console.log(error.response);
-          if(error.response.data.message != ""){
+          if(error.response.data.message.massage == "notEnoughtMoney"){
             alert("Your cash not enough to reserve this car")
+          }else{
+            alert(error.response.data.message)
           }
         })
         .finally(() => {});
