@@ -166,7 +166,7 @@ export class HomepageComponent implements OnInit {
         }
       }
       this.getSearchCar();
-    }else{
+    } else {
       this.paginationCurrent -= number;
     }
   }
@@ -193,7 +193,7 @@ export class HomepageComponent implements OnInit {
     for (let i = 0; i < allDropdown.length; i++) {
       if (allDropdown[i].id != filter) allDropdown[i].className = "dropdown";
     }
-    this.getSearchCar();
+    // this.getSearchCar();
   }
 
   toggleDropdown(filter: String) {
@@ -345,5 +345,6 @@ export class HomepageComponent implements OnInit {
     this.valueCapacity = null;
     this.valueCarmodel = null;
     this.valueSort = null;
+    this.searchForm.setValue({ startDate: null, endDate: null });
   }
 }

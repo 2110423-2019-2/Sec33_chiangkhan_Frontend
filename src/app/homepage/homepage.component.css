@@ -131,9 +131,9 @@ agm-map {
   min-height: 100vh;
 }
 
-.bg-red {
-  background: #FDFDFD;
-}
+/* .bg-red {
+  background: #F3F3F3;
+} */
 
 .p-t-180 {
   padding-top: 50px;
