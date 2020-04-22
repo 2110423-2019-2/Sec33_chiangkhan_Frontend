@@ -41,6 +41,7 @@ export class ListofCardealComponent implements OnInit {
       })
       .catch((error) => {
         console.log(error);
+        alert("This can is reserved by someone")
       });
   }
 }

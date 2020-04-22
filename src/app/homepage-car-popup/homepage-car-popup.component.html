@@ -38,7 +38,6 @@
             </div>
             <p><strong>Type : </strong> {{ car_popup.carType }}</p>
             <p><strong>Model : </strong> {{ car_popup.carModel }}</p>
-            <p><strong>Location : </strong></p>
             <div class="columns" id="temp">
               <div class="column">
                 <p><strong>Start Date : </strong>{{car_popup.startDate | slice: 0:10}}</p>
@@ -49,7 +48,7 @@
             </div>
             <div class="columns" id="temp">
               <div class="column">
-                <p><strong>Pick up Location : </strong> {{address}}</p>
+                <p><strong>Pick up Location : </strong>{{car_popup.pickupLocation.x}},{{car_popup.pickupLocation.y}}</p>
               </div>
 
             </div>
