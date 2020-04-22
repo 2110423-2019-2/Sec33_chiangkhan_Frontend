@@ -1,9 +1,9 @@
+import { BoxComponent } from './../box/box.component';
 import { Router } from "@angular/router";
 import { AddcarService } from "./addcar.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Component, OnInit, ElementRef } from "@angular/core";
 import axios from "axios";
-
 @Component({
   selector: "app-addcarform",
   templateUrl: "./addcarform.component.html",
@@ -20,15 +20,15 @@ export class AddcarformComponent implements OnInit {
   constructor(
     private addcarService: AddcarService,
     private elem: ElementRef,
-    private router: Router
-  ) {}
+    private router: Router,
+    private boxComponent:BoxComponent){}
 
   ngOnInit() {}
 
   addCar() {
     Object.assign(
       this.addcarForm.value,
-      { photoOfCarDocument : 'http://dummyimage.com/250x250.png/cc0000/ff00ff'},
+      { photoOfCarDocument: "http://dummyimage.com/250x250.png/cc0000/ff00ff" },
       { capacity: this.valueCapacity },
       { carType: this.valueCartype },
       { carModel: this.valueCarmodel }
@@ -36,17 +36,18 @@ export class AddcarformComponent implements OnInit {
     console.log(this.addcarForm.value);
     axios
       .post("http://localhost:8080/api/car/", this.addcarForm.value)
-      .then(function (response) {
+      .then((response)=> {
         console.log(response);
         document.getElementsByClassName(
           "modal modal-fx-fadeInScale is-active"
         )[0].className = "modal modal-fx-fadeInScale";
-        
+        this.boxComponent.tab('available')
       })
       .catch(function (error) {
         console.log(error);
         alert("Fail");
       });
+      
   }
 
   addcarType(type: String) {

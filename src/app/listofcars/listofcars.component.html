@@ -1,18 +1,28 @@
 <app-navbar></app-navbar>
 <div class="container" style="min-height: 1300px;">
   <!-- Add Available car -->
-  <button id="Add_deal_button" (click)="functionTwo()">Add Deal</button>
-
+  <div class="is-flex">
+    <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
+      My Deal
+    </h1>
+    <button id="Add_deal_button" (click)="functionTwo()">Add Deal</button>
+  </div>
+ <hr />
   <!-- Car Boxes -->
-  <div class="carbox" *ngFor="let car of myDeal">
-    <app-listof-cardeal [car]="car"></app-listof-cardeal>
+  <div *ngIf="!noCar">
+    <div class="carbox" *ngFor="let car of myDeal">
+      <app-listof-cardeal [car]="car"></app-listof-cardeal>
+    </div>
+  </div>
+  <div *ngIf="noCar">
+    <app-notfound message="No deal available , you can add your deal by press button 'ADD DEAL' on the top right at this page"></app-notfound>
   </div>
 
   <br /><br /><br />
 </div>
-  <footer>
-    <app-app-footer></app-app-footer>
-  </footer>
+<footer>
+  <app-app-footer></app-app-footer>
+</footer>
 
 <!-- modal -->
 <div class="modal modal-fx-fadeInScale" id="form">

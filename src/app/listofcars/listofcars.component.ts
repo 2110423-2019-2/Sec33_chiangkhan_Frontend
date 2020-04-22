@@ -20,6 +20,7 @@ export class ListofcarsComponent implements OnInit {
   myCars: any;
   myCar_id: number;
   myDeal: any;
+  noCar:boolean = false
   private geoCoder;
   pickuplocation: String;
 
@@ -71,7 +72,8 @@ export class ListofcarsComponent implements OnInit {
           });
         });
         this.myDeal = carsDeal
-        console.log(this.myDeal)
+        this.noCar = this.myDeal == 0 ? true : false
+        console.log(this.noCar)
       });
   }
 

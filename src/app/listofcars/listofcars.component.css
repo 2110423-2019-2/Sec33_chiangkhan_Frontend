@@ -1,7 +1,5 @@
 #Add_deal_button {
-  margin-top: 100px;
-  margin-left: 1200px;
-  border-bottom: 0px;
+  margin-left: 65em;
 }
 
 .carbox {
@@ -57,4 +55,7 @@ button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+.container{
+  margin-top: 80px;
 }

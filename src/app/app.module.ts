@@ -33,6 +33,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { ListofCardealComponent } from './listof-cardeal/listof-cardeal.component';
 import { MonitorComponent } from './monitor/monitor.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 const appRoutes: Routes = [
@@ -76,7 +77,7 @@ const appRoutes: Routes = [
     AboutusComponent,
     ListofCardealComponent,
     MonitorComponent,
-    
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

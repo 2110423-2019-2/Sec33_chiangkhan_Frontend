@@ -1,7 +1,5 @@
-import { Router } from "@angular/router";
 import { Component, OnInit, Input, ElementRef } from "@angular/core";
 import axios from "axios";
-import { Route } from "@angular/compiler/src/core";
 import { MyReservationComponent } from "../myreservation/myreservation.component";
 @Component({
   selector: "app-myreservation-popup",
@@ -18,7 +16,6 @@ export class MyreservationPopupComponent implements OnInit {
   display_confirmed: boolean = false;
   constructor(
     private elem: ElementRef,
-    private router: Router,
     private myReservation: MyReservationComponent
   ) {}
 

@@ -59,13 +59,19 @@
   <div class="modal-background"></div>
   <div class="modal-content modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Review</p>
+      <p class="modal-card-title"><strong>Review</strong></p>
       <button class="delete" aria-label="close" (click)="deletePopup('review')"></button>
     </header>
-    <section class="modal-card-body" >
+    <section class="modal-card-body" style="min-height: 500px;">
+      <div *ngIf="hasReview">
         <div *ngFor="let review of reviews">
           <app-review [review]="review"></app-review>
         </div>
+      </div>
+      <div *ngIf="!hasReview">
+        <app-notfound message="No comment or review in this car"></app-notfound>
+      </div>
+        
     </section>
   </div>
 </div>

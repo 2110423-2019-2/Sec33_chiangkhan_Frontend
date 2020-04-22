@@ -53,6 +53,7 @@ export class HomepageComponent implements OnInit {
   righty: number;
   area: String = "";
   name: any;
+
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,

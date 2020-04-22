@@ -1,9 +1,11 @@
 <app-navbar></app-navbar>
 <div class="container" style="min-height: 1300px;">
-  <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
-    My Car
-  </h1>
-  <button class="button" (click)="popupadd()">Add car</button>
+  <div class="is-flex">
+    <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
+      My Car
+    </h1>
+    <button class="button" (click)="popupadd()">Add car</button>
+  </div>
   <div class="tabs is-boxed is-medium is-centered">
     <ul>
       <li class="is-active" (click)="tab('all')" id="all">
@@ -23,22 +25,18 @@
       </li>
     </ul>
   </div>
-  <div class="columns is-multiline">
-    <ng-template [ngIf]="hasCar">
-       <div class="column is-narrow" *ngFor="let car of cars">
-      <app-car [car]="car"></app-car>
-    </div>
-    </ng-template>
-    <ng-template [ngIf]="noCar">
-      <div>
-        <br><br>
-        <h1 style="margin-left: 3em; font-size: larger; ">No car</h1>
+  <div *ngIf="hasCar">
+    <div class="columns is-multiline">
+      <div class="column is-narrow" *ngFor="let car of cars">
+        <app-car [car]="car"></app-car>
       </div>
-    </ng-template>
+    </div>
   </div>
+  <div *ngIf="!hasCar">
+    <app-notfound message="Your car"></app-notfound>
+  </div>
+  <app-addcarform></app-addcarform>
 </div>
-
-<app-addcarform></app-addcarform>
 <footer>
   <app-app-footer></app-app-footer>
 </footer>

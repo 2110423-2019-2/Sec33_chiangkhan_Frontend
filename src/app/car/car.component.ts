@@ -9,7 +9,7 @@ import axios from "axios";
 export class CarComponent implements OnInit {
   @Input() car;
   constructor(private elem: ElementRef) {}
-
+  hasReview:boolean
   reviews: any;
   carStatus: String;
   ngOnInit() {
@@ -22,6 +22,8 @@ export class CarComponent implements OnInit {
       })
       .catch((error) => {
         console.log(error);
+      }).then(()=>{
+        this.hasReview = this.reviews.length == 0 ? false : true
       });
   }
   setStatus() {
