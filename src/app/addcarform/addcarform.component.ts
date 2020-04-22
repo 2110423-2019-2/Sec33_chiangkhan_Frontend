@@ -31,7 +31,6 @@ export class AddcarformComponent implements OnInit {
       { carType: this.valueCartype },
       { carModel: this.valueCarmodel }
     );
-    console.log(this.addcarForm.value);
     axios
       .post("http://localhost:8080/api/car/", this.addcarForm.value)
       .then((response)=> {
@@ -72,7 +71,6 @@ export class AddcarformComponent implements OnInit {
     this.elem.nativeElement.querySelector(filter).classList.toggle("is-active");
   }
   closePopup() {
-    console.log("wok");
     this.elem.nativeElement.querySelector(".modal").className =
       "modal modal-fx-fadeInScale";
   }

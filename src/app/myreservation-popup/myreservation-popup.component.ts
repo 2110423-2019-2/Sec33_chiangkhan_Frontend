@@ -51,10 +51,8 @@ export class MyreservationPopupComponent implements OnInit {
   }
   rating(rating: Number) {
     this.valueRating = rating;
-    console.log(this.valueRating);
   }
   cancelReservation() {
-    console.log(this.car.carReservationId);
     axios
       .patch(
         "http://localhost:8080/api/car-reservation/" +

@@ -33,7 +33,6 @@ export class MyReservationComponent implements OnInit {
       .catch((error) => {
         console.log(error);
       }).finally(()=>{
-        console.log(params.get(params.keys[0]))
         if(params.get(params.keys[0]) != "all" && params.get(params.keys[0]) != null){
           this.filterCar(params.get(params.keys[0]))
         }

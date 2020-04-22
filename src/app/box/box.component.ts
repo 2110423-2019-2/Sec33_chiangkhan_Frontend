@@ -39,13 +39,10 @@ export class BoxComponent implements OnInit {
           console.log(error);
         })
         .finally(() => {
-          console.log(params.get(params.keys[0]));
           if (params.get(params.keys[0]) != "null" && params.get(params.keys[0]) != null) {  
-            console.log("filter")
             this.filterCar(params.get(params.keys[0]));
           }
           this.hasCar = this.cars.length == 0 ? false : true
-          console.log(this.hasCar)
         });
     });
     document.getElementsByClassName("unactive")[3].className = "active";
@@ -58,7 +55,7 @@ export class BoxComponent implements OnInit {
   del_popupadd() {
     document.getElementById("popupadd").className =
       "modal modal-fx-fadeInScale";
-    console.log("work");
+
   }
   untab(tab: String) {
     var t = this.elem.nativeElement.querySelectorAll("li");

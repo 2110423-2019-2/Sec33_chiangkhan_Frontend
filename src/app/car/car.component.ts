@@ -49,7 +49,6 @@ export class CarComponent implements OnInit {
       "modal modal-fx-fadeInScale";
   }
   removeCar() {
-    console.log(this.car)
     axios
       .delete("http://localhost:8080/api/car/"+this.car.carId+"/deleteCar")
       .then((response) => {

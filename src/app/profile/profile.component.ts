@@ -94,7 +94,6 @@ export class ProfileComponent implements OnInit {
     }
   }
   onChangePhone() {
-    console.log(this.updateProfileForm.controls)
     if(this.updateProfileForm.controls.phone_num.status == "INVALID"){
       this.elem.nativeElement.querySelector("#phone").className = "input is-danger"
     }else{
@@ -117,7 +116,6 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile() {
-    console.log(this.updateProfileForm.value);
     if (this.verify_edit_profile()) {
       axios
         .put(
@@ -149,23 +147,18 @@ export class ProfileComponent implements OnInit {
 
   verify_edit_profile() {
     if (this.updateProfileForm.get("name").value == null) {
-      console.log("first name is null!");
       return false;
     }
     if (this.updateProfileForm.get("email").value == null) {
-      console.log("email is null!");
       return false;
     }
     if (this.updateProfileForm.get("phone_num").value == null) {
-      console.log("phone number is null!");
       return false;
     }
     if (this.updateProfileForm.get("driving_license").value == null) {
-      console.log("license number is null!");
       return false;
     }
     if (this.updateProfileForm.get("address").value == null) {
-      console.log("address is null!");
       return false;
     }
     return true;

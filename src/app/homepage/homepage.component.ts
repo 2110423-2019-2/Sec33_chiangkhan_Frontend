@@ -174,7 +174,6 @@ export class HomepageComponent implements OnInit {
   paginationActive(pagination_num: number) {
     this.stateShowCar = pagination_num * 51;
     this.paginationCurrent = pagination_num + 1;
-    console.log(this.stateShowCar);
     let allPag = this.elementref.nativeElement.querySelectorAll(
       ".pagination-link"
     );
@@ -263,7 +262,6 @@ export class HomepageComponent implements OnInit {
     }
   }
   markerDragEnd($event: MouseEvent) {
-    console.log($event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);
@@ -273,8 +271,6 @@ export class HomepageComponent implements OnInit {
     this.geoCoder.geocode(
       { location: { lat: latitude, lng: longitude } },
       (results, status) => {
-        console.log(results);
-        console.log(status);
         if (status === "OK") {
           if (results[0]) {
             this.zoom = 12;

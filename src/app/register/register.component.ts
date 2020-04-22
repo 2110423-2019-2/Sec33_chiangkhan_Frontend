@@ -54,7 +54,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     this.validateAll()
-    console.log(this.registerForm.controls)
     if(!this.registerForm.valid || !this.comfirmPassworldValid || this.confirmPassword == null){ 
         this.elem.nativeElement.querySelector('#invalid_register').style.display = "flex"
     }else{

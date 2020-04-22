@@ -51,7 +51,6 @@ export class HomepageCarPopupComponent implements OnInit {
             if (results[0]) {
               this.zoom = 12;
               this.address = results[0].formatted_address;
-              console.log(this.address);
               break
             }
           }else{

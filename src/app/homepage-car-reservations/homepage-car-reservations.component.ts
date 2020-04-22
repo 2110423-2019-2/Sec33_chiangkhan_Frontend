@@ -57,7 +57,6 @@ export class HomepageCarReservationsComponent implements OnInit {
 
   ngOnInit() {
     this.auth.checkStatus();
-    console.log(this.carReserve);
   }
   ngDoCheck(): void {
     if(this.reserveForm.value.returnDate != null && this.reserveForm.value.pickupDate != null){
@@ -154,8 +153,6 @@ export class HomepageCarReservationsComponent implements OnInit {
     this.geoCoder.geocode(
       { location: { lat: latitude, lng: longitude } },
       (results, status) => {
-        console.log(results);
-        console.log(status);
         if (status === "OK") {
           if (results[0]) {
             this.zoom = 12;
@@ -170,7 +167,6 @@ export class HomepageCarReservationsComponent implements OnInit {
     );
   }
   markerDragEnd($event: MouseEvent) {
-    console.log($event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);
