@@ -2,6 +2,15 @@
 <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
   <div class="wrapper wrapper--w960">
     <div class="container" style="min-height: 1300px;">
+      <h1
+      style="
+        font-weight: bold;
+        font-size: xx-large;
+        padding-top: 0.5em;
+      "
+    >
+      Newest Deal Available
+    </h1>
       <div class="is-flex" style="padding-top: 2.5%; padding-left: 25px;">
         <div id="sort" class="dropdown">
           <div class="dropdown-trigger">
@@ -64,22 +73,21 @@
           </div>
         </div>
         <div style="margin-left: 50em;">
-           <button
-          class="button is-success is-rounded"
-          (click)="getSearchCar()"
-          style="height: 45px; margin-right: 1em;"
-        >
-          Search
-        </button>
-        <button
-          class="button is-danger is-rounded"
-          (click)="clearSearch()"
-          style="height: 45px;"
-        >
-          Clear
-        </button>
+          <button
+            class="button is-success is-rounded"
+            (click)="getSearchCar()"
+            style="height: 45px; margin-right: 1em;"
+          >
+            Search
+          </button>
+          <button
+            class="button is-danger is-rounded"
+            (click)="clearSearch()"
+            style="height: 45px;"
+          >
+            Clear
+          </button>
         </div>
-       
       </div>
       <form [formGroup]="searchForm" action="/" method="get">
         <div class="filters is-flex" id="state-show">
@@ -101,6 +109,9 @@
                 <div class="dropdown-content">
                   <a class="dropdown-item" (click)="searchCartype('personal')">
                     personal
+                  </a>
+                  <a class="dropdown-item" (click)="searchCartype('transport')">
+                    transport
                   </a>
                 </div>
               </div>
@@ -325,14 +336,20 @@
           </fieldset>
         </div>
       </form>
-      <h1 style="font-weight: bold; font-size: xx-large; padding-bottom: 2em; padding-top: 0.5em;">
-        Newest Deal Available
-      </h1>
-      <div class="columns is-multiline" style="justify-content: space-evenly;">
-        <div class="column is-narrow" *ngFor="let car of carsAvailable">
-          <app-homepage-car [car]="car"></app-homepage-car>
+      <div *ngIf="hasCar">
+        <div
+          class="columns is-multiline"
+          style="justify-content: space-evenly;"
+        >
+          <div class="column is-narrow" *ngFor="let car of carsAvailable">
+            <app-homepage-car [car]="car"></app-homepage-car>
+          </div>
         </div>
       </div>
+      <div *ngIf="!hasCar">
+        <app-notfound message="search car not found"></app-notfound>
+      </div>
+
       <nav
         class="pagination is-centered"
         role="navigation"

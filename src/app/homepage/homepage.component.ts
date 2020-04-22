@@ -53,6 +53,7 @@ export class HomepageComponent implements OnInit {
   righty: number;
   area: String = "";
   name: any;
+  hasCar:boolean = true
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -108,7 +109,6 @@ export class HomepageComponent implements OnInit {
           }
         }
       }
-      console.log(paramm);
       axios
         .get("http://localhost:8080/api/car/", { params: paramm })
         .then((response) => {
@@ -137,7 +137,7 @@ export class HomepageComponent implements OnInit {
             this.stateShowCar,
             this.stateShowCar + 51
           );
-          console.log(this.carsAvailable);
+          this.hasCar = this.carsAvailable.length == 0 ? false : true
         });
     });
   }

@@ -2,7 +2,7 @@
 <div class="container" style="min-height: 1300px;">
   <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
     My reservation
-  </h1>  
+  </h1>
   <div class="tabs is-large is-boxed">
     <ul>
       <li class="is-active" (click)="tab('all')" id="all"><a>All</a></li>
@@ -13,18 +13,17 @@
       <li (click)="tab('CANCELED')" id="CANCELED"><a>Canceled</a></li>
     </ul>
   </div>
-  <div class="columns is-multiline">
-    <ng-template [ngIf]="hasCar">
+  <div *ngIf="hasCar">
+    <div class="columns is-multiline">
       <div class="column is-narrow" *ngFor="let car of carReservation">
         <app-myreservation-car [car]="car"></app-myreservation-car>
       </div>
-    </ng-template>
-    <ng-template [ngIf]="noCar">
-      <div>
-        <br><br>
-        <h1 style="margin-left: 3em;">No car</h1>
-      </div>
-    </ng-template>
+    </div>
+  </div>
+  <div *ngIf="!hasCar">
+    <app-notfound
+      message="No status {{ currentTab }} of your reservation"
+    ></app-notfound>
   </div>
 </div>
 

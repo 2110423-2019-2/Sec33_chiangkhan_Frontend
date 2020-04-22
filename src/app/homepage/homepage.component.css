@@ -19,6 +19,7 @@ fieldset {
 
 .filters {
   margin-top: 2%;
+  margin-bottom: 4em;
 }
 
 .modal-card {
@@ -124,7 +125,7 @@ agm-map {
 }
 
 .container {
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .page-wrapper {

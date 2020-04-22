@@ -8,21 +8,29 @@
     />
   </div>
   <div class="column">
-    <span class="background-bisque">isReserved : {{[car.isInUse] }}</span>
+    <span class="background-bisque">isReserved : {{ [car.isInUse] }}</span>
     <p>Type : {{ [car.carType] }}</p>
     <p>LicensePlate : {{ [car.licenseplate] }}</p>
-    <p>Start Date : {{ car.startDate | slice :0:10 }}</p>
-    <p>Pickup Location : {{ [car.pickupLocation.x] }},{{ [car.pickupLocation.y] }}</p>
+    <p>Start Date : {{ car.startDate | slice: 0:10 }}</p>
+    <p>
+      Pickup Location : {{ [car.pickupLocation.x] }},{{
+        [car.pickupLocation.y]
+      }}
+    </p>
     <br />
   </div>
   <div class="column">
     <span id="model">Model : {{ [car.carModel] }}</span>
     <br /><br /><br />
-    <p>End Date : {{car.endDate | slice :0:10 }}</p>
+    <p>End Date : {{ car.endDate | slice: 0:10 }}</p>
     <br /><br />
     <div class="columns">
       <div class="column" id="reservation">
-        <button class="column" id="reservation" (click)="openform('reservation_history')">
+        <button
+          class="column"
+          id="reservation"
+          (click)="openform('reservation_history')"
+        >
           Reservation
         </button>
       </div>
@@ -100,41 +108,49 @@
   </div>
 </div>
 
-
 <!-- reservation modal -->
 <div class="modal modal-fx-fadeInScale" id="reservation_history">
-    <div class="modal-background"></div>
-    <div class="modal-content modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Reservations History</p>
-        <button
-          class="delete"
-          aria-label="close"
-          (click)="closeform('reservation_history')"
-        ></button>
-      </header>
-      <section class="modal-card-body reservation">
-        <!-- reservation box -->
+  <div class="modal-background"></div>
+  <div class="modal-content modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Reservations History</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="closeform('reservation_history')"
+      ></button>
+    </header>
+    <section class="modal-card-body reservation">
+      <!-- reservation box -->
+      <div *ngIf="hasHistory">
         <div class="reservationbox" *ngFor="let reservation of reservations">
-          <h1><strong> Lessee : </strong> {{reservation.lessee.name}}</h1>
+          <h1><strong> Lessee : </strong> {{ reservation.lessee.name }}</h1>
           <div class="columns">
             <div class="column is-three-fifths">
               <b>Type :</b> {{ car.carType }}
-              <br>
-              <b>Pickup Date:</b> {{ reservation.pickupDate | slice:0:10 }}
-              <br>
-              <b>Return Date:</b> {{ reservation.returnDate | slice:0:10  }}
+              <br />
+              <b>Pickup Date:</b> {{ reservation.pickupDate | slice: 0:10 }}
+              <br />
+              <b>Return Date:</b> {{ reservation.returnDate | slice: 0:10 }}
             </div>
             <div class="column is-5">
               <b>Model :</b> {{ car.carModel }}
-              <br>
-              <b>Location:</b> {{ [car.pickupLocation.x] }},{{ [car.pickupLocation.y] }}
-              <br>
-              <b>Return Location:</b> {{ reservation.returnLocation.x}},{{ reservation.returnLocation.y}}
+              <br />
+              <b>Location:</b> {{ [car.pickupLocation.x] }},{{
+                [car.pickupLocation.y]
+              }}
+              <br />
+              <b>Return Location:</b> {{ reservation.returnLocation.x }},{{
+                reservation.returnLocation.y
+              }}
             </div>
           </div>
         </div>
-      </section>
-      <footer class="modal-card-foot"></footer>
-    </div>
+      </div>
+      <div *ngIf="!hasHistory">
+        <app-notfound message="no reservation history of this car"></app-notfound>
+      </div>
+    </section>
+    <footer class="modal-card-foot"></footer>
   </div>
+</div>

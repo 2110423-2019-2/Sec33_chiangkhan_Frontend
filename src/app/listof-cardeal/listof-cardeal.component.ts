@@ -8,12 +8,13 @@ import axios from "axios";
 export class ListofCardealComponent implements OnInit {
   @Input() car;
   reservations: any;
+  hasHistory:boolean
   constructor(private elem: ElementRef) {}
 
   ngOnInit() {
     axios.get("http://localhost:8080/api/car/"+this.car.carId+"/revervationHistory").then((response) => {
       this.reservations = response.data[0].reservation
-      console.log(this.reservations);
+      this.hasHistory = this.reservations.length == 0 ? false : true
     });
   }
 
@@ -36,6 +37,7 @@ export class ListofCardealComponent implements OnInit {
       .then((response) => {
         console.log(response);
         this.closeform("remove_deal_popup");
+
       })
       .catch((error) => {
         console.log(error);

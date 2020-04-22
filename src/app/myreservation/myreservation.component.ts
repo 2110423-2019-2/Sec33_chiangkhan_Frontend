@@ -12,7 +12,7 @@ export class MyReservationComponent implements OnInit {
   isvalid: boolean = true;
   carReservation: any;
   hasCar:boolean
-  noCar:boolean
+  currentTab:string
   constructor(
     private elem: ElementRef,
     private auth: AuthService,
@@ -23,6 +23,7 @@ export class MyReservationComponent implements OnInit {
   ngOnInit() {
     this.auth.checkStatus();
     this.route.paramMap.subscribe((params: ParamMap) => {
+      this.currentTab = params.get(params.keys[0])
       axios
       .get("http://localhost:8080/api/car-reservation/")
       .then((response) => {
@@ -37,7 +38,6 @@ export class MyReservationComponent implements OnInit {
           this.filterCar(params.get(params.keys[0]))
         }
         this.hasCar = this.carReservation.length == 0 ? false : true
-        this.noCar = !this.hasCar
       });
     });
     document.getElementsByClassName("unactive")[1].className = "active";

@@ -1,6 +1,5 @@
 import { BoxComponent } from './../box/box.component';
 import { Router } from "@angular/router";
-import { AddcarService } from "./addcar.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Component, OnInit, ElementRef } from "@angular/core";
 import axios from "axios";
@@ -18,7 +17,6 @@ export class AddcarformComponent implements OnInit {
   valueCarmodel: String;
   valueCapacity: Number;
   constructor(
-    private addcarService: AddcarService,
     private elem: ElementRef,
     private router: Router,
     private boxComponent:BoxComponent){}
