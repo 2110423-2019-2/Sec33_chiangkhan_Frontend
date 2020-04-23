@@ -73,7 +73,6 @@ export class ListofcarsComponent implements OnInit {
         });
         this.myDeal = carsDeal
         this.noCar = this.myDeal == 0 ? true : false
-        console.log(this.noCar)
       });
   }
 

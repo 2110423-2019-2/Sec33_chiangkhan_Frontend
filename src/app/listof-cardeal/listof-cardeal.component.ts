@@ -9,9 +9,11 @@ export class ListofCardealComponent implements OnInit {
   @Input() car;
   reservations: any;
   hasHistory:boolean
+  isReserve:string
   constructor(private elem: ElementRef) {}
 
   ngOnInit() {
+    this.isReserve = this.car.isInUse ? 'Reserve' : 'Available'
     axios.get("http://localhost:8080/api/car/"+this.car.carId+"/revervationHistory").then((response) => {
       this.reservations = response.data[0].reservation
       this.hasHistory = this.reservations.length == 0 ? false : true
@@ -29,7 +31,6 @@ export class ListofCardealComponent implements OnInit {
       "modal modal-fx-fadeInScale";
   }
   removeDeal() {
-    console.log(this.car.carAvailableId);
     axios
       .delete(
         "http://localhost:8080/api/carAvailable/" + this.car.carAvailableId

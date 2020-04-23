@@ -40,6 +40,9 @@ p {
   margin-right: 20px;
 }
 
+.checked {
+  color: orange;
+}
 .modal {
   display: -webkit-box;
   display: -webkit-flex;

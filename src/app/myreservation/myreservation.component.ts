@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 export class MyReservationComponent implements OnInit {
   isvalid: boolean = true;
   carReservation: any;
-  hasCar:boolean
+  hasCar:boolean = true
   currentTab:string
   constructor(
     private elem: ElementRef,

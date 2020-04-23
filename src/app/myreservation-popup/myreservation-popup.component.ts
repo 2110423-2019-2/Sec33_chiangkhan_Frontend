@@ -41,6 +41,7 @@ export class MyreservationPopupComponent implements OnInit {
       { rating: this.valueRating },
       { carId: this.car.relatedCarAvailable.carId }
     );
+    console.log(reviewForm)
     axios
       .post("http://localhost:8080/api/review/", reviewForm)
       .then((response) => {

@@ -9,7 +9,7 @@ import axios from "axios";
 export class CarComponent implements OnInit {
   @Input() car;
   constructor(private elem: ElementRef) {}
-  hasReview:boolean
+  hasReview:boolean = true
   reviews: any;
   carStatus: String;
   ngOnInit() {
@@ -34,6 +34,10 @@ export class CarComponent implements OnInit {
     }
   }
   ngAfterViewInit(): void {
+    let arr = this.elem.nativeElement.querySelectorAll(".fa")
+    for(let j = 0 ; j < this.car.avgRating ; j++){
+      arr[j].className = "fa fa-star checked"    
+    }
     setTimeout(() => {
       this.elem.nativeElement.querySelector(".card-before").className = "card";
     }, 500);

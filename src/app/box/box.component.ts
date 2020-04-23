@@ -10,7 +10,7 @@ import axios from "axios";
 })
 export class BoxComponent implements OnInit {
   cars: any[];
-  hasCar :boolean 
+  hasCar :boolean = true
   review_popup() {
     document.getElementById("review_popup").className =
       "modal modal-fx-fadeInScale is-active";
