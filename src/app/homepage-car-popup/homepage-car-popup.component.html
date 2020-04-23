@@ -6,7 +6,7 @@
       <button class="delete" aria-label="close" (click)="closePopup()"></button>
     </header>
     <section class="modal-card-body">
-      < class="card">
+      <div class="card">
         <div class="columns">
           <div class="column is-4">
             <div class="card-image">
@@ -66,6 +66,7 @@
             </div>
           </div>
         </div>
+        
         <button class="button is-success" (click)="reserveCar()">
           Reserve
         </button>
@@ -98,11 +99,11 @@
             <span id="star1" class="fa fa-star checked"></span>
           </div>
           <div class="column">
-            <progress class="progress is-info" value="{{one}}" max="{{size}}"></progress>
-            <progress class="progress is-info" value="{{two}}" max="{{size}}"></progress>
-            <progress class="progress is-info" value="{{three}}" max="{{size}}"></progress>
-            <progress class="progress is-info" value="{{four}}" max="{{size}}"></progress>
             <progress class="progress is-info" value="{{five}}" max="{{size}}"></progress>
+            <progress class="progress is-info" value="{{four}}" max="{{size}}"></progress>
+            <progress class="progress is-info" value="{{three}}" max="{{size}}"></progress>
+            <progress class="progress is-info" value="{{two}}" max="{{size}}"></progress>
+            <progress class="progress is-info" value="{{one}}" max="{{size}}"></progress>
            </div>
         </div>
       
@@ -112,7 +113,7 @@
           <app-review [review]="review"></app-review>
         </div>
       
-
+      </div>
     </section>
   </div>
 </div>
