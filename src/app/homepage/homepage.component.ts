@@ -53,7 +53,7 @@ export class HomepageComponent implements OnInit {
   righty: number;
   area: String = "";
   name: any;
-  hasCar:boolean = true
+  hasCar: boolean = true;
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -64,25 +64,34 @@ export class HomepageComponent implements OnInit {
     public _location: Location,
     private auth: AuthService
   ) {}
-
+  checkDate() {
+    let startDate = new Date(this.searchForm.value.startDate);
+    let endDate = new Date(this.searchForm.value.endDate);
+    let duration = endDate.getTime() - startDate.getTime();
+    return duration >= 0 ? true : false;
+  }
   getSearchCar() {
-    let duration = [];
-    duration.push(
-      this.searchForm.value.startDate,
-      this.searchForm.value.endDate
-    );
-    this.router.navigate([
-      "/homepage",
-      {
-        carType: this.valueCartype,
-        capacity: this.valueCapacity,
-        pickupArea: this.area,
-        carModel: this.valueCarmodel,
-        sortby: this.valueSort,
-        duration: Array(duration),
-        pagination: this.paginationCurrent,
-      },
-    ]);
+    if (this.checkDate()) {
+      let duration = [];
+      duration.push(
+        this.searchForm.value.startDate,
+        this.searchForm.value.endDate
+      );
+      this.router.navigate([
+        "/homepage",
+        {
+          carType: this.valueCartype,
+          capacity: this.valueCapacity,
+          pickupArea: this.area,
+          carModel: this.valueCarmodel,
+          sortby: this.valueSort,
+          duration: Array(duration),
+          pagination: this.paginationCurrent,
+        },
+      ]);
+    }else{
+      alert("startDate , endDate invalid")
+    }
   }
   ngOnInit() {
     this.auth.checkStatus();
@@ -137,7 +146,7 @@ export class HomepageComponent implements OnInit {
             this.stateShowCar,
             this.stateShowCar + 51
           );
-          this.hasCar = this.carsAvailable.length == 0 ? false : true
+          this.hasCar = this.carsAvailable.length == 0 ? false : true;
         });
     });
   }

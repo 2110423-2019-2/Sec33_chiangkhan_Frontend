@@ -69,7 +69,13 @@ export class HomepageCarReservationsComponent implements OnInit {
     document.getElementsByClassName("modal modal-fx-fadeInScale")[0].className =
       "modal modal-fx-fadeInScale is-active";
   }
-
+  checkDate() {
+    let returnDate = new Date(this.reserveForm.value.returnDate);
+    let pickupDate = new Date(this.reserveForm.value.pickupDate);
+    this.duration =
+      (returnDate.getTime() - pickupDate.getTime());
+    return this.duration >= 0 ? true : false;
+  }
   genarateAgreement() {
     Object.assign(
       this.reserveForm.value,
@@ -78,7 +84,8 @@ export class HomepageCarReservationsComponent implements OnInit {
       { returnLocation: this.returnlocation }
     );
     if (this.isConfirm) {
-      axios
+      if(this.checkDate()){
+         axios
         .post(
           "http://localhost:8080/api/car-reservation",
           this.reserveForm.value
@@ -98,7 +105,11 @@ export class HomepageCarReservationsComponent implements OnInit {
           }
         })
         .finally(() => {});
-    } else {
+      }else{
+        alert("picupDate , returnDate invalid")
+      }
+     
+    } else{
       alert("You must confirm agreement");
     }
   }
