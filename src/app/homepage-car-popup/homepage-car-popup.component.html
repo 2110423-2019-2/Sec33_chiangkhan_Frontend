@@ -6,7 +6,7 @@
       <button class="delete" aria-label="close" (click)="closePopup()"></button>
     </header>
     <section class="modal-card-body">
-      <div class="card">
+      < class="card">
         <div class="columns">
           <div class="column is-4">
             <div class="card-image">
@@ -34,23 +34,35 @@
                 alt=""
                 style="margin-right: 10px;"
               />
-              <p><strong> Lessor :{{car_popup.ownerName}}</strong></p>
+              <p>
+                <strong> Lessor :{{ car_popup.ownerName }}</strong>
+              </p>
             </div>
             <p><strong>Type : </strong> {{ car_popup.carType }}</p>
             <p><strong>Model : </strong> {{ car_popup.carModel }}</p>
             <div class="columns" id="temp">
               <div class="column">
-                <p><strong>Start Date : </strong>{{car_popup.startDate | slice: 0:10}}</p>
+                <p>
+                  <strong>Start Date : </strong
+                  >{{ car_popup.startDate | slice: 0:10 }}
+                </p>
               </div>
               <div class="column">
-                <p><strong>End Date : </strong>{{car_popup.endDate | slice: 0:10}}</p>
+                <p>
+                  <strong>End Date : </strong
+                  >{{ car_popup.endDate | slice: 0:10 }}
+                </p>
               </div>
             </div>
             <div class="columns" id="temp">
               <div class="column">
-                <p><strong>Pick up Location : </strong>{{car_popup.pickupLocation.x}},{{car_popup.pickupLocation.y}}</p>
+                <p>
+                  <strong>Pick up Location : </strong
+                  >{{ car_popup.pickupLocation.x }},{{
+                    car_popup.pickupLocation.y
+                  }}
+                </p>
               </div>
-
             </div>
           </div>
         </div>
@@ -60,15 +72,47 @@
         <hr />
         <p><strong style="font-size: large;">Car description </strong></p>
         <p>
-         {{car_popup.agreement}}
+          {{ car_popup.agreement }}
         </p>
         <hr />
+        <div class="columns">
+          <div class="column is-2" style="padding-top: 0.5rem; text-align-last: right;">
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <br>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <br>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <br>
+            <span id="star1" class="fa fa-star checked"></span>
+            <span id="star1" class="fa fa-star checked"></span>
+            <br>
+            <span id="star1" class="fa fa-star checked"></span>
+          </div>
+          <div class="column">
+            <progress class="progress is-info" value="{{one}}" max="{{size}}"></progress>
+            <progress class="progress is-info" value="{{two}}" max="{{size}}"></progress>
+            <progress class="progress is-info" value="{{three}}" max="{{size}}"></progress>
+            <progress class="progress is-info" value="{{four}}" max="{{size}}"></progress>
+            <progress class="progress is-info" value="{{five}}" max="{{size}}"></progress>
+           </div>
+        </div>
+      
         <p><strong style="font-size: large;">Review</strong></p>
         <br />
         <div *ngFor="let review of reviews">
           <app-review [review]="review"></app-review>
         </div>
-      </div>
+      
+
     </section>
   </div>
 </div>

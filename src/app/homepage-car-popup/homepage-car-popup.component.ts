@@ -1,3 +1,4 @@
+import { element } from "protractor";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Component, OnInit, Input } from "@angular/core";
 import axios from "axios";
@@ -13,6 +14,12 @@ export class HomepageCarPopupComponent implements OnInit {
   private geoCoder;
   zoom: number;
   address: string;
+  one: number = 0;
+  two: number = 0;
+  three: number = 0;
+  four: number = 0;
+  five: number = 0;
+  size: number = 0;
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
@@ -20,16 +27,29 @@ export class HomepageCarPopupComponent implements OnInit {
     axios
       .get("http://localhost:8080/api/car/" + this.car.carId + "/carReview")
       .then((response) => {
-        console.log(response);
         this.reviews = response.data[0].review;
+        this.size = this.reviews.length;
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        this.reviews.forEach((element) => {
+          if (element.rating == 1) {
+            this.one += 1;
+          } else if (element.rating == 2) {
+            this.two += 1;
+          } else if (element.rating == 3) {
+            this.three += 1;
+          } else if (element.rating == 4) {
+            this.four += 1;
+          } else if (element.rating == 5) {
+            this.five += 1;
+          }
+        });
       });
   }
-  ngAfterViewInit() {
-    // this.getAddress(this.car.pickupLocation.x,this.car.pickupLocation.y)
-  }
+  ngAfterViewInit() {}
   reserveCar() {
     this.router.navigate(["/homepage/HomepageCarReservations"], {
       state: { data: this.car },
@@ -51,11 +71,10 @@ export class HomepageCarPopupComponent implements OnInit {
             if (results[0]) {
               this.zoom = 12;
               this.address = results[0].formatted_address;
-              break
+              break;
             }
-          }else{
-            setTimeout(() => {
-            }, 500);
+          } else {
+            setTimeout(() => {}, 500);
           }
         }
       }

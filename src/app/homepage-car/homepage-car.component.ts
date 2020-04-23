@@ -9,7 +9,6 @@ export class HomepageCarComponent implements OnInit {
   constructor(private elementref:ElementRef) { }
 
   ngOnInit() {
-    console.log(this.car)
   }
   
   ngAfterViewInit(){
