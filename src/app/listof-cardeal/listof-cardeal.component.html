@@ -1,42 +1,46 @@
-<div class="columns">
-  <div class="column">
-    <img
-      src="{{ [car.photoOfCarDocument] }}"
-      alt="car"
-      height="300"
-      width="300"
-    />
-  </div>
-  <div class="column">
-    <span class="background-bisque">Status : {{ isReserve }}</span>
-    <p>Type : {{ [car.carType] }}</p>
-    <p>LicensePlate : {{ [car.licenseplate] }}</p>
-    <p>Start Date : {{ car.startDate | slice: 0:10 }}</p>
-    <p>
-      Pickup Location : {{ [car.pickupLocation.x] }},{{
-        [car.pickupLocation.y]
-      }}
-    </p>
-    <p>Price/Day : {{ car.price}}</p>
-    <br />
-  </div>
-  <div class="column">
-    <span id="model">Model : {{ [car.carModel] }}</span>
-    <br /><br /><br />
-    <p>End Date : {{ car.endDate | slice: 0:10 }}</p>
-    <br /><br />
+<div class="card-before">
+  <div class="card-content">
     <div class="columns">
-      <div class="column" id="reservation">
-        <button
-          class="column"
-          id="reservation"
-          (click)="openform('reservation_history')"
-        >
-          Reservation
-        </button>
+      <div class="column is-3">
+        <img
+          src="{{ [car.photoOfCarDocument] }}"
+          alt="car"
+          height="250"
+          width="250"
+        />
       </div>
-      <div class="column" id="remove">
-        <button (click)="openform('remove_deal_popup')">Remove</button>
+      <div class="column">
+        <span class="background-bisque"><strong>Status : </strong> {{ isReserve }}</span>
+        <p><strong>Type :</strong>  {{ [car.carType] }}</p>
+        <p><strong>LicensePlate :</strong>  {{ [car.licenseplate] }}</p>
+        <p><strong>Start Date :</strong>  {{ car.startDate | slice: 0:10 }}</p>
+        <p><strong>End Date :</strong>  {{ car.endDate | slice: 0:10 }}</p>
+        <p><strong>Pickup Location :</strong> 
+           {{ [car.pickupLocation.x] }},{{
+            [car.pickupLocation.y]
+          }}
+        </p>
+        <p><strong>Price per Day :</strong>  {{ car.price }}</p>
+        <br />
+      </div>
+      <div class="column">
+        <span id="model">Model : {{ [car.carModel] }}</span>
+        <br /><br /><br />
+        <br /><br />
+        <div class="columns">
+          <div class="column" id="reservation">
+            <button
+              class="column"
+              id="reservation"
+              (click)="openform('reservation_history')"
+            >
+              Reservation
+            </button>
+          </div>
+          <div class="column" id="remove">
+            <button (click)="openform('remove_deal_popup')">Remove</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -149,7 +153,9 @@
         </div>
       </div>
       <div *ngIf="!hasHistory">
-        <app-notfound message="no reservation history of this car"></app-notfound>
+        <app-notfound
+          message="no reservation history of this car"
+        ></app-notfound>
       </div>
     </section>
     <footer class="modal-card-foot"></footer>

@@ -163,14 +163,14 @@
         </div>
       </article>
       <div class="is-flex" style="margin-bottom: 5px;">
-        <p style="margin-right: 10px; margin-top: 7px;">Lessor :</p>
+        <strong><p style="margin-right: 10px; margin-top: 7px;">Lessor :</p></strong>
         <p style="margin-right: 10px; margin-top: 7px;">Confirmed</p>
       </div>
       <div class="is-flex" style="margin-bottom: 5px;">
-        <p style="margin-right: 10px; margin-top: 7px;">Lessee :</p>
+        <strong><p style="margin-right: 10px; margin-top: 7px;">Lessee :</p></strong>
         <div *ngIf="display_confirming">
-          <button class="button is-rounded"  (click)="confirmAgreement()" style="margin-right: 5px;">Confirm</button>
-          <button class="button is-rounded">Reject</button>
+          <button class="button is-rounded is-success"  (click)="confirmAgreement()" style="margin-right: 5px;">Confirm</button>
+          <button class="button is-rounded is-danger">Reject</button>
         </div>
         <div *ngIf="display_confirmed">
           <p style="margin-right: 10px; margin-top: 7px;">Confirmed</p>

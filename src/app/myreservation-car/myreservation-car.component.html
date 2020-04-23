@@ -7,20 +7,20 @@
           <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
-          <span class="tag is-light" style="margin-bottom: 10px;">{{
+          <span class="tag is-light is-medium" style="margin-bottom: 10px;">{{
             car.status
           }}</span>
-          <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licenseplate }}</p>
-          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
-          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
-          <p>
-            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+          <p><strong>Model :</strong>  {{ car.carModel }}</p>
+          <p><strong>License :</strong>  {{ car.licenseplate }}</p>
+          <p><strong>Pickup Date :</strong>  {{ car.pickupDate | slice: 0:10 }}</p>
+          <p><strong>Return Date :</strong>  {{ car.returnDate | slice: 0:10 }}</p>
+          <p><strong> Pickup Location :</strong>
+            {{ car.relatedCarAvailable.pickupLocation.x }},{{
               car.relatedCarAvailable.pickupLocation.y
             }}
           </p>
-          <p>
-            Return Location : {{ car.returnLocation.x }},
+          <p><strong>Return Location :</strong>
+             {{ car.returnLocation.x }},
             {{ car.returnLocation.y }}
           </p>
 
@@ -52,7 +52,7 @@
           <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
-          <span class="tag is-link is-light" style="margin-bottom: 10px;">
+          <span class="tag is-link is-light is-medium" style="margin-bottom: 10px;">
             RESERVE/PICKED
           </span>
           <button
@@ -62,17 +62,17 @@
           >
             {{ state_button }}
           </button>
-          <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licenseplate }}</p>
-          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
-          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
-          <p>
-            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+          <p><strong>Model : </strong> {{ car.carModel }}</p>
+          <p><strong>License :</strong>  {{ car.licenseplate }}</p>
+          <p><strong>Pickup Date :</strong>  {{ car.pickupDate | slice: 0:10 }}</p>
+          <p><strong>Return Date :</strong>  {{ car.returnDate | slice: 0:10 }}</p>
+          <p><strong>Pickup Location :</strong>
+             {{ car.relatedCarAvailable.pickupLocation.x }},{{
               car.relatedCarAvailable.pickupLocation.y
             }}
           </p>
-          <p>
-            Return Location : {{ car.returnLocation.x }},
+          <p><strong>Return Location :</strong>
+             {{ car.returnLocation.x }},
             {{ car.returnLocation.y }}
           </p>
           <div class="buttons">
@@ -102,20 +102,20 @@
           <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
-          <span class="tag is-light is-danger" style="margin-bottom: 10px;">{{
+          <span class="tag is-light is-danger is-medium" style="margin-bottom: 10px;">{{
             car.status
           }}</span>
-          <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licenseplate }}</p>
-          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
-          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
-          <p>
-            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+          <p><strong>Model :</strong>  {{ car.carModel }}</p>
+          <p><strong>License :</strong>  {{ car.licenseplate }}</p>
+          <p><strong>Pickup Date :</strong>  {{ car.pickupDate | slice: 0:10 }}</p>
+          <p><strong>Return Date :</strong>  {{ car.returnDate | slice: 0:10 }}</p>
+          <p><strong>Pickup Location :</strong> 
+             {{ car.relatedCarAvailable.pickupLocation.x }},{{
               car.relatedCarAvailable.pickupLocation.y
             }}
           </p>
-          <p>
-            Return Location : {{ car.returnLocation.x }},
+          <p><strong>Return Location : </strong> 
+            {{ car.returnLocation.x }},
             {{ car.returnLocation.y }}
           </p>
         </div>
@@ -132,7 +132,7 @@
           <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
-          <span class="tag is-link is-light" style="margin-bottom: 10px;">{{
+          <span class="tag is-link is-light is-medium" style="margin-bottom: 10px;">{{
             car.status
           }}</span>
           <button
@@ -142,17 +142,17 @@
           >
             {{ state_button }}
           </button>
-          <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licenseplate }}</p>
-          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
-          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
-          <p>
-            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+          <p><strong>Model : </strong> {{ car.carModel }}</p>
+          <p><strong>License : </strong> {{ car.licenseplate }}</p>
+          <p><strong>Pickup Date : </strong> {{ car.pickupDate | slice: 0:10 }}</p>
+          <p><strong>Return Date :</strong>  {{ car.returnDate | slice: 0:10 }}</p>
+          <p><strong>Pickup Location :</strong> 
+             {{ car.relatedCarAvailable.pickupLocation.x }},{{
               car.relatedCarAvailable.pickupLocation.y
             }}
           </p>
-          <p>
-            Return Location : {{ car.returnLocation.x }},
+          <p><strong>Return Location : </strong> 
+            {{ car.returnLocation.x }},
             {{ car.returnLocation.y }}
           </p>
           <div class="buttons">
@@ -183,23 +183,23 @@
           <img src="{{car.photoOfCarDocument}}" />
         </div>
         <div class="column" id="detail">
-          <span class="tag is-link is-light" style="margin-bottom: 10px;">{{
+          <span class="tag is-success is-light is-medium" style="margin-bottom: 10px;">{{
             car.status
           }}</span>
           <button class="button is-rounded" id="pickup" style="display: none;">
             Pickup
           </button>
-          <p>Model : {{ car.carModel }}</p>
-          <p>License : {{ car.licenseplate }}</p>
-          <p>Pickup Date : {{ car.pickupDate | slice: 0:10 }}</p>
-          <p>Return Date : {{ car.returnDate | slice: 0:10 }}</p>
-          <p>
-            Pickup Location : {{ car.relatedCarAvailable.pickupLocation.x }},{{
+          <p><strong>Model :</strong>  {{ car.carModel }}</p>
+          <p><strong>License :</strong>  {{ car.licenseplate }}</p>
+          <p><strong>Pickup Date :</strong>  {{ car.pickupDate | slice: 0:10 }}</p>
+          <p><strong>Return Date :</strong>  {{ car.returnDate | slice: 0:10 }}</p>
+          <p><strong>Pickup Location :</strong>
+             {{ car.relatedCarAvailable.pickupLocation.x }},{{
               car.relatedCarAvailable.pickupLocation.y
             }}
           </p>
-          <p>
-            Return Location : {{ car.returnLocation.x }},
+          <p><strong>Return Location : </strong> 
+            {{ car.returnLocation.x }},
             {{ car.returnLocation.y }}
           </p>
 

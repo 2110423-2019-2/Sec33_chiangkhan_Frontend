@@ -42,10 +42,7 @@ button:active {
   margin-top: auto;
   margin-bottom: auto;
 }
-.card:hover {
-  background-color: pink;
-  cursor: pointer;
-}
+
 /* .modal-background {
         margin: 0px 0px 0px 0px;
     } */
@@ -143,4 +140,31 @@ agm-map {
 
 .container {
   margin-top: 80px;
+}
+
+.card {
+  border-radius: 20px;
+  background-color: antiquewhite;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  transform: translate(0px,-10px);
+  transition-duration: 1s;
+  opacity: 1;
+  width: 1000px;
+  height: 275px;
+  margin-bottom: 1em;
+  margin-left: 9em;
+}
+.card-before {
+  border-radius: 20px;
+  background-color: antiquewhite;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  width: 1000px;
+  height: 275px;
+  margin-bottom: 1em;
+  margin-left: 9em;
+}
+.card:hover {
+  box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2); 
 }

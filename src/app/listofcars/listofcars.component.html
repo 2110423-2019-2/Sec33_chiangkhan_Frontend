@@ -10,7 +10,7 @@
  <hr />
   <!-- Car Boxes -->
   <div *ngIf="!noCar">
-    <div class="carbox" *ngFor="let car of myDeal">
+    <div *ngFor="let car of myDeal">
       <app-listof-cardeal [car]="car"></app-listof-cardeal>
     </div>
   </div>
@@ -152,7 +152,8 @@
       <div class="card" *ngFor="let mycar of myCars">
         <div class="card-content" (click)="selectCar(mycar)">
           <div class="content">
-            {{ mycar.licenseplate }}
+            <p><strong>Model : </strong>{{mycar.carType}}</p>
+            <p><strong>License Plate : </strong>{{ mycar.licenseplate }}</p>
           </div>
         </div>
       </div>

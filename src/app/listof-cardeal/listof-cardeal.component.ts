@@ -19,6 +19,13 @@ export class ListofCardealComponent implements OnInit {
       this.hasHistory = this.reservations.length == 0 ? false : true
     });
   }
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    setTimeout(() => {
+      this.elem.nativeElement.querySelector(".card-before").className = "card";
+    }, 500);
+  }
 
   openform(form: String) {
     form = "#" + form;
