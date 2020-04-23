@@ -142,6 +142,7 @@ export class ListofcarsComponent implements OnInit {
         .then((response)=> {
           console.log(response);
           this.closeform('form')
+          window.location.assign('/homepage/listofcars/')
         })
         .catch(function (error) {
           console.log(error);
