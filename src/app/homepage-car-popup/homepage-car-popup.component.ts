@@ -20,6 +20,7 @@ export class HomepageCarPopupComponent implements OnInit {
   four: number = 0;
   five: number = 0;
   size: number = 0;
+  avgRating:string;
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
@@ -34,19 +35,26 @@ export class HomepageCarPopupComponent implements OnInit {
         console.log(error);
       })
       .finally(() => {
+        let avg = 0
         this.reviews.forEach((element) => {
           if (element.rating == 1) {
+            avg += 1
             this.one += 1;
           } else if (element.rating == 2) {
+            avg += 2
             this.two += 1;
           } else if (element.rating == 3) {
+            avg += 3
             this.three += 1;
           } else if (element.rating == 4) {
+            avg += 4
             this.four += 1;
           } else if (element.rating == 5) {
+            avg += 5
             this.five += 1;
           }
         });
+        this.avgRating = (avg / this.reviews.length).toFixed(2)
       });
   }
   ngAfterViewInit() {}

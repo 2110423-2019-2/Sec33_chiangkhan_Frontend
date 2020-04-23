@@ -66,7 +66,7 @@
             </div>
           </div>
         </div>
-        
+
         <button class="button is-success" (click)="reserveCar()">
           Reserve
         </button>
@@ -76,43 +76,69 @@
           {{ car_popup.agreement }}
         </p>
         <hr />
+        <p style="font-size: xx-large; margin-bottom: 0.5em; font-size: larger;"><strong >Rating & Review</strong></p>
         <div class="columns">
-          <div class="column is-2" style="padding-top: 0.5rem; text-align-last: right;">
+          <div class="column is-2">
+            <p style="font-size: 60px; font-weight: 800;">{{ avgRating }}</p>
+            <p style="font-size: 20px; font-weight: 600; padding-left: 20px;">out of 5</p>
+          </div>
+          <div
+            class="column is-2"
+            style="padding-top: 0.5rem; text-align-last: right;"
+          >
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
-            <br>
+            <br />
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
-            <br>
+            <br />
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
-            <br>
+            <br />
             <span id="star1" class="fa fa-star checked"></span>
             <span id="star1" class="fa fa-star checked"></span>
-            <br>
+            <br />
             <span id="star1" class="fa fa-star checked"></span>
           </div>
           <div class="column">
-            <progress class="progress is-info" value="{{five}}" max="{{size}}"></progress>
-            <progress class="progress is-info" value="{{four}}" max="{{size}}"></progress>
-            <progress class="progress is-info" value="{{three}}" max="{{size}}"></progress>
-            <progress class="progress is-info" value="{{two}}" max="{{size}}"></progress>
-            <progress class="progress is-info" value="{{one}}" max="{{size}}"></progress>
-           </div>
+            <progress
+              class="progress is-info"
+              value="{{ five }}"
+              max="{{ size }}"
+            ></progress>
+            <progress
+              class="progress is-info"
+              value="{{ four }}"
+              max="{{ size }}"
+            ></progress>
+            <progress
+              class="progress is-info"
+              value="{{ three }}"
+              max="{{ size }}"
+            ></progress>
+            <progress
+              class="progress is-info"
+              value="{{ two }}"
+              max="{{ size }}"
+            ></progress>
+            <progress
+              class="progress is-info"
+              value="{{ one }}"
+              max="{{ size }}"
+            ></progress>
+          </div>
         </div>
-      
-        <p><strong style="font-size: large;">Review</strong></p>
+        <hr>
         <br />
         <div *ngFor="let review of reviews">
           <app-review [review]="review"></app-review>
         </div>
-      
       </div>
     </section>
   </div>
