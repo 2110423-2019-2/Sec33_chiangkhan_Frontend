@@ -46,5 +46,8 @@
     <a [routerLink]="'/register'"
       ><button class="button" id="register">Register</button></a
     >
+    
+    <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+   <button (click)="myFunction()">Check</button>
   </div>
 </div>

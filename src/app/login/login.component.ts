@@ -3,6 +3,12 @@ import { FormGroup, FormControl } from "@angular/forms";
 import axios from "axios";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
+import {
+  AngularFireStorage,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from "angularfire2/storage";
+import * as firebase from "firebase";
 
 @Component({
   selector: "app-login",
@@ -10,12 +16,19 @@ import { AuthService } from "../auth.service";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
+
   public user = [];
   loginForm = new FormGroup({
     username: new FormControl(),
     password: new FormControl(),
   });
-  constructor(public router: Router, private authService: AuthService) {}
+  constructor(
+    public router: Router,
+    private authService: AuthService,
+    private afStorage: AngularFireStorage
+  ) {}
 
   ngOnInit() {}
 
@@ -73,5 +86,27 @@ export class LoginComponent implements OnInit {
   }
   showError() {
     document.getElementsByClassName("non-active")[0].className = "active";
+  }
+
+  upload(event) {
+    const car_id = 101;
+    this.ref = this.afStorage.ref("car").child('carid'+car_id);
+    this.task = this.ref.put(event.target.files[0]);
+  }
+  myFunction() {
+    var storageRef = firebase.storage().ref();
+    const fileRef = storageRef
+      .child("/")
+      .listAll()
+      .then((res) => {
+        res.items.forEach((img) => {
+          console.log(img.toString());
+          img.getDownloadURL().then(url=>{console.log(url)})
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+ 
   }
 }

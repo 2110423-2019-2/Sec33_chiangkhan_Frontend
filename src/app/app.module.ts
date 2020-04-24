@@ -34,7 +34,8 @@ import { SlideshowModule } from 'ng-simple-slideshow';
 import { ListofCardealComponent } from './listof-cardeal/listof-cardeal.component';
 import { MonitorComponent } from './monitor/monitor.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -91,7 +92,14 @@ const appRoutes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB-0c0j8f41aRTUyGLZdFhBEF-7TPwnZOQ',
       libraries: ['places']
-    })
+    }),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyCl0gFxySk5szzLFjz9hcH6FIRN_NM-lUA",
+      authDomain: "software-engineering-51d8d.firebaseapp.com",
+      storageBucket: "software-engineering-51d8d.appspot.com",
+      projectId: "software-engineering-51d8d",
+    }),
+    AngularFireStorageModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
