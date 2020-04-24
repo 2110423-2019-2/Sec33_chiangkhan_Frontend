@@ -89,24 +89,34 @@ export class LoginComponent implements OnInit {
   }
 
   upload(event) {
-    const car_id = 101;
-    this.ref = this.afStorage.ref("car").child('carid'+car_id);
+    const car_id = 102;
+    this.ref = this.afStorage.ref("car").child("carid" + car_id);
     this.task = this.ref.put(event.target.files[0]);
   }
   myFunction() {
-    var storageRef = firebase.storage().ref();
+    var storageRef = firebase.storage().ref().child("car");
     const fileRef = storageRef
-      .child("/")
       .listAll()
       .then((res) => {
         res.items.forEach((img) => {
           console.log(img.toString());
-          img.getDownloadURL().then(url=>{console.log(url)})
+          img.getDownloadURL().then((url) => {
+            console.log(url);
+          });
         });
       })
       .catch((err) => {
         console.log(err);
       });
- 
+  }
+  fetchPhoto() {
+    var storageRef = firebase
+      .storage()
+      .ref()
+      .child("car/carid101")
+      .getDownloadURL()
+      .then((res) => {
+        console.log(res);
+      });
   }
 }
