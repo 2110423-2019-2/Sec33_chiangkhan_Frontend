@@ -2,12 +2,20 @@ import { Component, OnInit, ElementRef } from "@angular/core";
 import axios from "axios";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "../auth.service";
+import {
+  AngularFireStorage,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from "angularfire2/storage";
+import * as firebase from "firebase";
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
   styleUrls: ["./profile.component.css"],
 })
 export class ProfileComponent implements OnInit {
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
   information: any;
   confirmpassword: String ="";
   confirmpasswordValid:boolean;
@@ -36,7 +44,7 @@ export class ProfileComponent implements OnInit {
     address: new FormControl(),
   });
 
-  constructor(private elem: ElementRef, private auth: AuthService) {}
+  constructor(private elem: ElementRef, private auth: AuthService,private afStorage: AngularFireStorage) {}
 
   ngOnInit() {
     this.auth.checkStatus();
@@ -48,6 +56,8 @@ export class ProfileComponent implements OnInit {
       })
       .catch((error) => {
         console.log(error);
+      }).finally(()=>{
+        this.fetchPhoto()
       });
     this.setValue();
   }
@@ -162,5 +172,23 @@ export class ProfileComponent implements OnInit {
       return false;
     }
     return true;
+  }
+  fetchPhoto() {
+    var storageRef = firebase
+      .storage()
+      .ref()
+      .child("profile/"+this.information.username)
+      .getDownloadURL()
+      .then((res) => {
+        console.log(res);
+        this.elem.nativeElement.querySelector('.profile').src = res
+      }).catch(err=>{
+        this.elem.nativeElement.querySelector('.profile').src = "../../assets/images/profile.png"
+      });
+  }
+  upload(event) {
+    const username = this.information.username;
+    this.ref = this.afStorage.ref("profile").child(username);
+    this.task = this.ref.put(event.target.files[0]);
   }
 }
