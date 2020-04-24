@@ -19,7 +19,7 @@ export class AddcarformComponent implements OnInit {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   addcarForm = new FormGroup({
-    licenseplate: new FormControl(),
+    licenseplate: new FormControl('',[Validators.minLength(7),Validators.maxLength(8)]),
     carDescription: new FormControl(),
   });
   valueCartype: String;
