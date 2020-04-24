@@ -1,8 +1,10 @@
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit, Input , ElementRef } from '@angular/core';
 import { AuthService } from '../auth.service';
 import axios from 'axios';
+
+import { ValidatePassword } from '../Validator/passwordValidator';
 
 
 @Component({
@@ -10,11 +12,11 @@ import axios from 'axios';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit { 
   registerForm = new FormGroup({
     name : new FormControl("",Validators.required),
     username : new FormControl("",Validators.required),
-    password : new FormControl("",Validators.required),
+    password : new FormControl("",[Validators.pattern('^(?=.*[a-zA-Z])[a-zA-Z0-9]+$'),Validators.minLength(6),Validators.maxLength(16),Validators.required]),
     email : new FormControl("",[Validators.email,Validators.required]),
     phone_num : new FormControl("",[Validators.minLength(10),Validators.maxLength(10),Validators.required]),
     bank_account: new FormControl("",[Validators.minLength(10),Validators.maxLength(10),Validators.required]),
@@ -36,6 +38,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     
   }
+ 
   
   onChangeConfirm(){
     this.confirmPassword = this.confirmPassword
@@ -139,6 +142,7 @@ export class RegisterComponent implements OnInit {
   }
   validatePassword(){
     this.passwording = this.passwording 
+    console.log(this.registerForm.controls.password)
     if(this.registerForm.controls.password.status != "VALID"){
       this.elem.nativeElement.querySelector('#valid_password').style.display = "none"
       this.elem.nativeElement.querySelector('#invalid_password').style.display = "block"
