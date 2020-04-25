@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
     name : new FormControl("",Validators.required),
     username : new FormControl("",Validators.required),
-    password : new FormControl("",[Validators.pattern('^(?=.*[a-zA-Z])[a-zA-Z0-9]+$'),Validators.minLength(6),Validators.maxLength(16),Validators.required]),
+    password : new FormControl("",[Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$'),Validators.minLength(6),Validators.maxLength(16),Validators.required]),
     email : new FormControl("",[Validators.email,Validators.required]),
     phone_num : new FormControl("",[Validators.minLength(10),Validators.maxLength(10),Validators.required]),
     bank_account: new FormControl("",[Validators.minLength(10),Validators.maxLength(10),Validators.required]),
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     credit_card_security : new FormControl("",[Validators.minLength(3),Validators.maxLength(3),Validators.required]) ,
     driving_license : new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]),
     address : new FormControl("",Validators.required),
-    member_profile : new FormControl('https://firebasestorage.googleapis.com/v0/b/software-engineering-51d8d.appspot.com/o/profile%2Fprofile.png?alt=media&token=c42ceb40-2c63-4306-b6d2-5390c4c39ec0')
+    member_profile : new FormControl('https://firebasestorage.googleapis.com/v0/b/software-engineering-51d8d.appspot.com/o/profile%2FProfile.png?alt=media&token=2106ea73-e74c-428d-96e0-08a42cdce81f')
   })
   
   passwording:string = ""
