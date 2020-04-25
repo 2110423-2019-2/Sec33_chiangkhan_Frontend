@@ -16,7 +16,7 @@
                     style="width: 160px; height: 42px;"
                     (click)="toggleDropdown('cartype')"
                   >
-                    <span>{{ valueCarmodel}}</span>
+                    <span>{{ valueCarmodel }}</span>
                   </button>
                 </div>
                 <div
@@ -44,13 +44,19 @@
                     <a class="dropdown-item" (click)="addcarModel('Mazda')">
                       Mazda
                     </a>
-                    <a class="dropdown-item" (click)="addcarModel('Mitsubishi')">
+                    <a
+                      class="dropdown-item"
+                      (click)="addcarModel('Mitsubishi')"
+                    >
                       Mitsubishi
                     </a>
                     <a class="dropdown-item" (click)="addcarModel('GMC')">
                       GMC
                     </a>
-                    <a class="dropdown-item" (click)="addcarModel('Land Rover')">
+                    <a
+                      class="dropdown-item"
+                      (click)="addcarModel('Land Rover')"
+                    >
                       Land Rover
                     </a>
                     <a class="dropdown-item" (click)="addcarModel('Ford')">
@@ -62,7 +68,10 @@
                     >
                       Aston Martin
                     </a>
-                    <a class="dropdown-item" (click)="addcarModel('Volkswagen')">
+                    <a
+                      class="dropdown-item"
+                      (click)="addcarModel('Volkswagen')"
+                    >
                       Volkswagen
                     </a>
                     <a class="dropdown-item" (click)="addcarModel('Maserati')">
@@ -95,7 +104,10 @@
                     <a class="dropdown-item" (click)="addcarModel('Nissan')">
                       Nissan
                     </a>
-                    <a class="dropdown-item" (click)="addcarModel('Oldsmobile')">
+                    <a
+                      class="dropdown-item"
+                      (click)="addcarModel('Oldsmobile')"
+                    >
                       Oldsmobile
                     </a>
                     <a class="dropdown-item" (click)="addcarModel('Toyota')">
@@ -125,7 +137,10 @@
                     <a class="dropdown-item" (click)="addcarModel('Saab')">
                       Saab
                     </a>
-                    <a class="dropdown-item" (click)="addcarModel('Studebaker')">
+                    <a
+                      class="dropdown-item"
+                      (click)="addcarModel('Studebaker')"
+                    >
                       Studebaker
                     </a>
                     <a class="dropdown-item" (click)="addcarModel('Subaru')">
@@ -208,12 +223,22 @@
 
         <div class="field">
           <label class="label">License Plate</label>
-          <div class="control">
+          <div class="is-flex">
             <input
+            id='prefix'
               class="input"
               type="text"
-              placeholder="Car's License plate"
-              formControlName="licenseplate"
+              placeholder="Prefix"
+              formControlName="prefix"
+              (input)="checkPrefix()"
+            />
+            <input
+            id='number'
+              class="input"
+              type="text"
+              placeholder="Suffix"
+              formControlName="number"
+              (input)="checkNumber()"
             />
           </div>
         </div>

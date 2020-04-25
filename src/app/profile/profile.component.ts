@@ -60,8 +60,6 @@ export class ProfileComponent implements OnInit {
       .then((response) => {
         console.log(response.data);
         this.information = response.data;
-        console.log(this.information.member_profile);
-        console.log(this.information.member_profile["url"]);
       })
       .catch((error) => {
         console.log(error);

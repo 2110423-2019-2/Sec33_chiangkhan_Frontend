@@ -9,6 +9,8 @@ import { AuthService} from '../auth.service'
 })
 export class NavbarComponent implements OnInit {
   is_admin:any
+  information:any
+  url:string
   constructor(private auth:AuthService) { 
   }
 
@@ -24,7 +26,24 @@ export class NavbarComponent implements OnInit {
       window.location.assign('/')
     });
   }
-
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    axios
+      .get("http://localhost:8080/api/member/info")
+      .then((response) => {
+        console.log(response.data);
+        this.information = response.data;
+        this.url = this.information.member_profile
+        console.log(this.url)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        // this.fetchPhoto();
+      });
+  }
   signOut(){
     axios.get("http://localhost:8080/api/auth/logout")
     .then((response) => {

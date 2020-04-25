@@ -18,8 +18,11 @@ import * as firebase from "firebase";
 export class AddcarformComponent implements OnInit {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
+  licenseplate : string;
   addcarForm = new FormGroup({
-    licenseplate: new FormControl('',[Validators.minLength(7),Validators.maxLength(8)]),
+    // licenseplate: new FormControl('',[Validators.minLength(7),Validators.maxLength(8)]),
+    prefix : new FormControl('',[Validators.required,Validators.minLength(2),Validators.maxLength(2)]),
+    number : new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(4),Validators.pattern('[0-9]*')]),
     carDescription: new FormControl(),
   });
   valueCartype: String;
@@ -36,13 +39,19 @@ export class AddcarformComponent implements OnInit {
   ngOnInit() {}
 
   addCar() {
+    console.log(this.addcarForm.valid)
+    this.licenseplate = this.addcarForm.value.prefix + " " +this.addcarForm.value.number
     Object.assign(
       this.addcarForm.value,
+      { licenseplate: this.licenseplate },
       { photoOfCarDocument: this.url },
       { capacity: this.valueCapacity },
       { carType: this.valueCartype },
       { carModel: this.valueCarmodel }
     );
+    delete this.addcarForm.value["number"];
+    delete this.addcarForm.value["prefix"];
+    console.log(this.addcarForm.value)
     axios
       .post("http://localhost:8080/api/car/", this.addcarForm.value)
       .then((response) => {
@@ -60,7 +69,20 @@ export class AddcarformComponent implements OnInit {
       .finally(() => {
       });
   }
-
+  checkPrefix(){
+    if(this.addcarForm.controls.prefix.status != "VALID"){
+      this.elem.nativeElement.querySelector('#prefix').className = 'input is-danger'
+    }else{
+      this.elem.nativeElement.querySelector('#prefix').className = 'input is-success'
+    }
+  }
+  checkNumber(){
+    if(this.addcarForm.controls.number.status != "VALID"){
+      this.elem.nativeElement.querySelector('#number').className = 'input is-danger'
+    }else{ 
+      this.elem.nativeElement.querySelector('#number').className = 'input is-success'
+    }
+  }
   addcarType(type: String) {
     this.valueCartype = type;
     this.toggleDropdown(type);
