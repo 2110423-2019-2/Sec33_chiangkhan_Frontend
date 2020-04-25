@@ -15,7 +15,7 @@ import { ValidatePassword } from '../Validator/passwordValidator';
 export class RegisterComponent implements OnInit { 
   registerForm = new FormGroup({
     name : new FormControl("",Validators.required),
-    username : new FormControl("",Validators.required),
+    username : new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(16)]),
     password : new FormControl("",[Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$'),Validators.minLength(6),Validators.maxLength(16),Validators.required]),
     email : new FormControl("",[Validators.email,Validators.required]),
     phone_num : new FormControl("",[Validators.minLength(10),Validators.maxLength(10),Validators.required]),

@@ -14,7 +14,7 @@
             value="0"
             type="radio"
           />
-          <label 
+          <label
             (click)="rating(1)"
             aria-label="1 star"
             class="rating__label"
@@ -147,36 +147,44 @@
     <section class="modal-card-body">
       <article class="message is-info">
         <div class="message-body">
-          <p><strong>1. THE PARTIES TO THIS AGREEMENT ARE :</strong> </p>
+          <p><strong>1. THE PARTIES TO THIS AGREEMENT ARE :</strong></p>
           <p><strong>1.1 THE LESSOR</strong></p>
-          <p>Name : {{car.name}}</p> 
-          <p>Email : {{car.email}}</p>
-          <p>Phone : {{car.phone_num}}</p>
-          <p>Address : {{car.address}}</p>
-          <p><strong>1.2 THE LESSEE</strong> </p>
-          <p>Name : {{car.lessee.name}}</p>
-          <p>Email : {{car.lessee.email}}</p>
-          <p>Phone : {{car.lessee.phone_num}}</p>
-          <p>Address : {{car.lessee.address}}</p>
+          <p>Name : {{ car.name }}</p>
+          <p>Email : {{ car.email }}</p>
+          <p>Phone : {{ car.phone_num }}</p>
+          <p>Address : {{ car.address }}</p>
+          <p><strong>1.2 THE LESSEE</strong></p>
+          <p>Name : {{ car.lessee.name }}</p>
+          <p>Email : {{ car.lessee.email }}</p>
+          <p>Phone : {{ car.lessee.phone_num }}</p>
+          <p>Address : {{ car.lessee.address }}</p>
           <!-- <p><strong>2 AGREEMENT FROM LESSOR</strong></p>
           <p>Address : {{car.lessee.address}}</p> -->
         </div>
       </article>
       <div class="is-flex" style="margin-bottom: 5px;">
-        <strong><p style="margin-right: 10px; margin-top: 7px;">Lessor :</p></strong>
+        <strong
+          ><p style="margin-right: 10px; margin-top: 7px;">Lessor :</p></strong
+        >
         <p style="margin-right: 10px; margin-top: 7px;">Confirmed</p>
       </div>
       <div class="is-flex" style="margin-bottom: 5px;">
-        <strong><p style="margin-right: 10px; margin-top: 7px;">Lessee :</p></strong>
+        <strong
+          ><p style="margin-right: 10px; margin-top: 7px;">Lessee :</p></strong
+        >
         <div *ngIf="display_confirming">
-          <button class="button is-rounded is-success"  (click)="confirmAgreement()" style="margin-right: 5px;">Confirm</button>
+          <button
+            class="button is-rounded is-success"
+            (click)="confirmAgreement()"
+            style="margin-right: 5px;"
+          >
+            Confirm
+          </button>
           <button class="button is-rounded is-danger">Reject</button>
         </div>
         <div *ngIf="display_confirmed">
           <p style="margin-right: 10px; margin-top: 7px;">Confirmed</p>
         </div>
-        
-        
       </div>
     </section>
     <footer class="modal-card-foot"></footer>
@@ -187,20 +195,18 @@
   <div class="modal-background"></div>
   <div class="modal-content modal-card">
     <section class="modal-card-body" style="border-radius: 20px;">
-      <p style="text-align: center; font-weight: bolder; font-size: larger;">Make sure you already picked car from lessor</p>
-      <p style="text-align: center; font-weight: bolder; font-size: larger;">you can't return when press submit.</p>
+      <p style="text-align: center; font-weight: bolder; font-size: larger;">
+        Make sure you already picked car from lessor
+      </p>
+      <p style="text-align: center; font-weight: bolder; font-size: larger;">
+        you can't return when press submit.
+      </p>
       <br />
       <div class="buttons" style="justify-content: center;">
-        <button
-          class="button is-rounded is-danger"
-          (click)="pickupCar()"
-        >
+        <button class="button is-rounded is-danger" (click)="pickupCar()">
           Yes
         </button>
-        <button
-          class="button is-rounded"
-          (click)="closePopup('popupPickup')"
-        >
+        <button class="button is-rounded" (click)="closePopup('popupPickup')">
           No
         </button>
       </div>
@@ -212,24 +218,21 @@
   <div class="modal-background"></div>
   <div class="modal-content modal-card">
     <section class="modal-card-body" style="border-radius: 20px;">
-      <p style="text-align: center; font-weight: bolder; font-size: larger;">Make sure you already returned car to lessor</p>
-      <p style="text-align: center; font-weight: bolder; font-size: larger;">you can't return when press submit.</p>
+      <p style="text-align: center; font-weight: bolder; font-size: larger;">
+        Make sure you already returned car to lessor
+      </p>
+      <p style="text-align: center; font-weight: bolder; font-size: larger;">
+        you can't return when press submit.
+      </p>
       <br />
       <div class="buttons" style="justify-content: center;">
-        <button
-          class="button is-rounded is-danger"
-          (click)="returnCar()"
-        >
+        <button class="button is-rounded is-danger" (click)="returnCar()">
           Yes
         </button>
-        <button
-          class="button is-rounded"
-          (click)="closePopup('popupReturn')"
-        >
+        <button class="button is-rounded" (click)="closePopup('popupReturn')">
           No
         </button>
       </div>
     </section>
   </div>
 </div>
-

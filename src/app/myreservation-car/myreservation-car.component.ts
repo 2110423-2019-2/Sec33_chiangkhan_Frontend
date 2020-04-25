@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, Input, ViewChild, ElementRef, ViewEncapsulation } from "@angular/core";
 import axios from "axios";
 
 @Component({
