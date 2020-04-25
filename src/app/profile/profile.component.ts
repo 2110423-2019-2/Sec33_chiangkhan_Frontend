@@ -8,6 +8,7 @@ import {
   AngularFireUploadTask,
 } from "angularfire2/storage";
 import * as firebase from "firebase";
+import { FORMERR } from "dns";
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
@@ -17,8 +18,9 @@ export class ProfileComponent implements OnInit {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   information: any;
-  confirmpassword: String ="";
-  confirmpasswordValid:boolean;
+  confirmpassword: String = "";
+  confirmpasswordValid: boolean;
+  url: string;
   updateProfileForm = new FormGroup({
     name: new FormControl(),
     email: new FormControl("", Validators.email),
@@ -42,9 +44,14 @@ export class ProfileComponent implements OnInit {
     ]),
     driving_license: new FormControl(),
     address: new FormControl(),
+    member_profile: new FormControl(this.url),
   });
 
-  constructor(private elem: ElementRef, private auth: AuthService,private afStorage: AngularFireStorage) {}
+  constructor(
+    private elem: ElementRef,
+    private auth: AuthService,
+    private afStorage: AngularFireStorage
+  ) {}
 
   ngOnInit() {
     this.auth.checkStatus();
@@ -53,11 +60,14 @@ export class ProfileComponent implements OnInit {
       .then((response) => {
         console.log(response.data);
         this.information = response.data;
+        console.log(this.information.member_profile);
+        console.log(this.information.member_profile["url"]);
       })
       .catch((error) => {
         console.log(error);
-      }).finally(()=>{
-        this.fetchPhoto()
+      })
+      .finally(() => {
+        // this.fetchPhoto();
       });
     this.setValue();
   }
@@ -73,55 +83,75 @@ export class ProfileComponent implements OnInit {
     this.elem.nativeElement.querySelector(form).className =
       "modal modal-fx-fadeInScale";
   }
-  onChangeConfirmPass(){
-    if(this.confirmpassword === this.updateProfileForm.value.password){
-      this.confirmpasswordValid = true
-      this.elem.nativeElement.querySelector("#confirmPassword").className = "input is-success"
-    }else{
-      this.confirmpasswordValid = false
-      this.elem.nativeElement.querySelector("#confirmPassword").className = "input is-danger"
+  onChangeConfirmPass() {
+    if (this.confirmpassword === this.updateProfileForm.value.password) {
+      this.confirmpasswordValid = true;
+      this.elem.nativeElement.querySelector("#confirmPassword").className =
+        "input is-success";
+    } else {
+      this.confirmpasswordValid = false;
+      this.elem.nativeElement.querySelector("#confirmPassword").className =
+        "input is-danger";
     }
   }
   onChangeCredit() {
-    if(this.updateProfileForm.controls.credit_card_number.status == "INVALID"){
-      this.elem.nativeElement.querySelector("#credit").className = "input is-danger"
-    }else{
-      this.elem.nativeElement.querySelector("#credit").className = "input is-success"
+    if (
+      this.updateProfileForm.controls.credit_card_number.status == "INVALID"
+    ) {
+      this.elem.nativeElement.querySelector("#credit").className =
+        "input is-danger";
+    } else {
+      this.elem.nativeElement.querySelector("#credit").className =
+        "input is-success";
     }
   }
   onChangeBank() {
-    if(this.updateProfileForm.controls.bank_account.status == "INVALID"){
-      this.elem.nativeElement.querySelector("#bank_account").className = "input is-danger"
-    }else{
-      this.elem.nativeElement.querySelector("#bank_account").className = "input is-success"
+    if (this.updateProfileForm.controls.bank_account.status == "INVALID") {
+      this.elem.nativeElement.querySelector("#bank_account").className =
+        "input is-danger";
+    } else {
+      this.elem.nativeElement.querySelector("#bank_account").className =
+        "input is-success";
     }
   }
   onChangeEmail() {
-    if(this.updateProfileForm.controls.email.status == "INVALID"){
-      this.elem.nativeElement.querySelector("#emai;").className = "input is-danger"
-    }else{
-      this.elem.nativeElement.querySelector("#email").className = "input is-success"
+    if (this.updateProfileForm.controls.email.status == "INVALID") {
+      this.elem.nativeElement.querySelector("#emai;").className =
+        "input is-danger";
+    } else {
+      this.elem.nativeElement.querySelector("#email").className =
+        "input is-success";
     }
   }
   onChangePhone() {
-    if(this.updateProfileForm.controls.phone_num.status == "INVALID"){
-      this.elem.nativeElement.querySelector("#phone").className = "input is-danger"
-    }else{
-      this.elem.nativeElement.querySelector("#phone").className = "input is-success"
+    if (this.updateProfileForm.controls.phone_num.status == "INVALID") {
+      this.elem.nativeElement.querySelector("#phone").className =
+        "input is-danger";
+    } else {
+      this.elem.nativeElement.querySelector("#phone").className =
+        "input is-success";
     }
   }
   onChangeExpiry() {
-    if(this.updateProfileForm.controls.credit_card_expiry.status == "INVALID"){
-      this.elem.nativeElement.querySelector("#CVV").className = "input is-danger"
-    }else{
-      this.elem.nativeElement.querySelector("#CVV").className = "input is-success"
+    if (
+      this.updateProfileForm.controls.credit_card_expiry.status == "INVALID"
+    ) {
+      this.elem.nativeElement.querySelector("#CVV").className =
+        "input is-danger";
+    } else {
+      this.elem.nativeElement.querySelector("#CVV").className =
+        "input is-success";
     }
   }
-  onChangeCVV(){
-    if(this.updateProfileForm.controls.credit_card_security.status == "INVALID"){
-      this.elem.nativeElement.querySelector("#CVV").className = "input is-danger"
-    }else{
-      this.elem.nativeElement.querySelector("#CVV").className = "input is-success"
+  onChangeCVV() {
+    if (
+      this.updateProfileForm.controls.credit_card_security.status == "INVALID"
+    ) {
+      this.elem.nativeElement.querySelector("#CVV").className =
+        "input is-danger";
+    } else {
+      this.elem.nativeElement.querySelector("#CVV").className =
+        "input is-success";
     }
   }
 
@@ -142,7 +172,7 @@ export class ProfileComponent implements OnInit {
   setValue() {
     let info = {
       name: this.information.name,
-      email: this.information.email, 
+      email: this.information.email,
       phone_num: this.information.phone_num,
       bank_account: this.information.bank_account,
       bank_account_branch: this.information.bank_account_branch,
@@ -151,6 +181,7 @@ export class ProfileComponent implements OnInit {
       credit_card_security: this.information.credit_card_security,
       driving_license: this.information.driving_license,
       address: this.information.address,
+      member_profile: this.information.member_profile,
     };
     this.updateProfileForm.setValue(info);
   }
@@ -177,18 +208,30 @@ export class ProfileComponent implements OnInit {
     var storageRef = firebase
       .storage()
       .ref()
-      .child("profile/"+this.information.username)
+      .child("profile/" + this.information.username)
       .getDownloadURL()
       .then((res) => {
         console.log(res);
-        this.elem.nativeElement.querySelector('.profile').src = res
-      }).catch(err=>{
-        this.elem.nativeElement.querySelector('.profile').src = "../../assets/images/profile.png"
-      });
+        this.url = res;
+        axios
+          .put("http://localhost:8080/api/member/updatePhoto", {
+            newUrl: this.url,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            alert("Fail to update profile images");
+          });
+      })
+      .catch((err) => {});
   }
   upload(event) {
     const username = this.information.username;
     this.ref = this.afStorage.ref("profile").child(username);
     this.task = this.ref.put(event.target.files[0]);
+    setTimeout(() => {
+      this.fetchPhoto();
+    }, 3000);
   }
 }

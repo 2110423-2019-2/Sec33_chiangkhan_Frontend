@@ -25,7 +25,8 @@ export class RegisterComponent implements OnInit {
     credit_card_expiry : new FormControl("",Validators.required),
     credit_card_security : new FormControl("",[Validators.minLength(3),Validators.maxLength(3),Validators.required]) ,
     driving_license : new FormControl("",Validators.required),
-    address : new FormControl("",Validators.required)
+    address : new FormControl("",Validators.required),
+    member_profile : new FormControl('https://firebasestorage.googleapis.com/v0/b/software-engineering-51d8d.appspot.com/o/profile%2Fprofile.png?alt=media&token=c42ceb40-2c63-4306-b6d2-5390c4c39ec0')
   })
   
   passwording:string = ""
