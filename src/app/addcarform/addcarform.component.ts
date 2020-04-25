@@ -39,8 +39,6 @@ export class AddcarformComponent implements OnInit {
   ngOnInit() {}
 
   addCar() {
-    console.log(this.addcarForm.valid)
-    this.licenseplate = this.addcarForm.value.prefix + " " +this.addcarForm.value.number
     Object.assign(
       this.addcarForm.value,
       { licenseplate: this.licenseplate },
@@ -111,18 +109,19 @@ export class AddcarformComponent implements OnInit {
       "modal modal-fx-fadeInScale";
   }
   upload(event) {
-    this.ref = this.afStorage.ref("car").child(this.addcarForm.value.licenseplate);
+    this.licenseplate = this.addcarForm.value.prefix + " " +this.addcarForm.value.number
+    this.ref = this.afStorage.ref("car").child(this.licenseplate);
     this.task = this.ref.put(event.target.files[0]);
     setTimeout(() => {
       this.fetchPhoto()
-    }, 3000);
+    }, 4000);
   }
 
   fetchPhoto() {
     var storageRef = firebase
       .storage()
       .ref()
-      .child("car/"+this.addcarForm.value.licenseplate)
+      .child("car/"+this.licenseplate)
       .getDownloadURL()
       .then((res) => {
         console.log(res);

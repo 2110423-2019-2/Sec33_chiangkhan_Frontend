@@ -20,7 +20,7 @@ export class MyreservationPopupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.car.status == "RESERVED" || this.car.status == "RETURNED") {
+    if (this.car.status == "RESERVED" || this.car.status == "RETURNED" || this.car.status == "PICKED") {
       this.display_confirming = false;
       this.display_confirmed = true;
     } else if (this.car.status == "PENDING") {
