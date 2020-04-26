@@ -45,23 +45,35 @@ export class MyreservationPopupComponent implements OnInit {
       "modal modal-fx-3dFlipVertical";
   }
   addReview() {
-    if (this.valueRating > 0 && this.valueRating < 6) {
-      let reviewForm = Object.assign(
-        {},
-        { comment: this.comment },
-        { rating: this.valueRating },
-        { carId: this.car.relatedCarAvailable.carId }
-      );
-      console.log(reviewForm);
-      axios
-        .post("http://localhost:8080/api/review/", reviewForm)
-        .then((response) => {
-          console.log(response);
-          this.closePopup("review_popup");
-        })
-        .catch((error) => console.log(error));
-    }else{
-      alert("rating invalid")
+    if (this.valueRating == null && this.comment == null) {
+      if (this.valueRating != null) {
+        if (this.valueRating > 0 && this.valueRating < 6) {
+          if (this.comment != null) {
+            let reviewForm = Object.assign(
+              {},
+              { comment: this.comment },
+              { rating: this.valueRating },
+              { carId: this.car.relatedCarAvailable.carId }
+            );
+            console.log(reviewForm);
+            axios
+              .post("http://localhost:8080/api/review/", reviewForm)
+              .then((response) => {
+                console.log(response);
+                this.closePopup("review_popup");
+              })
+              .catch((error) => console.log(error));
+          } else {
+            alert("Please comment");
+          }
+        } else {
+          alert("rating invalid");
+        }
+      } else {
+        alert("Please select rating to give this car");
+      }
+    } else {
+      alert("Please rating and comment");
     }
   }
   rating(rating: Number) {
