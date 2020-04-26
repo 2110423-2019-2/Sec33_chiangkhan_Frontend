@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, ElementRef, ViewEncapsulation } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+  ViewEncapsulation,
+} from "@angular/core";
 import axios from "axios";
 import { MyReservationComponent } from "../myreservation/myreservation.component";
 @Component({
@@ -20,7 +26,11 @@ export class MyreservationPopupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.car.status == "RESERVED" || this.car.status == "RETURNED" || this.car.status == "PICKED") {
+    if (
+      this.car.status == "RESERVED" ||
+      this.car.status == "RETURNED" ||
+      this.car.status == "PICKED"
+    ) {
       this.display_confirming = false;
       this.display_confirmed = true;
     } else if (this.car.status == "PENDING") {
@@ -35,20 +45,24 @@ export class MyreservationPopupComponent implements OnInit {
       "modal modal-fx-3dFlipVertical";
   }
   addReview() {
-    let reviewForm = Object.assign(
-      {},
-      { comment: this.comment },
-      { rating: this.valueRating },
-      { carId: this.car.relatedCarAvailable.carId }
-    );
-    console.log(reviewForm)
-    axios
-      .post("http://localhost:8080/api/review/", reviewForm)
-      .then((response) => {
-        console.log(response);
-        this.closePopup("review_popup");
-      })
-      .catch((error) => console.log(error));
+    if (this.valueRating > 0 && this.valueRating < 6) {
+      let reviewForm = Object.assign(
+        {},
+        { comment: this.comment },
+        { rating: this.valueRating },
+        { carId: this.car.relatedCarAvailable.carId }
+      );
+      console.log(reviewForm);
+      axios
+        .post("http://localhost:8080/api/review/", reviewForm)
+        .then((response) => {
+          console.log(response);
+          this.closePopup("review_popup");
+        })
+        .catch((error) => console.log(error));
+    }else{
+      alert("rating invalid")
+    }
   }
   rating(rating: Number) {
     this.valueRating = rating;
@@ -63,7 +77,7 @@ export class MyreservationPopupComponent implements OnInit {
       .then((response) => {
         console.log(response);
         this.closePopup("cancel_popup");
-        this.myReservation.tab('CANCELED')
+        this.myReservation.tab("CANCELED");
       })
       .catch((error) => console.log(error));
   }
@@ -77,7 +91,7 @@ export class MyreservationPopupComponent implements OnInit {
       .then((response) => {
         console.log(response);
         this.closePopup("agreement_popup");
-        this.myReservation.tab('all')
+        this.myReservation.tab("all");
       })
       .catch((error) => console.log(error));
   }
@@ -92,7 +106,7 @@ export class MyreservationPopupComponent implements OnInit {
         console.log(response);
         this.closePopup("popupPickup");
         // this.router.navigate(['/homepage/reservation',{ filter: "Picked" }]);
-        this.myReservation.tab('PICKED')
+        this.myReservation.tab("PICKED");
       })
       .catch((error) => console.log(error));
   }
@@ -106,7 +120,7 @@ export class MyreservationPopupComponent implements OnInit {
       .then((response) => {
         console.log(response);
         this.closePopup("popupReturn");
-        this.myReservation.tab('RETURNED')
+        this.myReservation.tab("RETURNED");
       })
       .catch((error) => console.log(error));
   }
