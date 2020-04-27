@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import axios from "axios";
 import { MyReservationComponent } from "../myreservation/myreservation.component";
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: "app-myreservation-popup",
   templateUrl: "./myreservation-popup.component.html",

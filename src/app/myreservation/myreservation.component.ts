@@ -3,7 +3,7 @@ import { Component, OnInit, ElementRef } from "@angular/core";
 import { AuthService } from "../auth.service";
 import axios from "axios";
 import { Router } from "@angular/router";
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: "app-myreservation",
   templateUrl: "./myreservation.component.html",

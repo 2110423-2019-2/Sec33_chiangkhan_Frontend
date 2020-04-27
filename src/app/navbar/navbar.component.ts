@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios'
 import { AuthService} from '../auth.service'
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

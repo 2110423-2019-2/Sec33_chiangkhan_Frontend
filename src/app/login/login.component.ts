@@ -9,7 +9,7 @@ import {
   AngularFireUploadTask,
 } from "angularfire2/storage";
 import * as firebase from "firebase";
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",

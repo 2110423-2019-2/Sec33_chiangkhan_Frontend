@@ -2,7 +2,7 @@ import { element } from "protractor";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Component, OnInit, Input } from "@angular/core";
 import axios from "axios";
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: "app-homepage-car-popup",
   templateUrl: "./homepage-car-popup.component.html",

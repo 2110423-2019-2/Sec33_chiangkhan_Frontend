@@ -9,7 +9,7 @@ import {
 } from "angularfire2/storage";
 import * as firebase from "firebase";
 import { FORMERR } from "dns";
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",

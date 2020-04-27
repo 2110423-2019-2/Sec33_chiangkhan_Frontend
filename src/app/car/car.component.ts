@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef } from "@angular/core";
 import axios from "axios";
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: "app-car",
   templateUrl: "./car.component.html",

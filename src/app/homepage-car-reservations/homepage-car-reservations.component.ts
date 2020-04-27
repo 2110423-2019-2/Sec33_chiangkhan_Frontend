@@ -11,7 +11,7 @@ import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { Location } from "@angular/common";
 import { AuthService } from "../auth.service";
 import axios from "axios";
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: "app-homepage-car-reservations",
   templateUrl: "./homepage-car-reservations.component.html",

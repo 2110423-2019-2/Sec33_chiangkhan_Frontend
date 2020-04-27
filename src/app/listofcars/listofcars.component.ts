@@ -4,7 +4,7 @@ import { ViewChild, ElementRef, NgZone } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { AuthService} from '../auth.service'
 import axios from "axios";
-import { environment } from '../../environments/environment.prod'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: "app-listofcars",
