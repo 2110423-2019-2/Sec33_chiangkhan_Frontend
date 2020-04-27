@@ -4,7 +4,7 @@ import { ViewChild, ElementRef, NgZone } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { AuthService} from '../auth.service'
 import axios from "axios";
-
+import { environment } from '../../environments/environment.prod'
 
 @Component({
   selector: "app-listofcars",
@@ -44,7 +44,7 @@ export class ListofcarsComponent implements OnInit {
     this.auth.checkStatus()
     document.getElementsByClassName("unactive")[2].className = "active";
     axios
-      .get("http://localhost:8080/api/car/mycar")
+      .get("http://"+environment.host+":8080/api/car/mycar")
       .then((response) => {
         console.log(response);
         this.myCars = response.data;
@@ -53,7 +53,7 @@ export class ListofcarsComponent implements OnInit {
         console.log(error);
       });
     axios
-      .get("http://localhost:8080/api/car/myDeal")
+      .get("http://"+environment.host+":8080/api/car/myDeal")
       .then((response) => {
         console.log(response);
         this.myDeal = response.data;
@@ -120,7 +120,7 @@ export class ListofcarsComponent implements OnInit {
   }
   fetchcar() {
     axios
-      .get("http://localhost:8080/api/car")
+      .get("http://"+environment.host+":8080/api/car")
       .then((response) => {
         console.log(response);
         this.myCars = response.data;
@@ -138,7 +138,7 @@ export class ListofcarsComponent implements OnInit {
     if (this.verify_submit()) {
       console.log("can submit");
       axios
-        .post("http://localhost:8080/api/carAvailable/", this.addDealForm.value)
+        .post("http://"+environment.host+":8080/api/carAvailable/", this.addDealForm.value)
         .then((response)=> {
           console.log(response);
           this.closeform('form')

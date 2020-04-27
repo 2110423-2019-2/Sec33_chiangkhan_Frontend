@@ -2,6 +2,7 @@ import { element } from "protractor";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Component, OnInit, Input } from "@angular/core";
 import axios from "axios";
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-homepage-car-popup",
   templateUrl: "./homepage-car-popup.component.html",
@@ -26,7 +27,7 @@ export class HomepageCarPopupComponent implements OnInit {
   ngOnInit() {
     this.car_popup = this.car;
     axios
-      .get("http://localhost:8080/api/car/" + this.car.carId + "/carReview")
+      .get("http://"+environment.host+":8080/api/car/" + this.car.carId + "/carReview")
       .then((response) => {
         this.reviews = response.data[0].review;
         this.size = this.reviews.length;

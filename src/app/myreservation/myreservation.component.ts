@@ -3,6 +3,7 @@ import { Component, OnInit, ElementRef } from "@angular/core";
 import { AuthService } from "../auth.service";
 import axios from "axios";
 import { Router } from "@angular/router";
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-myreservation",
   templateUrl: "./myreservation.component.html",
@@ -25,7 +26,7 @@ export class MyReservationComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.currentTab = params.get(params.keys[0])
       axios
-      .get("http://localhost:8080/api/car-reservation/")
+      .get("http://"+environment.host+":8080/api/car-reservation/")
       .then((response) => {
         console.log(response);
         this.carReservation = response.data;

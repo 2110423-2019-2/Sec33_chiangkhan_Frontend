@@ -9,7 +9,7 @@ import {
   AngularFireUploadTask,
 } from "angularfire2/storage";
 import * as firebase from "firebase";
-
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       // hhussy0
       // 1kvWSXcXcpka
       axios
-        .post("http://localhost:8080/api/auth/login", this.loginForm.value)
+        .post("http://"+environment.host+":8080/api/auth/login", this.loginForm.value)
         .then((response) => {
           console.log(response);
           window.location.assign("/homepage");
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         })
         .then(() => {
           axios
-            .get("http://localhost:8080/api/review")
+            .get("http://"+environment.host+":8080/api/review")
             .then((response) => {
               console.log(response);
             })

@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import axios from "axios";
+import { environment } from '../../environments/environment.prod'
 @Injectable({
   providedIn: "root",
 })
@@ -9,7 +10,7 @@ export class AuthService {
 
   public checkStatus() :any{
     axios
-      .get("http://localhost:8080/api/auth/status")
+      .get("http://"+environment.host+":8080/api/auth/status")
       .then((response) => {
         console.log(response);
         this.is_admin = response.data.is_admin

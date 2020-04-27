@@ -11,7 +11,7 @@ import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { Location } from "@angular/common";
 import { AuthService } from "../auth.service";
 import axios from "axios";
-
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-homepage-car-reservations",
   templateUrl: "./homepage-car-reservations.component.html",
@@ -87,7 +87,7 @@ export class HomepageCarReservationsComponent implements OnInit {
       if(this.checkDate()){
          axios
         .post(
-          "http://localhost:8080/api/car-reservation",
+          "http://"+environment.host+":8080/api/car-reservation",
           this.reserveForm.value
         )
         .then((response) => {

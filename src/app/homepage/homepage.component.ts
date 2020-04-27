@@ -11,7 +11,7 @@ import { Location } from "@angular/common";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { AuthService } from "../auth.service";
 import axios from "axios";
-
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-homepage",
   templateUrl: "./homepage.component.html",
@@ -119,7 +119,7 @@ export class HomepageComponent implements OnInit {
         }
       }
       axios
-        .get("http://localhost:8080/api/car/", { params: paramm })
+        .get("http://"+environment.host+":8080/api/car/", { params: paramm })
         .then((response) => {
           console.log(response);
           this.cars = response.data;

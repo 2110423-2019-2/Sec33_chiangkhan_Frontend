@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import axios from "axios";
 import { MyReservationComponent } from "../myreservation/myreservation.component";
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-myreservation-popup",
   templateUrl: "./myreservation-popup.component.html",
@@ -57,7 +58,7 @@ export class MyreservationPopupComponent implements OnInit {
             );
             console.log(reviewForm);
             axios
-              .post("http://localhost:8080/api/review/", reviewForm)
+              .post("http://"+environment.host+":8080/api/review/", reviewForm)
               .then((response) => {
                 console.log(response);
                 this.closePopup("review_popup");
@@ -82,7 +83,7 @@ export class MyreservationPopupComponent implements OnInit {
   cancelReservation() {
     axios
       .patch(
-        "http://localhost:8080/api/car-reservation/" +
+        "http://"+environment.host+":8080/api/car-reservation/" +
           this.car.carReservationId,
         { status: "CANCELED" }
       )
@@ -96,7 +97,7 @@ export class MyreservationPopupComponent implements OnInit {
   confirmAgreement() {
     axios
       .patch(
-        "http://localhost:8080/api/car-reservation/" +
+        "http://"+environment.host+":8080/api/car-reservation/" +
           this.car.carReservationId,
         { status: "RESERVED" }
       )
@@ -110,7 +111,7 @@ export class MyreservationPopupComponent implements OnInit {
   pickupCar() {
     axios
       .patch(
-        "http://localhost:8080/api/car-reservation/" +
+        "http://"+environment.host+":8080/api/car-reservation/" +
           this.car.carReservationId,
         { status: "PICKED" }
       )
@@ -125,7 +126,7 @@ export class MyreservationPopupComponent implements OnInit {
   returnCar() {
     axios
       .patch(
-        "http://localhost:8080/api/car-reservation/" +
+        "http://"+environment.host+":8080/api/car-reservation/" +
           this.car.carReservationId,
         { status: "RETURNED" }
       )

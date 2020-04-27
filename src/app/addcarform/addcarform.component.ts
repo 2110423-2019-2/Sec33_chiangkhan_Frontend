@@ -10,6 +10,9 @@ import {
   AngularFireUploadTask,
 } from "angularfire2/storage";
 import * as firebase from "firebase";
+
+import { environment } from '../../environments/environment.prod'
+
 @Component({
   selector: "app-addcarform",
   templateUrl: "./addcarform.component.html",
@@ -51,7 +54,7 @@ export class AddcarformComponent implements OnInit {
     delete this.addcarForm.value["prefix"];
     console.log(this.addcarForm.value)
     axios
-      .post("http://localhost:8080/api/car/", this.addcarForm.value)
+      .post("http://"+ environment.host +":8080/api/car/", this.addcarForm.value)
       .then((response) => {
         console.log(response);
         console.log(response.data.raw[0].car_id);

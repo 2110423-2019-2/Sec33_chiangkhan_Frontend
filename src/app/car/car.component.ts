@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef } from "@angular/core";
 import axios from "axios";
-
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-car",
   templateUrl: "./car.component.html",
@@ -15,7 +15,7 @@ export class CarComponent implements OnInit {
   ngOnInit() {
     this.setStatus();
     axios
-      .get("http://localhost:8080/api/car/" + this.car.carId + "/carReview")
+      .get("http://"+environment.host+":8080/api/car/" + this.car.carId + "/carReview")
       .then((response) => {
         console.log(response);
         this.reviews = response.data[0].review;
@@ -54,7 +54,7 @@ export class CarComponent implements OnInit {
   }
   removeCar() {
     axios
-      .delete("http://localhost:8080/api/car/"+this.car.carId+"/deleteCar")
+      .delete("http://"+environment.host+":8080/api/car/"+this.car.carId+"/deleteCar")
       .then((response) => {
         console.log(response);
         this.deletePopup('popupremove')

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios'
 import { AuthService} from '../auth.service'
-
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     axios
-    .get("http://localhost:8080/api/auth/status")
+    .get("http://"+environment.host+":8080/api/auth/status")
     .then((response) => {
       console.log(response);
       this.is_admin = response.data.is_admin
@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     axios
-      .get("http://localhost:8080/api/member/info")
+      .get("http://"+environment.host+":8080/api/member/info")
       .then((response) => {
         console.log(response.data);
         this.information = response.data;
@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
       });
   }
   signOut(){
-    axios.get("http://localhost:8080/api/auth/logout")
+    axios.get("http://"+environment.host+":8080/api/auth/logout")
     .then((response) => {
       console.log(response)
       window.location.assign("/")

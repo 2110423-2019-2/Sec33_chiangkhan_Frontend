@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, ViewEncapsulation } from "@angular/core";
 import axios from "axios";
-
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-myreservation-car",
   templateUrl: "./myreservation-car.component.html",
@@ -48,14 +48,14 @@ export class MyReservationCarComponent implements OnInit {
   ngAfterViewInit(): void {
     axios
       .get(
-        "http://localhost:8080/api/car/" +
+        "http://"+environment.host+":8080/api/car/" +
           this.car.relatedCarAvailable.carId +
           "/carInfo"
       )
       .then((response) => {
         Object.assign(this.car, response.data);
         axios
-          .get("http://localhost:8080/api/member/" + this.car.ownerId + "/name")
+          .get("http://"+environment.host+":8080/api/member/" + this.car.ownerId + "/name")
           .then((response) => {
             Object.assign(this.car, response.data);
             console.log(this.car);

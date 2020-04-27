@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import axios from "axios";
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-monitor",
   templateUrl: "./monitor.component.html",
@@ -13,7 +14,7 @@ export class MonitorComponent implements OnInit {
 
   ngOnInit() {
     axios
-      .get("http://localhost:8080/api/car")
+      .get("http://"+environment.host+":8080/api/car")
       .then((response) => {
         console.log(response);
         this.car = response.data;

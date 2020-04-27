@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
 import axios from 'axios';
 
 import { ValidatePassword } from '../Validator/passwordValidator';
-
+import { environment } from '../../environments/environment.prod'
 
 @Component({
   selector: 'app-register',
@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
     if(!this.registerForm.valid || !this.comfirmPassworldValid || this.confirmPassword == null){ 
         this.elem.nativeElement.querySelector('#invalid_register').style.display = "flex"
     }else{
-    axios.post('http://localhost:8080/api/users',this.registerForm.value)
+    axios.post("http://"+environment.host+":8080/api/users",this.registerForm.value)
       .then((response) => {
         console.log(response); 
         this.elem.nativeElement.querySelector('#registerpop').className = "modal is-active"

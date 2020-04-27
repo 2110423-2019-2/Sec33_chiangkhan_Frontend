@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Component, OnInit, ElementRef } from "@angular/core";
 import { AuthService } from "../auth.service";
 import axios from "axios";
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-box",
   templateUrl: "./box.component.html",
@@ -30,7 +31,7 @@ export class BoxComponent implements OnInit {
     this.auth.checkStatus();
     this.route.paramMap.subscribe((params: ParamMap) => {
       axios
-        .get("http://localhost:8080/api/car/mycar")
+        .get("http://"+ environment.host +":8080/api/car/mycar")
         .then((response) => {
           console.log(response);
           this.cars = response.data;

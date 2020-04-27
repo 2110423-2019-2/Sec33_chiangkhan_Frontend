@@ -9,6 +9,7 @@ import {
 } from "angularfire2/storage";
 import * as firebase from "firebase";
 import { FORMERR } from "dns";
+import { environment } from '../../environments/environment.prod'
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
@@ -56,7 +57,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.auth.checkStatus();
     axios
-      .get("http://localhost:8080/api/member/info")
+      .get("http://"+environment.host+":8080/api/member/info")
       .then((response) => {
         console.log(response.data);
         this.information = response.data;
@@ -157,7 +158,7 @@ export class ProfileComponent implements OnInit {
     if (this.verify_edit_profile()) {
       axios
         .put(
-          "http://localhost:8080/api/member/notupdatepass",
+          "http://"+environment.host+":8080/api/member/notupdatepass",
           this.updateProfileForm.value
         )
         .then((response) => console.log(response))
@@ -212,7 +213,7 @@ export class ProfileComponent implements OnInit {
         console.log(res);
         this.url = res;
         axios
-          .put("http://localhost:8080/api/member/updatePhoto", {
+          .put("http://"+environment.host+":8080/api/member/updatePhoto", {
             newUrl: this.url,
           })
           .then((res) => {
