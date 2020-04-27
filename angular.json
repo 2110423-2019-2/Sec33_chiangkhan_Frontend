@@ -131,6 +131,6 @@
   },
   "defaultProject": "pickup",
   "cli": {
-    "analytics": "c9a1766e-1960-408a-ae4c-d2e71b3bf409"
+    "analytics": false
   }
 }
