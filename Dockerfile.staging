@@ -4,7 +4,7 @@ COPY package.json yarn.lock ./
 RUN yarn install
 COPY . .
 RUN ls
-RUN yarn build --configuration=production
+RUN yarn build --configuration=staging
 
 FROM nginx:latest
 COPY --from=build /usr/src/app/dist/pickup/ /usr/share/nginx/html/dist/pickup
