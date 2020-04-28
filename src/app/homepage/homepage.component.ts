@@ -323,7 +323,7 @@ export class HomepageComponent implements OnInit {
     });
   }
   closeform() {
-    document.getElementById("form").className = "modal modal-fx-fadeInScale";
+    document.getElementById("map").className = "modal modal-fx-fadeInScale";
   }
   submit_add_deal() {
     this.closeform();
