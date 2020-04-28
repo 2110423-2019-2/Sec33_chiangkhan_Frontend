@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import axios from "axios";
 import { MyReservationComponent } from "../myreservation/myreservation.component";
-import { environment } from 'src/environments/environment';
+import { environment } from "src/environments/environment";
 @Component({
   selector: "app-myreservation-popup",
   templateUrl: "./myreservation-popup.component.html",
@@ -46,36 +46,20 @@ export class MyreservationPopupComponent implements OnInit {
       "modal modal-fx-3dFlipVertical";
   }
   addReview() {
-    if (this.valueRating == null && this.comment == null) {
-      if (this.valueRating != null) {
-        if (this.valueRating > 0 && this.valueRating < 6) {
-          if (this.comment != null) {
-            let reviewForm = Object.assign(
-              {},
-              { comment: this.comment },
-              { rating: this.valueRating },
-              { carId: this.car.relatedCarAvailable.carId }
-            );
-            console.log(reviewForm);
-            axios
-              .post("http://"+environment.host+":8080/api/review/", reviewForm)
-              .then((response) => {
-                console.log(response);
-                this.closePopup("review_popup");
-              })
-              .catch((error) => console.log(error));
-          } else {
-            alert("Please comment");
-          }
-        } else {
-          alert("rating invalid");
-        }
-      } else {
-        alert("Please select rating to give this car");
-      }
-    } else {
-      alert("Please rating and comment");
-    }
+    let reviewForm = Object.assign(
+      {},
+      { comment: this.comment },
+      { rating: this.valueRating },
+      { carId: this.car.relatedCarAvailable.carId }
+    );
+    console.log(reviewForm);
+    axios
+      .post("http://" + environment.host + ":8080/api/review/", reviewForm)
+      .then((response) => {
+        console.log(response);
+        this.closePopup("review_popup");
+      })
+      .catch((error) => console.log(error));
   }
   rating(rating: Number) {
     this.valueRating = rating;
@@ -83,7 +67,9 @@ export class MyreservationPopupComponent implements OnInit {
   cancelReservation() {
     axios
       .patch(
-        "http://"+environment.host+":8080/api/car-reservation/" +
+        "http://" +
+          environment.host +
+          ":8080/api/car-reservation/" +
           this.car.carReservationId,
         { status: "CANCELED" }
       )
@@ -97,7 +83,9 @@ export class MyreservationPopupComponent implements OnInit {
   confirmAgreement() {
     axios
       .patch(
-        "http://"+environment.host+":8080/api/car-reservation/" +
+        "http://" +
+          environment.host +
+          ":8080/api/car-reservation/" +
           this.car.carReservationId,
         { status: "RESERVED" }
       )
@@ -111,7 +99,9 @@ export class MyreservationPopupComponent implements OnInit {
   pickupCar() {
     axios
       .patch(
-        "http://"+environment.host+":8080/api/car-reservation/" +
+        "http://" +
+          environment.host +
+          ":8080/api/car-reservation/" +
           this.car.carReservationId,
         { status: "PICKED" }
       )
@@ -126,7 +116,9 @@ export class MyreservationPopupComponent implements OnInit {
   returnCar() {
     axios
       .patch(
-        "http://"+environment.host+":8080/api/car-reservation/" +
+        "http://" +
+          environment.host +
+          ":8080/api/car-reservation/" +
           this.car.carReservationId,
         { status: "RETURNED" }
       )
