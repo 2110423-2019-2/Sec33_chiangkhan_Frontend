@@ -2,15 +2,9 @@
 <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
   <div class="wrapper wrapper--w960">
     <div class="container" style="min-height: 1300px;">
-      <h1
-      style="
-        font-weight: bold;
-        font-size: xx-large;
-        padding-top: 0.5em;
-      "
-    >
-      Newest Deal Available
-    </h1>
+      <h1 style="font-weight: bold; font-size: xx-large; padding-top: 0.5em;">
+        Newest Deal Available
+      </h1>
       <div class="is-flex" style="padding-top: 2.5%; padding-left: 25px;">
         <div id="sort" class="dropdown">
           <div class="dropdown-trigger">
@@ -277,30 +271,12 @@
           <fieldset>
             <label id="f" for=""><strong>Car capacity</strong></label>
             <div id="capacity" class="dropdown">
-              <div class="dropdown-trigger">
-                <button
-                  class="input"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                  style="width: 150px; height: 42px;"
-                  (click)="toggleDropdown('capacity')"
-                >
-                  <span>{{ valueCapacity }}</span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a class="dropdown-item" (click)="searchCapacity(2)">
-                    2
-                  </a>
-                  <a class="dropdown-item" (click)="searchCapacity(3)">
-                    3
-                  </a>
-                  <a class="dropdown-item" (click)="searchCapacity(4)">
-                    4
-                  </a>
-                </div>
-              </div>
+              <input
+                class="input"
+                type="number"
+                [(ngModel)]="valueCapacity"
+                [ngModelOptions]="{ standalone: true }"
+              />
             </div>
           </fieldset>
           <fieldset>

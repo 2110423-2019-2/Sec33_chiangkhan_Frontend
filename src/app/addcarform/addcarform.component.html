@@ -191,32 +191,14 @@
           <div class="column">
             <div class="field">
               <label class="label">Capacity</label>
-              <div id="capacity" class="dropdown">
-                <div class="dropdown-trigger">
-                  <button
-                    class="input"
-                    aria-haspopup="true"
-                    aria-controls="dropdown-menu"
-                    style="width: 160px; height: 42px;"
-                    (click)="toggleDropdown('capacity')"
-                  >
-                    <span>{{ valueCapacity }}</span>
-                  </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                  <div class="dropdown-content">
-                    <a class="dropdown-item" (click)="addCapacity(2)">
-                      2
-                    </a>
-                    <a class="dropdown-item" (click)="addCapacity(3)">
-                      3
-                    </a>
-                    <a class="dropdown-item" (click)="addCapacity(4)">
-                      4
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <input
+                class="input"
+                type="number"
+                placeholder="capacity"
+                [(ngModel)]="valueCapacity"
+                (input)="a()"
+                [ngModelOptions]="{ standalone: true }"
+              />
             </div>
           </div>
         </div>
@@ -225,7 +207,7 @@
           <label class="label">License Plate</label>
           <div class="is-flex">
             <input
-            id='prefix'
+              id="prefix"
               class="input"
               type="text"
               placeholder="Prefix"
@@ -233,7 +215,7 @@
               (input)="checkPrefix()"
             />
             <input
-            id='number'
+              id="number"
               class="input"
               type="text"
               placeholder="Suffix"
