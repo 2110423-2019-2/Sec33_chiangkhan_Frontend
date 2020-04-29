@@ -28,7 +28,7 @@
         <div class="columns">
           <div class="column" id="reservation">
             <button
-              class="column"
+              class="button is-primary is-rounded"
               id="reservation"
               (click)="openform('reservation_history')"
             >
@@ -36,7 +36,7 @@
             </button>
           </div>
           <div class="column" id="remove">
-            <button (click)="openform('remove_deal_popup')">Remove</button>
+            <button class="button is-danger is-rounded"(click)="openform('remove_deal_popup')">Remove</button>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
               padding: 10px 10px 10px 10px;
               margin-left: 220px;
             "
-            class="button is-rounded"
+            class="button is-danger is-rounded"
             id="b1"
             (click)="removeDeal()"
           >

@@ -247,10 +247,7 @@ export class HomepageComponent implements OnInit {
     this.getSearchCar();
     this.toggleDropdown("order");
   }
-  searchCapacity(capacity: number) {
-    this.valueCapacity = capacity;
-    this.toggleDropdown("capacity");
-  }
+
   searchCarmodel(model: String) {
     this.valueCarmodel = model;
     this.toggleDropdown("carmodel");
@@ -323,7 +320,7 @@ export class HomepageComponent implements OnInit {
     });
   }
   closeform() {
-    document.getElementById("form").className = "modal modal-fx-fadeInScale";
+    document.getElementById("map").className = "modal modal-fx-fadeInScale";
   }
   submit_add_deal() {
     this.closeform();

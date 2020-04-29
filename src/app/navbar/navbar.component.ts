@@ -1,41 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import axios from 'axios'
-import { AuthService} from '../auth.service'
-import { environment } from 'src/environments/environment';
+import { Component, OnInit, ElementRef } from "@angular/core";
+import axios from "axios";
+import { AuthService } from "../auth.service";
+import { environment } from "src/environments/environment";
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
-  is_admin:any
-  information:any
-  url:string
-  constructor(private auth:AuthService) { 
-  }
+  is_admin: any;
+  information: any;
+  url: string;
+  constructor(private auth: AuthService, private elem: ElementRef) {}
 
   ngOnInit() {
     axios
-    .get("http://"+environment.host+":8080/api/auth/status")
-    .then((response) => {
-      console.log(response);
-      this.is_admin = response.data.is_admin
-    })
-    .catch((error) => {
-      console.log(error);
-      window.location.assign('/')
-    });
+      .get("http://" + environment.host + ":8080/api/auth/status")
+      .then((response) => {
+        console.log(response);
+        this.is_admin = response.data.is_admin;
+      })
+      .catch((error) => {
+        console.log(error);
+        window.location.assign("/");
+      });
   }
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     axios
-      .get("http://"+environment.host+":8080/api/member/info")
+      .get("http://" + environment.host + ":8080/api/member/info")
       .then((response) => {
         console.log(response.data);
         this.information = response.data;
-        this.url = this.information.member_profile
-        console.log(this.url)
+        this.url = this.information.member_profile;
+        console.log(this.url);
       })
       .catch((error) => {
         console.log(error);
@@ -44,13 +43,20 @@ export class NavbarComponent implements OnInit {
         // this.fetchPhoto();
       });
   }
-  signOut(){
-    axios.get("http://"+environment.host+":8080/api/auth/logout")
-    .then((response) => {
-      console.log(response)
-      window.location.assign("/")
-    }) 
-    .catch((error) => console.log(error)) 
+  signOut() {
+    axios
+      .get("http://" + environment.host + ":8080/api/auth/logout")
+      .then((response) => {
+        console.log(response);
+        window.location.assign("/");
+      })
+      .catch((error) => console.log(error));
   }
- 
+  toggle() {
+    this.elem.nativeElement.querySelector(".has-dropdown").className =
+      this.elem.nativeElement.querySelector(".has-dropdown").className !=
+      "navbar-item has-dropdown is-active"
+        ? "navbar-item has-dropdown is-active"
+        : "navbar-item has-dropdown";
+  }
 }

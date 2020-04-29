@@ -30,7 +30,7 @@ export class AddcarformComponent implements OnInit {
   });
   valueCartype: String;
   valueCarmodel: String;
-  valueCapacity: Number;
+  valueCapacity: any;
   url:string
   constructor(
     private elem: ElementRef,
@@ -42,7 +42,8 @@ export class AddcarformComponent implements OnInit {
   ngOnInit() {}
 
   addCar() {
-    Object.assign(
+    if(this.valueCapacity > 0){
+      Object.assign(
       this.addcarForm.value,
       { licenseplate: this.licenseplate },
       { photoOfCarDocument: this.url },
@@ -69,6 +70,10 @@ export class AddcarformComponent implements OnInit {
       })
       .finally(() => {
       });
+    }else{
+      alert("Capacity invalid")
+    }
+    
   }
   checkPrefix(){
     if(this.addcarForm.controls.prefix.status != "VALID"){
@@ -92,9 +97,9 @@ export class AddcarformComponent implements OnInit {
     this.valueCarmodel = model;
     this.toggleDropdown(model);
   }
-  addCapacity(capacity: Number) {
-    this.valueCapacity = capacity;
-    this.toggleDropdown("capacity");
+  a(){
+    this.valueCapacity = this.valueCapacity
+    console.log(this.valueCapacity)
   }
   closeAllDropdown(filter: String) {
     let allDropdown = this.elem.nativeElement.querySelectorAll(".dropdown");

@@ -6,7 +6,6 @@
 h1 {
   font-size: 170%;
   font-weight: 700;
-
 }
 
 #cancel_popup .field.is-grouped {
@@ -17,64 +16,9 @@ h1 {
 
 #review_popup .field.is-grouped {
   justify-content: center;
-  margin: 10px; 
+  margin: 10px;
   padding: 10px;
 }
-
-#groupstar {
-  text-align-last: center;
-}
-
-
-/* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
-.rating-group {
-  display: inline-flex;
-}
-
-/* make hover effect work properly in IE */
-.rating__icon {
-  pointer-events: none;
-}
-
-/* hide radio inputs */
-.rating__input {
-  position: absolute !important;
-  left: -9999px !important;
-}
-
-/* hide 'none' input from screenreaders */
-.rating__input--none {
-  display: none
-}
-
-/* set icon padding and size */
-.rating__label {
-  cursor: pointer;
-  padding: 0 0.1em;
-  font-size: 2rem;
-}
-
-/* set default star color */ 
-.rating__icon--star {
-  color: orange;
-}
-
-/* if any input is checked, make its following siblings grey */
-.rating__input:checked~.rating__label .rating__icon--star {
-  color: #ddd;
-}
-
-/* make all stars orange on rating group hover */
-.rating-group:hover .rating__label .rating__icon--star {
-  color: orange;
-}
-
-/* make hovered input's following siblings grey on hover */
-.rating__input:hover~.rating__label .rating__icon--star {
-  color: #ddd;
-}
-
-
 
 .modal {
   display: -webkit-box;
@@ -99,8 +43,6 @@ h1 {
   opacity: 1;
 }
 
-
-
 .modal.modal-fx-3dFlipVertical.modal {
   -webkit-perspective: 1300px;
   perspective: 1300px;
@@ -122,5 +64,10 @@ h1 {
   transform: rotateX(0deg);
   opacity: 1;
 }
-
-
+.ratingItemList {
+  max-width: 300px;
+  margin:auto;
+  display:flex;
+  justify-content: space-between;
+  padding: 1em 0;
+}

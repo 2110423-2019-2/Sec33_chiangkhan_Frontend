@@ -5,7 +5,7 @@
     <h1 style="font-size: xx-large; font-weight: bolder; margin-bottom: 20px;">
       My Deal
     </h1>
-    <button id="Add_deal_button" (click)="functionTwo()">Add Deal</button>
+    <button class="button is-link is-rounded" id="Add_deal_button" (click)="functionTwo()">Add Deal</button>
   </div>
  <hr />
   <!-- Car Boxes -->
@@ -91,7 +91,7 @@
           <div class="column">
             <div class="pick_car">
               <button
-                class="pick_car_button"
+                class="button is-rounded"
                 type="button"
                 (click)="openform('add_car_popup')"
               >
@@ -128,7 +128,7 @@
         <h5>Address: {{ address }}</h5>
         <div>Latitude: {{ latitude }}</div>
         <div>Longitude: {{ longitude }}</div>
-        <button>Submit</button>
+        <button class="button is-success is-rounded">Submit</button>
       </form>
     </section>
     <footer class="modal-card-foot"></footer>

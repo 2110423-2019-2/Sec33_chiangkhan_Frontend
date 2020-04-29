@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  host : 'localhost'
+  host: '178.128.61.57'
 };

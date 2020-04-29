@@ -67,7 +67,6 @@ const appRoutes: Routes = [
     CarComponent,
     BoxComponent,
     PopUpComponent,
-    NavbarComponent,
     AddcarformComponent,
     HomepageCarComponent,
     HomepageCarPopupComponent,
