@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import {
   Component,
   OnInit,
@@ -61,8 +62,17 @@ export class MyreservationPopupComponent implements OnInit {
       })
       .catch((error) => console.log(error));
   }
-  rating(rating: Number) {
+  rating(rating: number) {
+    let list = ['fa-frown','fa-frown-open','fa-meh','fa-surprise','fa-grin-stars']
     this.valueRating = rating;
+    console.log(this.valueRating)
+    let ei = this.elem.nativeElement.querySelectorAll('i')
+    ei[0].className = "far fa-frown fa-4x"
+    ei[1].className = "far fa-frown-open fa-4x"
+    ei[2].className = "far fa-meh fa-4x"
+    ei[3].className = "far fa-surprise fa-4x"
+    ei[4].className = "far fa-grin-stars fa-4x"
+    ei[rating-1].className = "fas " +list[rating-1]+ " fa-4x"
   }
   cancelReservation() {
     axios
